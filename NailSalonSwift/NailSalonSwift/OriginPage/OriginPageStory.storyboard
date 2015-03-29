@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MK1-OM-7tY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CHm-Zb-9XZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -35,15 +36,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="rex-Ro-HOv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbe-tK-HAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221" y="170"/>
+            <point key="canvasLocation" x="1170" y="170"/>
         </scene>
-        <!--View Controller-->
+        <!--SqureVC-->
         <scene sceneID="foy-ZI-MIn">
             <objects>
-                <viewController id="DYi-n3-1mE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orSqureID" id="DYi-n3-1mE" customClass="ZXY_ORSqureVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o2F-o2-VhW"/>
                         <viewControllerLayoutGuide type="bottom" id="s3F-ak-mqW"/>
@@ -51,12 +53,132 @@
                     <view key="view" contentMode="scaleToFill" id="1uh-39-Ps6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CI4-yp-3sr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="hia-kM-6w9" customClass="WaterfallLayout"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ZXY_ORSqureMainCCellID" id="VYp-qq-0Dp" customClass="ZXY_ORSqureMainCCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.90196078430000004" green="0.43137254899999999" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="customSize" width="202" height="140"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ZXY_ORSqureTitleCCellID" id="Tdw-Lj-PVc" customClass="ZXY_ORSqureTitleCCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="264"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IT7-f5-9xB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-bH-rAg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
+                                                            <color key="backgroundColor" red="0.90196078430000004" green="0.43137254899999999" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="e3G-bH-rAg" secondAttribute="trailing" id="1iP-Ww-ybv"/>
+                                                        <constraint firstAttribute="centerX" secondItem="e3G-bH-rAg" secondAttribute="centerX" id="3fO-fm-hoQ"/>
+                                                        <constraint firstItem="e3G-bH-rAg" firstAttribute="leading" secondItem="IT7-f5-9xB" secondAttribute="leading" id="Hk7-Jn-Zkf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="e3G-bH-rAg" secondAttribute="bottom" id="QGA-qS-do5"/>
+                                                        <constraint firstAttribute="centerY" secondItem="e3G-bH-rAg" secondAttribute="centerY" id="j33-pm-do6"/>
+                                                        <constraint firstItem="e3G-bH-rAg" firstAttribute="top" secondItem="IT7-f5-9xB" secondAttribute="top" id="nRe-4q-JXr"/>
+                                                    </constraints>
+                                                </scrollView>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GCK-Qu-kEX">
+                                                    <rect key="frame" x="0.0" y="153" width="600" height="112"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="112" id="4PY-YF-lTq"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="9" minimumInteritemSpacing="9" id="2FP-eQ-ak8">
+                                                        <size key="itemSize" width="82" height="82"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ZXY_ORSqureSubCCellID" id="Usb-rf-6ed" customClass="ZXY_ORSqureSubCCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrollCell" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-dZ-CYb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="D8q-dZ-CYb" firstAttribute="top" secondItem="Usb-rf-6ed" secondAttribute="top" id="7AX-hQ-m6e"/>
+                                                                <constraint firstAttribute="trailing" secondItem="D8q-dZ-CYb" secondAttribute="trailing" id="7vM-FZ-Gww"/>
+                                                                <constraint firstItem="D8q-dZ-CYb" firstAttribute="leading" secondItem="Usb-rf-6ed" secondAttribute="leading" id="Sp1-zn-B7C"/>
+                                                                <constraint firstAttribute="bottom" secondItem="D8q-dZ-CYb" secondAttribute="bottom" id="ugx-8z-blG"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="cellImg" destination="D8q-dZ-CYb" id="dcP-6E-fD5"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="Tdw-Lj-PVc" id="yUS-05-F1S"/>
+                                                        <outlet property="delegate" destination="Tdw-Lj-PVc" id="yIi-Zg-YNk"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="GCK-Qu-kEX" firstAttribute="leading" secondItem="IT7-f5-9xB" secondAttribute="leading" id="98v-Ut-CG7"/>
+                                            <constraint firstAttribute="trailing" secondItem="IT7-f5-9xB" secondAttribute="trailing" id="F9S-SD-2ZO"/>
+                                            <constraint firstItem="IT7-f5-9xB" firstAttribute="leading" secondItem="Tdw-Lj-PVc" secondAttribute="leading" id="Mfq-yX-Hv5"/>
+                                            <constraint firstItem="GCK-Qu-kEX" firstAttribute="trailing" secondItem="IT7-f5-9xB" secondAttribute="trailing" id="YEB-GP-vzu"/>
+                                            <constraint firstItem="GCK-Qu-kEX" firstAttribute="top" secondItem="IT7-f5-9xB" secondAttribute="bottom" constant="1" id="bKs-T7-LVP"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="GCK-Qu-kEX" secondAttribute="bottom" constant="-9" id="pMt-S0-HLs"/>
+                                            <constraint firstItem="IT7-f5-9xB" firstAttribute="top" secondItem="Tdw-Lj-PVc" secondAttribute="top" id="x65-xd-Fp8"/>
+                                        </constraints>
+                                        <size key="customSize" width="600" height="264"/>
+                                        <connections>
+                                            <outlet property="scrollV" destination="IT7-f5-9xB" id="0Rk-Il-EH1"/>
+                                            <outlet property="subCollectionV" destination="GCK-Qu-kEX" id="nsF-2v-4m2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DYi-n3-1mE" id="I4I-9K-lJi"/>
+                                    <outlet property="delegate" destination="DYi-n3-1mE" id="B2U-KT-cQ3"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s3F-ak-mqW" firstAttribute="top" secondItem="CI4-yp-3sr" secondAttribute="bottom" id="41q-sb-pkH"/>
+                            <constraint firstItem="CI4-yp-3sr" firstAttribute="top" secondItem="1uh-39-Ps6" secondAttribute="top" constant="64" id="Hbn-mU-a2d"/>
+                            <constraint firstAttribute="trailing" secondItem="CI4-yp-3sr" secondAttribute="trailing" id="bPP-cf-5ZN"/>
+                            <constraint firstItem="CI4-yp-3sr" firstAttribute="leading" secondItem="1uh-39-Ps6" secondAttribute="leading" id="dZv-dJ-66Y"/>
+                        </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="mainCollectionV" destination="CI4-yp-3sr" id="5YF-2a-0h3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iu-Rs-naz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979" y="1187"/>
+            <point key="canvasLocation" x="1056" y="1184"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Gnm-sf-nb2">
@@ -77,4 +199,7 @@
             <point key="canvasLocation" x="1698" y="1175"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="scrollCell" width="83" height="83"/>
+    </resources>
 </document>

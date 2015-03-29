@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		30568B74CEF19CF0023B7248 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35397CF563ED6DD2D8885501 /* libPods.a */; };
+		8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F26101AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift */; };
+		8B1F26141AC78C1100DDF8F4 /* WaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F26131AC78C1100DDF8F4 /* WaterfallLayout.m */; };
+		8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F26161AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift */; };
+		8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F26181AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift */; };
+		8B1F261B1AC7965000DDF8F4 /* ZXY_ORSqureTitleCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F261A1AC7965000DDF8F4 /* ZXY_ORSqureTitleCCell.swift */; };
 		8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */; };
 		8B4B4DE41AC4FB39001BD10B /* OriginPageStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */; };
 		8B4B4DE61AC4FB65001BD10B /* ZXY_ORMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */; };
@@ -17,13 +22,18 @@
 		8B4B4DF21AC50162001BD10B /* ZXY_UserInfoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DF11AC50162001BD10B /* ZXY_UserInfoDetail.swift */; };
 		8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DF31AC50169001BD10B /* ZXY_ConstValue.swift */; };
 		8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DF81AC5024C001BD10B /* ZXY_ARMainVC.swift */; };
-		8B4B4DFB1AC50267001BD10B /* ArtistStoty.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4DFA1AC50267001BD10B /* ArtistStoty.storyboard */; };
+		8B4B4DFB1AC50267001BD10B /* ArtistStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4DFA1AC50267001BD10B /* ArtistStory.storyboard */; };
 		8B4B4DFF1AC50307001BD10B /* MyInfoStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4DFE1AC50307001BD10B /* MyInfoStory.storyboard */; };
 		8B4B4E011AC50315001BD10B /* SearchStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4E001AC50315001BD10B /* SearchStory.storyboard */; };
 		8B4B4E031AC5032D001BD10B /* ZXY_MIMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */; };
 		8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4E041AC50340001BD10B /* ZXY_SSMainVC.swift */; };
 		8B4B4E071AC505F3001BD10B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4B4E061AC505F3001BD10B /* AssetsLibrary.framework */; };
 		8B4B4E0A1AC50697001BD10B /* NSString+Encipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4E091AC50697001BD10B /* NSString+Encipher.m */; };
+		8B7B941C1AC5241300BAA520 /* takePhotoStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7B941B1AC5241300BAA520 /* takePhotoStory.storyboard */; };
+		8B7B941E1AC5243D00BAA520 /* ZXY_TPMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B941D1AC5243D00BAA520 /* ZXY_TPMainVC.swift */; };
+		8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B941F1AC5264A00BAA520 /* NailSalonColor.swift */; };
+		8B7B94251AC5441700BAA520 /* ZXY_SegBtnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B94231AC5441700BAA520 /* ZXY_SegBtnVC.swift */; };
+		8B7B94261AC5441700BAA520 /* ZXY_SegBtnVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7B94241AC5441700BAA520 /* ZXY_SegBtnVC.xib */; };
 		8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */; };
 		8B9977BA1AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977B81AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld */; };
 		8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977BD1AC4ED4B00CD1713 /* Main.storyboard */; };
@@ -46,6 +56,12 @@
 		35397CF563ED6DD2D8885501 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C1747B30B0A82381A2DF645 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		86EAAF9353D1ED930B6C67E4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8B1F26101AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORSqureVC.swift; sourceTree = "<group>"; };
+		8B1F26121AC78C1100DDF8F4 /* WaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterfallLayout.h; sourceTree = "<group>"; };
+		8B1F26131AC78C1100DDF8F4 /* WaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterfallLayout.m; sourceTree = "<group>"; };
+		8B1F26161AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORSqureMainCCell.swift; sourceTree = "<group>"; };
+		8B1F26181AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORSqureSubCCell.swift; sourceTree = "<group>"; };
+		8B1F261A1AC7965000DDF8F4 /* ZXY_ORSqureTitleCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORSqureTitleCCell.swift; sourceTree = "<group>"; };
 		8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MainTabBarVC.swift; sourceTree = "<group>"; };
 		8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OriginPageStory.storyboard; sourceTree = "<group>"; };
 		8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORMainVC.swift; sourceTree = "<group>"; };
@@ -56,7 +72,7 @@
 		8B4B4DF11AC50162001BD10B /* ZXY_UserInfoDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_UserInfoDetail.swift; sourceTree = "<group>"; };
 		8B4B4DF31AC50169001BD10B /* ZXY_ConstValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ConstValue.swift; sourceTree = "<group>"; };
 		8B4B4DF81AC5024C001BD10B /* ZXY_ARMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ARMainVC.swift; sourceTree = "<group>"; };
-		8B4B4DFA1AC50267001BD10B /* ArtistStoty.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ArtistStoty.storyboard; sourceTree = "<group>"; };
+		8B4B4DFA1AC50267001BD10B /* ArtistStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ArtistStory.storyboard; sourceTree = "<group>"; };
 		8B4B4DFE1AC50307001BD10B /* MyInfoStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyInfoStory.storyboard; sourceTree = "<group>"; };
 		8B4B4E001AC50315001BD10B /* SearchStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchStory.storyboard; sourceTree = "<group>"; };
 		8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MIMainVC.swift; sourceTree = "<group>"; };
@@ -64,6 +80,11 @@
 		8B4B4E061AC505F3001BD10B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		8B4B4E081AC50697001BD10B /* NSString+Encipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Encipher.h"; sourceTree = "<group>"; };
 		8B4B4E091AC50697001BD10B /* NSString+Encipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encipher.m"; sourceTree = "<group>"; };
+		8B7B941B1AC5241300BAA520 /* takePhotoStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = takePhotoStory.storyboard; sourceTree = "<group>"; };
+		8B7B941D1AC5243D00BAA520 /* ZXY_TPMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_TPMainVC.swift; sourceTree = "<group>"; };
+		8B7B941F1AC5264A00BAA520 /* NailSalonColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NailSalonColor.swift; sourceTree = "<group>"; };
+		8B7B94231AC5441700BAA520 /* ZXY_SegBtnVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_SegBtnVC.swift; path = OriginPage/ZXY_SegBtnVC.swift; sourceTree = "<group>"; };
+		8B7B94241AC5441700BAA520 /* ZXY_SegBtnVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZXY_SegBtnVC.xib; path = OriginPage/ZXY_SegBtnVC.xib; sourceTree = "<group>"; };
 		8B9977B11AC4ED4B00CD1713 /* NailSalonSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NailSalonSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9977B51AC4ED4B00CD1713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,11 +126,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B1F26151AC78F1000DDF8F4 /* ORCell */ = {
+			isa = PBXGroup;
+			children = (
+				8B1F26161AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift */,
+				8B1F261A1AC7965000DDF8F4 /* ZXY_ORSqureTitleCCell.swift */,
+				8B1F26181AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift */,
+			);
+			path = ORCell;
+			sourceTree = "<group>";
+		};
 		8B4B4DE11AC4FB23001BD10B /* NailArtist */ = {
 			isa = PBXGroup;
 			children = (
 				8B4B4DF81AC5024C001BD10B /* ZXY_ARMainVC.swift */,
-				8B4B4DFA1AC50267001BD10B /* ArtistStoty.storyboard */,
+				8B4B4DFA1AC50267001BD10B /* ArtistStory.storyboard */,
 			);
 			path = NailArtist;
 			sourceTree = "<group>";
@@ -117,8 +148,10 @@
 		8B4B4DE21AC4FB23001BD10B /* OriginPage */ = {
 			isa = PBXGroup;
 			children = (
+				8B1F26151AC78F1000DDF8F4 /* ORCell */,
 				8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */,
 				8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */,
+				8B1F26101AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift */,
 			);
 			path = OriginPage;
 			sourceTree = "<group>";
@@ -139,6 +172,15 @@
 				8B4B4E001AC50315001BD10B /* SearchStory.storyboard */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		8B7B941A1AC523FF00BAA520 /* takePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				8B7B941B1AC5241300BAA520 /* takePhotoStory.storyboard */,
+				8B7B941D1AC5243D00BAA520 /* ZXY_TPMainVC.swift */,
+			);
+			path = takePhoto;
 			sourceTree = "<group>";
 		};
 		8B9977A81AC4ED4B00CD1713 = {
@@ -168,6 +210,7 @@
 				8B4B4DE21AC4FB23001BD10B /* OriginPage */,
 				8B4B4DFC1AC502F3001BD10B /* MyInfo */,
 				8B4B4DFD1AC502F3001BD10B /* Search */,
+				8B7B941A1AC523FF00BAA520 /* takePhoto */,
 				8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */,
 				8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */,
 				8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */,
@@ -175,8 +218,13 @@
 				8B4B4DEA1AC4FD9C001BD10B /* ZXY_LocationRelative.swift */,
 				8B4B4DF11AC50162001BD10B /* ZXY_UserInfoDetail.swift */,
 				8B4B4DF31AC50169001BD10B /* ZXY_ConstValue.swift */,
+				8B7B941F1AC5264A00BAA520 /* NailSalonColor.swift */,
 				8B4B4E081AC50697001BD10B /* NSString+Encipher.h */,
 				8B4B4E091AC50697001BD10B /* NSString+Encipher.m */,
+				8B1F26121AC78C1100DDF8F4 /* WaterfallLayout.h */,
+				8B1F26131AC78C1100DDF8F4 /* WaterfallLayout.m */,
+				8B7B94231AC5441700BAA520 /* ZXY_SegBtnVC.swift */,
+				8B7B94241AC5441700BAA520 /* ZXY_SegBtnVC.xib */,
 				8B9977BD1AC4ED4B00CD1713 /* Main.storyboard */,
 				8B9977C01AC4ED4B00CD1713 /* Images.xcassets */,
 				8B9977C21AC4ED4B00CD1713 /* LaunchScreen.xib */,
@@ -272,6 +320,7 @@
 				TargetAttributes = {
 					8B9977B01AC4ED4B00CD1713 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ER62D3UHDE;
 					};
 					8B9977C81AC4ED4B00CD1713 = {
 						CreatedOnToolsVersion = 6.2;
@@ -303,13 +352,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7B941C1AC5241300BAA520 /* takePhotoStory.storyboard in Resources */,
 				8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */,
 				8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */,
 				8B4B4DFF1AC50307001BD10B /* MyInfoStory.storyboard in Resources */,
 				8B9977C11AC4ED4B00CD1713 /* Images.xcassets in Resources */,
-				8B4B4DFB1AC50267001BD10B /* ArtistStoty.storyboard in Resources */,
+				8B4B4DFB1AC50267001BD10B /* ArtistStory.storyboard in Resources */,
 				8B4B4E011AC50315001BD10B /* SearchStory.storyboard in Resources */,
 				8B4B4DE41AC4FB39001BD10B /* OriginPageStory.storyboard in Resources */,
+				8B7B94261AC5441700BAA520 /* ZXY_SegBtnVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,16 +411,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */,
+				8B1F26141AC78C1100DDF8F4 /* WaterfallLayout.m in Sources */,
 				8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */,
 				8B4B4E0A1AC50697001BD10B /* NSString+Encipher.m in Sources */,
 				8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */,
+				8B1F261B1AC7965000DDF8F4 /* ZXY_ORSqureTitleCCell.swift in Sources */,
+				8B7B94251AC5441700BAA520 /* ZXY_SegBtnVC.swift in Sources */,
 				8B4B4DE61AC4FB65001BD10B /* ZXY_ORMainVC.swift in Sources */,
 				8B4B4DF21AC50162001BD10B /* ZXY_UserInfoDetail.swift in Sources */,
+				8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */,
 				8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */,
 				8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */,
+				8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */,
 				8B4B4E031AC5032D001BD10B /* ZXY_MIMainVC.swift in Sources */,
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,
+				8B7B941E1AC5243D00BAA520 /* ZXY_TPMainVC.swift in Sources */,
 				8B4B4DEC1AC4FD9C001BD10B /* ZXY_LocationRelative.swift in Sources */,
+				8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */,
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,
 				8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */,
 				8B9977BA1AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld in Sources */,
@@ -496,7 +555,9 @@
 			baseConfigurationReference = 6C1747B30B0A82381A2DF645 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,7 +572,9 @@
 			baseConfigurationReference = 86EAAF9353D1ED930B6C67E4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
