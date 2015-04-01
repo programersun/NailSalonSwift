@@ -19,3 +19,6 @@
 #import "ZXYOfferLastAlbum.h"
 #import "ZXYOfferOfferList.h"
 #import "ZXYScrollView.h"
+#import "ZXYCourseBaseList.h"
+#import "ZXYCourseData.h"
+#import "ZXYCourseCourse.h"

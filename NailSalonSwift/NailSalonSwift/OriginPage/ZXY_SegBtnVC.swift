@@ -12,15 +12,15 @@ class ZXY_SegBtnVC: UIViewController {
 
     typealias ZXY_SegBtnVCBlock = () -> Void
     
-    @IBOutlet weak var segFirstItem: UIButton!
-    @IBOutlet weak var segSecondItem: UIButton!
+    @IBOutlet weak  var segFirstItem: UIButton!
+    @IBOutlet weak  var segSecondItem: UIButton!
     
     var firstItemAction : ZXY_SegBtnVCBlock?
     var secondItemAction : ZXY_SegBtnVCBlock?
     
-    @IBOutlet weak var secondImg: UIImageView!
+    @IBOutlet  weak var secondImg: UIImageView!
     
-    @IBOutlet weak var firstImg: UIImageView!
+    @IBOutlet  weak var firstImg: UIImageView!
     
     
     override func viewDidLoad() {
@@ -39,17 +39,27 @@ class ZXY_SegBtnVC: UIViewController {
         {
             first()
         }
+        hideSecondImg()
+    }
+
+    func hideFirstImg()
+    {
+        firstImg.hidden  = true
+        secondImg.hidden = false
+    }
+    
+    func hideSecondImg()
+    {
         firstImg.hidden  = false
         secondImg.hidden = true
     }
-
+    
     @IBAction private func secondAction(sender: AnyObject) {
         if let second = secondItemAction
         {
             second()
         }
-        firstImg.hidden  = true
-        secondImg.hidden = false
+        hideFirstImg()
     }
     /*
     // MARK: - Navigation
