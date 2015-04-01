@@ -21,13 +21,16 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Baidu-Maps-iOS-SDK (2.6.0)
+  - CHTCollectionViewWaterfallLayout (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - Baidu-Maps-iOS-SDK (~> 2.6)
+  - CHTCollectionViewWaterfallLayout (~> 0.8)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Baidu-Maps-iOS-SDK: 4327f6719c8e478c933d0809d20aafa2e5a2ef97
+  CHTCollectionViewWaterfallLayout: 14b7950cbe45ae9297e7759148d69b022bac047d
 
 COCOAPODS: 0.35.0

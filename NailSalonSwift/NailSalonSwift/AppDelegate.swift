@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
+//        ZXY_NetHelperOperate.sharedInstance.judgeNetCanConnect { (status) -> Void in
+//            if(status == AFNetworkReachabilityStatus.NotReachable || status == AFNetworkReachabilityStatus.Unknown)
+//            {
+//                var alert = UIAlertView(title: "提示", message: "没有连接网络", delegate: nil, cancelButtonTitle: "知道了")
+//                alert.show()
+//            }
+//        }
         return true
     }
 

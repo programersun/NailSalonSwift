@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonCrypto.h>
-
+/**
+ *  加密
+ */
 @interface NSString (Encipher)
 - (NSString *)md2;
 

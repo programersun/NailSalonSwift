@@ -39,7 +39,7 @@
                         <action selector="secondAction:" destination="-1" eventType="touchUpInside" id="Ll0-bd-OmA"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underLine" translatesAutoresizingMaskIntoConstraints="NO" id="QsA-A7-WiH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="underLine" translatesAutoresizingMaskIntoConstraints="NO" id="QsA-A7-WiH">
                     <rect key="frame" x="299" y="0.0" width="2" height="40"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="btnSelect" translatesAutoresizingMaskIntoConstraints="NO" id="hL0-6a-HTL">

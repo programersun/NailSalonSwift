@@ -54,3 +54,9 @@
 #define COCOAPODS_VERSION_MINOR_Baidu_Maps_iOS_SDK 6
 #define COCOAPODS_VERSION_PATCH_Baidu_Maps_iOS_SDK 0
 
+// CHTCollectionViewWaterfallLayout
+#define COCOAPODS_POD_AVAILABLE_CHTCollectionViewWaterfallLayout
+#define COCOAPODS_VERSION_MAJOR_CHTCollectionViewWaterfallLayout 0
+#define COCOAPODS_VERSION_MINOR_CHTCollectionViewWaterfallLayout 8
+#define COCOAPODS_VERSION_PATCH_CHTCollectionViewWaterfallLayout 0
+

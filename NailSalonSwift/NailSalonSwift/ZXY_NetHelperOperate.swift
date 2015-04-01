@@ -44,7 +44,7 @@ class ZXY_NetHelperOperate: NSObject {
         var stampTime = timeStamp()
     
         
-        afnet.responseSerializer = AFJSONResponseSerializer()
+       // afnet.responseSerializer = AFJSONResponseSerializer()
         afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
         afnet.requestSerializer  = ser
         var sendParameter = Dictionary<String ,AnyObject>()
@@ -57,7 +57,6 @@ class ZXY_NetHelperOperate: NSObject {
         else
         {
             var stampTime = timeStamp()
-            //var sendParameter = Dictionary<String ,AnyObject>()
             sendParameter["timestamp"] = stampTime
             sendParameter["token"]     = timeStampMD5("meijia"+stampTime)
             

@@ -18,6 +18,11 @@ class ZXY_ORMainVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,15 +36,17 @@ class ZXY_ORMainVC: UIViewController {
         segV?.segFirstItem.setTitle("广场", forState: UIControlState.Normal)
         segV?.segSecondItem.setTitle("教程", forState: UIControlState.Normal)
         segV?.firstItemAction = {() -> Void in
-            println("1")
+            
         }
 
         segV?.secondItemAction = {() -> Void in
-            println("2")
+            
         }
 
         self.navigationItem.titleView = view
     }
+    
+    
     
     private func startInitSqureVC()
     {
