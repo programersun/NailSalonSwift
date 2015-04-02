@@ -62,7 +62,7 @@ class ZXY_MainTabBarVC: UITabBarController {
         var seVC    = seStory.instantiateInitialViewController() as UINavigationController
         var tpVC    = UIStoryboard(name: "takePhotoStory", bundle: nil).instantiateInitialViewController() as UINavigationController
         
-        self.setViewControllers([orVC, arVC , tpVC , miVC , seVC], animated: true)
+        self.setViewControllers([orVC, arVC , tpVC ,seVC, miVC ], animated: true)
         self.tabBar.selectedImageTintColor = UIColor.NailRedColor()
         for var i = 0 ; i < self.tabBar.items?.count ; i++
         {

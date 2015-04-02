@@ -12,7 +12,7 @@ class ZXY_MIMainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +31,131 @@ class ZXY_MIMainVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
+}
+
+extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource
+{
+    /**
+    根据indexPath 返回cell所需要显示的图片与title
+    
+    :param: indexPath table indexpath
+    
+    :returns: 图片名字 title 名字
+    */
+    func itemDataForTable(indexPath : NSIndexPath) -> (imageName : String , itemTitle: String)
+    {
+        if(indexPath.section == 1)
+        {
+            var currentRow = indexPath.row
+            switch currentRow
+            {
+            case 0:
+                return ("miMessage","消息")
+            case 1:
+                return ("miAttension","关注")
+            default:
+                return ("miMessage","消息")
+            }
+        }
+        else
+        {
+            var currentRow = indexPath.row
+            switch currentRow
+            {
+            case 0:
+                return ("miOrder","订单")
+            case 1:
+                return ("miAlbum","图集")
+            case 2:
+                return ("miCollection","收藏")
+            default:
+                return ("miOrder","订单")
+            }
+
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as ZXY_MIMainVCell
+        var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as ZXY_MIMainItemCell
+        if(indexPath.section == 0)
+        {
+            bigCell.backImg.backgroundColor = UIColor.NailRedColor()
+            if(ZXY_UserInfoDetail.sharedInstance.isUserLogin())
+            {
+                bigCell.userLoginMethod()
+            }
+            else
+            {
+                bigCell.userNotLoginMethod()
+                
+            }
+            return bigCell
+        }
+        else
+        {
+            
+            var imgName = self.itemDataForTable(indexPath).imageName
+            var titleName = self.itemDataForTable(indexPath).itemTitle
+            smallCell.itemImg.image = UIImage(named: imgName)
+            smallCell.itemTitle.text = titleName
+            smallCell.itemTitle.textColor = UIColor.NailGrayColor()
+            
+            return smallCell
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section
+        {
+        case 0:
+            return 226
+        case 1:
+            return 62
+        default:
+            return 62
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section
+        {
+        case 0:
+            return 1
+        case 1:
+            return 2
+        default:
+            return 3
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section
+        {
+        case 0:
+            return 0
+        case 1:
+            return 0
+        case 2:
+            return 40
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var headerView = UIView(frame: CGRectZero)
+        headerView.backgroundColor = UIColor.whiteColor()
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("lala", sender: nil)
+    }
 }
