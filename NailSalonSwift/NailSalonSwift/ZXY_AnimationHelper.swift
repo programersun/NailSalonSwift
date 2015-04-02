@@ -9,6 +9,12 @@
 import UIKit
 
 class ZXY_AnimationHelper: CAAnimation {
+    
+    /**
+    循环渐隐效果
+    
+    :returns: 返回动画
+    */
     class func animationHelperAlpha() -> CABasicAnimation
     {
         var animationAdd = CABasicAnimation(keyPath: "opacity")
@@ -23,6 +29,11 @@ class ZXY_AnimationHelper: CAAnimation {
         return animationAdd
     }
     
+    /**
+    大小动画
+    
+    :returns: 返回动画
+    */
     class func animationHelperSize() -> CABasicAnimation
     {
         var animationAdd = CABasicAnimation(keyPath: "transform.scale")
@@ -38,6 +49,11 @@ class ZXY_AnimationHelper: CAAnimation {
 
     }
     
+    /**
+    旋转动画
+    
+    :returns: 返回动画
+    */
     class func animationRotation() -> CABasicAnimation
     {
         var rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -49,6 +65,11 @@ class ZXY_AnimationHelper: CAAnimation {
         return rotationAnimation
     }
     
+    /**
+    循环渐隐、大小
+    
+    :returns: 返回动画
+    */
     class func animationGroupForAlphaAndScale() -> CAAnimationGroup
     {
         var group = CAAnimationGroup()
