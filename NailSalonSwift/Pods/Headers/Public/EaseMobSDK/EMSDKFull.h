@@ -1,0 +1,1 @@
+../../../EaseMobSDK/EaseMobSDK/include/EaseMobClientSDK/EMSDKFull.h

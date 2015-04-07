@@ -1,7 +1,7 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Baidu-Maps-iOS-SDK" "${PODS_ROOT}/Headers/Public/CHTCollectionViewWaterfallLayout"
-LIBRARY_SEARCH_PATHS = $(PODS_ROOT)/Baidu-Maps-iOS-SDK
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/Baidu-Maps-iOS-SDK" -isystem "${PODS_ROOT}/Headers/Public/CHTCollectionViewWaterfallLayout"
-OTHER_LDFLAGS = -ObjC -l"BaiduMapApi" -l"Pods-AFNetworking" -l"Pods-Baidu-Maps-iOS-SDK" -l"Pods-CHTCollectionViewWaterfallLayout" -l"stdc++" -framework "CoreGraphics" -framework "CoreLocation" -framework "MobileCoreServices" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Baidu-Maps-iOS-SDK" "${PODS_ROOT}/Headers/Public/CHTCollectionViewWaterfallLayout" "${PODS_ROOT}/Headers/Public/EaseMobSDK"
+LIBRARY_SEARCH_PATHS = $(PODS_ROOT)/Baidu-Maps-iOS-SDK "$(PODS_ROOT)/EaseMobSDK/EaseMobSDK/lib"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/Baidu-Maps-iOS-SDK" -isystem "${PODS_ROOT}/Headers/Public/CHTCollectionViewWaterfallLayout" -isystem "${PODS_ROOT}/Headers/Public/EaseMobSDK"
+OTHER_LDFLAGS = -ObjC -l"BaiduMapApi" -l"EaseMobClientSDKLite" -l"Pods-AFNetworking" -l"Pods-Baidu-Maps-iOS-SDK" -l"Pods-CHTCollectionViewWaterfallLayout" -l"Pods-EaseMobSDK" -l"iconv" -l"resolv" -l"sqlite3" -l"stdc++" -l"stdc++.6" -l"xml2" -l"z" -framework "AddressBook" -framework "CFNetwork" -framework "CoreGraphics" -framework "CoreLocation" -framework "Foundation" -framework "ImageIO" -framework "MapKit" -framework "MobileCoreServices" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

@@ -373,13 +373,6 @@
                                                     <rect key="frame" x="143" y="78" width="457" height="128"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Pk-Fj-t6z">
-                                                    <rect key="frame" x="143" y="208" width="457" height="80"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Ero-2N-PfT"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4N-Xs-wXH">
                                                     <rect key="frame" x="85" y="26" width="3" height="28"/>
                                                     <constraints>
@@ -413,6 +406,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="RfE-3D-MTI"/>
                                                         <constraint firstAttribute="width" constant="60" id="Ulc-az-SDN"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Pk-Fj-t6z">
+                                                    <rect key="frame" x="143" y="208" width="457" height="80"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="Ero-2N-PfT"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

@@ -10,11 +10,15 @@ import UIKit
 
 class ZXY_AnimationHelper: CAAnimation {
     
+    typealias ZXY_AnimationHelperComplete = (isFinish  : Bool) -> Void
+    
     /**
     循环渐隐效果
     
     :returns: 返回动画
     */
+    
+    private var completeBlock : ZXY_AnimationHelperComplete?
     class func animationHelperAlpha() -> CABasicAnimation
     {
         var animationAdd = CABasicAnimation(keyPath: "opacity")
@@ -28,6 +32,54 @@ class ZXY_AnimationHelper: CAAnimation {
         animationAdd.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         return animationAdd
     }
+    
+    /**
+    透明度过度动画
+    
+    :param: from 开始值
+    :param: to   结束值
+    
+    :returns: 返回动画效果
+    */
+    class func animationForAlpha(from: Double , to : Double) -> CABasicAnimation
+    {
+        var animationAdd = CABasicAnimation(keyPath: "opacity")
+        animationAdd.fromValue = from
+        animationAdd.toValue   = to
+        animationAdd.duration  = 0.5
+        animationAdd.repeatCount = 1
+        animationAdd.removedOnCompletion = true;
+        animationAdd.fillMode = kCAFillModeForwards;
+        animationAdd.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        return animationAdd
+
+    }
+    
+    func animationForAlpha(from: Double , to : Double , finishBlock : ZXY_AnimationHelperComplete?) -> CABasicAnimation
+    {
+        var animationAdd = CABasicAnimation(keyPath: "opacity")
+        animationAdd.fromValue = from
+        animationAdd.toValue   = to
+        animationAdd.duration  = 0.5
+        animationAdd.repeatCount = 1
+        animationAdd.removedOnCompletion = true;
+        animationAdd.fillMode = kCAFillModeForwards;
+        animationAdd.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        if(finishBlock != nil)
+        {
+            var delayTime = Int64(NSEC_PER_SEC / 2)
+            var t = dispatch_time(DISPATCH_TIME_NOW, delayTime)
+            dispatch_after(t, dispatch_get_main_queue(), { [weak self]() -> Void in
+                finishBlock!(isFinish: true)
+                ""
+            })
+            
+        }
+        
+        return animationAdd
+    }
+
     
     /**
     大小动画
@@ -82,4 +134,18 @@ class ZXY_AnimationHelper: CAAnimation {
         group.animations = [ZXY_AnimationHelper.animationHelperAlpha() , ZXY_AnimationHelper.animationHelperSize()]
         return group
     }
+    
+    
+    override func animationDidStart(anim: CAAnimation!) {
+        
+    }
+    
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        if(flag)
+        {
+           
+        }
+    }
 }
+
+

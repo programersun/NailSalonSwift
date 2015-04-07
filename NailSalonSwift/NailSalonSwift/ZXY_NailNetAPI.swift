@@ -48,6 +48,20 @@ enum ZXY_MainCourseAPIType : Int
     case CourseMyCollect
 }
 
+/**
+用户页面API
+
+- MI_Login:  用户登录接口
+- MI_Regist: 用户注册接口
+- MI_MyInfo: 获取用户信息接口
+*/
+enum ZXY_MyInfoAPIType : String
+{
+    case MI_Login   = "User/login"
+    case MI_Regist  = "User/register"
+    case MI_MyInfo  = "User/userInfo"
+}
+
 struct ZXY_NailNetAPI
 {
     /**
@@ -75,17 +89,7 @@ struct ZXY_NailNetAPI
     */
     static func GiveMeOriginAPI(type : ZXY_OriginAPI) -> String
     {
-        switch type
-        {
-        case .Origin_MostNew:
-            return ZXY_MainAPI + ZXY_OriginAPI.Origin_MostNew.rawValue
-        case .Origin_MostHot:
-            return ZXY_MainAPI + ZXY_OriginAPI.Origin_MostHot.rawValue
-        case .Origin_Offer:
-            return ZXY_MainAPI + ZXY_OriginAPI.Origin_Offer.rawValue
-        default:
-            return ZXY_MainAPI + ZXY_OriginAPI.Origin_MostNew.rawValue
-        }
+        return ZXY_MainAPI + type.rawValue
     }
     
     /**
@@ -118,5 +122,9 @@ struct ZXY_NailNetAPI
         }
     }
 
+    static func ZXY_MyInfoAPI(currentType: ZXY_MyInfoAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
 
 }

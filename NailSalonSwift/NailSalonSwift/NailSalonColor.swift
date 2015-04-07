@@ -32,7 +32,7 @@ extension UIColor
     /**
     背景灰
     
-    :returns: 背景灰
+    :returns: 所有scroll、table、collection背景灰
     */
     class func NailBackGrayColor() -> UIColor
     {
@@ -47,5 +47,15 @@ extension UIColor
     class func NailBlueColor() -> UIColor
     {
         return UIColor(red: 38.0/255.0, green: 150.0/255.0, blue: 255.0/255.0, alpha: 1)
+    }
+    
+    /**
+    主橙色
+    
+    :returns: 注册按钮橙色
+    */
+    class func NailOrange() -> UIColor
+    {
+        return UIColor(red: 230/255.0, green: 136.0/255.0, blue: 15.0/255.0, alpha: 1)
     }
 }

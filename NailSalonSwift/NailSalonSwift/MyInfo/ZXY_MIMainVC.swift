@@ -12,13 +12,14 @@ class ZXY_MIMainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        // Do any additional setup after loading the view.
+
+        self.navigationController?.navigationBar.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
 
@@ -35,7 +36,7 @@ class ZXY_MIMainVC: UIViewController {
 
 }
 
-extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource
+extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate
 {
     /**
     根据indexPath 返回cell所需要显示的图片与title
@@ -158,4 +159,5 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("lala", sender: nil)
     }
+    
 }
