@@ -89,6 +89,7 @@ class ZXY_ARMainVC: UIViewController {
     
     @IBAction func hotButtonClick(sender: UIButton) {
         rightButton.titleLabel?.text = "热门"
+        rightButton.setTitle("热门", forState: UIControlState.Normal)
     }
 
     @IBAction func nearbyButtonClick(sender: UIButton) {
