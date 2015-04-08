@@ -25,3 +25,4 @@
 #import <EasemobSDK/EaseMobHeaders.h>
 #import <EasemobSDK/EaseMob.h>
 #import<EasemobSDK/EMErrorDefs.h>
+#import "SMImportHeader.h"

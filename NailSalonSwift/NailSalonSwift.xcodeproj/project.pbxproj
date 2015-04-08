@@ -83,6 +83,8 @@
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
 		8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */; };
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
+		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
+		8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +203,11 @@
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
 		8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_Animation.swift; sourceTree = "<group>"; };
 		8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ARTableViewCell.swift; sourceTree = "<group>"; };
+		8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMImportHeader.h; sourceTree = "<group>"; };
+		8BFA1E671AD4F86900E74A31 /* ZXY_UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserData.h; sourceTree = "<group>"; };
+		8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserData.m; sourceTree = "<group>"; };
+		8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserInfoBase.h; sourceTree = "<group>"; };
+		8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserInfoBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +251,10 @@
 		8B01418F1ACD1F9D000C180B /* miModel */ = {
 			isa = PBXGroup;
 			children = (
+				8BFA1E671AD4F86900E74A31 /* ZXY_UserData.h */,
+				8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */,
+				8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */,
+				8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */,
 			);
 			path = miModel;
 			sourceTree = "<group>";
@@ -426,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				8B9977B51AC4ED4B00CD1713 /* Info.plist */,
+				8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -682,6 +694,7 @@
 				8B5EE2B51AC834B700EFF3C4 /* MJRefreshBaseView.m in Sources */,
 				8BBBDBBD1ACA68080006A94A /* ZXYScrollView.m in Sources */,
 				8B0141951ACD46BE000C180B /* ZXY_LoginRegistVC.swift in Sources */,
+				8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */,
 				8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */,
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,
 				8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */,
@@ -690,6 +703,7 @@
 				8B8100C91AC7B59200850B05 /* ZXY_ORSqureTitleCell.swift in Sources */,
 				8B9977BA1AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld in Sources */,
 				8BBBDBCC1ACA81090006A94A /* ZXYOfferRecommendAlbum.m in Sources */,
+				8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */,
 				8B5EE2B61AC834B700EFF3C4 /* MJRefreshConst.m in Sources */,
 				8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */,
 			);

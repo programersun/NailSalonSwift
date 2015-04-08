@@ -22,10 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
         bmkAuthor = BMKMapManager()
         var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "duostecIOSDis")
-        if(error != nil)
-        {
-            println("error error error")
-        }
         EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         if(( bmkAuthor!.start(ZXY_ConstValue.BDMAPKEY.rawValue, generalDelegate: nil)))
         {
