@@ -208,6 +208,7 @@
 		8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserData.m; sourceTree = "<group>"; };
 		8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserInfoBase.h; sourceTree = "<group>"; };
 		8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserInfoBase.m; sourceTree = "<group>"; };
+		A49545221AD51D7E00686A9A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +283,7 @@
 				8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */,
 				8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */,
 				8B4B4DFA1AC50267001BD10B /* ArtistStory.storyboard */,
+				A49545221AD51D7E00686A9A /* MyPlayground.playground */,
 			);
 			path = NailArtist;
 			sourceTree = "<group>";

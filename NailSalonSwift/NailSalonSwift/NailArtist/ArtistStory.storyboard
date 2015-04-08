@@ -44,30 +44,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fjJ-1o-DZQ" id="6MU-fx-Qbn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="小西" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LvS-hn-1SO">
-                                                    <rect key="frame" x="87" y="16" width="100" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作品:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mZ-9D-NkH">
-                                                    <rect key="frame" x="88" y="41" width="35" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.01km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6S-ocH">
-                                                    <rect key="frame" x="546" y="19" width="46" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="559" y="15" width="31" height="14"/>
-                                                    </variation>
-                                                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="546" y="15" width="44" height="15"/>
-                                                    </variation>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artistStarSolid" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
                                                     <rect key="frame" x="13" y="9" width="60" height="60"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,6 +67,36 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="小西" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LvS-hn-1SO">
+                                                    <rect key="frame" x="87" y="16" width="100" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作品:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mZ-9D-NkH">
+                                                    <rect key="frame" x="88" y="41" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-D9-HKO">
+                                                    <rect key="frame" x="125" y="42" width="10" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.01km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6S-ocH">
+                                                    <rect key="frame" x="546" y="19" width="46" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="559" y="15" width="31" height="14"/>
+                                                    </variation>
+                                                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="546" y="15" width="44" height="15"/>
+                                                    </variation>
+                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wl-5d-k1n">
                                                     <rect key="frame" x="143" y="38" width="90" height="28"/>
                                                     <subviews>
@@ -131,17 +137,11 @@
                                                         <rect key="frame" x="546" y="40" width="34" height="34"/>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-D9-HKO">
-                                                    <rect key="frame" x="125" y="42" width="10" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9mZ-9D-NkH" firstAttribute="top" secondItem="LvS-hn-1SO" secondAttribute="bottom" constant="3" id="84h-Ng-y6y"/>
                                                 <constraint firstItem="0Wl-5d-k1n" firstAttribute="centerY" secondItem="VgW-D9-HKO" secondAttribute="centerY" constant="-0.5" id="EfY-XG-H7O"/>
-                                                <constraint firstItem="LvS-hn-1SO" firstAttribute="leading" secondItem="rus-V8-o6y" secondAttribute="trailing" constant="22" id="EnK-9R-2K3"/>
+                                                <constraint firstItem="LvS-hn-1SO" firstAttribute="leading" secondItem="rus-V8-o6y" secondAttribute="trailing" constant="14" id="EnK-9R-2K3"/>
                                                 <constraint firstItem="rus-V8-o6y" firstAttribute="leading" secondItem="6MU-fx-Qbn" secondAttribute="leadingMargin" constant="5" id="IWK-gw-XOJ"/>
                                                 <constraint firstItem="0Wl-5d-k1n" firstAttribute="leading" secondItem="VgW-D9-HKO" secondAttribute="trailing" constant="8" id="OQw-VC-5aX"/>
                                                 <constraint firstItem="rus-V8-o6y" firstAttribute="top" secondItem="6MU-fx-Qbn" secondAttribute="topMargin" constant="1" id="Qj1-et-Hnh"/>
@@ -161,6 +161,15 @@
                                                 <constraint firstItem="rus-V8-o6y" firstAttribute="height" secondItem="8qr-Cb-nyK" secondAttribute="height" id="yg5-Y1-3RA"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artistDistance" destination="hq4-6S-ocH" id="Xce-IQ-ccU"/>
+                                            <outlet property="artistName" destination="LvS-hn-1SO" id="RfH-SC-zMC"/>
+                                            <outlet property="artistV" destination="2z1-xh-qQ3" id="48u-bP-bjr"/>
+                                            <outlet property="artistView" destination="rus-V8-o6y" id="C7v-Wi-zs0"/>
+                                            <outlet property="artistWork" destination="9mZ-9D-NkH" id="dWh-CH-rvt"/>
+                                            <outlet property="artistWorkCount" destination="VgW-D9-HKO" id="VZM-zM-i24"/>
+                                            <outletCollection property="artistStar" destination="ba9-qi-w1I" collectionClass="NSMutableArray" id="wcg-wA-Fwa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -302,7 +311,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="150" y="331"/>
+            <point key="canvasLocation" x="121" y="360"/>
         </scene>
     </scenes>
     <resources>

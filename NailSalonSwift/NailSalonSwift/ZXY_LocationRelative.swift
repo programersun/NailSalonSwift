@@ -68,6 +68,7 @@ extension ZXY_LocationRelative : BMKLocationServiceDelegate , BMKGeoCodeSearchDe
             }
             var geoOption  = BMKReverseGeoCodeOption()
             geoOption.reverseGeoPoint = userLocation.location.coordinate
+            ZXY_UserInfoDetail.sharedInstance.setUserCoordinate(userLocation.location.coordinate.latitude, longitude: userLocation.location.coordinate.longitude)
             var flag : Bool = locationGeo.reverseGeoCode(geoOption)
             if(flag)
             {
