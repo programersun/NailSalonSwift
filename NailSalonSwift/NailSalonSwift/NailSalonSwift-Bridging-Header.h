@@ -26,3 +26,7 @@
 #import <EasemobSDK/EaseMob.h>
 #import<EasemobSDK/EMErrorDefs.h>
 #import "SMImportHeader.h"
+#import<UMengSocial/UMSocial.h>
+#import <UMengSocial/UMSocialWechatHandler.h>
+#import <UMengSocial/UMSocialQQHandler.h>
+#import <UMengSocial/UMSocialSinaHandler.h>

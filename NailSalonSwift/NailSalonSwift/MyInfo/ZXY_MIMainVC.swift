@@ -80,19 +80,20 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as ZXY_MIMainVCell
+        bigCell.delegate = self
         var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as ZXY_MIMainItemCell
         if(indexPath.section == 0)
         {
             bigCell.backImg.backgroundColor = UIColor.NailRedColor()
-            if(ZXY_UserInfoDetail.sharedInstance.isUserLogin())
-            {
-                bigCell.userLoginMethod()
-            }
-            else
-            {
+//            if(ZXY_UserInfoDetail.sharedInstance.isUserLogin())
+//            {
+//                bigCell.userLoginMethod()
+//            }
+//            else
+//            {
                 bigCell.userNotLoginMethod()
                 
-            }
+            //}
             return bigCell
         }
         else
@@ -157,7 +158,18 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+}
+
+extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
+{
+    func loginBtnClick() {
         self.performSegueWithIdentifier("lala", sender: nil)
     }
     
+    func settingBtnClick() {
+        
+    }
 }

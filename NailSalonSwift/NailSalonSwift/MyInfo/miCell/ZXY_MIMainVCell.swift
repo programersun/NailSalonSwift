@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ZXY_MIMainVCellProtocol : class
+{
+    func loginBtnClick() -> Void
+    func settingBtnClick() -> Void
+}
+
 class ZXY_MIMainVCell: UITableViewCell {
 
     @IBOutlet weak var isArtistLbl: UILabel!
@@ -20,6 +26,8 @@ class ZXY_MIMainVCell: UITableViewCell {
     
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var settingBtn: UIButton!
+    
+    weak var delegate : ZXY_MIMainVCellProtocol?
     class func cellID() -> String
     {
         return "ZXY_MIMainVCellID"
@@ -32,6 +40,8 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isLogin.layer.borderColor  = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5).CGColor
         self.isLogin.layer.borderWidth  = 1
         self.isLogin.layer.masksToBounds = true
+        var tap = UITapGestureRecognizer(target: self, action: Selector("userTapLoginOrRegist"))
+        isLogin.addGestureRecognizer(tap)
         // Initialization code
     }
 
@@ -51,6 +61,22 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistLbl.hidden = true
         self.userAvatar.hidden  = true
         
+    }
+    
+    func userTapLoginOrRegist()
+    {
+        if let p = delegate
+        {
+            p.loginBtnClick()
+        }
+    }
+    
+    @IBAction func settingBtnAction(sender: AnyObject) {
+        if let p = delegate
+        {
+            p.settingBtnClick()
+        }
+
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

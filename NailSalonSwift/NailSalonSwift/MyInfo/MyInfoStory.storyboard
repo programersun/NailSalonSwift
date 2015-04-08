@@ -77,9 +77,10 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登陆/注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d0-sk-zrq">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登陆/注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d0-sk-zrq">
                                                     <rect key="frame" x="230" y="59" width="140" height="50"/>
                                                     <color key="backgroundColor" red="0.0" green="0.16078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="g3z-dd-R9x"/>
                                                         <constraint firstAttribute="width" constant="140" id="rZ8-wV-vB6"/>
@@ -105,6 +106,9 @@
                                                     <state key="normal" image="miSetting">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="settingBtnAction:" destination="CEl-v4-LQ9" eventType="touchUpInside" id="sVZ-JS-m2Z"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

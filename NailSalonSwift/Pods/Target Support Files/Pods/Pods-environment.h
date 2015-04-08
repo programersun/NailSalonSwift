@@ -67,3 +67,9 @@
 // Please contact the author.
 // Version: 2.1.3.3.
 
+// UMengSocial
+#define COCOAPODS_POD_AVAILABLE_UMengSocial
+#define COCOAPODS_VERSION_MAJOR_UMengSocial 4
+#define COCOAPODS_VERSION_MINOR_UMengSocial 2
+#define COCOAPODS_VERSION_PATCH_UMengSocial 1
+

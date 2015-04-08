@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         {
             println("授权失败")
         }
+        
+        UMSocialData.setAppKey(ZXY_ConstValue.UMAPPKEY.rawValue)
+        UMSocialData.openLog(true)
         return true
     }
 

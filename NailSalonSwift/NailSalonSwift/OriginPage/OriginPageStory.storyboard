@@ -292,12 +292,12 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYP-yf-TN2">
-                                <rect key="frame" x="535" y="498" width="40" height="40"/>
+                                <rect key="frame" x="510" y="453" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="SdC-Ym-iqa"/>
-                                    <constraint firstAttribute="height" constant="40" id="X6A-lh-Rw0"/>
+                                    <constraint firstAttribute="width" constant="60" id="SdC-Ym-iqa"/>
+                                    <constraint firstAttribute="height" constant="60" id="X6A-lh-Rw0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,9 +311,9 @@
                         <constraints>
                             <constraint firstItem="CI4-yp-3sr" firstAttribute="top" secondItem="1uh-39-Ps6" secondAttribute="top" id="0Rc-XL-LEC"/>
                             <constraint firstAttribute="bottom" secondItem="CI4-yp-3sr" secondAttribute="bottom" constant="57" id="5gk-fP-5Ui"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="qYP-yf-TN2" secondAttribute="bottom" constant="62" id="9BB-SL-78O"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="qYP-yf-TN2" secondAttribute="bottom" constant="87" id="9BB-SL-78O"/>
                             <constraint firstItem="CI4-yp-3sr" firstAttribute="leading" secondItem="1uh-39-Ps6" secondAttribute="leading" id="JRD-cO-PEf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qYP-yf-TN2" secondAttribute="trailing" constant="9" id="Tnd-dL-RVA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qYP-yf-TN2" secondAttribute="trailing" constant="14" id="Tnd-dL-RVA"/>
                             <constraint firstAttribute="trailing" secondItem="CI4-yp-3sr" secondAttribute="trailing" id="fEo-pp-xpi"/>
                         </constraints>
                     </view>

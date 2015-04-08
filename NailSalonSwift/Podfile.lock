@@ -23,17 +23,20 @@ PODS:
   - Baidu-Maps-iOS-SDK (2.6.0)
   - CHTCollectionViewWaterfallLayout (0.8)
   - EaseMobSDK (2.1.3.3)
+  - UMengSocial (4.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - Baidu-Maps-iOS-SDK (~> 2.6)
   - CHTCollectionViewWaterfallLayout (~> 0.8)
   - EaseMobSDK (~> 2.1.3.3)
+  - UMengSocial (~> 4.2)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Baidu-Maps-iOS-SDK: 260447c2270b44470d7c0d49a7f1a154b4703973
   CHTCollectionViewWaterfallLayout: 058823cc65c9d84e059b0a85eede517550da0334
   EaseMobSDK: 90359de1dd00c72818b824005a734c7ad0ff0886
+  UMengSocial: aedae57452047daa708306f23ff21883a07cd779
 
 COCOAPODS: 0.35.0

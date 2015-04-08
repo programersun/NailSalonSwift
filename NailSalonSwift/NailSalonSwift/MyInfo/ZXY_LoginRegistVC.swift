@@ -72,7 +72,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func forgetPassAction(sender: AnyObject)
     {
-        zxyW.startProgress(self.view)
+        
     }
     
     @IBAction func loginAction(sender: AnyObject)
@@ -92,9 +92,25 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         var loginURL  = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_Login)
         var parameter = ["user_name" : userNameText.text , "password": userPassText.text]
         ZXY_NetHelperOperate().startGetDataPost(loginURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            if let s = self
+            self?.userInfo = ZXY_UserInfoBase(dictionary: returnDic)
+            var result = self?.userInfo?.result
+            if(result == 1000 || result == 1008)
             {
-                s.zxyW.hideProgress(s.view)
+                self?.loginEaseMob()
+                
+            }
+            else
+            {
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+                if(result == nil)
+                {
+                    return
+                }
+                var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result!)
+                self?.showAlertEasy("提示", messageContent: errorMessage)
             }
         }) {[weak self] (error) -> Void in
             if let s = self
@@ -106,7 +122,16 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     private func loginEaseMob() -> Void
     {
-        
+        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(userInfo!.data.userId, password: "123456", completion: { [weak self](object, error) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+                var userId = s.userInfo?.data.userId
+                ZXY_UserInfoDetail.sharedInstance.saveUserID(userId!)
+                
+            }
+            self?.navigationController?.popViewControllerAnimated(true)
+        }, onQueue: nil)
     }
     
     @IBAction func registAction(sender: AnyObject)
@@ -116,6 +141,18 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func tencentLoginAction(sender: AnyObject)
     {
+//        (UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController, UMSocialDataServiceCompletion completion);
+        var platForm = UMSocialSnsPlatformManager.getSocialPlatformWithName(UMShareToQQ)
+        platForm.loginClickHandler(self ,UMSocialControllerService.defaultControllerService() ,true ,{(responses) -> Void in
+            var res : UMSocialResponseEntity = responses as UMSocialResponseEntity
+            var resCode : UMSResponseCode = res.responseCode as UMSResponseCode
+            
+            if(resCode.value == UMSResponseCodeSuccess.value)
+            {
+                ""
+                println()
+            }
+        })
         
     }
     
@@ -141,6 +178,18 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         }
         return true
     }
+}
+
+extension ZXY_UserInfoDetail
+{
+    func saveMeiJiaUser(user : ZXY_UserInfoBase)
+    {
+        NSUserDefaults.standardUserDefaults().setObject(user, forKey: "userInfo")
+    }
     
-        
+    func getMeiJiaUser() -> ZXY_UserInfoBase?
+    {
+        var users: ZXY_UserInfoBase? = NSUserDefaults.standardUserDefaults().objectForKey("userInfo") as? ZXY_UserInfoBase
+        return users
+    }
 }

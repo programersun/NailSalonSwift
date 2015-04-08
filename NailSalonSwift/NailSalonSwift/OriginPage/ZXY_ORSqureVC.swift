@@ -32,7 +32,7 @@ class ZXY_ORSqureVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tagSepLbl.backgroundColor = UIColor.NailBlueColor()
+        tagSepLbl.backgroundColor = UIColor.NailRedColor()
         mainCollectionV.backgroundColor = UIColor.NailBackGrayColor()
         
         /// 一下两句代码用啦注册重用cell
@@ -42,7 +42,7 @@ class ZXY_ORSqureVC: UIViewController {
         /**
         一下两句代码用来将最火最热标签变为圆形
         */
-        tagSepLbl.layer.cornerRadius = 20
+        tagSepLbl.layer.cornerRadius = 30
         tagSepLbl.layer.masksToBounds = true
         
         //上拉加载，下拉刷新
@@ -184,13 +184,13 @@ class ZXY_ORSqureVC: UIViewController {
         {
             squreType = SqureType.SqureTypeHot
             tagSepLbl.text = "最新"
-            tagSepLbl.backgroundColor = UIColor.NailBlueColor()
+            tagSepLbl.backgroundColor = UIColor.NailRedColor()
         }
         else
         {
             squreType = SqureType.SqureTypeNew
             tagSepLbl.text = "最热"
-            tagSepLbl.backgroundColor = UIColor.NailRedColor()
+            tagSepLbl.backgroundColor = UIColor.NailBlueColor()
         }
         self.changeLayoutType(1)
         isWaitingView = true
