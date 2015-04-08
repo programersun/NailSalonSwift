@@ -22,7 +22,7 @@ class ZXY_LoginRegistVC: UIViewController {
     @IBOutlet weak var miQQLbl: UILabel!
     @IBOutlet weak var miWBLbl: UILabel!
     let zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
-    
+    var userInfo : ZXY_UserInfoBase?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +92,21 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         var loginURL  = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_Login)
         var parameter = ["user_name" : userNameText.text , "password": userPassText.text]
         ZXY_NetHelperOperate().startGetDataPost(loginURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            ""
-            ""
-        }) { (error) -> Void in
-            ""
-            ""
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+        }) {[weak self] (error) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
         }
+    }
+    
+    private func loginEaseMob() -> Void
+    {
+        
     }
     
     @IBAction func registAction(sender: AnyObject)
