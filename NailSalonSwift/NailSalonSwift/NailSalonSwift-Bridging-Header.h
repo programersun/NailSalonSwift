@@ -22,3 +22,6 @@
 #import "ZXYCourseBaseList.h"
 #import "ZXYCourseData.h"
 #import "ZXYCourseCourse.h"
+#import <EasemobSDK/EaseMobHeaders.h>
+#import <EasemobSDK/EaseMob.h>
+#import<EasemobSDK/EMErrorDefs.h>

@@ -11,6 +11,7 @@ import MapKit
 
 
 typealias ZXY_LocationRelativeFailureBlock = (errorMessage : String) -> Void
+typealias ZXY_LocationRelativeSuccessBlock = (location : BMKUserLocation) -> Void
 private let _locationR = ZXY_LocationRelative()
 
 
@@ -18,7 +19,7 @@ private let _locationR = ZXY_LocationRelative()
 class ZXY_LocationRelative: NSObject {
     
     var failureBlock : ZXY_LocationRelativeFailureBlock?
-    
+    var successBlock : ZXY_LocationRelativeSuccessBlock?
     
     private var previousTimeStamp : NSTimeInterval = 0
     
@@ -61,7 +62,10 @@ extension ZXY_LocationRelative : BMKLocationServiceDelegate , BMKGeoCodeSearchDe
         var currentTimeStamp = NSTimeIntervalSince1970
         if(currentTimeStamp - previousTimeStamp > 5)
         {
-            NSNotificationCenter.defaultCenter().postNotificationName(ZXY_ConstValue.MAPAUTHKEY.rawValue, object: nil)
+            if successBlock != nil
+            {
+                successBlock!(location: currentUserLocation!)
+            }
             var geoOption  = BMKReverseGeoCodeOption()
             geoOption.reverseGeoPoint = userLocation.location.coordinate
             var flag : Bool = locationGeo.reverseGeoCode(geoOption)

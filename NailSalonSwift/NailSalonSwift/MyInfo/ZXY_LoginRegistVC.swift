@@ -21,7 +21,7 @@ class ZXY_LoginRegistVC: UIViewController {
     @IBOutlet weak var miWBBtn: UIButton!
     @IBOutlet weak var miQQLbl: UILabel!
     @IBOutlet weak var miWBLbl: UILabel!
-    var zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
+    let zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     
     
     override func viewDidLoad() {
@@ -88,7 +88,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             self.showAlertEasy("提示", messageContent: "请输入密码")
             return
         }
-        
+        zxyW.startProgress(self.view)
         var loginURL  = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_Login)
         var parameter = ["user_name" : userNameText.text , "password": userPassText.text]
         ZXY_NetHelperOperate().startGetDataPost(loginURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
@@ -115,6 +115,11 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         
     }
     
+    @IBAction func backAction(sender: AnyObject)
+    {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         var length = self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         if(length >= 11)
@@ -128,8 +133,5 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         return true
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        zxyW.hideProgress(self.view)
-    }
-    
+        
 }

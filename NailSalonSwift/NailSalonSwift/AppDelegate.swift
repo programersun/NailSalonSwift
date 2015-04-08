@@ -10,26 +10,63 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
 
     var window: UIWindow?
-
+    var bmkAuthor : BMKMapManager?
+    var hasPresent : Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
-        
-//        ZXY_NetHelperOperate.sharedInstance.judgeNetCanConnect { (status) -> Void in
-//            if(status == AFNetworkReachabilityStatus.NotReachable || status == AFNetworkReachabilityStatus.Unknown)
-//            {
-//                var alert = UIAlertView(title: "提示", message: "没有连接网络", delegate: nil, cancelButtonTitle: "知道了")
-//                alert.show()
-//            }
-//        }
+        bmkAuthor = BMKMapManager()
+        var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "duostecIOSDis")
+        if(error != nil)
+        {
+            println("error error error")
+        }
+        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        if(( bmkAuthor!.start(ZXY_ConstValue.BDMAPKEY.rawValue, generalDelegate: nil)))
+        {
+            println("授权成功")
+            ZXY_LocationRelative.sharedInstance.startLocateUserPosition()
+            ZXY_LocationRelative.sharedInstance.failureBlock = {[weak self](message) -> Void in
+                if(self?.hasPresent == true)
+                {
+                    
+                }
+                else
+                {
+                    var alert = UIAlertView(title: "提示", message: "地图定位失败 \n \(message)", delegate: nil, cancelButtonTitle: "取消")
+                    alert.show()
+                    self?.hasPresent = true
+                }
+            }
+        }
+        else
+        {
+            println("授权失败")
+        }
         return true
     }
 
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("收到消息")
+        EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
+        //APService.handleRemoteNotification(userInfo)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        println("didReceiveRemoteNotification fetchCompletionHandler \(userInfo)")
+       // APService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.NewData)
+        EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
+    }
+
+    
     func applicationWillResignActive(application: UIApplication) {
+        EaseMob.sharedInstance().applicationWillResignActive(application)
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
@@ -37,20 +74,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        EaseMob.sharedInstance().applicationDidEnterBackground(application)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        EaseMob.sharedInstance().applicationWillEnterForeground(application)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
+        EaseMob.sharedInstance().applicationDidBecomeActive(application)
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {
+        EaseMob.sharedInstance().applicationWillTerminate(application)
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        EaseMob.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+       // APService.registerDeviceToken(deviceToken)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        EaseMob.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+        println(error)
     }
 
     // MARK: - Core Data stack
@@ -115,6 +166,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    func onGetNetworkState(iError: Int32) {
+        println(iError)
+    }
+    
+    func onGetPermissionState(iError: Int32) {
+        println(iError)
+    }
 }
 
