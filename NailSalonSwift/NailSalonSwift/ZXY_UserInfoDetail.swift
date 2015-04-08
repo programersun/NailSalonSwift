@@ -41,10 +41,10 @@ class ZXY_UserInfoDetail {
         return true
     }
     
-    func getUserID() -> String
+    func getUserID() -> String?
     {
         var userID:String? = NSUserDefaults.standardUserDefaults().valueForKey(USERIDKEY) as? String
-        return userID!
+        return userID?
     }
     
     func isAppFirstLoad() -> Bool
@@ -73,17 +73,17 @@ class ZXY_UserInfoDetail {
         return userPass!
     }
     
-    func setUserCoordinate(latitude : String! , longitude : String!)
+    func setUserCoordinate(latitude : Double! , longitude : Double!)
     {
         NSUserDefaults.standardUserDefaults().setValue(latitude, forKey: USERLOCATIONX)
         NSUserDefaults.standardUserDefaults().setValue(longitude, forKey: USERLOCATIONY)
     }
     
-    func getUserCoordinate() -> Dictionary<String , String?>?
+    func getUserCoordinate() -> Dictionary<String , Double?>?
     {
         
-        var latitude : String? = NSUserDefaults.standardUserDefaults().valueForKey(USERLOCATIONX) as? String
-        var longitude : String? = NSUserDefaults.standardUserDefaults().valueForKey(USERLOCATIONY) as? String
+        var latitude : Double? = NSUserDefaults.standardUserDefaults().valueForKey(USERLOCATIONX) as? Double
+        var longitude : Double? = NSUserDefaults.standardUserDefaults().valueForKey(USERLOCATIONY) as? Double
         
         return ["latitude": latitude ,"longitude": longitude]
     }

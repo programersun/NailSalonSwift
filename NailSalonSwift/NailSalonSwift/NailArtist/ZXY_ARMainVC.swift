@@ -8,22 +8,42 @@
 
 import UIKit
 
+//排序方式
+enum artistType : Int
+{
+    case astistTypeHot      = 0
+    case astistTypeNearby   = 1
+    case astistTypeComments = 2
+    case astistTypeWorks    = 3
+    
+}
+
 class ZXY_ARMainVC: UIViewController {
+    
+    var userCoordinate: Dictionary<String, Double?>?
+    var userCityName: String?
+    var latitude: Double?
+    var longitude: Double?
+    var control: artistType = artistType.astistTypeHot
+    var pageCount: Int = 1
     
     //热门
     var rightButtonSelect = true
-
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var HotView: UIView!
     @IBOutlet weak var backgroudView: UIControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.title = "美甲师"
-        rightButton.titleEdgeInsets.left = -50
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         HotView.hidden = true
         backgroudView.hidden = true
+        
+        self.getUserCoordinate()
+        userCityName =  ZXY_UserInfoDetail.sharedInstance.getUserCityName()
+        self.artistInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +63,19 @@ class ZXY_ARMainVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func getUserCoordinate(){
+        userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
+        if let userLocation = userCoordinate
+        {
+            latitude  = userLocation["latitude"]!
+            longitude = userLocation["longitude"]!
+        }
+        else
+        {
+            
+        }
+    }
 
     //点击背景
     @IBAction func backgroundTouch(sender: AnyObject) {
@@ -88,26 +121,45 @@ class ZXY_ARMainVC: UIViewController {
 
     
     @IBAction func hotButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "热门"
         rightButton.setTitle("热门", forState: UIControlState.Normal)
+        control = artistType.astistTypeHot
+        arrowUp()
     }
 
     @IBAction func nearbyButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "附近"
+        rightButton.setTitle("附近", forState: UIControlState.Normal)
+        control = artistType.astistTypeNearby
+        arrowUp()
     }
     
     @IBAction func commentsButtonClick(sender: UIButton) {
-
-        rightButton.titleLabel?.text = "评论"
+        rightButton.setTitle("评价", forState: UIControlState.Normal)
+        control = artistType.astistTypeComments
+        arrowUp()
     }
     
     @IBAction func worksButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "作品"
+        rightButton.setTitle("作品", forState: UIControlState.Normal)
+        control = artistType.astistTypeWorks
+        arrowUp()
+    }
+    private func artistInfo() {
+        var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_UserListAPI
+    
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName!  ,"lng": longitude! , "lat": latitude!,"control": control.rawValue ,"p": pageCount]
+      
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter ,successBlock: { [weak self](returnDit) -> Void in
+        println()
+        ""
+        }) { [weak self](error) -> Void in
+            println(error)
+            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+            ""
+        }
     }
 }
 
 extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
@@ -123,6 +175,7 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(SR_ARTableViewCell.identifier) as SR_ARTableViewCell
         return cell
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
