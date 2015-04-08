@@ -20,7 +20,6 @@ class ZXY_ARMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "美甲师"
-        rightButton.titleEdgeInsets.left = -50
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         HotView.hidden = true
         backgroudView.hidden = true
@@ -88,22 +87,26 @@ class ZXY_ARMainVC: UIViewController {
 
     
     @IBAction func hotButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "热门"
         rightButton.setTitle("热门", forState: UIControlState.Normal)
+        arrowUp()
     }
 
     @IBAction func nearbyButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "附近"
+        rightButton.setTitle("附近", forState: UIControlState.Normal)
+        arrowUp()
     }
     
     @IBAction func commentsButtonClick(sender: UIButton) {
-
-        rightButton.titleLabel?.text = "评论"
+        rightButton.setTitle("评价", forState: UIControlState.Normal)
+        arrowUp()
     }
     
     @IBAction func worksButtonClick(sender: UIButton) {
-        rightButton.titleLabel?.text = "作品"
+        rightButton.setTitle("作品", forState: UIControlState.Normal)
+        arrowUp()
     }
+    
+    
 }
 
 extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
