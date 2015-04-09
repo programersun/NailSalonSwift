@@ -53,6 +53,37 @@ class ZXY_LocationRelative: NSObject {
         return currentLocationInfo
     }
     
+    class func distanceCompareCoor(artistPosition : CLLocationCoordinate2D? , userPosition : CLLocationCoordinate2D?) -> Double
+    {
+        if(artistPosition != nil && userPosition != nil)
+        {
+            var artistPot = BMKMapPointForCoordinate(artistPosition!)
+            var userPot   = BMKMapPointForCoordinate(userPosition!)
+            var distance  = BMKMetersBetweenMapPoints(artistPot, userPot)
+            return distance/1000
+        }
+        else
+        {
+            return 0
+        }
+        
+    }
+    
+    func  xYStringToCoor(longitude : String? , latitude: String?) -> CLLocationCoordinate2D?
+    {
+        if(longitude == nil || latitude == nil)
+        {
+            return nil
+        }
+        else
+        {
+            var logFloat = (longitude! as NSString).doubleValue
+            var latFloat = (latitude!  as NSString).doubleValue
+            return CLLocationCoordinate2DMake(latFloat, logFloat)
+        }
+        
+    }
+    
 }
 
 extension ZXY_LocationRelative : BMKLocationServiceDelegate , BMKGeoCodeSearchDelegate

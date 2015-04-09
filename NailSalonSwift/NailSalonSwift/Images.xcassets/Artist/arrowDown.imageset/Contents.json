@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "arrowUp.pdf"
+      "scale" : "1x",
+      "filename" : "圆角矩形-5.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "圆角矩形-5@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "圆角矩形-5@3x.png"
     }
   ],
   "info" : {
