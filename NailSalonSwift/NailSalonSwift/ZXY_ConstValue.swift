@@ -44,3 +44,11 @@ enum ZXY_ConstValue : String
     */
     case WBAPPKEY = "app"
 }
+
+extension String
+{
+    static func getZXYUserInfoModelName() -> String
+    {
+        return "ZXY_UserInfoModel"
+    }
+}

@@ -22,6 +22,24 @@ class ZXY_MIMainVC: UIViewController {
         
     }
     
+    private func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            return
+        }
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { (returnDic) -> Void in
+                ""
+            ""
+        }) { (error) -> Void in
+            ""
+            ""
+        }
+        
+    }
 
     
     // MARK: - Navigation
@@ -89,7 +107,15 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         if(indexPath.section == 0)
         {
             bigCell.backImg.backgroundColor = UIColor.NailRedColor()
-            bigCell.userNotLoginMethod()
+            var isUserLogin = ZXY_UserInfoDetail.sharedInstance.isUserLogin()
+            if !isUserLogin
+            {
+                bigCell.userNotLoginMethod()
+            }
+            else
+            {
+                //bigCell.userLoginMethod()
+            }
             return bigCell
         }
         else
@@ -158,7 +184,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func userLoginSuccess() {
-        
+        self.startDownLoadUserDetailInfo()
     }
     
 }
