@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30568B74CEF19CF0023B7248 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35397CF563ED6DD2D8885501 /* libPods.a */; };
+		44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */; };
 		8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B01418C1ACD12D1000C180B /* ZXYImages.xcassets */; };
 		8B0141911ACD1FC1000C180B /* ZXY_MIMainVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0141901ACD1FC1000C180B /* ZXY_MIMainVCell.swift */; };
 		8B0141931ACD1FEE000C180B /* ZXY_MIMainItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0141921ACD1FEE000C180B /* ZXY_MIMainItemCell.swift */; };
@@ -95,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		35397CF563ED6DD2D8885501 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZL_SSMainCell.swift; sourceTree = "<group>"; };
 		6C1747B30B0A82381A2DF645 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		86EAAF9353D1ED930B6C67E4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8B01418C1ACD12D1000C180B /* ZXYImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ZXYImages.xcassets; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44FAE7AB1AD611AF000868AE /* SSCell */ = {
+			isa = PBXGroup;
+			children = (
+				44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */,
+			);
+			name = SSCell;
+			sourceTree = "<group>";
+		};
 		525EC96CCE2970D829AE0836 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +307,7 @@
 		8B4B4DFD1AC502F3001BD10B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				44FAE7AB1AD611AF000868AE /* SSCell */,
 				8B4B4E041AC50340001BD10B /* ZXY_SSMainVC.swift */,
 				8B4B4E001AC50315001BD10B /* SearchStory.storyboard */,
 			);
@@ -535,6 +546,7 @@
 					};
 					8B9977C81AC4ED4B00CD1713 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ER62D3UHDE;
 						TestTargetID = 8B9977B01AC4ED4B00CD1713;
 					};
 				};
@@ -648,6 +660,7 @@
 				8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */,
 				8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */,
 				8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */,
+				44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */,
 				8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */,
 				8B5EE2C71AC8381100EFF3C4 /* ZXYOriginAlbumData.m in Sources */,
 				8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */,
@@ -809,11 +822,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jian yang (8M3SR68TYJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jian yang (8M3SR68TYJ)";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "17cba266-5e0b-4dc7-af19-63ba60052f88";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -826,11 +841,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jian yang (8M3SR68TYJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jian yang (8M3SR68TYJ)";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "17cba266-5e0b-4dc7-af19-63ba60052f88";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
 			};
 			name = Release;
@@ -839,6 +856,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -850,6 +869,7 @@
 				INFOPLIST_FILE = NailSalonSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NailSalonSwift.app/NailSalonSwift";
 			};
 			name = Debug;
@@ -858,6 +878,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -865,6 +887,7 @@
 				INFOPLIST_FILE = NailSalonSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NailSalonSwift.app/NailSalonSwift";
 			};
 			name = Release;
