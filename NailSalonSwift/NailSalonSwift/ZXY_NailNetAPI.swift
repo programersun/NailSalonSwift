@@ -53,11 +53,13 @@ enum ZXY_MainCourseAPIType : Int
 
 - MI_Login:  用户登录接口
 - MI_Regist: 用户注册接口
+- MI_ThirdLogin: 第三方登陆
 - MI_MyInfo: 获取用户信息接口
 */
 enum ZXY_MyInfoAPIType : String
 {
     case MI_Login   = "User/login"
+    case MI_ThirdLogin = "User/third_login"
     case MI_Regist  = "User/register"
     case MI_MyInfo  = "User/userInfo"
 }

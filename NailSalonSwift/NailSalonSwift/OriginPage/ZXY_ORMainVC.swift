@@ -16,7 +16,7 @@ class ZXY_ORMainVC: UIViewController {
     @IBOutlet weak var contentScroll: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contentScroll.contentSize = CGSizeMake(screenSize * 2, contentScroll.frame.height)
+        self.contentScroll.contentSize.width = 2 * screenSize
         self.startInitSegmentControl()
         self.startInitCourseVC()
         self.addVCAndVForCourse()

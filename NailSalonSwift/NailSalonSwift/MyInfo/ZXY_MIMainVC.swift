@@ -23,20 +23,24 @@ class ZXY_MIMainVC: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var segueID = segue.identifier
+        if(segueID == "toLoginVC")
+        {
+            var loginVC = segue.destinationViewController as ZXY_LoginRegistVC
+            loginVC.delegate = self
+        }
     }
-    */
+    
     
 
 }
 
-extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate
+extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate , ZXY_LoginRegistVCProtocol
 {
     /**
     根据indexPath 返回cell所需要显示的图片与title
@@ -85,15 +89,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         if(indexPath.section == 0)
         {
             bigCell.backImg.backgroundColor = UIColor.NailRedColor()
-//            if(ZXY_UserInfoDetail.sharedInstance.isUserLogin())
-//            {
-//                bigCell.userLoginMethod()
-//            }
-//            else
-//            {
-                bigCell.userNotLoginMethod()
-                
-            //}
+            bigCell.userNotLoginMethod()
             return bigCell
         }
         else
@@ -161,12 +157,16 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         
     }
     
+    func userLoginSuccess() {
+        
+    }
+    
 }
 
 extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
 {
     func loginBtnClick() {
-        self.performSegueWithIdentifier("lala", sender: nil)
+        self.performSegueWithIdentifier("toLoginVC", sender: nil)
     }
     
     func settingBtnClick() {

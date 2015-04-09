@@ -81,6 +81,7 @@
 		8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */; };
 		8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */; };
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
+		8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */; };
 		8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */; };
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
 		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
@@ -201,6 +202,7 @@
 		8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainSecondCell.swift; sourceTree = "<group>"; };
 		8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainThirdCell.swift; sourceTree = "<group>"; };
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
+		8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MIRegistVC.swift; sourceTree = "<group>"; };
 		8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_Animation.swift; sourceTree = "<group>"; };
 		8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ARTableViewCell.swift; sourceTree = "<group>"; };
 		8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMImportHeader.h; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				8B01418F1ACD1F9D000C180B /* miModel */,
 				8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */,
 				8B0141941ACD46BE000C180B /* ZXY_LoginRegistVC.swift */,
+				8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */,
 				8B4B4DFE1AC50307001BD10B /* MyInfoStory.storyboard */,
 			);
 			path = MyInfo;
@@ -677,6 +680,7 @@
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				8BBBDBC71ACA764F0006A94A /* ZXYOfferData.m in Sources */,
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
+				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,

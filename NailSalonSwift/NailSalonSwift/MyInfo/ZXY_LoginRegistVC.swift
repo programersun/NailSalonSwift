@@ -7,6 +7,10 @@
 //
 
 import UIKit
+protocol ZXY_LoginRegistVCProtocol : class
+{
+    func userLoginSuccess() -> Void
+}
 
 class ZXY_LoginRegistVC: UIViewController {
 
@@ -21,6 +25,9 @@ class ZXY_LoginRegistVC: UIViewController {
     @IBOutlet weak var miWBBtn: UIButton!
     @IBOutlet weak var miQQLbl: UILabel!
     @IBOutlet weak var miWBLbl: UILabel!
+    
+    weak var delegate : ZXY_LoginRegistVCProtocol?
+    private var parameter : Dictionary<String , String> = Dictionary<String , String>()
     let zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     var userInfo : ZXY_UserInfoBase?
     
@@ -72,7 +79,10 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func forgetPassAction(sender: AnyObject)
     {
-        
+        if let dele = delegate
+        {
+            dele.userLoginSuccess()
+        }
     }
     
     @IBAction func loginAction(sender: AnyObject)
@@ -128,6 +138,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
                 s.zxyW.hideProgress(s.view)
                 var userId = s.userInfo?.data.userId
                 ZXY_UserInfoDetail.sharedInstance.saveUserID(userId!)
+                ZXY_UserInfoDetail.sharedInstance.saveMeiJiaUser(s.userInfo!)
                 
             }
             self?.navigationController?.popViewControllerAnimated(true)
@@ -136,12 +147,12 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func registAction(sender: AnyObject)
     {
-        
+        self.performSegueWithIdentifier("toRegistVC", sender: nil)
     }
     
     @IBAction func tencentLoginAction(sender: AnyObject)
     {
-//        (UIViewController *presentingController, UMSocialControllerService * socialControllerService, BOOL isPresentInController, UMSocialDataServiceCompletion completion);
+        UMSocialQQHandler.setQQWithAppId(ZXY_ConstValue.QQAPPID.rawValue, appKey: ZXY_ConstValue.QQAPPKEY.rawValue, url: "http://www.umeng.com/social")
         var platForm = UMSocialSnsPlatformManager.getSocialPlatformWithName(UMShareToQQ)
         platForm.loginClickHandler(self ,UMSocialControllerService.defaultControllerService() ,true ,{(responses) -> Void in
             var res : UMSocialResponseEntity = responses as UMSocialResponseEntity
@@ -149,8 +160,16 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             
             if(resCode.value == UMSResponseCodeSuccess.value)
             {
-                ""
-                println()
+                var userEntity: UMSocialAccountEntity? = UMSocialAccountManager.socialAccountDictionary()[UMShareToSina] as? UMSocialAccountEntity
+                if let userMust = userEntity
+                {
+                    self.authSuccessMethod(userMust , platformName: "qq")
+                }
+
+            }
+            else
+            {
+                println("\(resCode)")
             }
         })
         
@@ -158,6 +177,40 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func weiBoLoginAction(sender: AnyObject)
     {
+        var platForm = UMSocialSnsPlatformManager.getSocialPlatformWithName(UMShareToSina)
+        platForm.loginClickHandler(self ,UMSocialControllerService.defaultControllerService() ,true ,{(responses) -> Void in
+            var res : UMSocialResponseEntity = responses as UMSocialResponseEntity
+            var resCode : UMSResponseCode = res.responseCode as UMSResponseCode
+            
+            if(resCode.value == UMSResponseCodeSuccess.value)
+            {
+                var userEntity: UMSocialAccountEntity? = UMSocialAccountManager.socialAccountDictionary()[UMShareToSina] as? UMSocialAccountEntity
+                if let userMust = userEntity
+                {
+                    self.authSuccessMethod(userMust , platformName: "sina")
+                }
+            }
+            else
+            {
+                println("\(resCode)")
+            }
+        })
+
+    }
+    
+    private func authSuccessMethod(entity : UMSocialAccountEntity , platformName : String)
+    {
+        var userID                  = entity.usid
+        var userName                = entity.userName
+        var userHeadImg : String?   = entity.iconURL
+        var platName                = platformName
+        parameter["uid"]            = userID
+        parameter["nick_name"]      = userName
+        parameter["head_image"]     = userHeadImg ?? ""
+        parameter["sex"]            = "0"
+        parameter["third_name"]     = platformName
+        var alertSex = UIAlertView(title: "", message: "选择角色", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "普通用户","美甲师")
+        alertSex.show()
         
     }
     
@@ -177,6 +230,53 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             return false
         }
         return true
+    }
+}
+
+extension ZXY_LoginRegistVC: UIAlertViewDelegate
+{
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        println("\(buttonIndex)")
+        if(buttonIndex == 0)
+        {
+            parameter["role"] = "1"
+        }
+        else
+        {
+            parameter["role"] = "2"
+        }
+        self.zxyW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_ThirdLogin)
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            self?.userInfo = ZXY_UserInfoBase(dictionary: returnDic)
+            var result = self?.userInfo?.result
+            if(result == 1000 || result == 2040)
+            {
+                self?.loginEaseMob()
+                
+            }
+            else
+            {
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+                if(result == nil)
+                {
+                    return
+                }
+                var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result!)
+                self?.showAlertEasy("提示", messageContent: errorMessage)
+            }
+
+        }) { [weak self](error) -> Void in
+            ""
+            ""
+            if let se = self
+            {
+                se.zxyW.hideProgress(se.view)
+            }
+        }
     }
 }
 

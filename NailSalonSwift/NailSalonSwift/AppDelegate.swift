@@ -50,6 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         return true
     }
 
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return UMSocialSnsService.handleOpenURL(url)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return UMSocialSnsService.handleOpenURL(url)
+    }
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("收到消息")
         EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)

@@ -200,7 +200,7 @@
                     <navigationItem key="navigationItem" title="Navigation Item" id="xhy-I5-cWJ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <segue destination="Vhv-sG-SCZ" kind="show" identifier="lala" id="Gbk-dM-NMa"/>
+                        <segue destination="Vhv-sG-SCZ" kind="show" identifier="toLoginVC" id="Gbk-dM-NMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKk-Z5-wGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,11 +477,76 @@
                         <outlet property="titleLbl" destination="RUI-BH-gKC" id="EWw-wD-Zrz"/>
                         <outlet property="userNameText" destination="Qvk-uY-Lrf" id="XsS-xh-tx5"/>
                         <outlet property="userPassText" destination="TXN-SR-mi7" id="h7u-Hi-KIh"/>
+                        <segue destination="HYx-B8-xVG" kind="push" identifier="toRegistVC" id="MP6-v8-QR2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZkX-I9-ypH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="406" y="399"/>
+        </scene>
+        <!--RegistVC-->
+        <scene sceneID="Krw-nF-xdU">
+            <objects>
+                <viewController id="HYx-B8-xVG" customClass="ZXY_MIRegistVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cio-pt-cp4"/>
+                        <viewControllerLayoutGuide type="bottom" id="gXT-yS-QbF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="isN-Eo-6WT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCm-w2-52f">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jv1-LA-N1l">
+                                        <rect key="frame" x="0.0" y="29" width="56" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="3nC-1Q-nW6"/>
+                                            <constraint firstAttribute="width" constant="56" id="lH3-fP-Nzm"/>
+                                        </constraints>
+                                        <state key="normal" image="backArrow">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backAction:" destination="Vhv-sG-SCZ" eventType="touchUpInside" id="zMO-q9-2fU"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-iD-ItJ">
+                                        <rect key="frame" x="214" y="26" width="173" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="EB5-wc-YXO"/>
+                                            <constraint firstAttribute="width" constant="173" id="YhS-BU-YZF"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="美甲师"/>
+                                            <segment title="普通用户"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.39215686919999998" blue="0.4313725531" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dRF-iD-ItJ" firstAttribute="top" secondItem="XCm-w2-52f" secondAttribute="top" constant="26" id="7WA-RB-pjD"/>
+                                    <constraint firstAttribute="height" constant="64" id="Gs2-i2-Gnn"/>
+                                    <constraint firstAttribute="centerX" secondItem="dRF-iD-ItJ" secondAttribute="centerX" id="Phf-fJ-yNA"/>
+                                    <constraint firstItem="jv1-LA-N1l" firstAttribute="top" secondItem="XCm-w2-52f" secondAttribute="top" constant="29" id="bho-FL-xL1"/>
+                                    <constraint firstItem="jv1-LA-N1l" firstAttribute="leading" secondItem="XCm-w2-52f" secondAttribute="leading" id="yWQ-1P-vG0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XCm-w2-52f" firstAttribute="top" secondItem="isN-Eo-6WT" secondAttribute="top" id="VcV-x9-KYq"/>
+                            <constraint firstAttribute="trailing" secondItem="XCm-w2-52f" secondAttribute="trailing" id="bkL-2B-5bX"/>
+                            <constraint firstItem="XCm-w2-52f" firstAttribute="leading" secondItem="isN-Eo-6WT" secondAttribute="leading" id="v0C-g6-wEK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hUy-Vg-f6h"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FKk-Zp-QUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="399"/>
         </scene>
     </scenes>
     <resources>
