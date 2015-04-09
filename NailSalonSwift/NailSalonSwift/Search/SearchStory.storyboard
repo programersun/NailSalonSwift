@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x6k-Hq-YKI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x6k-Hq-YKI">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
@@ -22,9 +21,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lH7-Ol-8fS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="439"/>
+            <point key="canvasLocation" x="-2523" y="35"/>
         </scene>
-        <!--MainVC-->
+        <!--Navigation Item-->
         <scene sceneID="BjK-IQ-iw0">
             <objects>
                 <viewController id="XE7-JP-sAE" customClass="ZXY_SSMainVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,13 +34,62 @@
                     <view key="view" contentMode="scaleToFill" id="wNr-Z0-KC9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IcU-Rm-vwn">
+                                <rect key="frame" x="0.0" y="64" width="600" height="479"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ZL_SSMainCellID" id="vZ8-fl-XE5" customClass="ZL_SSMainCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vZ8-fl-XE5" id="Ke7-fQ-1Ip">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="ZHm-k1-CQH">
+                                                    <rect key="frame" x="15" y="60" width="570" height="1"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXS-GX-Pj1">
+                                                    <rect key="frame" x="38" y="31" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemTitle" destination="uXS-GX-Pj1" id="PE3-ob-zq2"/>
+                                            <outlet property="segLine" destination="ZHm-k1-CQH" id="pFd-Sr-WxK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="479"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="XE7-JP-sAE" id="Yzd-7o-ng5"/>
+                                    <outlet property="delegate" destination="XE7-JP-sAE" id="cDD-td-cKV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IcU-Rm-vwn" firstAttribute="top" secondItem="AKc-a3-58a" secondAttribute="bottom" id="0x9-0A-kTK"/>
+                            <constraint firstItem="IcU-Rm-vwn" firstAttribute="leading" secondItem="wNr-Z0-KC9" secondAttribute="leading" id="dJy-uX-nbd"/>
+                            <constraint firstItem="wWJ-3k-Z6L" firstAttribute="top" secondItem="IcU-Rm-vwn" secondAttribute="bottom" constant="8" id="mme-jt-Clm"/>
+                            <constraint firstAttribute="trailing" secondItem="IcU-Rm-vwn" secondAttribute="trailing" id="tIS-97-pBK"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cqv-mE-Maz"/>
+                    <navigationItem key="navigationItem" title="Navigation Item" id="72U-Wx-TmT" colorLabel="IBBuiltInLabel-Gray"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="SearchTable" destination="IcU-Rm-vwn" id="OO9-iq-Hl5"/>
+                        <outlet property="titleLabel" destination="72U-Wx-TmT" id="DPh-ZB-r5L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pes-9x-Lrm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="439"/>
+            <point key="canvasLocation" x="-1829" y="35"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="segLine" width="200" height="1"/>
+    </resources>
 </document>
