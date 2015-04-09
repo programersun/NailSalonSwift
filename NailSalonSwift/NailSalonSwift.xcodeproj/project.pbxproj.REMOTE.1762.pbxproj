@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		30568B74CEF19CF0023B7248 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35397CF563ED6DD2D8885501 /* libPods.a */; };
-		44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */; };
 		8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B01418C1ACD12D1000C180B /* ZXYImages.xcassets */; };
 		8B0141911ACD1FC1000C180B /* ZXY_MIMainVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0141901ACD1FC1000C180B /* ZXY_MIMainVCell.swift */; };
 		8B0141931ACD1FEE000C180B /* ZXY_MIMainItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0141921ACD1FEE000C180B /* ZXY_MIMainItemCell.swift */; };
@@ -82,7 +81,6 @@
 		8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */; };
 		8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */; };
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
-		8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */; };
 		8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */; };
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
 		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
@@ -103,7 +101,6 @@
 
 /* Begin PBXFileReference section */
 		35397CF563ED6DD2D8885501 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZL_SSMainCell.swift; sourceTree = "<group>"; };
 		6C1747B30B0A82381A2DF645 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		86EAAF9353D1ED930B6C67E4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8B01418C1ACD12D1000C180B /* ZXYImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ZXYImages.xcassets; sourceTree = "<group>"; };
@@ -206,7 +203,6 @@
 		8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainSecondCell.swift; sourceTree = "<group>"; };
 		8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainThirdCell.swift; sourceTree = "<group>"; };
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
-		8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MIRegistVC.swift; sourceTree = "<group>"; };
 		8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_Animation.swift; sourceTree = "<group>"; };
 		8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ARTableViewCell.swift; sourceTree = "<group>"; };
 		8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMImportHeader.h; sourceTree = "<group>"; };
@@ -240,14 +236,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44FAE7AB1AD611AF000868AE /* SSCell */ = {
-			isa = PBXGroup;
-			children = (
-				44A205BC1AD660AE009196B7 /* ZL_SSMainCell.swift */,
-			);
-			name = SSCell;
-			sourceTree = "<group>";
-		};
 		525EC96CCE2970D829AE0836 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +313,6 @@
 				8B01418F1ACD1F9D000C180B /* miModel */,
 				8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */,
 				8B0141941ACD46BE000C180B /* ZXY_LoginRegistVC.swift */,
-				8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */,
 				8B4B4DFE1AC50307001BD10B /* MyInfoStory.storyboard */,
 			);
 			path = MyInfo;
@@ -334,7 +321,6 @@
 		8B4B4DFD1AC502F3001BD10B /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				44FAE7AB1AD611AF000868AE /* SSCell */,
 				8B4B4E041AC50340001BD10B /* ZXY_SSMainVC.swift */,
 				8B4B4E001AC50315001BD10B /* SearchStory.storyboard */,
 			);
@@ -585,7 +571,6 @@
 					};
 					8B9977C81AC4ED4B00CD1713 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = ER62D3UHDE;
 						TestTargetID = 8B9977B01AC4ED4B00CD1713;
 					};
 				};
@@ -699,7 +684,6 @@
 				8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */,
 				8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */,
 				8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */,
-				44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */,
 				A4817CB71AD626B300F56AF8 /* SR_artistData.m in Sources */,
 				8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */,
 				8B5EE2C71AC8381100EFF3C4 /* ZXYOriginAlbumData.m in Sources */,
@@ -712,7 +696,6 @@
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				8BBBDBC71ACA764F0006A94A /* ZXYOfferData.m in Sources */,
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
-				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,
@@ -868,13 +851,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jian yang (8M3SR68TYJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jian yang (8M3SR68TYJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17cba266-5e0b-4dc7-af19-63ba60052f88";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -887,13 +868,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jian yang (8M3SR68TYJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jian yang (8M3SR68TYJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17cba266-5e0b-4dc7-af19-63ba60052f88";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
 			};
 			name = Release;
@@ -902,8 +881,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -915,7 +892,6 @@
 				INFOPLIST_FILE = NailSalonSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NailSalonSwift.app/NailSalonSwift";
 			};
 			name = Debug;
@@ -924,8 +900,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -933,7 +907,6 @@
 				INFOPLIST_FILE = NailSalonSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NailSalonSwift.app/NailSalonSwift";
 			};
 			name = Release;

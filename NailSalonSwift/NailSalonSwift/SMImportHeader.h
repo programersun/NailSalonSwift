@@ -8,3 +8,7 @@
 
 #import "ZXY_UserData.h"
 #import "ZXY_UserInfoBase.h"
+
+//美甲师信息
+#import "SR_artistData.h"
+#import "SR_artistBaseClass.h"

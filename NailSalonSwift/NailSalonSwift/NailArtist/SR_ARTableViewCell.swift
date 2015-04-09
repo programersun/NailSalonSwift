@@ -24,6 +24,10 @@ class SR_ARTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        artistName.textColor = UIColor.NailRedColor()
+        artistWorkCount.textColor = UIColor.NailRedColor()
+        artistWork.textColor = UIColor.NailGrayColor()
+        artistDistance.textColor = UIColor.NailGrayColor()
         // Initialization code
     }
 
