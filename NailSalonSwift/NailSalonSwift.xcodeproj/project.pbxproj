@@ -94,6 +94,7 @@
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
 		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
 		8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */; };
+		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
 		A4817CB71AD626B300F56AF8 /* SR_artistData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB41AD626B300F56AF8 /* SR_artistData.m */; };
 		A4817CB81AD626B300F56AF8 /* SR_artistBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
@@ -231,6 +232,7 @@
 		8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserData.m; sourceTree = "<group>"; };
 		8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserInfoBase.h; sourceTree = "<group>"; };
 		8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserInfoBase.m; sourceTree = "<group>"; };
+		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
 		A4817CB31AD626B300F56AF8 /* SR_artistBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistBaseClass.h; path = ../SR_artistBaseClass.h; sourceTree = "<group>"; };
 		A4817CB41AD626B300F56AF8 /* SR_artistData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_artistData.m; path = ../SR_artistData.m; sourceTree = "<group>"; };
 		A4817CB51AD626B300F56AF8 /* SR_artistData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistData.h; path = ../SR_artistData.h; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		8B4B4DFC1AC502F3001BD10B /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A435B8681AD7ABE2001909A4 /* SR_regist */,
 				8B01418E1ACD1F9D000C180B /* miCell */,
 				8B01418F1ACD1F9D000C180B /* miModel */,
 				8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */,
@@ -537,6 +540,14 @@
 				8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */,
 			);
 			path = ZXY_WaitProgress;
+			sourceTree = "<group>";
+		};
+		A435B8681AD7ABE2001909A4 /* SR_regist */ = {
+			isa = PBXGroup;
+			children = (
+				A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */,
+			);
+			path = SR_regist;
 			sourceTree = "<group>";
 		};
 		A4817CB21AD626A500F56AF8 /* SR_artistModel */ = {
@@ -762,6 +773,7 @@
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,
 				8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */,
 				8B5EE2B71AC834B700EFF3C4 /* MJRefreshFooterView.m in Sources */,
+				A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */,
 				A4817CB81AD626B300F56AF8 /* SR_artistBaseClass.m in Sources */,
 				8B7B941E1AC5243D00BAA520 /* ZXY_TPMainVC.swift in Sources */,
 				8B0141911ACD1FC1000C180B /* ZXY_MIMainVCell.swift in Sources */,
