@@ -70,6 +70,11 @@
 		8B9977D01AC4ED4B00CD1713 /* NailSalonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977CF1AC4ED4B00CD1713 /* NailSalonSwiftTests.swift */; };
 		8BAAF0311AD76B1600D61B0B /* ZXY_UserDetailInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */; };
 		8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */; };
+		8BAAF0351AD79EAD00D61B0B /* PublicStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAF0341AD79EAD00D61B0B /* PublicStory.storyboard */; };
+		8BAAF0371AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF0361AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift */; };
+		8BAAF03B1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03A1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift */; };
+		8BAAF03D1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03C1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift */; };
+		8BAAF03F1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03E1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift */; };
 		8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */; };
 		8BBBDBB71ACA4CC80006A94A /* ZXY_IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */; };
 		8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */; };
@@ -195,6 +200,11 @@
 		8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoData.m; sourceTree = "<group>"; };
 		8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoUserDetailBase.m; sourceTree = "<group>"; };
 		8BAAF0301AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserDetailInfoUserDetailBase.h; sourceTree = "<group>"; };
+		8BAAF0341AD79EAD00D61B0B /* PublicStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PublicStory.storyboard; sourceTree = "<group>"; };
+		8BAAF0361AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPArtDetailVC.swift; sourceTree = "<group>"; };
+		8BAAF03A1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADImgContainerCell.swift; sourceTree = "<group>"; };
+		8BAAF03C1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADTagCell.swift; sourceTree = "<group>"; };
+		8BAAF03E1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADCommentCell.swift; sourceTree = "<group>"; };
 		8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_IndicatorCell.swift; path = ../ZXY_IndicatorCell.swift; sourceTree = "<group>"; };
 		8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZXY_IndicatorCell.xib; path = ../ZXY_IndicatorCell.xib; sourceTree = "<group>"; };
 		8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_AnimationHelper.swift; path = ../ZXY_AnimationHelper.swift; sourceTree = "<group>"; };
@@ -445,6 +455,7 @@
 		8B9977B31AC4ED4B00CD1713 /* NailSalonSwift */ = {
 			isa = PBXGroup;
 			children = (
+				8BAAF0331AD79E6300D61B0B /* ALLDetailForPublic */,
 				A4F6B9141AD76D4D007A1CA4 /* ThirdPart */,
 				8BBBDBBA1ACA672C0006A94A /* ZXY_Frame */,
 				8B5EE2A31AC834B700EFF3C4 /* MJRefresh */,
@@ -497,6 +508,34 @@
 				8B9977CE1AC4ED4B00CD1713 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8BAAF0331AD79E6300D61B0B /* ALLDetailForPublic */ = {
+			isa = PBXGroup;
+			children = (
+				8BAAF0381AD7BB3600D61B0B /* ADFPModel */,
+				8BAAF0391AD7BB3600D61B0B /* ADFPCell */,
+				8BAAF0341AD79EAD00D61B0B /* PublicStory.storyboard */,
+				8BAAF0361AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift */,
+			);
+			path = ALLDetailForPublic;
+			sourceTree = "<group>";
+		};
+		8BAAF0381AD7BB3600D61B0B /* ADFPModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ADFPModel;
+			sourceTree = "<group>";
+		};
+		8BAAF0391AD7BB3600D61B0B /* ADFPCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BAAF03A1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift */,
+				8BAAF03C1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift */,
+				8BAAF03E1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift */,
+			);
+			path = ADFPCell;
 			sourceTree = "<group>";
 		};
 		8BBBDBBA1ACA672C0006A94A /* ZXY_Frame */ = {
@@ -656,6 +695,7 @@
 				8B4B4E011AC50315001BD10B /* SearchStory.storyboard in Resources */,
 				8B8100CA1AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib in Resources */,
 				8B8100C61AC7ABD100850B05 /* ZXY_ORSqureTitleView.xib in Resources */,
+				8BAAF0351AD79EAD00D61B0B /* PublicStory.storyboard in Resources */,
 				8B4B4DE41AC4FB39001BD10B /* OriginPageStory.storyboard in Resources */,
 				8B7B94261AC5441700BAA520 /* ZXY_SegBtnVC.xib in Resources */,
 			);
@@ -745,6 +785,8 @@
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
+				8BAAF03B1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift in Sources */,
+				8BAAF03D1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
 				8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */,
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,
@@ -764,10 +806,12 @@
 				8B5EE2B51AC834B700EFF3C4 /* MJRefreshBaseView.m in Sources */,
 				8BBBDBBD1ACA68080006A94A /* ZXYScrollView.m in Sources */,
 				8B0141951ACD46BE000C180B /* ZXY_LoginRegistVC.swift in Sources */,
+				8BAAF03F1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift in Sources */,
 				8BAAF0311AD76B1600D61B0B /* ZXY_UserDetailInfoData.m in Sources */,
 				8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */,
 				8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */,
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,
+				8BAAF0371AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift in Sources */,
 				8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */,
 				8B5EE2CC1AC839C600EFF3C4 /* ZXY_ErrorMessageHandle.swift in Sources */,
 				8B5EE2CA1AC8381100EFF3C4 /* ZXYOriginAlbumUser.m in Sources */,

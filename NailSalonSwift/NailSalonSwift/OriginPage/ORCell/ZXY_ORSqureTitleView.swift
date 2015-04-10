@@ -78,10 +78,6 @@ extension ZXY_ORSqureTitleView : UICollectionViewDelegate , UICollectionViewData
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var screenSize = UIScreen.mainScreen().bounds
         var itemWidth  = (screenSize.width - 45) / 4
-        if itemWidth > 83
-        {
-            itemWidth = 83
-        }
         return CGSizeMake(itemWidth, itemWidth)
     }
     

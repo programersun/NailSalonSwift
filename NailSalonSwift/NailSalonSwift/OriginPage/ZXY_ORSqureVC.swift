@@ -290,6 +290,7 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var currentData = dataForTable?[indexPath.row]
         
     }
     
