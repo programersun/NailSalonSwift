@@ -68,6 +68,8 @@
 		8B9977C11AC4ED4B00CD1713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977C01AC4ED4B00CD1713 /* Images.xcassets */; };
 		8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977C21AC4ED4B00CD1713 /* LaunchScreen.xib */; };
 		8B9977D01AC4ED4B00CD1713 /* NailSalonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977CF1AC4ED4B00CD1713 /* NailSalonSwiftTests.swift */; };
+		8BAAF0311AD76B1600D61B0B /* ZXY_UserDetailInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */; };
+		8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */; };
 		8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */; };
 		8BBBDBB71ACA4CC80006A94A /* ZXY_IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */; };
 		8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */; };
@@ -188,6 +190,10 @@
 		8B9977C91AC4ED4B00CD1713 /* NailSalonSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NailSalonSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9977CE1AC4ED4B00CD1713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B9977CF1AC4ED4B00CD1713 /* NailSalonSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NailSalonSwiftTests.swift; sourceTree = "<group>"; };
+		8BAAF02D1AD76B1600D61B0B /* ZXY_UserDetailInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserDetailInfoData.h; sourceTree = "<group>"; };
+		8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoData.m; sourceTree = "<group>"; };
+		8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoUserDetailBase.m; sourceTree = "<group>"; };
+		8BAAF0301AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserDetailInfoUserDetailBase.h; sourceTree = "<group>"; };
 		8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_IndicatorCell.swift; path = ../ZXY_IndicatorCell.swift; sourceTree = "<group>"; };
 		8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZXY_IndicatorCell.xib; path = ../ZXY_IndicatorCell.xib; sourceTree = "<group>"; };
 		8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_AnimationHelper.swift; path = ../ZXY_AnimationHelper.swift; sourceTree = "<group>"; };
@@ -277,6 +283,10 @@
 				8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */,
 				8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */,
 				8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */,
+				8BAAF02D1AD76B1600D61B0B /* ZXY_UserDetailInfoData.h */,
+				8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */,
+				8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */,
+				8BAAF0301AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.h */,
 				8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */,
 			);
 			path = miModel;
@@ -723,6 +733,7 @@
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
+				8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */,
 				8B4B4E051AC50340001BD10B /* ZXY_SSMainVC.swift in Sources */,
 				8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */,
 				8B5EE2B71AC834B700EFF3C4 /* MJRefreshFooterView.m in Sources */,
@@ -739,6 +750,7 @@
 				8B5EE2B51AC834B700EFF3C4 /* MJRefreshBaseView.m in Sources */,
 				8BBBDBBD1ACA68080006A94A /* ZXYScrollView.m in Sources */,
 				8B0141951ACD46BE000C180B /* ZXY_LoginRegistVC.swift in Sources */,
+				8BAAF0311AD76B1600D61B0B /* ZXY_UserDetailInfoData.m in Sources */,
 				8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */,
 				8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */,
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,

@@ -42,6 +42,8 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isLogin.layer.masksToBounds = true
         var tap = UITapGestureRecognizer(target: self, action: Selector("userTapLoginOrRegist"))
         isLogin.addGestureRecognizer(tap)
+        userAvatar.layer.cornerRadius = CGRectGetWidth(userAvatar.bounds) / 2
+        userAvatar.layer.masksToBounds  = true
         // Initialization code
     }
 
@@ -51,6 +53,7 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistImg.hidden = false
         self.isArtistLbl.hidden = false
         self.userAvatar.hidden  = false
+        self.settingBtn.hidden  = false
         isLogin.hidden = true
     }
     
@@ -60,6 +63,7 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistImg.hidden = true
         self.isArtistLbl.hidden = true
         self.userAvatar.hidden  = true
+        self.settingBtn.hidden  = true
         
     }
     

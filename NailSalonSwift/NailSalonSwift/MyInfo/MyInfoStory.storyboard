@@ -199,6 +199,7 @@
                     <navigationItem key="navigationItem" title="Navigation Item" id="xhy-I5-cWJ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="currentTable" destination="otI-qP-fuo" id="CDM-Fx-LDh"/>
                         <segue destination="Vhv-sG-SCZ" kind="show" identifier="toLoginVC" id="Gbk-dM-NMa"/>
                     </connections>
                 </viewController>

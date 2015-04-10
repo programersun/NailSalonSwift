@@ -129,27 +129,56 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     private func loginEaseMob() -> Void
     {
-        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(userInfo!.data.userId, password: "123456", completion: { [weak self](object, error) -> Void in
+        
+        var isLog = EaseMob.sharedInstance().chatManager.isLoggedIn
+        if isLog
+        {
+            EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: {[weak self] (Object, error) -> Void in
+                self?.startLogin()
+                ""
+                
+            }, onQueue: nil)
+        }
+        else
+        {
+            startLogin()
+        }
+    }
+    
+    func startLogin(){
+        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(userInfo!.data.userId, password: "12345678", completion: { [weak self](object, error) -> Void in
+            if(error != nil)
+            {
+                println("error is \(error)")
+                self?.showAlertEasy("提示", messageContent: "网络状况不好，请重新登陆")
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+                return
+            }
             if let s = self
             {
                 s.zxyW.hideProgress(s.view)
                 var userId = s.userInfo?.data.userId
-                var userDic = s.userInfo?.data
-                var dicForDB : Dictionary<String , AnyObject?> = ["nick_name" : userDic?.nickName , "role": userDic?.role , "user_id" : userDic?.userId]
-            
+                
+                //                var userDic = s.userInfo?.data
+                //                var dicForDB : Dictionary<String , AnyObject?> = ["nick_name" : userDic?.nickName , "role": userDic?.role , "user_id" : userDic?.userId]
+                
                 ZXY_UserInfoDetail.sharedInstance.saveUserID(userId!)
-                if ZXY_DataProviderHelper.saveAllWithDic(DBName: String.getZXYUserInfoModelName(), saveEntity: dicForDB)
-                {
-                    
-                    var test : ZXY_UserInfoModel = ZXY_DataProviderHelper.readAllFromDB(DNName: String.getZXYUserInfoModelName())[0] as ZXY_UserInfoModel
-                    println("存储成功 \(test.user_id)")
-                }
+                //                if ZXY_DataProviderHelper.saveAllWithDic(DBName: String.getZXYUserInfoModelName(), saveEntity: dicForDB)
+                //                {
+                //
+                //                    var test : ZXY_UserInfoModel = ZXY_DataProviderHelper.readAllFromDB(DNName: String.getZXYUserInfoModelName())[0] as ZXY_UserInfoModel
+                //                    println("存储成功 \(test.user_id)")
+                //                }
                 
             }
             self?.delegate?.userLoginSuccess()
             self?.navigationController?.popViewControllerAnimated(true)
-        }, onQueue: nil)
+            }, onQueue: nil)
     }
+
     
     @IBAction func registAction(sender: AnyObject)
     {
@@ -166,7 +195,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             
             if(resCode.value == UMSResponseCodeSuccess.value)
             {
-                var userEntity: UMSocialAccountEntity? = UMSocialAccountManager.socialAccountDictionary()[UMShareToSina] as? UMSocialAccountEntity
+                var userEntity: UMSocialAccountEntity? = UMSocialAccountManager.socialAccountDictionary()[UMShareToQQ] as? UMSocialAccountEntity
                 if let userMust = userEntity
                 {
                     self.authSuccessMethod(userMust , platformName: "qq")

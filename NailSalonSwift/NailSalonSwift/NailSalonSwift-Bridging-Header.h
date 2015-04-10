@@ -30,3 +30,5 @@
 #import <UMengSocial/UMSocialWechatHandler.h>
 #import <UMengSocial/UMSocialQQHandler.h>
 #import <UMengSocial/UMSocialSinaHandler.h>
+#import "ZXY_UserDetailInfoData.h"
+#import "ZXY_UserDetailInfoUserDetailBase.h"

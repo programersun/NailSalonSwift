@@ -14,6 +14,7 @@ let APPFIRSTLOADKEY:String  = "UserInfoDetail_Load"
 let USERLOCATIONX           = "USERLOCATIONX"
 let USERLOCATIONY           = "USERLOCATIONY"
 let USERCITYNAME            = "USERLOCATIONNAME"
+let USERDETAILINFO          = "UserInfoDetail_UserDetail"
 let _ZXY_UserInfoDetailInstance = ZXY_UserInfoDetail()
 class ZXY_UserInfoDetail {
     class var sharedInstance:ZXY_UserInfoDetail
@@ -97,5 +98,22 @@ class ZXY_UserInfoDetail {
     {
         var x : String? = NSUserDefaults.standardUserDefaults().valueForKey(USERCITYNAME) as? String
         return x
+    }
+    
+    func saveUserDetailInfo(userInfo: Dictionary<String ,AnyObject>) -> Void
+    {
+        var data : NSData = NSKeyedArchiver.archivedDataWithRootObject(userInfo)
+        NSUserDefaults.standardUserDefaults().setValue(data, forKey: USERDETAILINFO)
+    }
+    
+    func getUserDetailInfo() -> Dictionary<String ,AnyObject>?
+    {
+        var parameter : NSData? = NSUserDefaults.standardUserDefaults().valueForKey(USERDETAILINFO) as? NSData
+        if(parameter == nil)
+        {
+            return nil
+        }
+        var dictionary : Dictionary<String ,AnyObject>? = NSKeyedUnarchiver.unarchiveObjectWithData(parameter!) as Dictionary<String ,AnyObject>?
+        return dictionary
     }
 }

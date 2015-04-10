@@ -10,6 +10,9 @@ import UIKit
 
 class ZXY_MIMainVC: UIViewController {
 
+    @IBOutlet weak var currentTable: UITableView!
+    private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
+    var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,18 +32,41 @@ class ZXY_MIMainVC: UIViewController {
         {
             return
         }
+        zxyW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
         var parameter = ["user_id" : userID!]
-        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { (returnDic) -> Void in
-                ""
-            ""
-        }) { (error) -> Void in
-            ""
-            ""
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+            var result = self?.dataForShow?.result
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.reloadUserData()
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            
+        }) {[weak self] (error) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
         }
         
     }
 
+    func reloadUserData()
+    {
+        currentTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+        
+    }
     
     // MARK: - Navigation
 
@@ -115,6 +141,36 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             else
             {
                 //bigCell.userLoginMethod()
+                var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+                if let user = userInfoDic
+                {
+                    self.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
+                    var userData = self.dataForShow?.data
+                    var headImg  = userData?.headImage?
+                    if let hI = headImg
+                    {
+                        var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + hI
+                        if hI.hasPrefix("http")
+                        {
+                            imgURL = hI
+                        }
+                        bigCell.userAvatar.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "imgHolder"))
+                    }
+                    bigCell.nameLbl.text = userData?.nickName
+                    var role = userData?.role? ?? "1"
+                    if role == "2"
+                    {
+                        bigCell.isArtistImg.hidden = false
+                        bigCell.isArtistLbl.hidden = false
+                    }
+                    else
+                    {
+                        bigCell.isArtistImg.hidden = true
+                        bigCell.isArtistLbl.hidden = true
+                    }
+                }
+                
+                
             }
             return bigCell
         }
