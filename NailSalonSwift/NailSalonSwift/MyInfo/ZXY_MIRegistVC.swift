@@ -9,13 +9,33 @@
 import UIKit
 
 class ZXY_MIRegistVC: UIViewController {
-
+    
+    var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
+    var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
+    
+    @IBOutlet weak var registScrollView: UIScrollView!
+    @IBOutlet weak var registProtocolBtn: UIButton!
+    
+    var screenWidth = UIScreen.mainScreen().bounds.width
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        registProtocolBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
+        registArtistVC.isArtistRegist = true
+        registUserVC.isArtistRegist = false
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        registScrollView.contentSize.width = 2 * screenWidth
+        self.addChildViewController(registArtistVC)
+        self.addChildViewController(registUserVC)
+        registArtistVC.tableView.frame = CGRectMake(0, 0, screenWidth, registScrollView.frame.size.height)
+        registUserVC.tableView.frame = CGRectMake(screenWidth, 0,screenWidth, registScrollView.frame.size.height)
+        self.registScrollView.addSubview(registArtistVC.tableView)
+        self.registScrollView.addSubview(registUserVC.tableView)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,5 +51,22 @@ class ZXY_MIRegistVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func backAction(sender: AnyObject)
+    {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    @IBAction func registChange(sender: AnyObject) {
+        var seg = sender as UISegmentedControl
+        if seg.selectedSegmentIndex == 0
+        {
+            registScrollView.setContentOffset(CGPointMake(0, registScrollView.contentOffset.y), animated: true)
+        }
+        else
+        {
+            registScrollView.setContentOffset(CGPointMake(screenWidth, registScrollView.contentOffset.y), animated: true)
+        }
+    }
 
 }
