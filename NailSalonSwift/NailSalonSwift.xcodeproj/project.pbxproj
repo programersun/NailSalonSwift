@@ -93,6 +93,7 @@
 		8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */; };
 		A4817CB71AD626B300F56AF8 /* SR_artistData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB41AD626B300F56AF8 /* SR_artistData.m */; };
 		A4817CB81AD626B300F56AF8 /* SR_artistBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */; };
+		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,8 @@
 		A4817CB41AD626B300F56AF8 /* SR_artistData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_artistData.m; path = ../SR_artistData.m; sourceTree = "<group>"; };
 		A4817CB51AD626B300F56AF8 /* SR_artistData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistData.h; path = ../SR_artistData.h; sourceTree = "<group>"; };
 		A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_artistBaseClass.m; path = ../SR_artistBaseClass.m; sourceTree = "<group>"; };
+		A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
+		A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +445,7 @@
 		8B9977B31AC4ED4B00CD1713 /* NailSalonSwift */ = {
 			isa = PBXGroup;
 			children = (
+				A4F6B9141AD76D4D007A1CA4 /* ThirdPart */,
 				8BBBDBBA1ACA672C0006A94A /* ZXY_Frame */,
 				8B5EE2A31AC834B700EFF3C4 /* MJRefresh */,
 				8B4B4DE11AC4FB23001BD10B /* NailArtist */,
@@ -535,6 +539,15 @@
 				A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */,
 			);
 			path = SR_artistModel;
+			sourceTree = "<group>";
+		};
+		A4F6B9141AD76D4D007A1CA4 /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */,
+				A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */,
+			);
+			path = ThirdPart;
 			sourceTree = "<group>";
 		};
 		B9EC7997B55D5E4DD16EE6FC /* Pods */ = {
@@ -745,6 +758,7 @@
 				8B0141931ACD1FEE000C180B /* ZXY_MIMainItemCell.swift in Sources */,
 				8B5EE2C81AC8381100EFF3C4 /* ZXYOriginAlbumImage.m in Sources */,
 				8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */,
+				A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */,
 				8B5EE2BA1AC834B700EFF3C4 /* UIScrollView+MJRefresh.m in Sources */,
 				8B5EE2CF1AC847D700EFF3C4 /* CircularLoaderView.swift in Sources */,
 				8B5EE2B51AC834B700EFF3C4 /* MJRefreshBaseView.m in Sources */,
@@ -891,7 +905,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -910,7 +924,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
