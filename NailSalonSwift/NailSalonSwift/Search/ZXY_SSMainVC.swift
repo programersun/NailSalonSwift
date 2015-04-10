@@ -13,10 +13,11 @@ class ZXY_SSMainVC: UIViewController {
     @IBOutlet weak var titleLabel: UINavigationItem!
     @IBOutlet weak var SearchTable: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleLabel.title = "搜索"
-
+        self.SearchTable.scrollEnabled = false
         // Do any additional setup after loading the view.
     }
     
@@ -25,15 +26,20 @@ class ZXY_SSMainVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-       /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toSearchVC"
+        {
+            var vc = segue.destinationViewController as ZL_SSLabelVC
+            
+        }
     }
-    */
+    
 
 }
 
@@ -46,44 +52,63 @@ extension ZXY_SSMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     
     :returns: 图片名字 title 名字
     */
-    func itemDataForTable(indexPath : NSIndexPath) ->   String
+    func itemDataForTable(indexPath : NSIndexPath) -> (imageName : String , itemTitle: String)
     {
-        if(indexPath.section == 0)
+        var currentSection = indexPath.section
+        switch currentSection
         {
+        case 0:
+        
             var currentRow = indexPath.row
             switch currentRow
             {
             case 0:
-                return "标签"
-            default:
-                return "标签"
-            }
-        }
-        else
-        {
-            var currentRow = indexPath.row
-            switch currentRow
-            {
-            case 0:
-                return "昵称"
+                return ("ablum","图集")
             case 1:
-                return "附近"
+                return ("","标签")
             default:
-                return "昵称"
+                return ("ablum","图集")
             }
-            
+        
+        case 1:
+        
+            var currentRow = indexPath.row
+            switch currentRow
+            {
+            case 0:
+                return ("friends","美甲师/普通用户")
+            case 1:
+                return ("","昵称")
+            case 2:
+                return ("","附近")
+            default:
+                return ("friends","美甲师/普通用户")
+            }
+        default:
+            return ("","")
         }
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var SSMainCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSMainCell.cellID()) as ZL_SSMainCell
         
-            var titleName = self.itemDataForTable(indexPath)
+        var SSMainCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSMainCell.cellID()) as ZL_SSMainCell
+        var SSItemCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSItemCell.cellID()) as ZL_SSItemCell
+        if(indexPath.row == 0)
+        {
+            var imgName = self.itemDataForTable(indexPath).imageName
+            var titleName = self.itemDataForTable(indexPath).itemTitle
+            SSItemCell.imageItem.image = UIImage(named: imgName)
+            SSItemCell.titleItem.text = titleName
+            return  SSItemCell
+        }else{
+            var titleName = self.itemDataForTable(indexPath).itemTitle
             SSMainCell.itemTitle.text = titleName
             SSMainCell.itemTitle.textColor = UIColor.NailGrayColor()
             return SSMainCell
         }
+    }
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -96,11 +121,11 @@ extension ZXY_SSMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         switch section
         {
         case 0:
-            return 1
-        case 1:
             return 2
-        default:
+        case 1:
             return 3
+        default:
+            return 1
         }
     }
     
@@ -108,32 +133,43 @@ extension ZXY_SSMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         return 2
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        return 62
+        var currentSection = indexPath.section
+        switch currentSection
+        {
+        case 0:
+            
+            var currentRow = indexPath.row
+            switch currentRow
+            {
+            case 0:
+                self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            case 1:
+                self.performSegueWithIdentifier("toSearchVC", sender: indexPath)
+            default:
+                self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+            
+        case 1:
+            var currentRow = indexPath.row
+            switch currentRow
+            {
+            case 0:
+                 self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            case 1:
+                self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            case 2:
+                self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            default:
+                self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        default:
+           self.SearchTable.deselectRowAtIndexPath(indexPath, animated: false)
+        }
     }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var headerView = UIView(frame: CGRectZero)
-        headerView.backgroundColor = UIColor.whiteColor()
-        return headerView
-    }
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier("lala", sender: nil)
-//    }
     
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
