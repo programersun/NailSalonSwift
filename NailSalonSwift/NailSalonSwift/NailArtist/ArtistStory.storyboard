@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -44,7 +44,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fjJ-1o-DZQ" id="6MU-fx-Qbn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7000B834-0914-4452-8857-D865222FFE86" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="20BB035C-3FF4-4AD0-BB48-72EB18F9A8FC" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
                                                     <rect key="frame" x="13" y="9" width="60" height="60"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -79,7 +79,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.01km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6S-ocH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.01km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6S-ocH">
                                                     <rect key="frame" x="542" y="19" width="50" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="2ay-ub-aex"/>
@@ -94,25 +94,8 @@
                                                         <rect key="frame" x="546" y="15" width="44" height="15"/>
                                                     </variation>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Wl-5d-k1n">
-                                                    <rect key="frame" x="143" y="38" width="90" height="28"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artistStarHollow" translatesAutoresizingMaskIntoConstraints="NO" id="S0J-6c-9pL">
-                                                            <rect key="frame" x="8" y="7" width="12" height="12"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artistStarHollow" translatesAutoresizingMaskIntoConstraints="NO" id="ba9-qi-w1I">
-                                                            <rect key="frame" x="23" y="7" width="12" height="12"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artistStarHollow" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-TL-loS">
-                                                            <rect key="frame" x="38" y="7" width="12" height="12"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artistStarHollow" translatesAutoresizingMaskIntoConstraints="NO" id="dpB-U2-nzg">
-                                                            <rect key="frame" x="53" y="7" width="12" height="12"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artistStarHollow" translatesAutoresizingMaskIntoConstraints="NO" id="doA-0Y-7rJ">
-                                                            <rect key="frame" x="68" y="7" width="12" height="12"/>
-                                                        </imageView>
-                                                    </subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wl-5d-k1n">
+                                                    <rect key="frame" x="143" y="37" width="90" height="28"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="7CE-75-TvU"/>
@@ -168,11 +151,11 @@
                                         <connections>
                                             <outlet property="artistDistance" destination="hq4-6S-ocH" id="Xce-IQ-ccU"/>
                                             <outlet property="artistName" destination="LvS-hn-1SO" id="RfH-SC-zMC"/>
+                                            <outlet property="artistStar" destination="0Wl-5d-k1n" id="U9q-KS-dLk"/>
                                             <outlet property="artistV" destination="2z1-xh-qQ3" id="48u-bP-bjr"/>
                                             <outlet property="artistView" destination="rus-V8-o6y" id="C7v-Wi-zs0"/>
                                             <outlet property="artistWork" destination="9mZ-9D-NkH" id="dWh-CH-rvt"/>
                                             <outlet property="artistWorkCount" destination="VgW-D9-HKO" id="VZM-zM-i24"/>
-                                            <outletCollection property="artistStar" destination="ba9-qi-w1I" collectionClass="NSMutableArray" id="wcg-wA-Fwa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -321,22 +304,22 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7000B834-0914-4452-8857-D865222FFE86" width="12" height="12">
+        <image name="20BB035C-3FF4-4AD0-BB48-72EB18F9A8FC" width="12" height="12">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
 DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPEQ9OTU0AKgAAAkjxkUkA8ZFJAPGRSQDxkUkA8ZFJAPGRSULxkUlC
-8ZFJAPGRSQDxkUkA8ZFJAPGRSQDxkUkA8ZFJAPGRSQDxkUkA8ZFJAfGRScjxkUnI8ZFJAfGRSQDxkUkA
-8ZFJAPGRSQDxkUkA8ZFJAPGRSQDxkUkA8ZFJTvGRSf/xkUn/8ZFJT/GRSQDxkUkA8ZFJAPGRSQDxkUkA
-8ZFJAPGRSQDxkUkf8ZFJ0/GRSf/xkUn/8ZFJ0/GRSR/xkUkA8ZFJAPGRSQDxkUlu8ZFJt/GRSevxkUn/
-8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUnr8ZFJt/GRSW7xkUk38ZFJ9fGRSf/xkUn/8ZFJ//GRSf/xkUn/
-8ZFJ//GRSf/xkUn/8ZFJ9fGRSTfxkUkA8ZFJTvGRSfzxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUn8
-8ZFJTvGRSQDxkUkA8ZFJAPGRSXLxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUly8ZFJAPGRSQDxkUkA
-8ZFJAPGRSUvxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUlK8ZFJAPGRSQDxkUkA8ZFJAPGRSWnxkUn/
-8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUlp8ZFJAPGRSQDxkUkA8ZFJAPGRSYfxkUn/8ZFJ4/GRSWvxkUlr
-8ZFJ4/GRSf/xkUmH8ZFJAPGRSQDxkUkA8ZFJAPGRSYbxkUlo8ZFJBvGRSQDxkUkA8ZFJBvGRSWjxkUmF
-8ZFJAPGRSQAADgEAAAMAAAABAAwAAAEBAAMAAAABAAwAAAECAAMAAAAEAAAC9gEDAAMAAAABAAEAAAEG
+RkZSZXByZXNlbnRhdGlvboAGgAdPEQ9OTU0AKgAAAkgAAAAAAAAAAAAAAAAAAAAAAAAAAPCTSULwk0lC
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAfGRScjxkUnI//8AAQAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8pBITvGRSf/xkUn/8pFKTwAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAADvlEof8JFJ0/GRSf/xkUn/8JFJ0++USh8AAAAAAAAAAAAAAADxkkhu8ZFIt/GRSevxkUn/
+8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUnr8ZFIt/GSSG7xkEo38ZFJ9fGRSf/xkUn/8ZFJ//GRSf/xkUn/
+8ZFJ//GRSf/xkUn/8ZFJ9fGQSjcAAAAA8pBITvGRSfzxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUn8
+8pBITgAAAAAAAAAAAAAAAPKRSnLxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/ykUpyAAAAAAAAAAAAAAAA
+AAAAAPGSR0vxkUn/8ZFJ//GRSf/xkUn/8ZFJ//GRSf/xkUhKAAAAAAAAAAAAAAAAAAAAAPCSSWnxkUn/
+8ZFJ//GRSf/xkUn/8ZFJ//GRSf/wkklpAAAAAAAAAAAAAAAAAAAAAPKRSofxkUn/8pFJ4/GRSmvxkUpr
+8pFJ4/GRSf/ykUqHAAAAAAAAAAAAAAAAAAAAAPKRSIbwkUpo/4BVBgAAAAAAAAAA/4BVBvCRSmjykkmF
+AAAAAAAAAAAADgEAAAMAAAABAAwAAAEBAAMAAAABAAwAAAECAAMAAAAEAAAC9gEDAAMAAAABAAEAAAEG
 AAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABAAwAAAEX
 AAQAAAABAAACQAEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAC/odzAAcAAAxIAAADBgAA
 AAAACAAIAAgACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYAMQAAYWNzcE1T
@@ -404,7 +387,6 @@ AAAQ+g
         <image name="arrowUp" width="15" height="15"/>
         <image name="artistCate" width="99" height="155"/>
         <image name="artistMask" width="83" height="83"/>
-        <image name="artistStarHollow" width="12" height="12"/>
         <image name="artistV" width="17" height="17"/>
     </resources>
 </document>

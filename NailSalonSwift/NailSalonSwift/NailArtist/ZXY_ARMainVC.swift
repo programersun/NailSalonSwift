@@ -305,18 +305,9 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
         cell.artistDistance.text = "\(Double(round(100 * distance)/100)) km"
         
         //评价等级
-//        var scoreNSString : NSString = NSString(format: "%@", cellData!.score)
-//        var doubleScore   = scoreNSString.doubleValue
-//        if(doubleScore < 0.5)
-//        {}
-//        else
-//        {
-//            if doubleScore < 1.0
-//            {
-//                cell.artistStar[0].image = UIImage(named: "artistStarHalf")
-//            }
-//        }
-//        
+        var scoreNSString : NSString = NSString(format: "%@", cellData!.score)
+        var doubleScore   = scoreNSString.doubleValue
+        cell.starRateView?.scorePercent = CGFloat(doubleScore/5.0)
         
         return cell
     }

@@ -12,3 +12,6 @@
 //美甲师信息
 #import "SR_artistData.h"
 #import "SR_artistBaseClass.h"
+
+//星星评分
+#import "CWStarRateView.h"
