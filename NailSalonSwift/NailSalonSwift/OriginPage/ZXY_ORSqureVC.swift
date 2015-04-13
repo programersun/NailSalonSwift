@@ -211,7 +211,7 @@ class ZXY_ORSqureVC: UIViewController {
 
 }
 
-extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout
+extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout , ZXY_ORSqureTitleViewProtocol
 {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if(isWaitingView)
@@ -284,6 +284,7 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
         collectionView.registerNib(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: ZXY_ORSqureTitleView.cellID())
         var reView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ZXY_ORSqureTitleView.cellID(), forIndexPath: indexPath) as? ZXY_ORSqureTitleView
         headerView = reView
+        reView?.delegate = self
         reView?.offerDataList = dataForRec
         reView?.subCollectionV.reloadData()
         return reView!
@@ -291,7 +292,11 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var currentData = dataForTable?[indexPath.row]
-        
+        var albumID = currentData?.albumId ?? ""
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        vc.artWorkID = albumID
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -329,6 +334,13 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
         return CGSizeMake(screenWidths, imgRealHeight + 83)
 
         
+    }
+    
+    func sendAlbumIDToVC(albumID: String) {
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        vc.artWorkID = albumID
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

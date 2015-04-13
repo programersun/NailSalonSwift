@@ -122,7 +122,7 @@ extension UIViewController
         alert.show()
     }
     
-    func getCellHeightWith(textString stringValue : String? , minHeight height: CGFloat ,fontSize font: UIFont ,constraintWidth width: CGFloat) -> CGFloat
+    class func getCellHeightWith(textString stringValue : String? , minHeight height: CGFloat ,fontSize font: UIFont ,constraintWidth width: CGFloat) -> CGFloat
     {
         var heightSize = stringValue?.boundingRectWithSize(CGSizeMake(width, 2000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:[NSFontAttributeName : font], context: nil).size
         if(heightSize?.height < height)
@@ -141,6 +141,27 @@ extension UIViewController
             }
         }
     }
+    
+    class func getCellWidthWith(#stringValue : String? , minWidth: CGFloat ,fontSize font: UIFont ,constraintHeight height: CGFloat) -> CGFloat
+    {
+        var widthValue = stringValue?.boundingRectWithSize(CGSizeMake(2000, height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:[NSFontAttributeName : font], context: nil).size
+        if(widthValue?.width < minWidth)
+        {
+            return minWidth
+        }
+        else
+        {
+            if let heights = widthValue
+            {
+                return widthValue!.width
+            }
+            else
+            {
+                return minWidth
+            }
+        }
+    }
+
     
     func startCheckNetConnect(whenBegain canConnect:(() -> Void)? , whenClosed canNotConnect:(() -> Void)?)
     {

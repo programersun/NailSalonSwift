@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         bmkAuthor = BMKMapManager()
         var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "duostecIOSDis")
         EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

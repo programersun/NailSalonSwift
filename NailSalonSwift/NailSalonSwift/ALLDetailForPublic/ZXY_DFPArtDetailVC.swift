@@ -10,12 +10,26 @@ import UIKit
 
 class ZXY_DFPArtDetailVC: UIViewController {
 
-    var dataForComment : [AnyObject]?
-    var dataForTag : [AnyObject]?
+    private var dataForComment : [AnyObject]?
+    
+    @IBOutlet weak var currentTable: UITableView!
+    private var dataForTag : String? = "哈哈 啦啦 再见 你好么 冰雪消融 霸气凌峰 啦啦啦啦啦 悠悠 中文 是不是傻啊啊啊啊啊啊啊啊啊啊啊"
+
+    var artWorkID : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.startGetArtDetail()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        currentTable.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        //currentTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +37,19 @@ class ZXY_DFPArtDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func startGetArtDetail()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID() ?? ""
+        var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADFP_ArtDetail)
+        var parameter = ["user_id" : userID , "album_id" : artWorkID]
+        ZXY_NetHelperOperate().startGetDataPost(stringURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            ""
+            ""
+        }) {[weak self] (error) -> Void in
+            ""
+            ""
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -52,6 +79,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         case 0:
             return imgContentCell
         case 1:
+            tagCell.setTagView(dataForTag)
             return tagCell
         case 2:
             return commentCell
@@ -69,7 +97,11 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         case 0:
             return 259
         case 1 :
-            return 88
+            var tagV = ZXY_TagLabelView()
+            tagV.allTags = dataForTag
+            var tagViewHeight = tagV.getCellHeight()
+            var cellHeight    = tagViewHeight + 44
+            return cellHeight
         case 2:
             return 80
         default:
@@ -96,31 +128,6 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
     }
 }
 
-extension ZXY_DFPArtDetailVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
-{
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("DFPADCCellID", forIndexPath: indexPath) as UICollectionViewCell
-        var cellLbl = cell.viewWithTag(1111)
-        cellLbl?.layer.cornerRadius = 5
-        cellLbl?.backgroundColor = UIColor.NailRedColor()
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let items = dataForTag
-        {
-            return items.count
-        }
-        else
-        {
-            return 0
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
-    {
-        return CGSizeMake(30, 25)
-    }
     
     
-}
+

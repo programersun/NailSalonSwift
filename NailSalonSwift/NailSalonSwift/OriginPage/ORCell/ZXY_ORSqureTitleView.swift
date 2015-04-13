@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol ZXY_ORSqureTitleViewProtocol : class
+{
+    func sendAlbumIDToVC(albumID : String)
+}
+
 class ZXY_ORSqureTitleView: UICollectionReusableView {
 
     @IBOutlet weak var subCollectionV: UICollectionView!
     
     @IBOutlet weak var scrollVL: ZXYScrollView!
     
+    var delegate : ZXY_ORSqureTitleViewProtocol?
     var offerDataList : [ZXYOfferRecommendAlbum]?
     
     class func cellID() -> String
@@ -72,7 +78,12 @@ extension ZXY_ORSqureTitleView : UICollectionViewDelegate , UICollectionViewData
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        var current = offerDataList![indexPath.row]
+        var albumID = current.albumId ?? ""
+        if let de = delegate
+        {
+            de.sendAlbumIDToVC(albumID)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -135,6 +146,9 @@ extension ZXY_ORSqureTitleView : ZXYScrollDataSource , ZXYScrollDelegate
     }
     
     func afterClickAtIndex(index: Int) {
-        
+//        if let de = delegate
+//        {
+//            de.sendAlbumIDToVC(albumID)
+//        }
     }
 }

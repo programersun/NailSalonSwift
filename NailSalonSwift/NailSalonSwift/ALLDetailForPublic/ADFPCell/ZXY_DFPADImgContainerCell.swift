@@ -28,6 +28,13 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        attensionBtn.layer.masksToBounds = true
+        attensionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
+        attensionBtn.layer.cornerRadius  = 4
+        attensionBtn.layer.borderWidth   = 1
+        attensionBtn.layer.borderColor   = UIColor.NailRedColor().CGColor
+        
+        artistAvatar.layer.cornerRadius  = 22
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

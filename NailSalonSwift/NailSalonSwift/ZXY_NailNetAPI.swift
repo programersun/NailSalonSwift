@@ -64,6 +64,11 @@ enum ZXY_MyInfoAPIType : String
     case MI_MyInfo  = "User/userInfo"
 }
 
+enum ZXY_ADFPAPIType : String
+{
+    case ADFP_ArtDetail = "Album2/album_detail"
+}
+
 struct ZXY_NailNetAPI
 {
     /**
@@ -129,4 +134,8 @@ struct ZXY_NailNetAPI
         return ZXY_MainAPI + currentType.rawValue
     }
 
+    static func ZXY_ADFPAPI(currentType : ZXY_ADFPAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
 }

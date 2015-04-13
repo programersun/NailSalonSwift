@@ -32,3 +32,7 @@
 #import <UMengSocial/UMSocialSinaHandler.h>
 #import "ZXY_UserDetailInfoData.h"
 #import "ZXY_UserDetailInfoUserDetailBase.h"
+#import "ZXY_AlbumDetailBaseAlbum.h"
+#import "ZXY_AlbumDetailData.h"
+#import "ZXY_AlbumDetailImages.h"
+#import "ZXY_AlbumDetailUser.h"
