@@ -22,6 +22,8 @@ class ZXY_MIRegistVC: UIViewController {
         registProtocolBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
         registArtistVC.isArtistRegist = true
         registUserVC.isArtistRegist = false
+        registArtistVC.delegate = self
+        registUserVC.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -40,17 +42,18 @@ class ZXY_MIRegistVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+
     }
-    */
+
+
     @IBAction func backAction(sender: AnyObject)
     {
         self.navigationController?.popViewControllerAnimated(true)
@@ -69,4 +72,13 @@ class ZXY_MIRegistVC: UIViewController {
         }
     }
 
+    @IBAction func portocolAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("toProtocolVC", sender: nil)
+    }
+}
+
+extension ZXY_MIRegistVC: SR_registTableVCProtocol {
+    func toCheckIdVC() {
+        self.performSegueWithIdentifier("toCheckIdVC", sender: nil)
+    }
 }

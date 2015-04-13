@@ -105,6 +105,9 @@
 		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
 		8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */; };
 		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
+		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
+		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
+		A440D1081ADB7C5F004252A7 /* register_help.html in Resources */ = {isa = PBXBuildFile; fileRef = A440D1071ADB7C5F004252A7 /* register_help.html */; };
 		A4817CB71AD626B300F56AF8 /* SR_artistData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB41AD626B300F56AF8 /* SR_artistData.m */; };
 		A4817CB81AD626B300F56AF8 /* SR_artistBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
@@ -257,6 +260,9 @@
 		8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserInfoBase.h; sourceTree = "<group>"; };
 		8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserInfoBase.m; sourceTree = "<group>"; };
 		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
+		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
+		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
+		A440D1071ADB7C5F004252A7 /* register_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = register_help.html; sourceTree = "<group>"; };
 		A4817CB31AD626B300F56AF8 /* SR_artistBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistBaseClass.h; path = ../SR_artistBaseClass.h; sourceTree = "<group>"; };
 		A4817CB41AD626B300F56AF8 /* SR_artistData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_artistData.m; path = ../SR_artistData.m; sourceTree = "<group>"; };
 		A4817CB51AD626B300F56AF8 /* SR_artistData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistData.h; path = ../SR_artistData.h; sourceTree = "<group>"; };
@@ -513,6 +519,7 @@
 		8B9977B41AC4ED4B00CD1713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A440D1071ADB7C5F004252A7 /* register_help.html */,
 				8B9977B51AC4ED4B00CD1713 /* Info.plist */,
 				8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */,
 			);
@@ -616,6 +623,8 @@
 			isa = PBXGroup;
 			children = (
 				A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */,
+				A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */,
+				A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */,
 			);
 			path = SR_regist;
 			sourceTree = "<group>";
@@ -740,6 +749,7 @@
 				8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */,
 				8B4B4DFF1AC50307001BD10B /* MyInfoStory.storyboard in Resources */,
 				8B9977C11AC4ED4B00CD1713 /* Images.xcassets in Resources */,
+				A440D1081ADB7C5F004252A7 /* register_help.html in Resources */,
 				8B5EE2BD1AC8356D00EFF3C4 /* ErrorMessage.plist in Resources */,
 				8BBBDBB71ACA4CC80006A94A /* ZXY_IndicatorCell.xib in Resources */,
 				8B4B4DFB1AC50267001BD10B /* ArtistStory.storyboard in Resources */,
@@ -835,6 +845,7 @@
 				8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */,
 				8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */,
 				8B6467961ACBBFAE00519A1A /* ZXYCourseCourse.m in Sources */,
+				A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */,
 				8B4B4E031AC5032D001BD10B /* ZXY_MIMainVC.swift in Sources */,
 				8B5EE2B81AC834B700EFF3C4 /* MJRefreshHeaderView.m in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
@@ -863,6 +874,7 @@
 				8B5EE2BA1AC834B700EFF3C4 /* UIScrollView+MJRefresh.m in Sources */,
 				8B5EE2CF1AC847D700EFF3C4 /* CircularLoaderView.swift in Sources */,
 				8B5EE2B51AC834B700EFF3C4 /* MJRefreshBaseView.m in Sources */,
+				A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */,
 				8BBBDBBD1ACA68080006A94A /* ZXYScrollView.m in Sources */,
 				8B0141951ACD46BE000C180B /* ZXY_LoginRegistVC.swift in Sources */,
 				8BAAF03F1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift in Sources */,
