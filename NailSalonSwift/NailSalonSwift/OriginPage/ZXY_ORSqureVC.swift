@@ -296,6 +296,7 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
+        vc.title     = currentData?.user?.nickName?
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

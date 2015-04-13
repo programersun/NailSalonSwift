@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXY_TextInputViewC" customModule="NailSalonSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="commentText" destination="Dbz-vM-OD5" id="nvc-ZP-svA"/>
+                <outlet property="sendBtn" destination="RxX-t8-Qcj" id="aF6-Nq-Xku"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbz-vM-OD5">
+                    <rect key="frame" x="0.0" y="5" width="500" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="MNc-f2-e6O"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-t8-Qcj">
+                    <rect key="frame" x="500" y="20" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="AXP-3s-3Zw"/>
+                        <constraint firstAttribute="height" constant="30" id="zbN-k2-MGk"/>
+                    </constraints>
+                    <state key="normal" title="发送">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendAction:" destination="-1" eventType="touchUpInside" id="yKx-5R-FZ2"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="tXq-Vv-ORu">
+                    <rect key="frame" x="0.0" y="69" width="600" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="mZD-bm-quh"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tXq-Vv-ORu" secondAttribute="bottom" id="46x-jN-dxc"/>
+                <constraint firstItem="Dbz-vM-OD5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CjZ-EB-iVT"/>
+                <constraint firstItem="tXq-Vv-ORu" firstAttribute="top" secondItem="Dbz-vM-OD5" secondAttribute="bottom" constant="4" id="ItV-6M-06x"/>
+                <constraint firstItem="Dbz-vM-OD5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="JL4-KP-WE8"/>
+                <constraint firstItem="RxX-t8-Qcj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="L3t-lH-NPd"/>
+                <constraint firstItem="RxX-t8-Qcj" firstAttribute="leading" secondItem="Dbz-vM-OD5" secondAttribute="trailing" id="QN4-Kp-hGb"/>
+                <constraint firstAttribute="trailing" secondItem="RxX-t8-Qcj" secondAttribute="trailing" id="RLS-6O-7lv"/>
+                <constraint firstItem="tXq-Vv-ORu" firstAttribute="top" secondItem="RxX-t8-Qcj" secondAttribute="bottom" constant="19" id="fXl-FP-8Cz"/>
+                <constraint firstItem="tXq-Vv-ORu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jm4-Sm-WnG"/>
+                <constraint firstAttribute="trailing" secondItem="tXq-Vv-ORu" secondAttribute="trailing" id="zB5-4g-UFG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="312" y="233"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="segLine" width="200" height="1"/>
+    </resources>
+</document>

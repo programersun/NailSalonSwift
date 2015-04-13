@@ -36,3 +36,5 @@
 #import "ZXY_AlbumDetailData.h"
 #import "ZXY_AlbumDetailImages.h"
 #import "ZXY_AlbumDetailUser.h"
+#import "ZXY_AlbumCommentData.h"
+#import "ZXY_AlbumCommentBaseComment.h"

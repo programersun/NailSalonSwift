@@ -13,6 +13,8 @@ class ZXY_TagLabelView: UIView {
     private var currentYPosition: CGFloat = 5.0
     private var currentXPosition: CGFloat = 5.0
     private var labelHeight     : CGFloat = 20.0
+    private var fontSize : CGFloat = 15
+    var defaultHeight : CGFloat = 43
     var lineWidth       : CGFloat? = UIScreen.mainScreen().bounds.width
     weak var superV : UIView!
     var allTags : String?
@@ -48,52 +50,71 @@ class ZXY_TagLabelView: UIView {
         var finalHeight   : CGFloat = 0
         if allTags == nil
         {
-            return 40
+            return defaultHeight
         }
         
         var tags = allTags?.componentsSeparatedByString(" ")
+        
         if let t = tags
         {
+            var isAddHeight = false
             if(t.count == 0)
             {
-                return 40
+                return defaultHeight
             }
             for tag in tags!
             {
-                var width = self.getWidthWith(stringValue: tag, minWidth: 20, fontSize: UIFont.systemFontOfSize(15), constraintHeight: 20)
-                var remainSpaceX  = self.frame.width - thisPositionX - width - 10
+                var width = self.getWidthWith(stringValue: tag, minWidth: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintHeight: 20)
+                var remainSpaceX  = lineWidth! - thisPositionX - width - 10
                 var heightOfLabel = thisHeight
                 if remainSpaceX < 0
                 {
                     if(width > (self.frame.width - 10 ))
                     {
                         thisPositionX = 5
-                        thisPositionY += 20
-                        heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(15), constraintWidth: self.frame.size.width - 10)
-                        thisPositionY += heightOfLabel
-                        finalHeight += thisPositionY
+                        if(thisPositionX != 5)
+                        {
+                            thisPositionY += 25
+                        }
+                        heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintWidth: lineWidth! - 10)
+                        width = lineWidth! - 10
+                        isAddHeight = true
+                        
                     }
                     else
                     {
+                        if(thisPositionX != 5)
+                        {
+                            thisPositionY += 25
+                        }
                         thisPositionX = 5
-                        thisPositionY += 20
-                        finalHeight += 20
+                        
                     }
                 }
-                thisPositionX = width + thisPositionX
+                if(isAddHeight)
+                {
+                    thisPositionY = heightOfLabel + thisPositionY + 5
+                    isAddHeight = false
+                    thisPositionX = 5
+                }
+                else
+                {
+                    thisPositionX = width + thisPositionX + 10
+                }
                 if tags?.last == tag
                 {
-                    finalHeight += heightOfLabel
+                    thisPositionY = thisPositionY + 25 + heightOfLabel
                 }
+
             }
         }
-        return finalHeight
+        return thisPositionY
 
     }
     
     func setContentTag()
     {
-        if allTags == nil
+        if allTags == nil || allTags? == ""
         {
             return
         }
@@ -102,41 +123,67 @@ class ZXY_TagLabelView: UIView {
         
         if let t = tags
         {
+            var isAddHeight = false
             if(t.count == 0)
             {
                 return
             }
             for tag in tags!
             {
-                var width = self.getWidthWith(stringValue: tag, minWidth: 20, fontSize: UIFont.systemFontOfSize(15), constraintHeight: 20)
+                if tag.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " ")) == ""
+                {
+                    continue
+                }
+                var width = self.getWidthWith(stringValue: tag, minWidth: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintHeight: 20)
                 var remainSpaceX  = lineWidth! - currentXPosition - width - 10
                 var heightOfLabel = labelHeight
-                println("\(self.frame)")
                 if remainSpaceX < 0
                 {
                     if(width > (self.frame.width - 10 ))
                     {
                         currentXPosition = 5
-                        currentYPosition += 25
-                        heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(15), constraintWidth: self.frame.size.width - 10)
-                        currentYPosition += heightOfLabel
+                        if(currentXPosition != 5)
+                        {
+                            currentYPosition += 25
+                        }
+                        heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintWidth: lineWidth! - 10)
+                        width = lineWidth! - 10
+                        isAddHeight = true
+                        
                     }
                     else
                     {
+                        if(currentXPosition != 5)
+                        {
+                            currentYPosition += 25
+                        }
                         currentXPosition = 5
-                        currentYPosition += 25
+                        
                     }
                 }
-                var label = UILabel(frame: CGRectMake(currentXPosition, currentYPosition, width, heightOfLabel))
+                var label = UILabel(frame: CGRectMake(currentXPosition, currentYPosition, width + 3, heightOfLabel))
                 self.addSubview(label)
-                label.numberOfLines = 0
                 label.text = tag
+                label.numberOfLines = 0
                 label.backgroundColor = UIColor.NailRedColor()
                 label.textColor       = UIColor.whiteColor()
                 label.layer.cornerRadius = 5
+                label.layer.borderColor = UIColor.NailRedColor().CGColor
+                label.layer.borderWidth = 1
                 label.layer.masksToBounds = true
                 label.font = UIFont.systemFontOfSize(15)
-                currentXPosition = width + currentXPosition + 5
+                label.textAlignment = NSTextAlignment.Center
+                if(isAddHeight)
+                {
+                    label.textAlignment = NSTextAlignment.Left
+                    currentYPosition = heightOfLabel + currentYPosition + 5
+                    isAddHeight = false
+                    currentXPosition = 5
+                }
+                else
+                {
+                    currentXPosition = width + currentXPosition + 10
+                }
             }
         }
     }

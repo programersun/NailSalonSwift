@@ -9,29 +9,104 @@
 import UIKit
 
 class ZXY_DFPArtDetailVC: UIViewController {
-
-    private var dataForComment : [AnyObject]?
+    let screenSize = UIScreen.mainScreen().bounds
     
+    @IBOutlet var commentView: UIView!
+    @IBOutlet weak var commentText: UITextView!
+    @IBOutlet weak var sendBtn: UIButton!
+    
+    
+    
+    private var dataForComment : ZXY_AlbumCommentBaseComment?
+    private var dataforCommentArr : [ZXY_AlbumCommentData]?
+    private var dataForTable : ZXY_AlbumDetailBaseAlbum?
+    private var zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
+    private var currentPage : Int = 1
     @IBOutlet weak var currentTable: UITableView!
-    private var dataForTag : String? = "哈哈 啦啦 再见 你好么 冰雪消融 霸气凌峰 啦啦啦啦啦 悠悠 中文 是不是傻啊啊啊啊啊啊啊啊啊啊啊"
+    private var dataForTag : String? = ""
 
     var artWorkID : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //commentView.setTranslatesAutoresizingMaskIntoConstraints(true)
         self.startGetArtDetail()
+        currentTable.hidden = true
+        commentView.frame = CGRectMake(0, screenSize.height , screenSize.width , 70)
+        self.view.addSubview(commentView)
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+        currentTable.tableFooterView = UIView(frame: CGRectZero)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidLayoutSubviews() {
-        currentTable.reloadData()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //currentTable.reloadData()
+        
     }
+    
+    func addFootterForTable()
+    {
+        currentTable.addFooterWithCallback { [weak self]() -> Void in
+            self?.currentPage++
+            self?.startGetComment()
+        }
+    }
+    
+    func keyBoardShow(noty : NSNotification)
+    {
+        var keyBoardInfo = noty.userInfo
+        if let key = keyBoardInfo
+        {
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
+                if let s = self
+                {
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                }
+                
+            })
+        }
+        
+    }
+    
+    func keyBoradFrameChange(noty: NSNotification)
+    {
+        var keyBoardInfo = noty.userInfo
+        if let key = keyBoardInfo
+        {
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
+                if let s = self
+                {
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                }
+                
+            })
+        }
 
+    }
+    
+    func keyBoardHide(noty : NSNotification)
+    {
+        UIView.animateWithDuration(0.5, animations: { [weak self]() -> Void in
+            if let s = self
+            {
+                self?.commentView.frame = CGRectMake(0, s.screenSize.height, s.screenSize.width, 70)
+            }
+            
+        })
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,18 +114,83 @@ class ZXY_DFPArtDetailVC: UIViewController {
     
     func startGetArtDetail()
     {
+        zxyW.startProgress(self.view)
         var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID() ?? ""
         var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADFP_ArtDetail)
         var parameter = ["user_id" : userID , "album_id" : artWorkID]
         ZXY_NetHelperOperate().startGetDataPost(stringURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            ""
-            ""
+            self?.dataForTable = ZXY_AlbumDetailBaseAlbum(dictionary: returnDic)
+            var result = self?.dataForTable?.result ?? 0
+            if result == 1000 || result == 1003
+            {
+                self?.dataForTag = self?.dataForTable?.data.tag? ?? ""
+                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                self?.currentTable.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+                if let s = self
+                {
+                    self?.zxyW.hideProgress(s.view)
+                    self?.currentTable.hidden = false
+                }
+                self?.addFootterForTable()
+                self?.startGetComment()
+                
+                
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: messageError)
+                if let s = self
+                {
+                    self?.zxyW.hideProgress(s.view)
+                }
+            }
+            return
+            
         }) {[weak self] (error) -> Void in
             ""
             ""
+            if let s = self
+            {
+                self?.zxyW.hideProgress(s.view)
+            }
         }
     }
 
+    func startGetComment()
+    {
+        var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADFP_ArtComment)
+        var parameter : [String : AnyObject] = ["album_id" : artWorkID , "p" : currentPage]
+        ZXY_NetHelperOperate().startGetDataPost(stringURL, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            self?.currentTable.footerEndRefreshing()
+            self?.dataForComment = ZXY_AlbumCommentBaseComment(dictionary: returnDic)
+            var result = self?.dataForComment?.result ?? 0
+            if result == 1000 || result == 1003
+            {
+                if(self?.dataforCommentArr == nil || self?.currentPage == 0)
+                {
+                    self?.dataforCommentArr = []
+                }
+                var commentArr = self?.dataForComment?.data ?? []
+                for comment in commentArr
+                {
+                    var value = comment as ZXY_AlbumCommentData
+                    self?.dataforCommentArr?.append(value)
+                }
+                self?.currentTable.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.None)
+            }
+            else
+            {
+                var message = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: message)
+            }
+            
+        }) {[weak self] (error) -> Void in
+            self?.currentTable.footerEndRefreshing()
+            ""
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -70,18 +210,84 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         var tagCell        = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADTagCell.cellID()) as ZXY_DFPADTagCell
         var commentCell    = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADCommentCell.cellID()) as
             ZXY_DFPADCommentCell
+        var commentActionCell = tableView.dequeueReusableCellWithIdentifier("commentCellID") as UITableViewCell
         
         var currentSection = indexPath.section
         var currentRow     = indexPath.row
-        
         switch currentSection
         {
         case 0:
+            var imgCellData = dataForTable?.data
+            var imgCellUser = imgCellData?.user
+            var imgs      = imgCellData?.images?
+            if let si = imgs
+            {
+                if si.count > 0
+                {
+                    var imgURL = si[0] as ZXY_AlbumDetailImages
+                    var stringURL = ZXY_NailNetAPI.ZXY_MainAPIImage + imgURL.imagePath
+                    imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
+                    
+                }
+            }
+            imgContentCell.imgName.text = imgCellData?.dataDescription
+            imgContentCell.artistName.text = imgCellUser?.nickName
+            var avaImg = imgCellUser?.headImage?
+            if let ava = avaImg
+            {
+                var avatarImg = ZXY_NailNetAPI.ZXY_MainAPIImage + ava
+                if ava.hasPrefix("http")
+                {
+                    avatarImg = ava
+                }
+                imgContentCell.artistAvatar.setImageWithURL(NSURL(string: avatarImg), placeholderImage: UIImage(named: "imgHolder"))
+            }
+            var isCollection = imgCellData?.isCollect ?? 0
+            var isAgree      = imgCellData?.isAgree   ?? 0
+            var isAtten      = imgCellData?.isAtten   ?? 0
+            var collectNum   = imgCellData?.collectCount ?? "0"
+            var agreeNum     = imgCellData?.agreeCount ?? "0"
+            
+            imgContentCell.isCollectionFunc(isCollection)
+            imgContentCell.isAgreeFunc(isAgree)
+            imgContentCell.isAttensionFunc(isAtten)
+            imgContentCell.heartLbl.text = agreeNum
+            imgContentCell.starLbl.text  = collectNum
+            
             return imgContentCell
         case 1:
-            tagCell.setTagView(dataForTag)
+            var CellData = dataForTable?.data
+            if let data = CellData
+            {
+                var tagString = data.tag?.stringByReplacingOccurrencesOfString("\n", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil) ?? ""
+                tagCell.setTagView(tagString)
+            }
+            var price = CellData?.price ?? "0"
+            tagCell.priceValue.text = "￥\(price)"
             return tagCell
         case 2:
+            if indexPath.row == 0
+            {
+                var btn = commentActionCell.viewWithTag(111) as UIButton
+                btn.addTarget(self, action: Selector("commentBtnAction"), forControlEvents: UIControlEvents.TouchUpInside)
+                return commentActionCell
+            }
+            var currentData : ZXY_AlbumCommentData? = dataforCommentArr![indexPath.row - 1] as ZXY_AlbumCommentData
+            var headImgUrl  = currentData?.headImage?
+            if let head = headImgUrl
+            {
+                var imgURLString = ZXY_NailNetAPI.ZXY_MainAPIImage + head
+                if head.hasPrefix("http")
+                {
+                    imgURLString = head
+                }
+                
+                commentCell.criticImg.setImageWithURL(NSURL(string: imgURLString), placeholderImage: UIImage(named: "imgHolder"))
+            }
+            commentCell.criticName.text = currentData?.nickName ?? ""
+            commentCell.commentLbl.text = currentData?.content  ?? ""
+            var dataTime = self.timeStampToDateString(currentData?.addTime ?? "0")
+            commentCell.timeLbl.text = dataTime
             return commentCell
         default :
             return imgContentCell
@@ -95,15 +301,37 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         switch currentSection
         {
         case 0:
-            return 259
+            // MARK: 不要删除此处注释
+//            var imgCellData = dataForTable?.data
+//            var imgs      = imgCellData?.images?
+//            if let imageReal = imgs
+//            {
+//                if imageReal.count > 0
+//                {
+//                    var tempImg = imageReal[0] as ZXY_AlbumDetailImages
+//                    var width   = NSString(format: "%@", tempImg.width)
+//                    var height  = NSString(format: "%@", tempImg.height)
+//                    var ratio   = width.floatValue / height.floatValue
+//                    return screenSize.width / CGFloat(ratio)
+//                }
+//            }
+            return 311
         case 1 :
             var tagV = ZXY_TagLabelView()
+            dataForTag = dataForTag?.stringByReplacingOccurrencesOfString("\n", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
             tagV.allTags = dataForTag
             var tagViewHeight = tagV.getCellHeight()
             var cellHeight    = tagViewHeight + 44
             return cellHeight
         case 2:
-            return 80
+            if(currentRow == 0)
+            {
+                return 50
+            }
+            var currentData : ZXY_AlbumCommentData? = dataforCommentArr![indexPath.row - 1] as ZXY_AlbumCommentData
+            var testString = currentData?.content  ?? ""
+            var height = UIViewController.getCellHeightWith(textString: testString, minHeight: 21, fontSize: UIFont.systemFontOfSize(17), constraintWidth: screenSize.width - 90)
+            return height + 59
         default:
             return 80
         }
@@ -116,8 +344,8 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             return 1
         case 1:
             return 1
-        case 2 where dataForComment != nil:
-            return dataForComment!.count
+        case 2 where dataforCommentArr != nil:
+            return dataforCommentArr!.count + 1 ?? 1
         default:
             return 0
         }
@@ -126,6 +354,33 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section
+        {
+        case 0:
+            return 0
+        case 1:
+            return 20
+        case 2:
+            return 20
+        default:
+            return 0
+        }
+    }
+    
+    @IBAction func sendAction(sender: AnyObject) {
+        
+    }
+    
+    func commentBtnAction()
+    {
+        commentText.becomeFirstResponder()
+    }
+    @IBAction func inputAction(sender: AnyObject) {
+         println("我要评论")
+    }
+    
 }
 
     

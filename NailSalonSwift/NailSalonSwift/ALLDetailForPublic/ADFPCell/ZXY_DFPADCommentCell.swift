@@ -23,7 +23,7 @@ class ZXY_DFPADCommentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         criticImg.layer.cornerRadius = 22
-        
+        criticImg.layer.masksToBounds = true
         // Initialization code
     }
 

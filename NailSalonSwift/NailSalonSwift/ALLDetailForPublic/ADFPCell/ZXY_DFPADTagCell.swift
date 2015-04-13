@@ -10,6 +10,7 @@ import UIKit
 
 class ZXY_DFPADTagCell: UITableViewCell {
 
+    @IBOutlet weak var appointBtn: UIButton!
     @IBOutlet weak var tagLbl : UILabel!
     @IBOutlet weak var priceLbl : UILabel!
     @IBOutlet weak var tagCollection : ZXY_TagLabelView!
@@ -33,7 +34,6 @@ class ZXY_DFPADTagCell: UITableViewCell {
     
     func setTagView(tag : String?)
     {
-        println("\(self.frame)")
         tagCollection.lineWidth = UIScreen.mainScreen().bounds.width - 71
         tagCollection.allTags = tag
         tagCollection.startLoadTag()
@@ -45,6 +45,8 @@ class ZXY_DFPADTagCell: UITableViewCell {
         //        return CGSizeMake(30, 25)
         //    }
 
+    @IBAction func appointAction(sender: AnyObject) {
+    }
 }
 
 

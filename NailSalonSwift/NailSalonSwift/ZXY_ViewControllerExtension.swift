@@ -190,7 +190,7 @@ extension UIViewController
         var interVal : NSTimeInterval = (timeStamp as NSString).doubleValue
         var dates = NSDate(timeIntervalSince1970: interVal)
         var formatter = NSDateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
+        formatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
         var dateString = formatter.stringFromDate(dates)
         return dateString
     }

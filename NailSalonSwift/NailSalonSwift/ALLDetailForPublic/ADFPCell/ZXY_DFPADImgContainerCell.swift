@@ -35,12 +35,53 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         attensionBtn.layer.borderColor   = UIColor.NailRedColor().CGColor
         
         artistAvatar.layer.cornerRadius  = 22
+        artistAvatar.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func isCollectionFunc(isCollection : Double)
+    {
+        if isCollection == 1
+        {
+            self.starImg.image = UIImage(named: "star")
+        }
+        else
+        {
+            self.starImg.image = UIImage(named: "starEmpty")
+        }
+    }
+    
+    func isAgreeFunc(isAgree : Double)
+    {
+        if isAgree     == 1
+        {
+            self.heartImg.image = UIImage(named: "heart")
+        }
+        else
+        {
+            self.heartImg.image = UIImage(named: "heartEmpty")
+        }
+    }
+    
+    func isAttensionFunc(isAtten : Double)
+    {
+        if isAtten == 1
+        {
+            self.attensionBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.NailGrayColor().CGColor
+        }
+        else
+        {
+            self.attensionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.NailRedColor().CGColor
+        }
     }
 
 }
