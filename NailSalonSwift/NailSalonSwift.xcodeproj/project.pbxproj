@@ -69,6 +69,11 @@
 		8B8100CA1AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8100C81AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib */; };
 		8B8100CC1AC7F18F00850B05 /* ZXY_NailNetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8100CB1AC7F18F00850B05 /* ZXY_NailNetAPI.swift */; };
 		8B8100CE1AC7F37100850B05 /* ZXY_ALLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8100CD1AC7F37100850B05 /* ZXY_ALLApi.swift */; };
+		8B95F4741ADCE81D00408709 /* ZXY_ImagePickCoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95F46E1ADCE81D00408709 /* ZXY_ImagePickCoCell.swift */; };
+		8B95F4751ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95F46F1ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift */; };
+		8B95F4761ADCE81D00408709 /* ZXY_ImagePickerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95F4701ADCE81D00408709 /* ZXY_ImagePickerTableVC.swift */; };
+		8B95F4771ADCE81D00408709 /* ZXY_ImgPickBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B95F4711ADCE81D00408709 /* ZXY_ImgPickBundle.bundle */; };
+		8B95F5B11ADCED1B00408709 /* ZXY_ScrollViewForImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95F5B01ADCED1B00408709 /* ZXY_ScrollViewForImages.swift */; };
 		8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */; };
 		8B9977BA1AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977B81AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld */; };
 		8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977BD1AC4ED4B00CD1713 /* Main.storyboard */; };
@@ -211,6 +216,11 @@
 		8B8100C81AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXY_ORSqureTitleCell.xib; sourceTree = "<group>"; };
 		8B8100CB1AC7F18F00850B05 /* ZXY_NailNetAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_NailNetAPI.swift; sourceTree = "<group>"; };
 		8B8100CD1AC7F37100850B05 /* ZXY_ALLApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ALLApi.swift; sourceTree = "<group>"; };
+		8B95F46E1ADCE81D00408709 /* ZXY_ImagePickCoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ImagePickCoCell.swift; sourceTree = "<group>"; };
+		8B95F46F1ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ImagePickerCollectionVC.swift; sourceTree = "<group>"; };
+		8B95F4701ADCE81D00408709 /* ZXY_ImagePickerTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ImagePickerTableVC.swift; sourceTree = "<group>"; };
+		8B95F4711ADCE81D00408709 /* ZXY_ImgPickBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZXY_ImgPickBundle.bundle; sourceTree = "<group>"; };
+		8B95F5B01ADCED1B00408709 /* ZXY_ScrollViewForImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_ScrollViewForImages.swift; path = ../ZXY_ScrollViewForImages.swift; sourceTree = "<group>"; };
 		8B9977B11AC4ED4B00CD1713 /* NailSalonSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NailSalonSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9977B51AC4ED4B00CD1713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -474,6 +484,25 @@
 			path = takePhoto;
 			sourceTree = "<group>";
 		};
+		8B95F46D1ADCE81D00408709 /* ZXY_ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				8B95F46E1ADCE81D00408709 /* ZXY_ImagePickCoCell.swift */,
+				8B95F46F1ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift */,
+				8B95F4701ADCE81D00408709 /* ZXY_ImagePickerTableVC.swift */,
+				8B95F4711ADCE81D00408709 /* ZXY_ImgPickBundle.bundle */,
+			);
+			path = ZXY_ImagePicker;
+			sourceTree = "<group>";
+		};
+		8B95F5B21ADCED6600408709 /* ZXY_ImgScroll */ = {
+			isa = PBXGroup;
+			children = (
+				8B95F5B01ADCED1B00408709 /* ZXY_ScrollViewForImages.swift */,
+			);
+			path = ZXY_ImgScroll;
+			sourceTree = "<group>";
+		};
 		8B9977A81AC4ED4B00CD1713 = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +627,8 @@
 		8BBBDBBA1ACA672C0006A94A /* ZXY_Frame */ = {
 			isa = PBXGroup;
 			children = (
+				8B95F5B21ADCED6600408709 /* ZXY_ImgScroll */,
+				8B95F46D1ADCE81D00408709 /* ZXY_ImagePicker */,
 				8BEBEF4E1AD41BE400A31A5F /* ZXY_WaitProgress */,
 				8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */,
 				8B4B4DEA1AC4FD9C001BD10B /* ZXY_LocationRelative.swift */,
@@ -760,6 +791,7 @@
 			files = (
 				8B45878E1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib in Resources */,
 				8B7B941C1AC5241300BAA520 /* takePhotoStory.storyboard in Resources */,
+				8B95F4771ADCE81D00408709 /* ZXY_ImgPickBundle.bundle in Resources */,
 				8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */,
 				8B5EE2B41AC834B700EFF3C4 /* MJRefresh.bundle in Resources */,
 				8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */,
@@ -828,15 +860,19 @@
 			files = (
 				8BCF6A291ADA43890085575D /* ZXY_TagLabelView.swift in Sources */,
 				8B8100CC1AC7F18F00850B05 /* ZXY_NailNetAPI.swift in Sources */,
+				8B95F4741ADCE81D00408709 /* ZXY_ImagePickCoCell.swift in Sources */,
+				8B95F4761ADCE81D00408709 /* ZXY_ImagePickerTableVC.swift in Sources */,
 				8B5EE2BB1AC834B700EFF3C4 /* UIView+MJExtension.m in Sources */,
 				44A205C21AD7900E009196B7 /* ZL_SSItemCell.swift in Sources */,
 				8B8100CE1AC7F37100850B05 /* ZXY_ALLApi.swift in Sources */,
 				8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */,
 				8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */,
+				8B95F5B11ADCED1B00408709 /* ZXY_ScrollViewForImages.swift in Sources */,
 				8B4B4E0A1AC50697001BD10B /* NSString+Encipher.m in Sources */,
 				8BBBDBC91ACA764F0006A94A /* ZXYOfferLastAlbum.m in Sources */,
 				8BBBDBD01ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift in Sources */,
 				8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */,
+				8B95F4751ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift in Sources */,
 				8B8100C51AC7ABD100850B05 /* ZXY_ORSqureTitleView.swift in Sources */,
 				8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */,
 				8B5EE2C91AC8381100EFF3C4 /* ZXYOriginAlbumList.m in Sources */,

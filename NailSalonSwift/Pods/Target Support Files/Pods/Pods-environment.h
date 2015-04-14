@@ -67,6 +67,12 @@
 // Please contact the author.
 // Version: 2.1.3.3.
 
+// GPUImage
+#define COCOAPODS_POD_AVAILABLE_GPUImage
+#define COCOAPODS_VERSION_MAJOR_GPUImage 0
+#define COCOAPODS_VERSION_MINOR_GPUImage 1
+#define COCOAPODS_VERSION_PATCH_GPUImage 6
+
 // UMengSocial
 #define COCOAPODS_POD_AVAILABLE_UMengSocial
 #define COCOAPODS_VERSION_MAJOR_UMengSocial 4

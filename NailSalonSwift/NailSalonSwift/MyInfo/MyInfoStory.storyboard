@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="614-tW-srL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="614-tW-srL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -211,7 +211,7 @@
         <!--Navigation Item-->
         <scene sceneID="osT-Xy-HOw">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Vhv-sG-SCZ" customClass="ZXY_LoginRegistVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVCID" hidesBottomBarWhenPushed="YES" id="Vhv-sG-SCZ" customClass="ZXY_LoginRegistVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E55-5P-BN5"/>
                         <viewControllerLayoutGuide type="bottom" id="yfO-BR-J44"/>

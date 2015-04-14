@@ -116,4 +116,12 @@ class ZXY_UserInfoDetail {
         var dictionary : Dictionary<String ,AnyObject>? = NSKeyedUnarchiver.unarchiveObjectWithData(parameter!) as Dictionary<String ,AnyObject>?
         return dictionary
     }
+    
+    func logoutUser()
+    {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(USERIDKEY)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(USERDETAILINFO)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(USERPASSKEY)
+        
+    }
 }

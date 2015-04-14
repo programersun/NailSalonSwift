@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 let _ZXY_NetInstance = ZXY_NetHelperOperate()
 class ZXY_NetHelperOperate: NSObject {
     class var sharedInstance:ZXY_NetHelperOperate
@@ -129,6 +131,26 @@ class ZXY_NetHelperOperate: NSObject {
         }
 
 
+    }
+    
+    func albumAgreeOrCollectionAndAtten(operType : ZXY_ADFPAPIType , parameter : Dictionary<String , AnyObject> , success : (currentStage : Double) -> Void , fail : (errorMessage : String) -> Void)
+    {
+        var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(operType)
+        self.startGetDataPost(stringURL, parameter: parameter, successBlock: { (returnDic) -> Void in
+            var result : Double? = returnDic["result"] as? Double ?? 0
+            if result == 1000
+            {
+                success(currentStage: result!)
+            }
+            else
+            {
+                var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result!)
+                fail(errorMessage : errorMessage)
+            }
+        }) { (error) -> Void in
+            fail(errorMessage : "网络信号不好")
+            ""
+        }
     }
     
     /**

@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol ZXY_DFPADImgContainerCellProtocol : class
+{
+    func userClickAttensionImg()
+    func userClickCollectionImg()
+    func userClickAgreeImg()
+}
+
 class ZXY_DFPADImgContainerCell: UITableViewCell {
 
-    @IBOutlet weak var contentImg : UIImageView!
+    
     @IBOutlet weak var artistAvatar : UIImageView!
     @IBOutlet weak var imgName : UILabel!
     @IBOutlet weak var artistName : UILabel!
@@ -20,7 +27,9 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
     @IBOutlet weak var starImg : UIImageView!
     @IBOutlet weak var heartLbl : UILabel!
     @IBOutlet weak var starLbl  : UILabel!
-    
+    @IBOutlet weak var imgCollection : UICollectionView!
+    var delegate : ZXY_DFPADImgContainerCellProtocol?
+    var imgS     : [AnyObject]? = []
     class func cellID() -> String
     {
         return "ZXY_DFPADImgContainerCellID"
@@ -33,9 +42,13 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         attensionBtn.layer.cornerRadius  = 4
         attensionBtn.layer.borderWidth   = 1
         attensionBtn.layer.borderColor   = UIColor.NailRedColor().CGColor
-        
         artistAvatar.layer.cornerRadius  = 22
         artistAvatar.layer.masksToBounds = true
+        var tapCollection = UITapGestureRecognizer(target: self, action: Selector("collectionImgAction:"))
+        var tapAgree      = UITapGestureRecognizer(target: self, action: Selector("agreeImgAction:"))
+        self.heartImg.addGestureRecognizer(tapAgree)
+        self.starImg.addGestureRecognizer(tapCollection)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -84,4 +97,75 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         }
     }
 
+    @IBAction func attensionAction(sender: AnyObject) {
+        if let de = delegate
+        {
+            de.userClickAttensionImg()
+        }
+    }
+    
+    func agreeImgAction(tap : UITapGestureRecognizer)
+    {
+        if let de = delegate
+        {
+            de.userClickAgreeImg()
+        }
+    }
+    
+    func collectionImgAction(tap : UITapGestureRecognizer)
+    {
+        if let de = delegate
+        {
+            de.userClickCollectionImg()
+        }
+    }
 }
+
+extension ZXY_DFPADImgContainerCell : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
+{
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var imgData = imgS![indexPath.row] as ZXY_AlbumDetailImages
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectImgID", forIndexPath: indexPath) as UICollectionViewCell
+        var img : UIImageView  = cell.viewWithTag(11111) as UIImageView
+        var imgURLString : String? =  imgData.imagePath
+        if let stringURL = imgURLString
+        {
+            var imgURL : String? = ZXY_NailNetAPI.ZXY_MainAPIImage + imgData.imagePath
+
+            img.setImageWithURL(NSURL(string: imgURL!))
+        }
+        return cell
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let images = imgS
+        {
+            return images.count
+        }
+        else
+        {
+            return 0
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(UIScreen.mainScreen().bounds.width, 266)
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        var contentOffX = scrollView.contentOffset.x
+        var currentPage = contentOffX / UIScreen.mainScreen().bounds.width
+        self.pageNum.currentPage = Int(currentPage)
+    }
+    
+}
+
+

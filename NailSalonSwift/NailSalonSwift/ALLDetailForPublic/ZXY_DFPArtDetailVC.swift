@@ -39,9 +39,17 @@ class ZXY_DFPArtDetailVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登出", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("rightBtnAction"))
         // Do any additional setup after loading the view.
         
+    }
+    
+    func rightBtnAction()
+    {
+        ZXY_UserInfoDetail.sharedInstance.logoutUser()
+        EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (object, error) -> Void in
+            
+        }, onQueue: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -226,7 +234,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
                 {
                     var imgURL = si[0] as ZXY_AlbumDetailImages
                     var stringURL = ZXY_NailNetAPI.ZXY_MainAPIImage + imgURL.imagePath
-                    imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
+                   // imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
                     
                 }
             }
@@ -247,13 +255,14 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             var isAtten      = imgCellData?.isAtten   ?? 0
             var collectNum   = imgCellData?.collectCount ?? "0"
             var agreeNum     = imgCellData?.agreeCount ?? "0"
-            
+            imgContentCell.pageNum.numberOfPages = imgCellData?.images.count ?? 1
+            imgContentCell.imgS = imgCellData?.images
             imgContentCell.isCollectionFunc(isCollection)
             imgContentCell.isAgreeFunc(isAgree)
             imgContentCell.isAttensionFunc(isAtten)
             imgContentCell.heartLbl.text = agreeNum
             imgContentCell.starLbl.text  = collectNum
-            
+            imgContentCell.delegate = self
             return imgContentCell
         case 1:
             var CellData = dataForTable?.data
@@ -369,20 +378,215 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         }
     }
     
-    @IBAction func sendAction(sender: AnyObject) {
+    @IBAction func sendAction(sender: AnyObject)
+    {
         
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+            
+        }
+        else
+        {
+            zxyW.startProgress(self.view)
+            var urlString = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADFP_ArtCommentAdd)
+            var parameter = ["user_id" : userID , "album_id" : self.artWorkID , "content" : self.commentText.text]
+            ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+                var result: Double = returnDic["result"] as Double
+                if result == 1000
+                {
+                    var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+                    var userInfo    = ZXY_UserDetailInfoUserDetailBase(dictionary: userInfoDic)
+                    var user : ZXY_UserDetailInfoData = userInfo.data as ZXY_UserDetailInfoData
+                    var commentUser = ZXY_AlbumCommentData()
+                    commentUser.nickName = user.nickName
+                    commentUser.headImage = user.headImage
+                    commentUser.userId    = ZXY_UserInfoDetail.sharedInstance.getUserID()
+                    commentUser.addTime   = "\(NSDate(timeIntervalSinceNow: 0).timeIntervalSince1970)"
+                    commentUser.content   = self?.commentText.text
+                    self?.dataforCommentArr?.insert(commentUser, atIndex: 0)
+                    self?.commentText.resignFirstResponder()
+                    self?.currentTable.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.None)
+
+                }
+                else
+                {
+                    var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                    self?.showAlertEasy("提示", messageContent: errorMessage)
+                }
+                ""
+                ""
+            }, failBlock: { [weak self](error) -> Void in
+                ""
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+                ""
+            })
+        }
+
     }
     
     func commentBtnAction()
     {
-        commentText.becomeFirstResponder()
-    }
-    @IBAction func inputAction(sender: AnyObject) {
-         println("我要评论")
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            
+            
+        }
+        else
+        {
+            commentText.becomeFirstResponder()
+        }
     }
     
 }
 
+extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol , ZXY_DFPADImgContainerCellProtocol
+{
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 1)
+        {
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            loginVC.title = "登录"
+            loginVC.delegate = self
+            loginVC.navigationItem.leftBarButtonItem?.title = "返回"
+            self.navigationController?.pushViewController(loginVC, animated: true)
+        }
+    }
     
+    
+    
+    func userLoginSuccess() {
+        self.startDownLoadUserDetailInfo()
+        
+    }
+    
+    private func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            return
+        }
+        zxyW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+            var userInfo = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+            var result = userInfo.result
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.startGetArtDetail()
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            
+            }) {[weak self] (error) -> Void in
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+        }
+        
+    }
+    
+    func userClickCollectionImg() {
+        self.operateStatusChange(ZXY_ADFPAPIType.ADFP_ArtCollection)
+    }
+    
+    func userClickAgreeImg() {
+        self.operateStatusChange(ZXY_ADFPAPIType.ADFP_ArtAgree)
+    }
+    
+    func userClickAttensionImg() {
+        self.operateStatusChange(ZXY_ADFPAPIType.ADFP_ArtAttension)
+    }
+    
+    func operateStatusChange(type : ZXY_ADFPAPIType)
+    {
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        var currentData = self.dataForTable?.data
+        if currentData == nil
+        {
+            return
+        }
+        if userID == nil
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+        }
+        var parameter : [String : AnyObject] = Dictionary<String , AnyObject>()
+        var data = self.dataForTable?.data
+        println("\(type.rawValue)")
+        switch type
+        {
+        case .ADFP_ArtAttension:
+            
+            var artistID = data?.userId
+            if artistID != nil
+            {
+                var control  = data?.isAtten == 1 ? 2 : 1
+                parameter = ["user_id" : userID! , "attention_user_id" : artistID! , "control": "\(control)"]
+                ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
+                    data?.isAtten = Double(control)
+                    self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                    ""
+                }, fail: { (errorMessage) -> Void in
+                    println(errorMessage)
+                    ""
+                })
+            }
+        case .ADFP_ArtAgree:
+            var status = data?.isAgree == 1 ? 2 : 1
+            parameter = ["user_id" : userID! , "album_id" : artWorkID , "status": status]
+            ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
+                data?.isAgree = Double(status)
+                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+            }, fail: { (errorMessage) -> Void in
+                
+            })
+        case .ADFP_ArtCollection:
+            var status = data?.isCollect == 1 ? 2 : 1
+            parameter = ["user_id" : userID! , "album_id" : artWorkID , "status": status]
+            ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
+                data?.isCollect = Double(status)
+                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                
+                }, fail: { (errorMessage) -> Void in
+                    
+            })
+        default:
+            return
+
+        }
+        
+        
+    }
+
+}
+
+
     
 

@@ -23,6 +23,7 @@ PODS:
   - Baidu-Maps-iOS-SDK (2.6.0)
   - CHTCollectionViewWaterfallLayout (0.8)
   - EaseMobSDK (2.1.3.3)
+  - GPUImage (0.1.6)
   - UMengSocial (4.2.1)
 
 DEPENDENCIES:
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - Baidu-Maps-iOS-SDK (~> 2.6)
   - CHTCollectionViewWaterfallLayout (~> 0.8)
   - EaseMobSDK (~> 2.1.3.3)
+  - GPUImage (~> 0.1)
   - UMengSocial (~> 4.2)
 
 SPEC CHECKSUMS:
@@ -37,6 +39,7 @@ SPEC CHECKSUMS:
   Baidu-Maps-iOS-SDK: 260447c2270b44470d7c0d49a7f1a154b4703973
   CHTCollectionViewWaterfallLayout: 058823cc65c9d84e059b0a85eede517550da0334
   EaseMobSDK: 90359de1dd00c72818b824005a734c7ad0ff0886
+  GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
   UMengSocial: aedae57452047daa708306f23ff21883a07cd779
 
 COCOAPODS: 0.35.0

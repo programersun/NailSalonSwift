@@ -38,3 +38,4 @@
 #import "ZXY_AlbumDetailUser.h"
 #import "ZXY_AlbumCommentData.h"
 #import "ZXY_AlbumCommentBaseComment.h"
+#import "GPUImage/GPUImage.h"

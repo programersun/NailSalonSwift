@@ -49,6 +49,11 @@ install_resource()
 }
           install_resource "Baidu-Maps-iOS-SDK/mapapi.bundle"
                     install_resource "EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle"
+                    install_resource "GPUImage/framework/Resources/lookup.png"
+                    install_resource "GPUImage/framework/Resources/lookup_amatorka.png"
+                    install_resource "GPUImage/framework/Resources/lookup_miss_etikate.png"
+                    install_resource "GPUImage/framework/Resources/lookup_soft_elegance_1.png"
+                    install_resource "GPUImage/framework/Resources/lookup_soft_elegance_2.png"
                     install_resource "UMengSocial/umeng_ios_social_sdk_4.2.1_arm64_custom/UMSocial_Sdk_4.2.1/UMSocialSDKResourcesNew.bundle"
                     install_resource "UMengSocial/umeng_ios_social_sdk_4.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI/TencentOpenApi_IOS_Bundle.bundle"
                     install_resource "UMengSocial/umeng_ios_social_sdk_4.2.1_arm64_custom/UMSocial_Sdk_4.2.1/SocialSDKXib/UMSCommentDetailController.xib"
