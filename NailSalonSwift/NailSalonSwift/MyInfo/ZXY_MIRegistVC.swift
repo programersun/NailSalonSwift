@@ -81,4 +81,29 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
     func toCheckIdVC() {
         self.performSegueWithIdentifier("toCheckIdVC", sender: nil)
     }
+    
+    func userRegist(userName: String, userPassword: String) {
+        var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_MyInfoAPIType.MI_Regist.rawValue
+        var parameter : Dictionary<String , AnyObject> = ["user_name": userName , "password": userPassword , "role": 1]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { (returnDic) -> Void in
+//            if(resultID == Double(1000))
+//            {
+//                
+//            }
+//            else
+//            {
+//                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(resultID)
+//                self?.showAlertEasy("提示", messageContent: errorString)
+//                self?.endFreshing()
+//            }
+            }) { (error) -> Void in
+                println(error)
+//                if let s = self
+//                {
+//                    s.srW.hideProgress(s.view)
+//                }
+//                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+//                ""
+        }
+    }
 }

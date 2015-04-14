@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -793,12 +794,16 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KhK-XW-esP" id="YjO-Fs-PQB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="srPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Xn3-n4-TsO">
-                                                    <rect key="frame" x="200" y="30" width="200" height="120"/>
+                                                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idCheck" translatesAutoresizingMaskIntoConstraints="NO" id="Xn3-n4-TsO">
+                                                    <rect key="frame" x="200" y="20" width="200" height="120"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="Z91-i8-MZa"/>
                                                         <constraint firstAttribute="width" constant="200" id="a1t-hU-gvS"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="GNR-7y-haa" appends="YES" id="b08-eK-VGC"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -813,8 +818,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vEN-HE-QPb" id="8zX-oR-dpE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入真是姓名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6S3-Ql-2bT">
-                                                    <rect key="frame" x="40" y="20" width="520" height="40"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入真是姓名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6S3-Ql-2bT">
+                                                    <rect key="frame" x="40" y="20" width="520" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -834,8 +839,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eOe-Lh-m6p" id="HgW-9u-J9S">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入身份证号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ijp-mm-hAJ">
-                                                    <rect key="frame" x="40" y="20" width="520" height="40"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入身份证号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ijp-mm-hAJ">
+                                                    <rect key="frame" x="40" y="20" width="520" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -917,26 +922,130 @@
                                     <constraint firstAttribute="bottom" secondItem="E7I-Vn-zNp" secondAttribute="bottom" constant="14" id="tkH-ed-b5a"/>
                                 </constraints>
                             </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-RJ-IAN" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K22-qZ-yY4">
+                                        <rect key="frame" x="40" y="430" width="520" height="120"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZc-3a-JPT">
+                                                <rect key="frame" x="10" y="8" width="63" height="63"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="DZc-3a-JPT" secondAttribute="height" multiplier="1:1" id="fby-yT-e6L"/>
+                                                </constraints>
+                                                <state key="normal" image="camera">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="cameraTouch">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cameraBtnClick:" destination="hvP-t3-B9d" eventType="touchUpInside" id="kq4-qS-dc9"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="拍照" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-mq-jBA">
+                                                <rect key="frame" x="10" y="81" width="63" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="选择相册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZT-cv-F1o">
+                                                <rect key="frame" x="448" y="81" width="80" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-1B-W5X">
+                                                <rect key="frame" x="457" y="8" width="63" height="63"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="9jW-1B-W5X" secondAttribute="height" multiplier="1:1" id="ojA-lQ-3Cu"/>
+                                                </constraints>
+                                                <state key="normal" image="registPhoto">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="registPhotoTouch">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="registPhotoBtnClick:" destination="hvP-t3-B9d" eventType="touchUpInside" id="gi1-XG-GTM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="xZT-cv-F1o" secondAttribute="bottom" constant="18" id="5bG-3n-lRM"/>
+                                            <constraint firstAttribute="trailing" secondItem="9jW-1B-W5X" secondAttribute="trailing" constant="10" id="7ZZ-OB-epZ"/>
+                                            <constraint firstItem="EKJ-mq-jBA" firstAttribute="top" secondItem="DZc-3a-JPT" secondAttribute="bottom" constant="10" id="Af5-6a-MFC"/>
+                                            <constraint firstAttribute="bottom" secondItem="xZT-cv-F1o" secondAttribute="bottom" constant="18" id="Brl-wG-rJI"/>
+                                            <constraint firstItem="9jW-1B-W5X" firstAttribute="top" secondItem="K22-qZ-yY4" secondAttribute="top" constant="8" id="M10-Nc-4hN"/>
+                                            <constraint firstItem="DZc-3a-JPT" firstAttribute="leading" secondItem="K22-qZ-yY4" secondAttribute="leading" constant="10" id="O43-VS-adK"/>
+                                            <constraint firstItem="xZT-cv-F1o" firstAttribute="centerX" secondItem="9jW-1B-W5X" secondAttribute="centerX" id="SDs-uS-WCs"/>
+                                            <constraint firstItem="DZc-3a-JPT" firstAttribute="centerX" secondItem="EKJ-mq-jBA" secondAttribute="centerX" id="X7X-uj-RFW"/>
+                                            <constraint firstAttribute="height" constant="120" id="agL-gJ-69D"/>
+                                            <constraint firstItem="xZT-cv-F1o" firstAttribute="top" secondItem="9jW-1B-W5X" secondAttribute="bottom" constant="10" id="bhr-Ef-mxj"/>
+                                            <constraint firstItem="xZT-cv-F1o" firstAttribute="top" secondItem="9jW-1B-W5X" secondAttribute="bottom" constant="10" id="dSk-oK-tfX"/>
+                                            <constraint firstAttribute="height" constant="100" id="dmm-dr-c0l"/>
+                                            <constraint firstItem="DZc-3a-JPT" firstAttribute="top" secondItem="K22-qZ-yY4" secondAttribute="top" constant="8" id="fbv-We-S9g"/>
+                                            <constraint firstItem="EKJ-mq-jBA" firstAttribute="top" secondItem="DZc-3a-JPT" secondAttribute="bottom" constant="10" id="hdt-4j-6FR"/>
+                                            <constraint firstAttribute="bottom" secondItem="EKJ-mq-jBA" secondAttribute="bottom" constant="18" id="nKa-4Z-H5I"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="dmm-dr-c0l"/>
+                                                <exclude reference="hdt-4j-6FR"/>
+                                                <exclude reference="Brl-wG-rJI"/>
+                                                <exclude reference="dSk-oK-tfX"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="K22-qZ-yY4" secondAttribute="trailing" constant="40" id="7DR-tP-xIA"/>
+                                    <constraint firstAttribute="bottom" secondItem="K22-qZ-yY4" secondAttribute="bottom" constant="50" id="msI-yj-yfI"/>
+                                    <constraint firstItem="K22-qZ-yY4" firstAttribute="leading" secondItem="iCa-RJ-IAN" secondAttribute="leading" constant="40" id="zna-07-m2C"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PRF-gZ-RCm" appends="YES" id="rSb-i5-Yb5"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NiA-io-W5T" firstAttribute="leading" secondItem="16k-qT-Hg9" secondAttribute="leading" id="D4J-Hv-KIs"/>
                             <constraint firstItem="1jw-5y-WM8" firstAttribute="top" secondItem="16k-qT-Hg9" secondAttribute="top" id="EnY-9o-QYK"/>
+                            <constraint firstItem="iCa-RJ-IAN" firstAttribute="top" secondItem="16k-qT-Hg9" secondAttribute="top" id="KhF-Fi-FdX"/>
                             <constraint firstAttribute="bottom" secondItem="NiA-io-W5T" secondAttribute="bottom" id="Xol-HY-apd"/>
                             <constraint firstAttribute="trailing" secondItem="NiA-io-W5T" secondAttribute="trailing" id="YlK-cp-DLl"/>
                             <constraint firstItem="1jw-5y-WM8" firstAttribute="leading" secondItem="16k-qT-Hg9" secondAttribute="leading" id="dBC-FT-pbD"/>
+                            <constraint firstItem="UBG-1S-kQ6" firstAttribute="top" secondItem="iCa-RJ-IAN" secondAttribute="bottom" id="fkb-Q1-E5p"/>
+                            <constraint firstAttribute="trailing" secondItem="iCa-RJ-IAN" secondAttribute="trailing" id="jBe-Qv-Kko"/>
                             <constraint firstItem="NiA-io-W5T" firstAttribute="top" secondItem="1jw-5y-WM8" secondAttribute="bottom" id="kOk-iL-woT"/>
+                            <constraint firstItem="iCa-RJ-IAN" firstAttribute="leading" secondItem="16k-qT-Hg9" secondAttribute="leading" id="nt8-gF-Bro"/>
                             <constraint firstAttribute="trailing" secondItem="1jw-5y-WM8" secondAttribute="trailing" id="oRr-Ub-YML"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kmT-o9-g8O"/>
                     <connections>
+                        <outlet property="cameraBackgroundView" destination="iCa-RJ-IAN" id="PtH-PA-iC0"/>
+                        <outlet property="cameraBtn" destination="DZc-3a-JPT" id="snF-SD-d3K"/>
                         <outlet property="checkTableView" destination="NiA-io-W5T" id="lg2-VZ-uvj"/>
+                        <outlet property="registPhotoBtn" destination="9jW-1B-W5X" id="Zkb-ES-c1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8I-lB-FH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GNR-7y-haa">
+                    <connections>
+                        <action selector="idImgViewTouch:" destination="hvP-t3-B9d" id="mKZ-D0-DtS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="PRF-gZ-RCm">
+                    <connections>
+                        <action selector="cameraBackgroundTouch:" destination="hvP-t3-B9d" id="jbK-GR-yId"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1864" y="394"/>
+            <point key="canvasLocation" x="1864" y="399"/>
         </scene>
         <!--protocolVC-->
         <scene sceneID="Gly-Hw-LY7">
@@ -1015,6 +1124,9 @@
     </scenes>
     <resources>
         <image name="backArrow" width="11" height="19"/>
+        <image name="camera" width="84" height="84"/>
+        <image name="cameraTouch" width="84" height="84"/>
+        <image name="idCheck" width="200" height="120"/>
         <image name="imBackImg" width="375" height="210"/>
         <image name="lineToSR" width="1" height="60"/>
         <image name="loginConfirmPassword" width="40" height="40"/>
@@ -1024,7 +1136,8 @@
         <image name="miSetting" width="27" height="27"/>
         <image name="mi_qq" width="38" height="38"/>
         <image name="mi_wx" width="40" height="40"/>
+        <image name="registPhoto" width="84" height="84"/>
+        <image name="registPhotoTouch" width="84" height="84"/>
         <image name="segLine" width="200" height="1"/>
-        <image name="srPhoto" width="200" height="120"/>
     </resources>
 </document>

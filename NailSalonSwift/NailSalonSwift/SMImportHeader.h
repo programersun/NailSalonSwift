@@ -15,3 +15,6 @@
 
 //星星评分
 #import "CWStarRateView.h"
+
+//图片剪裁
+#import "UIImage+Resize.h"
