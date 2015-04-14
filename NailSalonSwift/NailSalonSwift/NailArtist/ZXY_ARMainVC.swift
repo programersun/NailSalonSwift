@@ -131,6 +131,10 @@ class ZXY_ARMainVC: UIViewController {
                 self?.showAlertEasy("提示", messageContent: errorString)
                 self?.endFreshing()
             }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
         }) { [weak self](error) -> Void in
             println(error)
             if let s = self

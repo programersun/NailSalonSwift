@@ -10,9 +10,14 @@ import UIKit
 protocol SR_registTableVCProtocol: class
 {
     func toCheckIdVC() -> Void
+    func userRegist(userName: String, userPassword: String) -> Void
+    func artistRegist(userName: String, userPassword: String) -> Void
 }
 
 class SR_registTableVC: UITableViewController {
+
+    var userName : String?
+    var userPassword : String?
 
     @IBOutlet weak var registButton: UIButton!
     @IBOutlet weak var userNameText: UITextField!
@@ -69,16 +74,20 @@ class SR_registTableVC: UITableViewController {
         if isArtistRegist == true
         {
             //美甲师身份验证
+            userName = userNameText.text
+            userPassword = userPasswordText.text
+            self.delegate?.artistRegist(userName!, userPassword: userPassword!)
             self.delegate?.toCheckIdVC()
         }
         else
         {
             //用户注册
-            
+            userName = userNameText.text
+            userPassword = userPasswordText.text
+            self.delegate?.userRegist(userName!, userPassword: userPassword!)
         }
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -152,5 +161,4 @@ class SR_registTableVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

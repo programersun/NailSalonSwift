@@ -122,6 +122,7 @@
 		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
 		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
 		A440D1081ADB7C5F004252A7 /* register_help.html in Resources */ = {isa = PBXBuildFile; fileRef = A440D1071ADB7C5F004252A7 /* register_help.html */; };
+		A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */; };
 		A4817CB71AD626B300F56AF8 /* SR_artistData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB41AD626B300F56AF8 /* SR_artistData.m */; };
 		A4817CB81AD626B300F56AF8 /* SR_artistBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4817CB61AD626B300F56AF8 /* SR_artistBaseClass.m */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
@@ -293,6 +294,8 @@
 		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
 		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
 		A440D1071ADB7C5F004252A7 /* register_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = register_help.html; sourceTree = "<group>"; };
+		A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		A4817CB31AD626B300F56AF8 /* SR_artistBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistBaseClass.h; path = ../SR_artistBaseClass.h; sourceTree = "<group>"; };
 		A4817CB41AD626B300F56AF8 /* SR_artistData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_artistData.m; path = ../SR_artistData.m; sourceTree = "<group>"; };
 		A4817CB51AD626B300F56AF8 /* SR_artistData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_artistData.h; path = ../SR_artistData.h; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 		A4F6B9141AD76D4D007A1CA4 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */,
+				A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */,
 				A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */,
 				A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */,
 			);
@@ -921,6 +926,7 @@
 				8B345A3B1ADD044400D914C6 /* ZXY_ImageItemView.swift in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				8BBBDBC71ACA764F0006A94A /* ZXYOfferData.m in Sources */,
+				A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */,
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
 				8B45878A1ADB9E450012B7C4 /* ZXY_AlbumCommentData.m in Sources */,
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
