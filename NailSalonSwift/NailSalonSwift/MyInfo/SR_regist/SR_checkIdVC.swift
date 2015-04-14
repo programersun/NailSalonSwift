@@ -17,7 +17,20 @@ class SR_checkIdVC: UIViewController {
     @IBOutlet weak var registPhotoBtn: UIButton!
     
     var screenSize  = UIScreen.mainScreen().bounds
+    
+    //身份证照片
     var idImageView = UIImageView()
+    //是否上传照片
+    var postIdImage : Bool = false
+    //美甲师用户名和密码
+    var userName : String?
+    var userPassword : String?
+    
+    var realName : String?
+    var identCode : String?
+
+    //加载动画
+    let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +43,7 @@ class SR_checkIdVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -51,6 +65,45 @@ class SR_checkIdVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func  artistRegist()
+    {
+        var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_MyInfoAPIType.MI_Regist.rawValue
+        var parameter : Dictionary<String , AnyObject> = ["user_name": userName!  , "password": userPassword! , "role": 2 , "real_name": realName! , "ident_code": identCode!]
+        var imgData = NSData()
+        if postIdImage
+        {
+            imgData = UIImageJPEGRepresentation(idImageView.image, 1)
+        }
+        ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+            
+            var result: Double = returnDic["result"] as Double
+            if(result == Double(1000))
+            {
+                var userid : Double = returnDic["data"] as Double
+                ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+            }) { [weak self](error) -> Void in
+                println(error)
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                
+        }
+    }
+    
     //键盘弹出
     func keyBoardShow(noty : NSNotification)
     {
@@ -138,10 +191,12 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource{
             idImageView = idImgView
         case 1:
             cell = tableView.dequeueReusableCellWithIdentifier("check_1") as? UITableViewCell
-            var trueNameText = cell?.viewWithTag(1) as UITextField
+            var realNameText = cell?.viewWithTag(1) as UITextField
+            realName = realNameText.text
         case 2:
             cell = tableView.dequeueReusableCellWithIdentifier("check_2") as? UITableViewCell
             var idText = cell?.viewWithTag(1) as UITextField
+            identCode = idText.text
         case 3:
             cell = tableView.dequeueReusableCellWithIdentifier("check_3") as? UITableViewCell
             var button =  cell?.viewWithTag(1) as UIButton
@@ -158,6 +213,28 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource{
     //注册按钮
     func registBtnClick()
     {
+        var realNameCell : UITableViewCell? = checkTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))
+        var realNameText = realNameCell?.viewWithTag(1) as UITextField
+        realName! = realNameText.text
+        println("\(realName)")
+        var identCodeCell : UITableViewCell? = checkTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))
+        var idText = identCodeCell?.viewWithTag(1) as UITextField
+        identCode! = idText.text
+        println("\(identCode)")
+        println("\(userName)")
+        println("\(userPassword)")
+        if(realName == "")
+        {
+            self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
+            return
+        }
+        if(identCode == "")
+        {
+            self.showAlertEasy("提示", messageContent: "请输入密码")
+            return
+        }
+        self.srW.startProgress(self.view)
+        artistRegist()
         println("hello")
     }
     
@@ -225,6 +302,7 @@ extension SR_checkIdVC: UINavigationControllerDelegate,UIImagePickerControllerDe
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         var resizeImg =  UIImage(image: image, scaledToFillToSize: CGSize(width: 200, height: 120))
         idImageView.image = resizeImg
+        postIdImage = true
         println("success")
         cameraBackgroundOut()
         picker.dismissViewControllerAnimated(true, completion: { () -> Void in

@@ -11,10 +11,11 @@ protocol SR_registTableVCProtocol: class
 {
     func toCheckIdVC() -> Void
     func userRegist(userName: String, userPassword: String) -> Void
+    func artistRegist(userName: String, userPassword: String) -> Void
 }
 
 class SR_registTableVC: UITableViewController {
-    
+
     var userName : String?
     var userPassword : String?
 
@@ -73,6 +74,9 @@ class SR_registTableVC: UITableViewController {
         if isArtistRegist == true
         {
             //美甲师身份验证
+            userName = userNameText.text
+            userPassword = userPasswordText.text
+            self.delegate?.artistRegist(userName!, userPassword: userPassword!)
             self.delegate?.toCheckIdVC()
         }
         else
@@ -157,5 +161,4 @@ class SR_registTableVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

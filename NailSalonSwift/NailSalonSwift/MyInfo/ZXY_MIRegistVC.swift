@@ -10,9 +10,16 @@ import UIKit
 
 class ZXY_MIRegistVC: UIViewController {
     
+    //接受美甲师用户名和密码
+    var artistName : String?
+    var artistPassword : String?
+    
     var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     
+    //加载动画
+    let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
+
     @IBOutlet weak var registScrollView: UIScrollView!
     @IBOutlet weak var registProtocolBtn: UIButton!
     
@@ -50,7 +57,13 @@ class ZXY_MIRegistVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-
+        var segueID = segue.identifier
+        if(segueID == "toCheckIdVC")
+        {
+            var checkIdVC = segue.destinationViewController as SR_checkIdVC
+            checkIdVC.userName = artistName
+            checkIdVC.userPassword = artistPassword
+        }
     }
 
 
@@ -83,27 +96,41 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
     }
     
     func userRegist(userName: String, userPassword: String) {
+        
+        self.srW.startProgress(self.view)
+        
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_MyInfoAPIType.MI_Regist.rawValue
         var parameter : Dictionary<String , AnyObject> = ["user_name": userName , "password": userPassword , "role": 1]
-        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { (returnDic) -> Void in
-//            if(resultID == Double(1000))
-//            {
-//                
-//            }
-//            else
-//            {
-//                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(resultID)
-//                self?.showAlertEasy("提示", messageContent: errorString)
-//                self?.endFreshing()
-//            }
-            }) { (error) -> Void in
-                println(error)
-//                if let s = self
-//                {
-//                    s.srW.hideProgress(s.view)
-//                }
-//                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
-//                ""
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
+            var result: Double = returnDic["result"] as Double
+            if(result == Double(1000))
+            {
+                var userid : Double = returnDic["data"] as Double
+                ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+        }) { [weak self](error) -> Void in
+            println(error)
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+
         }
+    }
+    
+    func artistRegist(userName: String, userPassword: String) {
+        artistName = userName
+        artistPassword = userPassword
     }
 }
