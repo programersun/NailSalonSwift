@@ -13,6 +13,8 @@ protocol ZXY_DFPADImgContainerCellProtocol : class
     func userClickAttensionImg()
     func userClickCollectionImg()
     func userClickAgreeImg()
+    
+    func clickImageAtIndexPath(indexPath : NSIndexPath)
 }
 
 class ZXY_DFPADImgContainerCell: UITableViewCell {
@@ -158,6 +160,13 @@ extension ZXY_DFPADImgContainerCell : UICollectionViewDelegate , UICollectionVie
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(UIScreen.mainScreen().bounds.width, 266)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if let de = delegate
+        {
+            de.clickImageAtIndexPath(indexPath)
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

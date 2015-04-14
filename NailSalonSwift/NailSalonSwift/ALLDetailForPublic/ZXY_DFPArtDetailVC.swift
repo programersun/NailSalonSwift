@@ -581,8 +581,26 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
             return
 
         }
-        
-        
+    }
+    
+    func clickImageAtIndexPath(indexPath: NSIndexPath) {
+        var data = self.dataForTable?.data
+        var items : [ZXY_ImageItem] = []
+        if let da = data
+        {
+            var imgs = da.images
+            for (index , value) in enumerate(imgs)
+            {
+                var realImage: ZXY_AlbumDetailImages = value as ZXY_AlbumDetailImages
+                var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + realImage.imagePath
+                var item = ZXY_ImageItem(itemURL: NSURL(string: imgURL))
+                items.append(item)
+            }
+            var imgBrowser = ZXY_ImageBrowserVC()
+            imgBrowser.setPhotos(items)
+            imgBrowser.setSelectIndex(indexPath.row)
+            imgBrowser.presentShow()
+        }
     }
 
 }
