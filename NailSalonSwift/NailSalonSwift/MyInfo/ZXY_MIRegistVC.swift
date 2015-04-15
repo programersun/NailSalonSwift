@@ -17,6 +17,7 @@ class ZXY_MIRegistVC: UIViewController {
     var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     
+    @IBOutlet weak var registSegument: UISegmentedControl!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
 
@@ -43,6 +44,7 @@ class ZXY_MIRegistVC: UIViewController {
         registUserVC.tableView.frame = CGRectMake(screenWidth, 0,screenWidth, registScrollView.frame.size.height)
         self.registScrollView.addSubview(registArtistVC.tableView)
         self.registScrollView.addSubview(registUserVC.tableView)
+        registScrollView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,6 +109,11 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
+                println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+                self?.performSegueWithIdentifier("toUserInfo", sender: nil)
+                (self?.navigationController?.viewControllers.first as? ICYProfileViewController)?.startLoadInfoData()
+                self?.navigationController?.popToRootViewControllerAnimated(true)
                 
             }
             else
@@ -132,5 +139,20 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
     func artistRegist(userName: String, userPassword: String) {
         artistName = userName
         artistPassword = userPassword
+    }
+}
+extension ZXY_MIRegistVC : UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        println("1")
+        if scrollView.contentOffset.x < screenWidth
+        {
+            registSegument.selectedSegmentIndex = 0
+        }
+        else
+        {
+            registSegument.selectedSegmentIndex = 1
+        }
+
     }
 }
