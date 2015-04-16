@@ -18,3 +18,5 @@
 
 //图片剪裁
 #import "UIImage+Resize.h"
+
+#import "MBProgressHUD.h"

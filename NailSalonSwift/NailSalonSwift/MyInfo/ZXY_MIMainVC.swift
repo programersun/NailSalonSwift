@@ -17,8 +17,9 @@ class ZXY_MIMainVC: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.hidden = true
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -79,9 +80,6 @@ class ZXY_MIMainVC: UIViewController {
             loginVC.delegate = self
         }
     }
-    
-    
-
 }
 
 extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate , ZXY_LoginRegistVCProtocol
@@ -170,7 +168,6 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                     }
                 }
                 
-                
             }
             return bigCell
         }
@@ -242,7 +239,6 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     func userLoginSuccess() {
         self.startDownLoadUserDetailInfo()
     }
-    
 }
 
 extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol

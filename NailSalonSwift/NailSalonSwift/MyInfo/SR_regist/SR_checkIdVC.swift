@@ -82,6 +82,7 @@ class SR_checkIdVC: UIViewController {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                self?.performSegueWithIdentifier("toArtistInfo", sender: nil)
                 
             }
             else
@@ -159,7 +160,7 @@ class SR_checkIdVC: UIViewController {
     }
 
 }
-extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource{
+extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0
