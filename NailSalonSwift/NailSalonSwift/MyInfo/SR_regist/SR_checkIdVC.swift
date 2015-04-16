@@ -18,6 +18,8 @@ class SR_checkIdVC: UIViewController {
     
     var screenSize  = UIScreen.mainScreen().bounds
     
+    var userInfo : ZXY_UserDetailInfoData?
+    
     //身份证照片
     var idImageView = UIImageView()
     //是否上传照片
@@ -56,15 +58,23 @@ class SR_checkIdVC: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        var segueID = segue.identifier
+        if( segueID == "toUserInfo")
+        {
+            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            propertyVC.userInfo = userInfo
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+        }
     }
-    */
+
     
     func  artistRegist()
     {
@@ -82,8 +92,9 @@ class SR_checkIdVC: UIViewController {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
                 self?.performSegueWithIdentifier("toArtistInfo", sender: nil)
-                
             }
             else
             {

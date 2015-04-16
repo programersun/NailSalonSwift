@@ -14,10 +14,13 @@ class ZXY_MIRegistVC: UIViewController {
     var artistName : String?
     var artistPassword : String?
     
+    var userInfo : ZXY_UserDetailInfoData?
+    
     var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     
     @IBOutlet weak var registSegument: UISegmentedControl!
+    
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
 
@@ -27,6 +30,7 @@ class ZXY_MIRegistVC: UIViewController {
     var screenWidth = UIScreen.mainScreen().bounds.width
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         registProtocolBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
         registArtistVC.isArtistRegist = true
         registUserVC.isArtistRegist = false
@@ -66,6 +70,14 @@ class ZXY_MIRegistVC: UIViewController {
             checkIdVC.userName = artistName
             checkIdVC.userPassword = artistPassword
         }
+        
+        if( segueID == "toUserInfo")
+        {
+            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            propertyVC.userInfo = userInfo
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+        }
     }
 
 
@@ -90,6 +102,7 @@ class ZXY_MIRegistVC: UIViewController {
     @IBAction func portocolAction(sender: AnyObject) {
         self.performSegueWithIdentifier("toProtocolVC", sender: nil)
     }
+    
 }
 
 extension ZXY_MIRegistVC: SR_registTableVCProtocol {
@@ -109,11 +122,10 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
-                println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
-                println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
+                println("\(self?.userInfo)")
                 self?.performSegueWithIdentifier("toUserInfo", sender: nil)
-                (self?.navigationController?.viewControllers.first as? ICYProfileViewController)?.startLoadInfoData()
-                self?.navigationController?.popToRootViewControllerAnimated(true)
                 
             }
             else
@@ -134,6 +146,7 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
             self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
 
         }
+        self.performSegueWithIdentifier("toUserInfo", sender: nil)
     }
     
     func artistRegist(userName: String, userPassword: String) {
