@@ -13,7 +13,7 @@ protocol ZXY_DFPADImgContainerCellProtocol : class
     func userClickAttensionImg()
     func userClickCollectionImg()
     func userClickAgreeImg()
-    
+    func userClickAvaterImg()
     func clickImageAtIndexPath(indexPath : NSIndexPath)
 }
 
@@ -50,6 +50,9 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         var tapAgree      = UITapGestureRecognizer(target: self, action: Selector("agreeImgAction:"))
         self.heartImg.addGestureRecognizer(tapAgree)
         self.starImg.addGestureRecognizer(tapCollection)
+        
+        var tapDetailArtist = UITapGestureRecognizer(target: self, action: "detialAritstImgClick")
+        artistAvatar.addGestureRecognizer(tapDetailArtist)
         
     }
 
@@ -119,6 +122,14 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         if let de = delegate
         {
             de.userClickCollectionImg()
+        }
+    }
+    
+    func detialAritstImgClick()
+    {
+        if let de = delegate
+        {
+            de.userClickAvaterImg()
         }
     }
 }

@@ -523,6 +523,12 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
         self.operateStatusChange(ZXY_ADFPAPIType.ADFP_ArtAttension)
     }
     
+    func userClickAvaterImg() {
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var detailArtist = storyboard?.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        self.navigationController?.pushViewController(detailArtist, animated: true)
+    }
+    
     func operateStatusChange(type : ZXY_ADFPAPIType)
     {
         var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()

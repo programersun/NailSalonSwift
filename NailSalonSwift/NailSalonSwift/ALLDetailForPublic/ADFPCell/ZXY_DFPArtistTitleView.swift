@@ -10,6 +10,10 @@ import UIKit
 
 class ZXY_DFPArtistTitleView: UICollectionReusableView {
 
+    class func cellID() -> String
+    {
+        return "ZXY_DFPArtistTitleViewID"
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
