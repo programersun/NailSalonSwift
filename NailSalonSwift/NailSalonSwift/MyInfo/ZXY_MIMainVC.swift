@@ -18,9 +18,14 @@ class ZXY_MIMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        startDownLoadUserDetailInfo()
         self.navigationController?.navigationBar.hidden = true
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadUserData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,8 +54,8 @@ class ZXY_MIMainVC: UIViewController {
             if(result == 1000)
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
-                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
-                println("\(self?.userInfo)")
+                self?.userInfo = self?.dataForShow?.data
+                println("\(self?.userInfo!.nickName)")
                 self?.reloadUserData()
             }
             else
@@ -71,7 +76,6 @@ class ZXY_MIMainVC: UIViewController {
     func reloadUserData()
     {
         currentTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-        
     }
     
     // MARK: - Navigation
@@ -88,7 +92,7 @@ class ZXY_MIMainVC: UIViewController {
         {
             var propertyVC = segue.destinationViewController as ICYProfileViewController
             propertyVC.userInfo = userInfo
-            println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
+            println("\(userInfo)")
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
         }
     }
@@ -150,7 +154,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             }
             else
             {
-                //bigCell.userLoginMethod()
+                bigCell.userLoginMethod()
                 var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
                 if let user = userInfoDic
                 {
@@ -268,6 +272,6 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     }
     
     func headImgTouch() {
-        self.performSegueWithIdentifier("toUserInfo", sender: nil)
+            self.performSegueWithIdentifier("toUserInfo", sender: nil)
     }
 }

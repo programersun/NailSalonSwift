@@ -82,8 +82,24 @@ class ZXY_NetHelperOperate: NSObject {
 
     }
     
-    func startPostImg(urlSring : String , parameter : Dictionary<String , AnyObject>? ,imgData: [NSData] , fileKey: String , success:((returnDic : Dictionary<String , AnyObject>) -> Void)? , failure:((failError : NSError) -> Void)?)
+    func startPostImg(urlSring : String , parameter : Dictionary<String , AnyObject>? ,imgData: [NSData]? , fileKey: String , success:((returnDic : Dictionary<String , AnyObject>) -> Void)? , failure:((failError : NSError) -> Void)?)
     {
+        if imgData == nil
+        {
+            self.startGetDataPost(urlSring, parameter: parameter, successBlock: { (returnDic) -> Void in
+                if(success != nil)
+                {
+                    success!(returnDic: returnDic)
+                }
+            }, failBlock: { (error) -> Void in
+                
+                if(failure != nil)
+                {
+                    failure!(failError: error)
+                }
+            })
+            return
+        }
         var afnet = AFHTTPRequestOperationManager()
         var ser   = AFHTTPRequestSerializer()
         ser.timeoutInterval = 30
@@ -108,7 +124,7 @@ class ZXY_NetHelperOperate: NSObject {
         }
         afnet.POST(urlSring, parameters: sendParameter, constructingBodyWithBlock: { (formData) -> Void in
             
-            imgData.map({
+            imgData?.map({
                 formData.appendPartWithFileData($0, name: fileKey, fileName: "tiancailcy.jpg", mimeType: "image/jpeg")
             })
             return

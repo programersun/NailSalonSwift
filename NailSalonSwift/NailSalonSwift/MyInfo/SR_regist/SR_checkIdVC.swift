@@ -19,6 +19,7 @@ class SR_checkIdVC: UIViewController {
     var screenSize  = UIScreen.mainScreen().bounds
     
     var userInfo : ZXY_UserDetailInfoData?
+    private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     
     //身份证照片
     var idImageView = UIImageView()
@@ -66,7 +67,7 @@ class SR_checkIdVC: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         var segueID = segue.identifier
-        if( segueID == "toUserInfo")
+        if( segueID == "toArtistInfo")
         {
             var propertyVC = segue.destinationViewController as ICYProfileViewController
             propertyVC.userInfo = userInfo
@@ -92,9 +93,7 @@ class SR_checkIdVC: UIViewController {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
-                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
-                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
-                self?.performSegueWithIdentifier("toArtistInfo", sender: nil)
+                self?.startDownLoadUserDetailInfo()
             }
             else
             {
@@ -114,6 +113,46 @@ class SR_checkIdVC: UIViewController {
                 self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
                 
         }
+    }
+    
+    func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            return
+        }
+        srW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+            var result = self?.dataForShow?.result
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.userInfo = self?.dataForShow?.data
+                println("\(self?.userInfo!)")
+                self?.performSegueWithIdentifier("toArtistInfo", sender: nil)
+                //                self?.reloadUserData()
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            
+            }) {[weak self] (error) -> Void in
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+        }
+        
     }
     
     //键盘弹出

@@ -24,7 +24,7 @@ class SR_registTableVC: UITableViewController {
     @IBOutlet weak var userPasswordText: UITextField!
     @IBOutlet weak var userConfirmPasswordText: UITextField!
     
-    var isArtistRegist: Bool? = true
+    var isArtistRegist: Bool?
     
     weak var delegate: SR_registTableVCProtocol?
     
@@ -53,23 +53,23 @@ class SR_registTableVC: UITableViewController {
     
     @IBAction func registBtnClick(sender: AnyObject) {
         self.view.endEditing(true)
-//        if(self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 11)
-//        {
-//            self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
-//            return
-//        }
-//        
-//        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0)
-//        {
-//            self.showAlertEasy("提示", messageContent: "请输入密码")
-//            return
-//        }
-//        
-//        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != self.userConfirmPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-//        {
-//            self.showAlertEasy("提示", messageContent: "两次密码输入不一致")
-//            return
-//        }
+        if(self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 11)
+        {
+            self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
+            return
+        }
+        
+        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0)
+        {
+            self.showAlertEasy("提示", messageContent: "请输入密码")
+            return
+        }
+        
+        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != self.userConfirmPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        {
+            self.showAlertEasy("提示", messageContent: "两次密码输入不一致")
+            return
+        }
         
         if isArtistRegist == true
         {
@@ -161,4 +161,13 @@ class SR_registTableVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+extension SR_registTableVC: ZXY_MIRegistVCProtocol
+{
+    func userRegist(isArtist: Bool) {
+        isArtistRegist = isArtist
+    }
+    func artistRegist(isArtist: Bool) {
+        isArtistRegist = isArtist
+    }
 }

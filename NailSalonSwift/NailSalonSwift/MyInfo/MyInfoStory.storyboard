@@ -91,9 +91,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7sT-Te-iMl">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="headImg" translatesAutoresizingMaskIntoConstraints="NO" id="7sT-Te-iMl">
                                                     <rect key="frame" x="20" y="133" width="70" height="70"/>
-                                                    <color key="backgroundColor" red="1" green="0.39215686919999998" blue="0.4313725531" alpha="1" colorSpace="calibratedRGB"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="JE0-C1-Esz"/>
@@ -1185,7 +1184,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fSh-03-KsQ">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImg" translatesAutoresizingMaskIntoConstraints="NO" id="fSh-03-KsQ">
                                             <rect key="frame" x="548" y="8" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="I4I-Vw-6kC"/>
@@ -1216,7 +1215,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlM-eS-KKG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlM-eS-KKG">
                                             <rect key="frame" x="547" y="13" width="38" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1225,6 +1224,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="oN1-5u-6C3" firstAttribute="leading" secondItem="wPC-gn-G62" secondAttribute="leading" constant="16" id="7DS-Rv-tuf"/>
+                                        <constraint firstItem="UlM-eS-KKG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oN1-5u-6C3" secondAttribute="trailing" constant="20" id="8UD-LU-hVN"/>
                                         <constraint firstAttribute="trailing" secondItem="UlM-eS-KKG" secondAttribute="trailing" constant="16" id="GgN-sC-j94"/>
                                         <constraint firstAttribute="centerY" secondItem="oN1-5u-6C3" secondAttribute="centerY" id="eyz-Vi-0lW"/>
                                         <constraint firstAttribute="centerY" secondItem="UlM-eS-KKG" secondAttribute="centerY" id="hhH-42-6zR"/>
@@ -1389,7 +1389,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
-                        <outlet property="currentTable" destination="KUs-Gd-ARX" id="eTf-Fn-bYf"/>
+                        <outlet property="currentTable" destination="KUs-Gd-ARX" id="iKM-PQ-Mq6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8y-EP-NQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1401,6 +1401,7 @@
         <image name="backArrow" width="11" height="19"/>
         <image name="camera" width="84" height="84"/>
         <image name="cameraTouch" width="84" height="84"/>
+        <image name="headImg" width="78" height="91"/>
         <image name="idCheck" width="200" height="120"/>
         <image name="imBackImg" width="375" height="210"/>
         <image name="lineToSR" width="1" height="60"/>
