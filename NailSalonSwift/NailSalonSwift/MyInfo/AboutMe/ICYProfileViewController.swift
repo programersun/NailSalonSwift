@@ -11,14 +11,12 @@ import UIKit
 class ICYProfileViewController: UITableViewController {
     private var sexFlg = 3
     var userInfo: ZXY_UserDetailInfoData!
+    private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     var userInfoValue : Dictionary<String , AnyObject?>! = Dictionary<String , AnyObject?>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        startLoadInfoData()
-        
-//        userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
+        userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
         
     }
 
@@ -57,7 +55,31 @@ class ICYProfileViewController: UITableViewController {
                 cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileAvatarCell.identifier) as UITableViewCell
                 let cell = cell as ICYProfileAvatarCell
                 cell.icyMainLabel.text = "头像"
-                cell.imagePath = (userInfoValue["userProfile"]? as String).toAbsoluteImagePath()
+                cell.icyImageView.layer.cornerRadius = CGRectGetWidth(cell.icyImageView.bounds) / 2
+                cell.icyImageView.layer.masksToBounds = true
+                if let headImg = userInfoValue["userProfile"] as? String
+                {
+                    cell.imagePath = headImg.toAbsoluteImagePath()
+                }
+                else
+                {
+                    var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+                    if let user = userInfoDic
+                    {
+                        self.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
+                        var userData = self.dataForShow?.data
+                        var headImg  = userData?.headImage?
+                        if let hI = headImg
+                        {
+                            var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + hI
+                            if hI.hasPrefix("http")
+                            {
+                                imgURL = hI
+                            }
+                            cell.imagePath = imgURL
+                        }
+                    }
+                }
             case 1:
                 cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
                 let cell = cell as ICYProfileCell
@@ -78,17 +100,36 @@ class ICYProfileViewController: UITableViewController {
             let cell = cell as ICYProfileCell
             switch indexPath.row {
             case 0:
+                
                 cell.icyMainLabel.text = "注册电话"
-                var telString   = userInfoValue["userTel"]? as String
-                cell.icyDetailLabel.text = telString.checkNull()
+                if let telString = userInfoValue["userTel"] as? String
+                {
+                    cell.icyDetailLabel.text = telString.checkNull()
+                }
+                else
+                {
+                    cell.icyDetailLabel.text = ""
+                }
             case 1:
                 cell.icyMainLabel.text = "真实姓名"
-                var realNameString   = userInfoValue["userRealName"]? as String
-                cell.icyDetailLabel.text = realNameString.checkNull()
+                if let realNameString  = userInfoValue["userRealName"] as? String
+                {
+                    cell.icyDetailLabel.text = realNameString.checkNull()
+                }
+                else
+                {
+                    cell.icyDetailLabel.text = ""
+                }
             case 2:
                 cell.icyMainLabel.text = "常用地址"
-                var address   = userInfoValue["userAddr"]? as String
-                cell.icyDetailLabel.text = address.checkNull()
+                if let address = userInfoValue["userAddr"] as? String
+                {
+                    cell.icyDetailLabel.text = address.checkNull()
+                }
+                else
+                {
+                    cell.icyDetailLabel.text = ""
+                }
             default:
                 break
             }
@@ -107,18 +148,18 @@ class ICYProfileViewController: UITableViewController {
         }
     }
 
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var section = indexPath.section
-//        var row     = indexPath.row
-//        var story   = UIStoryboard(name: "ArtistDetailStoryBoard", bundle: nil)
-//        var vc      = story.instantiateViewControllerWithIdentifier("changeInfoID") as ZXY_DateChangeInfoVC
-//        vc.delegate = self
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var section = indexPath.section
+        var row     = indexPath.row
+        var story   = UIStoryboard(name: "MyInfoStory", bundle: nil)
+        var vc      = story.instantiateViewControllerWithIdentifier("changeInfoID") as ZXY_DateChangeInfoVC
+        vc.delegate = self
 //        if(section == 0)
 //        {
 //            switch row
 //            {
 //            case 0:
-//                self.selectProfileFunction()
+////                self.selectProfileFunction()
 //                return
 //            case 1 :
 //                vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"]?)
@@ -143,9 +184,9 @@ class ICYProfileViewController: UITableViewController {
 //                return
 //            }
 //        }
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-//    
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 //    func selectProfileFunction()
 //    {
 //        var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
@@ -201,8 +242,8 @@ class ICYProfileViewController: UITableViewController {
 
 }
 
-extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePickerControllerDelegate
-//    , ZXY_ImagePickerDelegate , ZXY_DateChangeInfoVCDelegate, ZXY_PictureTakeDelegate
+extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePickerControllerDelegate, ZXY_DateChangeInfoVCDelegate
+//    , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate
 {
     func afterChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
@@ -332,8 +373,10 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
             self?.showAlertEasy("提示", messageContent: "网络状况不佳，请稍后尝试")
             return
         }
-        
-        
     }
 
+    @IBAction func backAction(sender: AnyObject)
+    {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
 }

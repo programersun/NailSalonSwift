@@ -13,6 +13,9 @@ class ZXY_MIMainVC: UIViewController {
     @IBOutlet weak var currentTable: UITableView!
     private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
+    
+    var userInfo: ZXY_UserDetailInfoData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +49,8 @@ class ZXY_MIMainVC: UIViewController {
             if(result == 1000)
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
+                println("\(self?.userInfo)")
                 self?.reloadUserData()
             }
             else
@@ -78,6 +83,13 @@ class ZXY_MIMainVC: UIViewController {
         {
             var loginVC = segue.destinationViewController as ZXY_LoginRegistVC
             loginVC.delegate = self
+        }
+        if( segueID == "toUserInfo")
+        {
+            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            propertyVC.userInfo = userInfo
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
+            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
         }
     }
 }
@@ -155,6 +167,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                         bigCell.userAvatar.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "imgHolder"))
                     }
                     bigCell.nameLbl.text = userData?.nickName
+                    bigCell.isArtistLbl.text = "美甲师"
                     var role = userData?.role? ?? "1"
                     if role == "2"
                     {
@@ -248,6 +261,13 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     }
     
     func settingBtnClick() {
-        
+        ZXY_UserInfoDetail.sharedInstance.logoutUser()
+        EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (object, error) -> Void in
+            
+        }, onQueue: nil)
+    }
+    
+    func headImgTouch() {
+        self.performSegueWithIdentifier("toUserInfo", sender: nil)
     }
 }

@@ -12,6 +12,7 @@ protocol ZXY_MIMainVCellProtocol : class
 {
     func loginBtnClick() -> Void
     func settingBtnClick() -> Void
+    func headImgTouch() -> Void
 }
 
 class ZXY_MIMainVCell: UITableViewCell {
@@ -23,11 +24,13 @@ class ZXY_MIMainVCell: UITableViewCell {
     
     @IBOutlet weak var isLogin: UILabel!
     
-    
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var settingBtn: UIButton!
     
     weak var delegate : ZXY_MIMainVCellProtocol?
+    var heahTap : UITapGestureRecognizer?
+    
+    
     class func cellID() -> String
     {
         return "ZXY_MIMainVCellID"
@@ -42,6 +45,9 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isLogin.layer.masksToBounds = true
         var tap = UITapGestureRecognizer(target: self, action: Selector("userTapLoginOrRegist"))
         isLogin.addGestureRecognizer(tap)
+        
+        var tapAvatar = UITapGestureRecognizer(target: self, action: "tapAvatarImage")
+        userAvatar.addGestureRecognizer(tapAvatar)
         userAvatar.layer.cornerRadius = CGRectGetWidth(userAvatar.bounds) / 2
         userAvatar.layer.masksToBounds  = true
         // Initialization code
@@ -72,6 +78,14 @@ class ZXY_MIMainVCell: UITableViewCell {
         if let p = delegate
         {
             p.loginBtnClick()
+        }
+    }
+    
+    func tapAvatarImage()
+    {
+        if let p = delegate
+        {
+            p.headImgTouch()
         }
     }
     
