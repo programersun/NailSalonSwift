@@ -535,10 +535,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLu-Gx-VIO">
-                                        <rect key="frame" x="0.0" y="182" width="600" height="29"/>
+                                        <rect key="frame" x="0.0" y="175" width="600" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="sj7-ac-Lc7"/>
+                                            <constraint firstAttribute="height" constant="35" id="sj7-ac-Lc7"/>
                                         </constraints>
                                         <segments>
                                             <segment title="图集"/>
@@ -582,11 +582,11 @@
                         <outlet property="contentScroll" destination="L79-EX-JMI" id="FId-fu-48w"/>
                         <outlet property="distanceLbl" destination="USN-TR-3av" id="YhV-OJ-3Q4"/>
                         <outlet property="evalueateView" destination="OF1-CF-10k" id="sdV-u0-gZe"/>
+                        <outlet property="filterSeg" destination="bLu-Gx-VIO" id="Uv3-VH-Bmg"/>
                         <outlet property="headerV" destination="tl0-VI-ioJ" id="6QM-ue-n03"/>
                         <outlet property="isAristLbl" destination="wKD-Fa-A4T" id="vJU-XN-RfS"/>
                         <outlet property="isArtistImg" destination="dy3-le-LCW" id="MOK-Hn-KHt"/>
                         <outlet property="toTopDistance" destination="1EN-Wb-6Sw" id="Bg9-0M-7bP"/>
-                        <outlet property="typeSegment" destination="bLu-Gx-VIO" id="Vce-N7-sYV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06f-d7-ejF" userLabel="First Responder" sceneMemberID="firstResponder"/>

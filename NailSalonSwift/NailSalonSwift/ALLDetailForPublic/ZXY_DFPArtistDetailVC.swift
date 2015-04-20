@@ -26,10 +26,13 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     @IBOutlet weak var distanceLbl: UILabel!
     
-    @IBOutlet weak var typeSegment: UISegmentedControl!
+    @IBOutlet weak var filterSeg: UISegmentedControl!
     
     @IBOutlet weak var headerV: UIView!
     
+    var isUp = true
+    var previousYForCollect : CGFloat = 0
+    var previousYForTable   : CGFloat = 0
     var firstCollectionVC : ZXY_DFPArtistCollectionVC!
     var secontTableVC     : ZXY_DFPArtistTableVC!
     
@@ -39,7 +42,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         super.viewDidLoad()
         
         contentScroll.contentSize.width = 2 * screenSize.width
-        
+        self.startInitSeg()
         // Do any additional setup after loading the view.
     }
     
@@ -49,6 +52,24 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         self.startInitSecond()
     }
 
+    func startInitSeg()
+    {
+        filterSeg.selectedSegmentIndex = 0
+        //filterSeg.frame = CGRectMake(0, filterSeg.frame.origin.y, filterSeg.frame.size.width, filterSeg.frame.size.height)
+        filterSeg.setTitle("图集", forSegmentAtIndex: 0)
+        filterSeg.setTitle("评价", forSegmentAtIndex: 1)
+        filterSeg.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailRedColor()], forState: UIControlState.Selected)
+        filterSeg.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailRedColor()], forState: UIControlState.Normal)
+        
+        filterSeg.setDividerImage(UIImage(named: "verticalGray"), forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
+        
+        filterSeg.setDividerImage(UIImage(named: "verticalGray"), forLeftSegmentState: UIControlState.Selected, rightSegmentState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
+        
+        filterSeg.setBackgroundImage(UIImage(named: "segBarSelect"), forState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
+        filterSeg.setBackgroundImage(UIImage(named: "segBarNoSelect"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
+    }
+
+    
     func startInitFirst()
     {
         if firstCollectionVC == nil
@@ -104,28 +125,61 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     
     func collectionDidScroll(contentOffSet: CGPoint) {
         var y = contentOffSet.y
+        if y > previousYForCollect
+        {
+            isUp = true
+        }
+        else
+        {
+            isUp = false
+        }
+        previousYForCollect = y
         self.titleHeaderViewScroll(y)
     }
     
     func tableDidScroll(contentOffSet: CGPoint) {
         var y = contentOffSet.y
+        if y > previousYForTable
+        {
+            isUp = true
+        }
+        else
+        {
+            isUp = false
+        }
+        previousYForTable = y
+
+        //firstCollectionVC.currentCollection.contentOffset.y = y
         self.titleHeaderViewScroll(y)
     }
     
     func titleHeaderViewScroll(y : CGFloat)
     {
-        if(toTopDistance.constant < -182)
+        if(toTopDistance.constant <= -110 && isUp)
         {
-            toTopDistance.constant = -182
+            toTopDistance.constant = -110
             return
         }
         
-//        if(toTopDistance.constant > 0)
-//        {
-//            toTopDistance.constant = 0
-//            return
-//        }
-        toTopDistance.constant = -y
+        if(toTopDistance.constant >= 0 && !isUp)
+        {
+            toTopDistance.constant = 0
+        }
+        
+        if !isUp
+        {
+            if y <= 110
+            {
+                toTopDistance.constant = -y
+            }
+        }
+        else
+        {
+            toTopDistance.constant = -y
+        }
+        
+        
+        
     }
     
 }
