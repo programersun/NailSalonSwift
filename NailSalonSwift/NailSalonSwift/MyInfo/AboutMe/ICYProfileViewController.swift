@@ -16,6 +16,8 @@ class ICYProfileViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("\(userInfo)")
         userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
         
     }
@@ -84,7 +86,7 @@ class ICYProfileViewController: UITableViewController {
                 cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
                 let cell = cell as ICYProfileCell
                 cell.icyMainLabel.text = "昵称"
-                cell.icyDetailLabel?.text = userInfoValue["userName"]? as? String
+                cell.icyDetailLabel.text = userInfoValue["userName"]? as? String
             case 2:
                 cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
                 let cell = cell as ICYProfileCell
@@ -154,46 +156,55 @@ class ICYProfileViewController: UITableViewController {
         var story   = UIStoryboard(name: "MyInfoStory", bundle: nil)
         var vc      = story.instantiateViewControllerWithIdentifier("changeInfoID") as ZXY_DateChangeInfoVC
         vc.delegate = self
-//        if(section == 0)
-//        {
-//            switch row
-//            {
-//            case 0:
-////                self.selectProfileFunction()
-//                return
-//            case 1 :
-//                vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"]?)
-//            case 2 :
+        if(section == 0)
+        {
+            switch row
+            {
+            case 0:
+//                self.selectProfileFunction()
+                return
+            case 1 :
+                vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"]?)
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 2 :
+                var changeSexAler = UIAlertView()
+                changeSexAler.title = "提示"
+                changeSexAler.addButtonWithTitle("男")
+                changeSexAler.addButtonWithTitle("女")
+                changeSexAler.delegate = self
+                changeSexAler.show()
+                
 //                vc.setInitValueAndTitle("userSex", initValue: userInfoValue["userSex"]?)
 //                vc.setIsInput(false)
-//            
-//                
-//            default:
-//                return
-//            }
-//        }
-//        else
-//        {
-//            switch row
-//            {
-//            case 1 :
-//                vc.setInitValueAndTitle("userRealName", initValue: userInfoValue["userRealName"]?)
-//            case 2 :
-//                vc.setInitValueAndTitle("userAddr", initValue: userInfoValue["userAddr"]?)
-//            default :
-//                return
-//            }
-//        }
-        self.navigationController?.pushViewController(vc, animated: true)
+
+            default:
+                return
+            }
+        }
+        else
+        {
+            switch row
+            {
+            case 0:
+                vc.setInitValueAndTitle("userTel", initValue: userInfoValue["userTel"]?)
+            case 1 :
+                vc.setInitValueAndTitle("userRealName", initValue: userInfoValue["userRealName"]?)
+            case 2 :
+                vc.setInitValueAndTitle("userAddr", initValue: userInfoValue["userAddr"]?)
+            default :
+                return
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
-//    func selectProfileFunction()
-//    {
+    func selectProfileFunction()
+    {
 //        var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
 //        var vc    = story.instantiateInitialViewController() as ZXY_PictureTakeVC
 //        vc.delegate = self
 //        vc.presentView()
-//    }
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -252,7 +263,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
     }
     
     func changeSex(sexFlag: Int) {
-       // userInfoValue.extend(sendKey : "\(sexFlg)")
+//        userInfoValue.extend(sendKey : "\(sexFlg)")
     }
     
     func clickChoosePictureBtn() {
@@ -379,4 +390,30 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
     {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+}
+
+extension ICYProfileViewController: UIAlertViewDelegate {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        var sex : String?
+        switch buttonIndex
+        {
+        case 0:
+            sex = "1"
+        case 1:
+            sex = "2"
+        default:
+            return
+            
+        }
+        let sexString = userInfoValue["userSex"] as? String
+        if  sexString != sex
+        {
+            userInfoValue.extend(["userSex": sex])
+            println("\(sex)")
+            println("\(userInfoValue)")
+            startLoadInfoData()
+        }
+        self.tableView.reloadData()
+    }
+    
 }

@@ -133,7 +133,6 @@
 		A440D1081ADB7C5F004252A7 /* register_help.html in Resources */ = {isa = PBXBuildFile; fileRef = A440D1071ADB7C5F004252A7 /* register_help.html */; };
 		A44D4CAC1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D4CAB1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift */; };
 		A45317071ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */; };
-		A45317091ADF771300DD500B /* ZXY_ChangeUserSexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45317081ADF771300DD500B /* ZXY_ChangeUserSexCell.swift */; };
 		A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */; };
 		A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */; };
 		A4E211481ADE000900A97CA1 /* ICYProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */; };
@@ -325,7 +324,6 @@
 		A440D1071ADB7C5F004252A7 /* register_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = register_help.html; sourceTree = "<group>"; };
 		A44D4CAB1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DateChangeInfoVC.swift; sourceTree = "<group>"; };
 		A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ChangeDateInfoCell.swift; sourceTree = "<group>"; };
-		A45317081ADF771300DD500B /* ZXY_ChangeUserSexCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ChangeUserSexCell.swift; sourceTree = "<group>"; };
 		A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileAvatarCell.swift; sourceTree = "<group>"; };
@@ -761,7 +759,6 @@
 		A4E211401ADE000900A97CA1 /* AboutMe */ = {
 			isa = PBXGroup;
 			children = (
-				A45317081ADF771300DD500B /* ZXY_ChangeUserSexCell.swift */,
 				A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */,
 				A44D4CAB1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift */,
 				A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */,
@@ -1054,7 +1051,6 @@
 				8B099B261ADD663700446F2C /* ZXY_DFPArtistTableCell.swift in Sources */,
 				8B5EE2CC1AC839C600EFF3C4 /* ZXY_ErrorMessageHandle.swift in Sources */,
 				8B5EE2CA1AC8381100EFF3C4 /* ZXYOriginAlbumUser.m in Sources */,
-				A45317091ADF771300DD500B /* ZXY_ChangeUserSexCell.swift in Sources */,
 				8B1910041ADD5DA00087AECF /* ZXY_DFPArtistDetailVC.swift in Sources */,
 				8B45878D1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift in Sources */,
 				8B8100C91AC7B59200850B05 /* ZXY_ORSqureTitleCell.swift in Sources */,

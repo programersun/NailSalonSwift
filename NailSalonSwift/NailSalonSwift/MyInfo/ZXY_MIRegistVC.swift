@@ -7,6 +7,11 @@
 //
 
 import UIKit
+protocol ZXY_MIRegistVCProtocol: class
+{
+    func userRegist(isUserRegist: Bool) -> Void
+    func artistRegist(isArtistRegist: Bool) -> Void
+}
 
 class ZXY_MIRegistVC: UIViewController {
     
@@ -15,6 +20,9 @@ class ZXY_MIRegistVC: UIViewController {
     var artistPassword : String?
     
     var userInfo : ZXY_UserDetailInfoData?
+    private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
+    
+    weak var delegate : ZXY_MIRegistVCProtocol?
     
     var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
@@ -36,6 +44,7 @@ class ZXY_MIRegistVC: UIViewController {
         registUserVC.isArtistRegist = false
         registArtistVC.delegate = self
         registUserVC.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -91,10 +100,12 @@ class ZXY_MIRegistVC: UIViewController {
         var seg = sender as UISegmentedControl
         if seg.selectedSegmentIndex == 0
         {
+            self.delegate?.artistRegist(true)
             registScrollView.setContentOffset(CGPointMake(0, registScrollView.contentOffset.y), animated: true)
         }
         else
         {
+            self.delegate?.userRegist(false)
             registScrollView.setContentOffset(CGPointMake(screenWidth, registScrollView.contentOffset.y), animated: true)
         }
     }
@@ -103,6 +114,51 @@ class ZXY_MIRegistVC: UIViewController {
         self.performSegueWithIdentifier("toProtocolVC", sender: nil)
     }
     
+    func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            return
+        }
+        srW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+            var result = self?.dataForShow?.result
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                self?.userInfo = self?.dataForShow?.data
+                println("\(self?.userInfo!)")
+                self?.performSegueWithIdentifier("toUserInfo", sender: nil)
+//                self?.reloadUserData()
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            
+            }) {[weak self] (error) -> Void in
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+        }
+        
+    }
+//    func reloadUserData()
+//    {
+//        currentTable.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+//        
+//    }
+//    
 }
 
 extension ZXY_MIRegistVC: SR_registTableVCProtocol {
@@ -122,11 +178,7 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
             {
                 var userid : Double = returnDic["data"] as Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
-                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
-                self?.userInfo = ZXY_UserDetailInfoData(dictionary: returnDic)
-                println("\(self?.userInfo)")
-                self?.performSegueWithIdentifier("toUserInfo", sender: nil)
-                
+                self?.startDownLoadUserDetailInfo()
             }
             else
             {
@@ -146,7 +198,7 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
             self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
 
         }
-        self.performSegueWithIdentifier("toUserInfo", sender: nil)
+        //self.performSegueWithIdentifier("toUserInfo", sender: nil)
     }
     
     func artistRegist(userName: String, userPassword: String) {
@@ -161,10 +213,12 @@ extension ZXY_MIRegistVC : UIScrollViewDelegate {
         if scrollView.contentOffset.x < screenWidth
         {
             registSegument.selectedSegmentIndex = 0
+            self.delegate?.artistRegist(true)
         }
         else
         {
             registSegument.selectedSegmentIndex = 1
+            self.delegate?.userRegist(false)
         }
 
     }

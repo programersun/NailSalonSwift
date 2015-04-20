@@ -182,6 +182,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func registAction(sender: AnyObject)
     {
+        self.view.endEditing(true)
         self.performSegueWithIdentifier("toRegistVC", sender: nil)
     }
     

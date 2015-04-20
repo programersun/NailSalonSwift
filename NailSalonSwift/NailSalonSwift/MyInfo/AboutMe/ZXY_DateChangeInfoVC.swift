@@ -17,6 +17,8 @@ import UIKit
 
 class ZXY_DateChangeInfoVC: UIViewController {
 
+
+    
     @IBOutlet weak var currentTable: UITableView!
     private var infoText : UITextField?
     private var initTitle : String!
@@ -63,9 +65,6 @@ class ZXY_DateChangeInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "填写信息"
-//        self.setNaviBarRightImage("rightSimple")
-//        self.setNaviBarLeftImage("backArrow")
         currentTable.tableFooterView = UIView(frame: CGRectZero)
         // Do any additional setup after loading the view.
     }
@@ -128,7 +127,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
     @IBAction func doneAction(sender: AnyObject)
     {
         println("Hello")
-//        rightNaviButtonAction()
+        rightNaviButtonAction()
     }
     
     
@@ -137,8 +136,6 @@ class ZXY_DateChangeInfoVC: UIViewController {
 extension ZXY_DateChangeInfoVC : UITableViewDelegate ,UITableViewDataSource
 {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if(isInput)
-        {
             var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_ChangeDateInfoCellID) as ZXY_ChangeDateInfoCell
             self.infoText = cell.infoText
             
@@ -149,26 +146,26 @@ extension ZXY_DateChangeInfoVC : UITableViewDelegate ,UITableViewDataSource
 
             return cell
         }
-        else
-        {
-            var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_ChangeUserSexCellID) as ZXY_ChangeUserSexCell
-            cell.userSelectBoyOrGirlBlock = {[weak self](flag) -> Void in
-                self?.sexFlag = flag
-                if(flag == 2)
-                {
-                    self?.sexString = "女"
-                }
-                else
-                {
-                    self?.sexString = "男"
-                }
-                return
-            }
-            
-            return cell
-        }
-    }
-    
+//        else
+//        {
+//            var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_ChangeUserSexCellID) as ZXY_ChangeUserSexCell
+//            cell.userSelectBoyOrGirlBlock = {[weak self](flag) -> Void in
+//                self?.sexFlag = flag
+//                if(flag == 2)
+//                {
+//                    self?.sexString = "女"
+//                }
+//                else
+//                {
+//                    self?.sexString = "男"
+//                }
+//                return
+//            }
+//            
+//            return cell
+//        }
+//    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
