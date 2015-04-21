@@ -2,7 +2,7 @@
 //  ICYProfileAvatarCell.swift
 //  KickYourAss
 //
-//  Created by eagle on 15/2/9.
+//  Created by sun on 15/4/17.
 //  Copyright (c) 2015年 多思科技. All rights reserved.
 //
 

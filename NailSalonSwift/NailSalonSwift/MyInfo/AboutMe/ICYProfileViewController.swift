@@ -2,7 +2,7 @@
 //  ICYProfileViewController.swift
 //  KickYourAss
 //
-//  Created by eagle on 15/2/9.
+//  Created by sun on 15/4/17.
 //  Copyright (c) 2015年 多思科技. All rights reserved.
 //
 
@@ -262,10 +262,6 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         self.tableView.reloadData()
     }
     
-    func changeSex(sexFlag: Int) {
-//        userInfoValue.extend(sendKey : "\(sexFlg)")
-    }
-    
     func clickChoosePictureBtn() {
 //        var zxy_imgPick = ZXY_ImagePickerTableVC()
 //        zxy_imgPick.setMaxNumOfSelect(1)
@@ -415,5 +411,4 @@ extension ICYProfileViewController: UIAlertViewDelegate {
         }
         self.tableView.reloadData()
     }
-    
 }

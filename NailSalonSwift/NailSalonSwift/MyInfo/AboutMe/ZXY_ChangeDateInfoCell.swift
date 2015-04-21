@@ -2,7 +2,7 @@
 //  ZXY_ChangeDateInfoCell.swift
 //  KickYourAss
 //
-//  Created by 宇周 on 15/2/11.
+//  Created by sun on 15/4/17.
 //  Copyright (c) 2015年 多思科技. All rights reserved.
 //
 

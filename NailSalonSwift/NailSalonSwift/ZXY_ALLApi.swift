@@ -123,6 +123,10 @@ struct ZXY_ALLApi
     */
     static let ZXY_ChangeInfoAPI      = "User/modifyUserInfo"
     
+    /**
+    *  修改密码
+    */
+    static let ZXY_ChangePassWordAPI  = "User/rePass"
     
 
 //    /**

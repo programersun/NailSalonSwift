@@ -84,6 +84,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func loginAction(sender: AnyObject)
     {
+        self.view.endEditing(true)
         if(self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 11)
         {
             self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
@@ -182,7 +183,6 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func registAction(sender: AnyObject)
     {
-        self.view.endEditing(true)
         self.performSegueWithIdentifier("toRegistVC", sender: nil)
     }
     
