@@ -28,6 +28,8 @@ class ZXY_DFPArtistTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        criticAvatar.layer.cornerRadius = 23
+        criticAvatar.layer.masksToBounds = true
         // Initialization code
     }
 

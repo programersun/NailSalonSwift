@@ -12,6 +12,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     private var screenSize  = UIScreen.mainScreen().bounds
     @IBOutlet weak var contentScroll: UIScrollView!
 
+    @IBOutlet weak var widthOfAttensionBtn: NSLayoutConstraint!
     @IBOutlet weak var avaterAristImg: UIImageView!
     
     @IBOutlet weak var artistName: UILabel!
@@ -30,6 +31,10 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     @IBOutlet weak var headerV: UIView!
     
+    private var dataForShow : ZXY_ArtistDetailModelBase?
+    
+    var artistID : String?
+    
     var isUp = true
     var previousYForCollect : CGFloat = 0
     var previousYForTable   : CGFloat = 0
@@ -41,8 +46,18 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         contentScroll.contentSize.width = 2 * screenSize.width
+        contentScroll.delegate = self
         self.startInitSeg()
+        self.startLoadData()
+        headerV.backgroundColor = UIColor.NailRedColor()
+        self.avaterAristImg.layer.cornerRadius = 35
+        self.avaterAristImg.layer.masksToBounds = true
+        self.attensionBtn.layer.cornerRadius   = 4
+        self.attensionBtn.layer.masksToBounds  = true
+        self.attensionBtn.layer.borderColor    = UIColor.whiteColor().CGColor
+        self.attensionBtn.layer.borderWidth    = 1
         // Do any additional setup after loading the view.
     }
     
@@ -52,6 +67,116 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         self.startInitSecond()
     }
 
+    private func startLoadData()
+    {
+        if artistID == nil
+        {
+            return 
+        }
+        var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADPF_ArtistDetailInfo)
+        var myID = ZXY_UserInfoDetail.sharedInstance.getUserID() ?? ""
+        
+        var parameter = ["user_id" : artistID! , "my_user_id" : myID]
+        ZXY_NetHelperOperate().startGetDataPost(stringURL, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
+            self?.dataForShow = ZXY_ArtistDetailModelBase(dictionary: returnDic)
+            var result = self?.dataForShow?.result ?? 0
+            if result == 1000
+            {
+                self?.reloadDataForView()
+            }
+            else
+            {
+                var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorMessage)
+            }
+        }) { [weak self] (error) -> Void in
+            ""
+            ""
+        }
+        
+    }
+    
+    private func reloadDataForView()
+    {
+        var needShow = dataForShow?.data
+        var artistName = needShow?.nickName
+        var isArtist   = needShow?.role
+        var score      = needShow?.score ?? "0"
+        var headURL  : String?  = needShow?.headImage?
+        var doubleScore = NSString(string: score).doubleValue
+        self.artistName.text = artistName
+        var attension = needShow?.isAttention ?? 0
+        var myID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if myID == nil
+        {
+            self.attensionBtn.hidden = false
+            self.attensionBtn.setTitle("关注", forState: UIControlState.Normal)
+        }
+        else if myID == artistID!
+        {
+             self.attensionBtn.hidden = true
+            self.widthOfAttensionBtn.constant = 0
+        }
+        else
+        {
+             self.attensionBtn.hidden = false
+            if attension == 1
+            {
+                self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
+            }
+            else
+            {
+                self.attensionBtn.setTitle("关注", forState: UIControlState.Normal)
+            }
+        }
+        
+        var userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
+        if let location = userCoordinate
+        {
+            var artistLocationLa = needShow?.latitude
+            var artistLocationLo = needShow?.longitude
+            var latitude = location["latitude"]!
+            var logitude = location["longitude"]!
+            var userCoordinate   = CLLocationCoordinate2DMake( latitude!,logitude! )
+            if artistLocationLa != nil && artistLocationLo != nil
+            {
+                var coordinateArtist = ZXY_LocationRelative.sharedInstance.xYStringToCoor(artistLocationLo, latitude: artistLocationLa)
+                if coordinateArtist != nil
+                {
+                    var distance = ZXY_LocationRelative.distanceCompareCoor(coordinateArtist, userPosition: userCoordinate)
+                    self.distanceLbl.text = "\(Double(round(100 * distance)/100)) km"
+                }
+            }
+            
+        }
+        
+        if isArtist == "1"
+        {
+            isAristLbl.hidden = true
+            isArtistImg.hidden = true
+        }
+        else
+        {
+            isAristLbl.hidden = false
+            isArtistImg.hidden = false
+        }
+        
+        var startV = CWStarRateView(frame: self.evalueateView.bounds, numberOfStars: 5)
+        startV.allowIncompleteStar = true
+        startV.scorePercent = CGFloat(doubleScore)
+        self.evalueateView.addSubview(startV)
+        if let head = headURL
+        {
+            var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + head
+            if head.hasPrefix("http")
+            {
+                imgURL = head
+            }
+            self.avaterAristImg.setImageWithURL(NSURL(string: imgURL))
+        }
+        
+    }
+    
     func startInitSeg()
     {
         filterSeg.selectedSegmentIndex = 0
@@ -59,7 +184,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         filterSeg.setTitle("图集", forSegmentAtIndex: 0)
         filterSeg.setTitle("评价", forSegmentAtIndex: 1)
         filterSeg.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailRedColor()], forState: UIControlState.Selected)
-        filterSeg.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailRedColor()], forState: UIControlState.Normal)
+        filterSeg.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailGrayColor()], forState: UIControlState.Normal)
         
         filterSeg.setDividerImage(UIImage(named: "verticalGray"), forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
         
@@ -75,6 +200,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         if firstCollectionVC == nil
         {
             firstCollectionVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistCollectionVC.vcID()) as ZXY_DFPArtistCollectionVC
+            firstCollectionVC.userID = self.artistID
             self.addChildViewController(firstCollectionVC)
             firstCollectionVC.delegatela = self
             firstCollectionVC.view.frame = CGRectMake(0, 0, screenSize.width,contentScroll.frame.size.height)
@@ -87,6 +213,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         if secontTableVC == nil
         {
             secontTableVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistTableVC.vcID()) as ZXY_DFPArtistTableVC
+            secontTableVC.userID = self.artistID
             self.addChildViewController(secontTableVC)
             secontTableVC.delegateL = self
             secontTableVC.view.frame = CGRectMake(screenSize.width, 0, screenSize.width , contentScroll.frame.size.height)
@@ -111,7 +238,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     */
 
 }
-extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArtistTableVCDelegate
+extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArtistTableVCDelegate , UIScrollViewDelegate
 {
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -120,7 +247,28 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     @IBAction func attensionAction(sender: AnyObject) {
     }
     
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        var x = contentScroll.contentOffset.x
+        if x == 0
+        {
+            filterSeg.selectedSegmentIndex = 0
+        }
+        else if x == screenSize.width
+        {
+            filterSeg.selectedSegmentIndex = 1
+        }
+    }
+    
     @IBAction func typeChange(sender: AnyObject) {
+        var indexOfControl = filterSeg.selectedSegmentIndex
+        if indexOfControl == 0
+        {
+            contentScroll.contentOffset.x = 0
+        }
+        else
+        {
+            contentScroll.contentOffset.x = screenSize.width
+        }
     }
     
     func collectionDidScroll(contentOffSet: CGPoint) {
@@ -155,9 +303,9 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     
     func titleHeaderViewScroll(y : CGFloat)
     {
-        if(toTopDistance.constant <= -110 && isUp)
+        if(toTopDistance.constant <= -144 && isUp)
         {
-            toTopDistance.constant = -110
+            toTopDistance.constant = -144
             return
         }
         
@@ -168,7 +316,7 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
         
         if !isUp
         {
-            if y <= 110
+            if y <= 144
             {
                 toTopDistance.constant = -y
             }

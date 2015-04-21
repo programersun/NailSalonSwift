@@ -199,15 +199,17 @@ class ZXY_DFPArtDetailVC: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
     }
-    */
+    
 
 }
 
@@ -526,6 +528,13 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
     func userClickAvaterImg() {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var detailArtist = storyboard?.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        var imgCellData = dataForTable?.data
+        var imgCellUser = imgCellData?.user
+        if imgCellUser == nil
+        {
+            return
+        }
+        detailArtist.artistID = imgCellUser?.userId
         self.navigationController?.pushViewController(detailArtist, animated: true)
     }
     

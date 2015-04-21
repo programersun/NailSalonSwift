@@ -22,6 +22,8 @@ class ZXY_ORMainVC: UIViewController {
         self.addVCAndVForCourse()
         self.startInitSqureVC()
         self.addVCAndVForSqure()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         // Do any additional setup after loading the view.
     }

@@ -72,6 +72,9 @@ enum ZXY_ADFPAPIType : String
     case ADFP_ArtCollection = "Album/album_collect"
     case ADFP_ArtAgree      = "Album/album_agree"
     case ADFP_ArtAttension  = "User/attention"
+    case ADPF_ArtistArts    = "UserList/my_album"
+    case ADPF_ArtistComment = "UserList/order_evalue"
+    case ADPF_ArtistDetailInfo = "User/another_user_Info"
 }
 
 struct ZXY_NailNetAPI
