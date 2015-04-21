@@ -134,12 +134,14 @@
 		A44D4CAC1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D4CAB1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift */; };
 		A45317071ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */; };
 		A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */; };
+		A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */; };
+		A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */; };
+		A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */; };
 		A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */; };
 		A4E211481ADE000900A97CA1 /* ICYProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */; };
 		A4E211491ADE000900A97CA1 /* ICYProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */; };
 		A4E2114A1ADE000900A97CA1 /* ProfilePropertyPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4E211441ADE000900A97CA1 /* ProfilePropertyPlist.plist */; };
 		A4E2114B1ADE000900A97CA1 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211451ADE000900A97CA1 /* SettingCell.swift */; };
-		A4E2114C1ADE000900A97CA1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211461ADE000900A97CA1 /* SettingViewController.swift */; };
 		A4E211501ADE04DA00A97CA1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2114F1ADE04DA00A97CA1 /* Extensions.swift */; };
 		A4E211531ADE09F200A97CA1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E211521ADE09F200A97CA1 /* MBProgressHUD.m */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
@@ -326,12 +328,14 @@
 		A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ChangeDateInfoCell.swift; sourceTree = "<group>"; };
 		A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = ../AboutMe/SettingVC.swift; sourceTree = "<group>"; };
+		A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LCYVersionViewController.swift; path = ../AboutMe/LCYVersionViewController.swift; sourceTree = "<group>"; };
+		A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCYRessetPasswordViewController.swift; sourceTree = "<group>"; };
 		A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileAvatarCell.swift; sourceTree = "<group>"; };
 		A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileCell.swift; sourceTree = "<group>"; };
 		A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileViewController.swift; sourceTree = "<group>"; };
 		A4E211441ADE000900A97CA1 /* ProfilePropertyPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProfilePropertyPlist.plist; sourceTree = "<group>"; };
-		A4E211451ADE000900A97CA1 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
-		A4E211461ADE000900A97CA1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A4E211451ADE000900A97CA1 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingCell.swift; path = ../AboutMe/SettingCell.swift; sourceTree = "<group>"; };
 		A4E2114F1ADE04DA00A97CA1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A4E211511ADE09F200A97CA1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A4E211521ADE09F200A97CA1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -479,6 +483,7 @@
 		8B4B4DFC1AC502F3001BD10B /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A4B94A6F1AE63F7D003CC29A /* Setting */,
 				A4E211401ADE000900A97CA1 /* AboutMe */,
 				A435B8681AD7ABE2001909A4 /* SR_regist */,
 				8B01418E1ACD1F9D000C180B /* miCell */,
@@ -756,6 +761,17 @@
 			path = SR_regist;
 			sourceTree = "<group>";
 		};
+		A4B94A6F1AE63F7D003CC29A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */,
+				A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */,
+				A4E211451ADE000900A97CA1 /* SettingCell.swift */,
+				A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		A4E211401ADE000900A97CA1 /* AboutMe */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,8 +781,6 @@
 				A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */,
 				A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */,
 				A4E211441ADE000900A97CA1 /* ProfilePropertyPlist.plist */,
-				A4E211451ADE000900A97CA1 /* SettingCell.swift */,
-				A4E211461ADE000900A97CA1 /* SettingViewController.swift */,
 				A4E2114F1ADE04DA00A97CA1 /* Extensions.swift */,
 			);
 			path = AboutMe;
@@ -951,6 +965,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BCF6A291ADA43890085575D /* ZXY_TagLabelView.swift in Sources */,
+				A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */,
 				8B8100CC1AC7F18F00850B05 /* ZXY_NailNetAPI.swift in Sources */,
 				8B95F4741ADCE81D00408709 /* ZXY_ImagePickCoCell.swift in Sources */,
 				A4E211491ADE000900A97CA1 /* ICYProfileViewController.swift in Sources */,
@@ -985,9 +1000,9 @@
 				8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */,
 				44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */,
 				8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */,
-				A4E2114C1ADE000900A97CA1 /* SettingViewController.swift in Sources */,
 				8B5EE2C71AC8381100EFF3C4 /* ZXYOriginAlbumData.m in Sources */,
 				A44D4CAC1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift in Sources */,
+				A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */,
 				8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */,
 				A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */,
 				8B099B241ADD65D600446F2C /* ZXY_DFPArtistCollectCell.swift in Sources */,
@@ -1005,6 +1020,7 @@
 				8B345A3B1ADD044400D914C6 /* ZXY_ImageItemView.swift in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				8B190FF91ADD47F70087AECF /* SR_artistBaseClass.m in Sources */,
+				A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */,
 				8BBBDBC71ACA764F0006A94A /* ZXYOfferData.m in Sources */,
 				A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */,
 				A4E211501ADE04DA00A97CA1 /* Extensions.swift in Sources */,

@@ -23,11 +23,16 @@ class ZXY_MIMainVC: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        startDownLoadUserDetailInfo()
+//        reloadUserData()
+//    }
+    override func viewWillAppear(animated: Bool) {
+        startDownLoadUserDetailInfo()
         reloadUserData()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -94,6 +99,12 @@ class ZXY_MIMainVC: UIViewController {
             propertyVC.userInfo = userInfo
             println("\(userInfo)")
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+        }
+        if( segueID == "toSettingVC")
+        {
+            var settingVC = segue.destinationViewController as SettingVC
+            settingVC.userInfo = userInfo
+//            settingVC.delegate = self
         }
     }
 }
@@ -265,13 +276,12 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     }
     
     func settingBtnClick() {
-        ZXY_UserInfoDetail.sharedInstance.logoutUser()
         EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (object, error) -> Void in
-            
+            self.performSegueWithIdentifier("toSettingVC", sender: nil)
         }, onQueue: nil)
     }
     
     func headImgTouch() {
-            self.performSegueWithIdentifier("toUserInfo", sender: nil)
+        self.performSegueWithIdentifier("toUserInfo", sender: nil)
     }
 }
