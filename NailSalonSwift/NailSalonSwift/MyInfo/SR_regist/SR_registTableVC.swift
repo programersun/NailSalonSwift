@@ -70,20 +70,17 @@ class SR_registTableVC: UITableViewController {
             self.showAlertEasy("提示", messageContent: "两次密码输入不一致")
             return
         }
-        
+        userName = userNameText.text
+        userPassword = userPasswordText.text
         if isArtistRegist == true
         {
             //美甲师身份验证
-            userName = userNameText.text
-            userPassword = userPasswordText.text
             self.delegate?.artistRegist(userName!, userPassword: userPassword!)
             self.delegate?.toCheckIdVC()
         }
         else
         {
             //用户注册
-            userName = userNameText.text
-            userPassword = userPasswordText.text
             self.delegate?.userRegist(userName!, userPassword: userPassword!)
         }
     }

@@ -70,6 +70,7 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistLbl.hidden = true
         self.userAvatar.hidden  = true
         self.settingBtn.hidden  = true
+        isLogin.hidden = false
         
     }
     

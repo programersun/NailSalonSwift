@@ -44,6 +44,8 @@ class ZXY_ARMainVC: UIViewController {
 
         self.title = "美甲师"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         HotView.hidden = true
         backgroudView.hidden = true
         
@@ -318,5 +320,12 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cellData  = dataForTable?[indexPath.row]
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        vc.artistID = cellData?.userId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

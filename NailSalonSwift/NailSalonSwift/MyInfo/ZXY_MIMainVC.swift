@@ -13,25 +13,23 @@ class ZXY_MIMainVC: UIViewController {
     @IBOutlet weak var currentTable: UITableView!
     private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
-    
+
     var userInfo: ZXY_UserDetailInfoData!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         startDownLoadUserDetailInfo()
         self.navigationController?.navigationBar.hidden = true
         
     }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 //        startDownLoadUserDetailInfo()
-//        reloadUserData()
-//    }
-    override func viewWillAppear(animated: Bool) {
-        startDownLoadUserDetailInfo()
         reloadUserData()
     }
+//    override func viewWillAppear(animated: Bool) {
+////        startDownLoadUserDetailInfo()
+//        reloadUserData()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,12 +52,13 @@ class ZXY_MIMainVC: UIViewController {
             {
                 s.zxyW.hideProgress(s.view)
             }
-            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
-            var result = self?.dataForShow?.result
+//            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+//            var result = self?.dataForShow?.result
+            var result = returnDic["result"] as Double
             if(result == 1000)
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
-                self?.userInfo = self?.dataForShow?.data
+//                self?.userInfo = self?.dataForShow?.data
                 println("\(self?.userInfo!.nickName)")
                 self?.reloadUserData()
             }
@@ -97,8 +96,8 @@ class ZXY_MIMainVC: UIViewController {
         {
             var propertyVC = segue.destinationViewController as ICYProfileViewController
             propertyVC.userInfo = userInfo
-            println("\(userInfo)")
-            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+//            println("\(userInfo)")
+//            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
         }
         if( segueID == "toSettingVC")
         {
@@ -170,8 +169,8 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                 if let user = userInfoDic
                 {
                     self.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
-                    var userData = self.dataForShow?.data
-                    var headImg  = userData?.headImage?
+                    userInfo = self.dataForShow?.data
+                    var headImg  = userInfo?.headImage?
                     if let hI = headImg
                     {
                         var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + hI
@@ -181,9 +180,10 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                         }
                         bigCell.userAvatar.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "imgHolder"))
                     }
-                    bigCell.nameLbl.text = userData?.nickName
+                    println("\(userInfo?.nickName)")
+                    bigCell.nameLbl.text = userInfo?.nickName
                     bigCell.isArtistLbl.text = "美甲师"
-                    var role = userData?.role? ?? "1"
+                    var role = userInfo?.role? ?? "1"
                     if role == "2"
                     {
                         bigCell.isArtistImg.hidden = false

@@ -128,6 +128,11 @@ struct ZXY_ALLApi
     */
     static let ZXY_ChangePassWordAPI  = "User/rePass"
     
+    /**
+    *  美甲师身份验证
+    */
+    static let ZXY_ChangeArtistIdCheckAPI  = "User/verify_tech"
+    
 
 //    /**
 //    教程的Api
