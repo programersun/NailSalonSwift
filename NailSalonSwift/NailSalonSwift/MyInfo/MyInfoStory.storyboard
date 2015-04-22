@@ -868,7 +868,7 @@
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAC-pX-Zpt">
                                                     <rect key="frame" x="40" y="20" width="520" height="41"/>
                                                     <color key="backgroundColor" red="0.9882352941176471" green="0.28235294117647058" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="完成注册">
+                                                    <state key="normal">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1174,7 +1174,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ICYProfileAvatarCellIdentifier" rowHeight="60" id="aOs-Y1-De7" customClass="ICYProfileAvatarCell" customModule="NailSalonSwift" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ICYProfileAvatarCellIdentifier" rowHeight="60" id="aOs-Y1-De7" customClass="ICYProfileAvatarCell" customModule="NailSalonSwift" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOs-Y1-De7" id="iKB-cI-dbh">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1205,7 +1205,7 @@
                                     <outlet property="icyMainLabel" destination="HN5-pi-Jjt" id="fWK-W3-fTz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ICYProfileCellIdentifier" id="0T3-eX-YOm" customClass="ICYProfileCell" customModule="NailSalonSwift" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ICYProfileCellIdentifier" id="0T3-eX-YOm" customClass="ICYProfileCell" customModule="NailSalonSwift" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0T3-eX-YOm" id="wPC-gn-G62">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1476,7 +1476,7 @@
                                                         <constraint firstAttribute="width" constant="150" id="Nb3-Sw-p58"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
@@ -1679,7 +1679,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tye-c1-Bl0" userLabel="导航">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tye-c1-Bl0" userLabel="导航">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chS-cT-YhB">
@@ -1696,7 +1696,7 @@
                                             <action selector="backAction:" destination="SSM-tp-A2r" eventType="touchUpInside" id="ke5-s1-lws"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="修改密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-xS-i0C">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-xS-i0C">
                                         <rect key="frame" x="260" y="29" width="80" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="7PL-XD-WF9"/>
@@ -1731,7 +1731,7 @@
                                     <constraint firstAttribute="centerX" secondItem="kkh-xS-i0C" secondAttribute="centerX" id="ph6-7z-ado"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JqU-5v-tgs" userLabel="原始密码">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqU-5v-tgs" userLabel="原始密码">
                                 <rect key="frame" x="16" y="84" width="568" height="33"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入原始密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1xR-Da-2oZ">
@@ -1759,7 +1759,7 @@
                                     <constraint firstItem="hC7-Fg-ghb" firstAttribute="top" secondItem="1xR-Da-2oZ" secondAttribute="bottom" id="zKL-fJ-79o"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtG-5T-wAC" userLabel="新密码">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtG-5T-wAC" userLabel="新密码">
                                 <rect key="frame" x="16" y="141" width="568" height="33"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textFieldBottomGray" translatesAutoresizingMaskIntoConstraints="NO" id="F4P-2I-aJP">
@@ -1787,7 +1787,7 @@
                                     <constraint firstItem="QzF-1n-9Cr" firstAttribute="top" secondItem="XtG-5T-wAC" secondAttribute="top" id="rkl-vx-1UD"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-dF-3B7" userLabel="确认密码">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-dF-3B7" userLabel="确认密码">
                                 <rect key="frame" x="16" y="184" width="568" height="33"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请确认新密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30x-Ry-ZCb">
@@ -1874,8 +1874,8 @@
         <image name="textLineAndroid" width="400" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bwi-J6-DrA"/>
-        <segue reference="Q4V-xk-uK2"/>
+        <segue reference="Cf1-Vf-zu7"/>
         <segue reference="TVb-3z-G3q"/>
+        <segue reference="Q4V-xk-uK2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,6 @@ class SR_checkIdVC: UIViewController {
     @IBOutlet weak var cameraBackgroundView: UIControl!
     @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var registPhotoBtn: UIButton!
-    
     var screenSize  = UIScreen.mainScreen().bounds
     
     var userInfo : ZXY_UserDetailInfoData?
@@ -23,6 +22,8 @@ class SR_checkIdVC: UIViewController {
     
     //身份证照片
     var idImageView = UIImageView()
+    //注册按钮
+    var registBtn   = UIButton()
     //是否上传照片
     var postIdImage : Bool = false
     //美甲师用户名和密码
@@ -48,6 +49,17 @@ class SR_checkIdVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let userId = ZXY_UserInfoDetail.sharedInstance.getUserID() {
+            registBtn.setTitle("提交", forState: UIControlState.Normal)
+        }
+        else
+        {
+            registBtn.setTitle("完成注册", forState: UIControlState.Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,6 +125,43 @@ class SR_checkIdVC: UIViewController {
                 self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
                 
         }
+    }
+    
+    func  artistIdCheck(){
+        var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeArtistIdCheckAPI
+        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        var parameter : Dictionary<String , AnyObject> = [ "user_id": myUserID! , "real_name": realName! , "ident_code": identCode!]
+        var imgData = NSData()
+        if postIdImage
+        {
+            imgData = UIImageJPEGRepresentation(idImageView.image, 1)
+        }
+        ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+            
+            var result: Double = returnDic["result"] as Double
+            if(result == Double(1000))
+            {
+                self?.navigationController?.popViewControllerAnimated(true)
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
+            }) { [weak self](error) -> Void in
+                println(error)
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                
+        }
+
     }
     
     func startDownLoadUserDetailInfo()
@@ -254,6 +303,7 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
             button.layer.cornerRadius = 4
             button.backgroundColor = UIColor.NailRedColor()
             button.addTarget(self, action: Selector("registBtnClick"), forControlEvents: UIControlEvents.TouchUpInside)
+            registBtn = button
         default:
             break
         }
@@ -276,16 +326,22 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
         println("\(userPassword)")
         if(realName == "")
         {
-            self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
+            self.showAlertEasy("提示", messageContent: "请输入真实姓名")
             return
         }
         if(identCode == "")
         {
-            self.showAlertEasy("提示", messageContent: "请输入密码")
+            self.showAlertEasy("提示", messageContent: "请输入正确的身份证号")
             return
         }
         self.srW.startProgress(self.view)
-        artistRegist()
+        if let userID = ZXY_UserInfoDetail.sharedInstance.getUserID() {
+            artistIdCheck()
+        }
+        else
+        {
+            artistRegist()
+        }
         println("hello")
     }
     

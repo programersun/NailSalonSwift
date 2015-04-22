@@ -9,9 +9,9 @@
 import UIKit
 
 class ICYProfileViewController: UITableViewController {
-    private var sexFlg = 3
     var userInfo: ZXY_UserDetailInfoData!
     private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
+    var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
     var userInfoValue : Dictionary<String , AnyObject?>! = Dictionary<String , AnyObject?>()
     
     override func viewDidLoad() {
@@ -259,73 +259,71 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
     func afterChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
         self.startLoadInfoData()
-        self.tableView.reloadData()
     }
     
-    func clickChoosePictureBtn() {
-//        var zxy_imgPick = ZXY_ImagePickerTableVC()
-//        zxy_imgPick.setMaxNumOfSelect(1)
-//        zxy_imgPick.delegate = self
-//        zxy_imgPick.presentZXYImagePicker(self)
-    }
-    
-    func clickTakePhotoBtn() {
-        
-//        var photoPicker = UIImagePickerController()
-//        photoPicker.sourceType = UIImagePickerControllerSourceType.Camera
-//        photoPicker.delegate = self
-//        self.presentViewController(photoPicker, animated: true) { () -> Void in
-//            
+//    func clickChoosePictureBtn() {
+////        var zxy_imgPick = ZXY_ImagePickerTableVC()
+////        zxy_imgPick.setMaxNumOfSelect(1)
+////        zxy_imgPick.delegate = self
+////        zxy_imgPick.presentZXYImagePicker(self)
+//    }
+//    
+//    func clickTakePhotoBtn() {
+//        
+////        var photoPicker = UIImagePickerController()
+////        photoPicker.sourceType = UIImagePickerControllerSourceType.Camera
+////        photoPicker.delegate = self
+////        self.presentViewController(photoPicker, animated: true) { () -> Void in
+////            
+////        }
+//    }
+//    
+//    func ZXY_ImagePicker(imagePicker: ZXY_ImagePickerTableVC, didFinishPicker assetArr: [ALAsset]) {
+//        if(assetArr.count > 0)
+//        {
+////            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
+//            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+//            if(myUserID == nil)
+//            {
+//                return
+//            }
+//            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//            var firstProfile : UIImage = self.AlssetToUIImage(assetArr[0])
+//            firstProfile     = UIImage(image: firstProfile, scaledToFillToSize: CGSize(width: 400  ,height: 400))
+//            self.startLoadImgData(firstProfile)
 //        }
-    }
-    
-    func ZXY_ImagePicker(imagePicker: ZXY_ImagePickerTableVC, didFinishPicker assetArr: [ALAsset]) {
-        if(assetArr.count > 0)
-        {
-//            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
-            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-            if(myUserID == nil)
-            {
-                return
-            }
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            var firstProfile : UIImage = self.AlssetToUIImage(assetArr[0])
-            firstProfile     = UIImage(image: firstProfile, scaledToFillToSize: CGSize(width: 400  ,height: 400))
-            self.startLoadImgData(firstProfile)
-        }
-    }
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        picker.dismissViewControllerAnimated(true, completion: { [weak self]() -> Void in
-//            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
-            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-            if(myUserID == nil)
-            {
-                return
-            }
-            
-            var firstProfile     = UIImage(image: image, scaledToFillToSize: CGSize(width: 400  ,height: 400))
-            self?.startLoadImgData(firstProfile)
-        })
-        
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-        })
-    }
+//    }
+//    
+//    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        picker.dismissViewControllerAnimated(true, completion: { [weak self]() -> Void in
+////            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
+//            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+//            if(myUserID == nil)
+//            {
+//                return
+//            }
+//            
+//            var firstProfile     = UIImage(image: image, scaledToFillToSize: CGSize(width: 400  ,height: 400))
+//            self?.startLoadImgData(firstProfile)
+//        })
+//        
+//    }
+//    
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+//        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
+//            
+//        })
+//    }
     
     func startLoadImgData(img : UIImage)
     {
-//        var myUserID = LCYCommon.sharedInstance.userInfo?.userID
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if(myUserID == nil)
         {
             return
         }
-        //MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        zxyW.startProgress(self.view)
         var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
         ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
             var status = returnDic["result"] as Int
@@ -333,11 +331,18 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
             {
                 self?.userInfo.headImage = returnDic["data"] as String
                 self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
+                self?.startDownLoadUserDetailInfo()
+                self?.tableView.reloadData()
             }
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
-            self?.tableView.reloadData()
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
             }, failure: { [weak self](failError) -> Void in
-                MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
                 return
         })
 
@@ -345,12 +350,12 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
     
     func startLoadInfoData()
     {
-//        var myUserID = LCYCommon.sharedInstance.userInfo?.userID
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if(myUserID == nil)
         {
             return
         }
+        zxyW.startProgress(self.view)
         var urlString           = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeInfoAPI
         var nick_Name : String? = userInfoValue["userName"] as? String
         var real_name : String? = userInfoValue["userRealName"] as? String
@@ -358,10 +363,13 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         var address   : String? = userInfoValue["userAddr"]? as? String
         var tel       : String? = userInfoValue["userTel"]? as? String
         var parameter : Dictionary<String , AnyObject> = ["nick_name" : nick_Name == nil ? "" : nick_Name! , "real_name" : real_name == nil ? "" : real_name!, "sex" : sex == nil ? "3" : sex! , "address" : address == nil ? "" : address! , "tel" : tel == nil ? "" : tel!,"user_id" : myUserID!]
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
-            var result = returnDic["result"] as Int
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+            var result = returnDic["result"] as Double
             if(result == 1000)
             {
                 self?.userInfo.nickName = nick_Name
@@ -369,25 +377,65 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
                 self?.userInfo.sex      = sex
                 self?.userInfo.address  = address
                 self?.userInfo.tel      = tel
-                
+                self?.startDownLoadUserDetailInfo()
+                self?.tableView.reloadData()
             }
             else
             {
                 self?.showAlertEasy("提示", messageContent: "修改个人信息失败，请稍后尝试")
             }
-        }) {[weak self] (error) -> Void in
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            }) {[weak self] (error) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
             self?.showAlertEasy("提示", messageContent: "网络状况不佳，请稍后尝试")
             return
         }
     }
-
+    
+    private func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            return
+        }
+        zxyW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+            var result = returnDic["result"] as Double
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                println("\(self?.userInfo!.nickName)")
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            }) {[weak self] (error) -> Void in
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+        }
+        
+    }
+    
     @IBAction func backAction(sender: AnyObject)
     {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }
 
+//修改性别
 extension ICYProfileViewController: UIAlertViewDelegate {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         var sex : String?
@@ -409,6 +457,5 @@ extension ICYProfileViewController: UIAlertViewDelegate {
             println("\(userInfoValue)")
             startLoadInfoData()
         }
-        self.tableView.reloadData()
     }
 }
