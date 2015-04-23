@@ -155,7 +155,7 @@ class ZXY_ARMainVC: UIViewController {
     }
     
     /**
-    为collectionView 增加上拉加载下拉刷新
+    为tableView 增加上拉加载下拉刷新
     */
     private func addHeaderAndFooterforCollection()
     {
@@ -192,7 +192,7 @@ class ZXY_ARMainVC: UIViewController {
         backgroudView.alpha = 0.8
         backgroudView.layer.addAnimation(SR_Animation.animationForAlpha(0, to: 0.8), forKey: "alpha")
         HotView.layer.addAnimation(SR_Animation.animationDown(), forKey: "down")
-        HotView.layer.position = CGPointMake(self.view.bounds.width - 40, 70)
+        HotView.layer.position = CGPointMake(self.view.bounds.width - 40, 6)
         HotView.layer.anchorPoint = CGPointMake(0.7,0)
     }
     //热门推出
@@ -203,7 +203,7 @@ class ZXY_ARMainVC: UIViewController {
             self?.HotView.hidden = true
             ""
             }), forKey: "up")
-        HotView.layer.position = CGPointMake(self.view.bounds.width - 40, 70)
+        HotView.layer.position = CGPointMake(self.view.bounds.width - 40, 6)
         HotView.layer.anchorPoint = CGPointMake(0.7,0)
         backgroudView.alpha = 0.0
         backgroudView.layer.addAnimation(SR_Animation().animationForAlpha(0.8, to: 0, finishBlock: { [weak self](finish) -> Void in

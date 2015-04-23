@@ -133,6 +133,9 @@
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
 		8BFA1E6B1AD4F86900E74A31 /* ZXY_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */; };
 		8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */; };
+		A40B88781AE8EE13001BB3D4 /* SR_courseDetilListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88751AE8EE13001BB3D4 /* SR_courseDetilListData.m */; };
+		A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */; };
+		A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */; };
 		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
 		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
 		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
@@ -143,6 +146,9 @@
 		A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */; };
 		A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */; };
 		A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */; };
+		A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */; };
+		A4E1851D1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */; };
+		A4E185211AE897BC00ACCF67 /* SR_CourseDetailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */; };
 		A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */; };
 		A4E211481ADE000900A97CA1 /* ICYProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */; };
 		A4E211491ADE000900A97CA1 /* ICYProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */; };
@@ -338,6 +344,11 @@
 		8BFA1E681AD4F86900E74A31 /* ZXY_UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserData.m; sourceTree = "<group>"; };
 		8BFA1E691AD4F86900E74A31 /* ZXY_UserInfoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserInfoBase.h; sourceTree = "<group>"; };
 		8BFA1E6A1AD4F86900E74A31 /* ZXY_UserInfoBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserInfoBase.m; sourceTree = "<group>"; };
+		A40B88741AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_courseDetilListBaseClass.h; path = ../SR_courseDetilListBaseClass.h; sourceTree = "<group>"; };
+		A40B88751AE8EE13001BB3D4 /* SR_courseDetilListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_courseDetilListData.m; path = ../SR_courseDetilListData.m; sourceTree = "<group>"; };
+		A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_courseDetilListBaseClass.m; path = ../SR_courseDetilListBaseClass.m; sourceTree = "<group>"; };
+		A40B88771AE8EE13001BB3D4 /* SR_courseDetilListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_courseDetilListData.h; path = ../SR_courseDetilListData.h; sourceTree = "<group>"; };
+		A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ORgetCourseVC.swift; sourceTree = "<group>"; };
 		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
 		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
 		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
@@ -349,6 +360,9 @@
 		A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = ../AboutMe/SettingVC.swift; sourceTree = "<group>"; };
 		A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LCYVersionViewController.swift; path = ../AboutMe/LCYVersionViewController.swift; sourceTree = "<group>"; };
 		A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCYRessetPasswordViewController.swift; sourceTree = "<group>"; };
+		A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_ORCourseStory.storyboard; sourceTree = "<group>"; };
+		A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListVC.swift; sourceTree = "<group>"; };
+		A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListCell.swift; sourceTree = "<group>"; };
 		A4E211411ADE000900A97CA1 /* ICYProfileAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileAvatarCell.swift; sourceTree = "<group>"; };
 		A4E211421ADE000900A97CA1 /* ICYProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileCell.swift; sourceTree = "<group>"; };
 		A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICYProfileViewController.swift; sourceTree = "<group>"; };
@@ -488,6 +502,7 @@
 		8B4B4DE21AC4FB23001BD10B /* OriginPage */ = {
 			isa = PBXGroup;
 			children = (
+				A4E185191AE88E7D00ACCF67 /* SR_ORCourse */,
 				8B5EE2BE1AC8380800EFF3C4 /* ORModel */,
 				8B1F26151AC78F1000DDF8F4 /* ORCell */,
 				8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */,
@@ -781,6 +796,17 @@
 			path = ZXY_WaitProgress;
 			sourceTree = "<group>";
 		};
+		A40B88731AE8D9CB001BB3D4 /* SR_courseModel */ = {
+			isa = PBXGroup;
+			children = (
+				A40B88741AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.h */,
+				A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */,
+				A40B88771AE8EE13001BB3D4 /* SR_courseDetilListData.h */,
+				A40B88751AE8EE13001BB3D4 /* SR_courseDetilListData.m */,
+			);
+			path = SR_courseModel;
+			sourceTree = "<group>";
+		};
 		A435B8681AD7ABE2001909A4 /* SR_regist */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +826,18 @@
 				A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A4E185191AE88E7D00ACCF67 /* SR_ORCourse */ = {
+			isa = PBXGroup;
+			children = (
+				A40B88731AE8D9CB001BB3D4 /* SR_courseModel */,
+				A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */,
+				A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */,
+				A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */,
+				A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */,
+			);
+			path = SR_ORCourse;
 			sourceTree = "<group>";
 		};
 		A4E211401ADE000900A97CA1 /* AboutMe */ = {
@@ -924,6 +962,7 @@
 			files = (
 				8B45878E1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib in Resources */,
 				8B7B941C1AC5241300BAA520 /* takePhotoStory.storyboard in Resources */,
+				A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */,
 				8B95F4771ADCE81D00408709 /* ZXY_ImgPickBundle.bundle in Resources */,
 				8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */,
 				A4E2114A1ADE000900A97CA1 /* ProfilePropertyPlist.plist in Resources */,
@@ -1006,6 +1045,7 @@
 				8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */,
 				8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */,
 				8B4B4E0A1AC50697001BD10B /* NSString+Encipher.m in Sources */,
+				A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */,
 				8BBBDBC91ACA764F0006A94A /* ZXYOfferLastAlbum.m in Sources */,
 				8BBBDBD01ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift in Sources */,
 				8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */,
@@ -1042,6 +1082,7 @@
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B345A3A1ADD044400D914C6 /* ZXY_ImageItem.swift in Sources */,
 				8B1910081ADD5E530087AECF /* ZXY_DFPArtistTableVC.swift in Sources */,
+				A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */,
 				8B345A391ADD044400D914C6 /* ZXY_ImageBrowserVC.swift in Sources */,
 				8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */,
 				8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */,
@@ -1098,9 +1139,11 @@
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,
 				A4E2114B1ADE000900A97CA1 /* SettingCell.swift in Sources */,
 				8BCF6A221ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m in Sources */,
+				A40B88781AE8EE13001BB3D4 /* SR_courseDetilListData.m in Sources */,
 				8BAAF0371AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift in Sources */,
 				8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */,
 				8B099B261ADD663700446F2C /* ZXY_DFPArtistTableCell.swift in Sources */,
+				A4E1851D1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift in Sources */,
 				8B5EE2CC1AC839C600EFF3C4 /* ZXY_ErrorMessageHandle.swift in Sources */,
 				8B5EE2CA1AC8381100EFF3C4 /* ZXYOriginAlbumUser.m in Sources */,
 				8B1910041ADD5DA00087AECF /* ZXY_DFPArtistDetailVC.swift in Sources */,
@@ -1110,6 +1153,7 @@
 				8BBBDBCC1ACA81090006A94A /* ZXYOfferRecommendAlbum.m in Sources */,
 				8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */,
 				8B5EE2B61AC834B700EFF3C4 /* MJRefreshConst.m in Sources */,
+				A4E185211AE897BC00ACCF67 /* SR_CourseDetailListCell.swift in Sources */,
 				A4E211531ADE09F200A97CA1 /* MBProgressHUD.m in Sources */,
 				8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */,
 				8B190FFA1ADD47F70087AECF /* SR_artistData.m in Sources */,

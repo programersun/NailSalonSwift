@@ -20,3 +20,6 @@
 #import "UIImage+Resize.h"
 
 #import "MBProgressHUD.h"
+
+#import "SR_courseDetilListData.h"
+#import "SR_courseDetilListBaseClass.h"
