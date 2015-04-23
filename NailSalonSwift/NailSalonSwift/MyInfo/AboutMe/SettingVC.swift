@@ -31,9 +31,15 @@ class SettingVC: UIViewController {
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func logOutAction(sender: AnyObject) {
-        ZXY_UserInfoDetail.sharedInstance.logoutUser()
-        self.navigationController?.popViewControllerAnimated(true)
+        var logOutAler = UIAlertView()
+        logOutAler.message  = "您确定退出账号吗？"
+        logOutAler.title    = "提示"
+        logOutAler.addButtonWithTitle("取消")
+        logOutAler.addButtonWithTitle("确定")
+        logOutAler.delegate = self
+        logOutAler.show()
     }
     
     // MARK: - Navigation
@@ -135,6 +141,20 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
             }
         default:
             break
+        }
+    }
+}
+
+extension SettingVC : UIAlertViewDelegate {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 0:
+            return
+        case 1:
+            ZXY_UserInfoDetail.sharedInstance.logoutUser()
+            self.navigationController?.popViewControllerAnimated(true)
+        default:
+            return
         }
     }
 }

@@ -198,4 +198,14 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 290
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var type = CourseType.parameterToCourseType(indexPath.row)
+        var story = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("SR_CourseDetailListVCID") as SR_CourseDetailListVC
+        vc.courseType = type
+        var courseData = dataCourseList![indexPath.row]
+        vc.courseId    = courseData.cateId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
