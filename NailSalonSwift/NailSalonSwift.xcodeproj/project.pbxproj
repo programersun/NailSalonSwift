@@ -143,9 +143,12 @@
 		A44D4CAC1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D4CAB1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift */; };
 		A45317071ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */; };
 		A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */; };
+		A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */; };
+		A4AF6E221AEA380200FC9755 /* SR_CourseUserStatusData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */; };
 		A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */; };
 		A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */; };
 		A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */; };
+		A4BD736C1AE9E6A400BEECEA /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BD736B1AE9E6A400BEECEA /* UIDevice+Resolutions.m */; };
 		A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */; };
 		A4E1851D1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */; };
 		A4E185211AE897BC00ACCF67 /* SR_CourseDetailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */; };
@@ -357,9 +360,15 @@
 		A45317061ADF770200DD500B /* ZXY_ChangeDateInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ChangeDateInfoCell.swift; sourceTree = "<group>"; };
 		A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_CourseUserStatusBaseClass.m; sourceTree = "<group>"; };
+		A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_CourseUserStatusData.m; sourceTree = "<group>"; };
+		A4AF6E1F1AEA380200FC9755 /* SR_CourseUserStatusData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_CourseUserStatusData.h; sourceTree = "<group>"; };
+		A4AF6E201AEA380200FC9755 /* SR_CourseUserStatusBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_CourseUserStatusBaseClass.h; sourceTree = "<group>"; };
 		A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = ../AboutMe/SettingVC.swift; sourceTree = "<group>"; };
 		A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LCYVersionViewController.swift; path = ../AboutMe/LCYVersionViewController.swift; sourceTree = "<group>"; };
 		A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCYRessetPasswordViewController.swift; sourceTree = "<group>"; };
+		A4BD736B1AE9E6A400BEECEA /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
+		A4BD736D1AE9E6B900BEECEA /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
 		A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_ORCourseStory.storyboard; sourceTree = "<group>"; };
 		A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListVC.swift; sourceTree = "<group>"; };
 		A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListCell.swift; sourceTree = "<group>"; };
@@ -799,6 +808,10 @@
 		A40B88731AE8D9CB001BB3D4 /* SR_courseModel */ = {
 			isa = PBXGroup;
 			children = (
+				A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */,
+				A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */,
+				A4AF6E1F1AEA380200FC9755 /* SR_CourseUserStatusData.h */,
+				A4AF6E201AEA380200FC9755 /* SR_CourseUserStatusBaseClass.h */,
 				A40B88741AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.h */,
 				A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */,
 				A40B88771AE8EE13001BB3D4 /* SR_courseDetilListData.h */,
@@ -863,6 +876,8 @@
 				A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */,
 				A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */,
 				A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */,
+				A4BD736D1AE9E6B900BEECEA /* UIDevice+Resolutions.h */,
+				A4BD736B1AE9E6A400BEECEA /* UIDevice+Resolutions.m */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -1076,9 +1091,11 @@
 				8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */,
 				A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */,
 				8B099B241ADD65D600446F2C /* ZXY_DFPArtistCollectCell.swift in Sources */,
+				A4AF6E221AEA380200FC9755 /* SR_CourseUserStatusData.m in Sources */,
 				8B1910061ADD5DF20087AECF /* ZXY_DFPArtistCollectionVC.swift in Sources */,
 				8B871AF11AE69FCB0008915A /* ZXY_UserAlbumListBase.m in Sources */,
 				8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */,
+				A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */,
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B345A3A1ADD044400D914C6 /* ZXY_ImageItem.swift in Sources */,
 				8B1910081ADD5E530087AECF /* ZXY_DFPArtistTableVC.swift in Sources */,
@@ -1116,6 +1133,7 @@
 				8B7B941E1AC5243D00BAA520 /* ZXY_TPMainVC.swift in Sources */,
 				8B0141911ACD1FC1000C180B /* ZXY_MIMainVCell.swift in Sources */,
 				8B871AF21AE69FCB0008915A /* ZXY_UserAlbumListData.m in Sources */,
+				A4BD736C1AE9E6A400BEECEA /* UIDevice+Resolutions.m in Sources */,
 				8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */,
 				8B1910011ADD4FED0087AECF /* ZXY_DFPArtistTitleView.swift in Sources */,
 				8B4B4DEC1AC4FD9C001BD10B /* ZXY_LocationRelative.swift in Sources */,

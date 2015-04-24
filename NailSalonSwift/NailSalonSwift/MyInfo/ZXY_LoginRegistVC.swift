@@ -35,7 +35,8 @@ class ZXY_LoginRegistVC: UIViewController {
         super.viewDidLoad()
         self.startInitColor()
         self.startInitCorner()
-        self.titleLbl.text = "登陆"
+        self.titleLbl.text = "登录"
+        self.navigationController?.navigationBar.hidden = true
         // Do any additional setup after loading the view.
     }
 

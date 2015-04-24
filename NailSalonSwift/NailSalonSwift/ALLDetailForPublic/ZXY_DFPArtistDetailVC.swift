@@ -163,7 +163,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         
         var startV = CWStarRateView(frame: self.evalueateView.bounds, numberOfStars: 5)
         startV.allowIncompleteStar = true
-        startV.scorePercent = CGFloat(doubleScore)
+        startV.scorePercent = CGFloat(doubleScore/5.0)
         self.evalueateView.addSubview(startV)
         if let head = headURL
         {
@@ -325,9 +325,12 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
         {
             toTopDistance.constant = -y
         }
-        
-        
-        
+    }
+    func sendAlbumIDToVC(albumID: String) {
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        vc.artWorkID = albumID
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

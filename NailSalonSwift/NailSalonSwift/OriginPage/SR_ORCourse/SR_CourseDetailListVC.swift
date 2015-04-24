@@ -11,7 +11,7 @@ import UIKit
 class SR_CourseDetailListVC: UIViewController {
 
     var courseType : String?
-    var courseId : String?
+    var cateId : String?
     var pageCount : Int = 1
     
     @IBOutlet weak var courseDetilListTableView: UITableView!
@@ -64,8 +64,7 @@ class SR_CourseDetailListVC: UIViewController {
         srW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MainCourseAPI(ZXY_MainCourseAPIType.CourseDetailList)
         println("\(urlString)")
-        println("\(courseId)")
-        var parameter : Dictionary<String , AnyObject > = ["cate_id" : courseId! ]
+        var parameter : Dictionary<String , AnyObject > = ["cate_id" : cateId! ]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter , successBlock: { [weak self](returnDic) -> Void in
             self?.dataForShow = SR_courseDetilListBaseClass(dictionary: returnDic )
             var result = self?.dataForShow?.result ?? 0
@@ -100,20 +99,32 @@ class SR_CourseDetailListVC: UIViewController {
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destination = segue.destinationViewController as SR_ORgetCourseVC
+        destination.requestBlock = {[weak self]() -> Void in
+            self?.courseDetilListTableView.reloadData()
+            ""
+        }
     }
-    */
+    
 }
 extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 260
+        if UIDevice.isRunningOniPhone4s()
+        {
+            return 260
+        }
+        else
+        {
+            return 300
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -156,8 +167,11 @@ extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cellData  = dataForShow?.data[indexPath.row] as SR_courseDetilListData?
         var story = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
         var vc    = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as SR_ORgetCourseVC
+        vc.courseId = cellData?.dataIdentifier
+        vc.title    = cellData?.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
