@@ -158,6 +158,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
         case 0 , 3 ,6:
             firstCell.littleBar.backgroundColor = UIColor.NailRedColor()
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
+            firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             firstCell.headerSubTitleLbl.text    = titleLbl
             firstCell.headerTitleLbl.text       = titleLbl
             firstCell.setImgs(courses)
@@ -168,6 +169,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             secondCell.headerTitleLbl.text       = titleLbl
             secondCell.setImgs(courses)
             secondCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
+            secondCell.headerImg.layer.cornerRadius = CGRectGetWidth(secondCell.headerImg.bounds) / 2
             return secondCell
         case 2 , 5:
             thirdCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -175,6 +177,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             thirdCell.headerTitleLbl.text       = titleLbl
             thirdCell.setImgs(courses)
             thirdCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
+            thirdCell.headerImg.layer.cornerRadius = CGRectGetWidth(thirdCell.headerImg.bounds) / 2
             return thirdCell
         default:
             firstCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -182,6 +185,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             firstCell.headerTitleLbl.text       = titleLbl
             firstCell.setImgs(courses)
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
+            firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             return firstCell
         }
         
@@ -196,7 +200,14 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 290
+        if UIDevice.isRunningOniPhone4s()
+        {
+            return 240
+        }
+        else
+        {
+            return 290
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -205,7 +216,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
         var vc    = story.instantiateViewControllerWithIdentifier("SR_CourseDetailListVCID") as SR_CourseDetailListVC
         vc.courseType = type
         var courseData = dataCourseList![indexPath.row]
-        vc.courseId    = courseData.cateId
+        vc.cateId    = courseData.cateId
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

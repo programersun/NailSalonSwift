@@ -9,6 +9,10 @@
 import UIKit
 
 class ICYProfileViewController: UITableViewController {
+    
+    typealias RequestBlock = () -> Void
+    var requestBlock : RequestBlock!
+    
     var userInfo: ZXY_UserDetailInfoData!
     private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
@@ -379,6 +383,9 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
                 self?.userInfo.tel      = tel
                 self?.startDownLoadUserDetailInfo()
                 self?.tableView.reloadData()
+                if self?.requestBlock != nil {
+                    self?.requestBlock()
+                }
             }
             else
             {

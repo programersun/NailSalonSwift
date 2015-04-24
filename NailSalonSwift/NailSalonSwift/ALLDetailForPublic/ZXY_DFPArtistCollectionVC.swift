@@ -11,6 +11,7 @@ import UIKit
 protocol ZXY_DFPArtistCollectionVCDelegate : class
 {
     func collectionDidScroll(contentOffSet : CGPoint)
+    func sendAlbumIDToVC(albumID : String)
 }
 
 class ZXY_DFPArtistCollectionVC: UIViewController {
@@ -158,6 +159,14 @@ extension ZXY_DFPArtistCollectionVC : UICollectionViewDelegate , UICollectionVie
         if let de = delegatela
         {
             de.collectionDidScroll(scrollView.contentOffset)
+        }
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var current = dataForShow[indexPath.row] as ZXY_UserAlbumListData
+        var albumID = current.albumId ?? ""
+        if let de = delegatela
+        {
+            de.sendAlbumIDToVC(albumID)
         }
     }
 }

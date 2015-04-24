@@ -18,18 +18,10 @@ class ZXY_MIMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startDownLoadUserDetailInfo()
+        reloadUserData()
         self.navigationController?.navigationBar.hidden = true
         
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        startDownLoadUserDetailInfo()
-        reloadUserData()
-    }
-//    override func viewWillAppear(animated: Bool) {
-////        startDownLoadUserDetailInfo()
-//        reloadUserData()
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -96,14 +88,15 @@ class ZXY_MIMainVC: UIViewController {
         {
             var propertyVC = segue.destinationViewController as ICYProfileViewController
             propertyVC.userInfo = userInfo
-//            println("\(userInfo)")
-//            println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
+            propertyVC.requestBlock = {[weak self]() -> Void in
+                self?.currentTable.reloadData()
+                ""
+            }
         }
         if( segueID == "toSettingVC")
         {
             var settingVC = segue.destinationViewController as SettingVC
             settingVC.userInfo = userInfo
-//            settingVC.delegate = self
         }
     }
 }
