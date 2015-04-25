@@ -71,7 +71,8 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
         // Return the number of rows in the section.
         switch section {
         case 0:
-            return 2
+//            return 2
+            return 1
         case 1:
             return userInfo.role == "1" ? 2 : 3
         default:
@@ -93,8 +94,8 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
         case 0:
             switch indexPath.row {
             case 0:
-                cell.setCellText.text = "消息设置"
-            case 1:
+//                cell.setCellText.text = "消息设置"
+//            case 1:
                 cell.setCellText.text = "修改密码"
             default:
                 break

@@ -27,9 +27,14 @@ class SR_CourseDetailListVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         courseDetilListTableView.delegate = self
-        self.startLoadData()
+        self.addHeaderAndFooterforTable()
+//        self.startLoadData()
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        srW.startProgress(self.view)
+        self.startLoadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +51,7 @@ class SR_CourseDetailListVC: UIViewController {
     /**
     为tableView 增加上拉加载下拉刷新
     */
-    private func addHeaderAndFooterforCollection()
+    private func addHeaderAndFooterforTable()
     {
         courseDetilListTableView.addFooterWithCallback { [weak self]() -> Void in
             self?.pageCount++
@@ -61,7 +66,6 @@ class SR_CourseDetailListVC: UIViewController {
 
     //加载数据
     func startLoadData(){
-        srW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MainCourseAPI(ZXY_MainCourseAPIType.CourseDetailList)
         println("\(urlString)")
         var parameter : Dictionary<String , AnyObject > = ["cate_id" : cateId! ]
@@ -123,7 +127,7 @@ extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
         }
         else
         {
-            return 300
+            return 290
         }
     }
     
@@ -156,22 +160,23 @@ extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
                 cell.courseImgView.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
-        cell.courseIntroductionLabel.text = cellData?.desc
-        cell.courseNameLabel.text         = cellData?.title
-        cell.coursePraiseNum.text         = cellData?.starNum
-        cell.courseCollectionNum.text     = cellData?.collectNum
-        cell.courseNameLabel.textColor = UIColor.NailRedColor()
-        cell.coursePraiseNum.textColor = UIColor.NailRedColor()
+        cell.courseIntroductionLabel.text  = cellData?.desc
+        cell.courseNameLabel.text          = cellData?.title
+        cell.coursePraiseNum.text          = cellData?.starNum
+        cell.courseCollectionNum.text      = cellData?.collectNum
+        cell.courseNameLabel.textColor     = UIColor.NailRedColor()
+        cell.coursePraiseNum.textColor     = UIColor.NailRedColor()
         cell.courseCollectionNum.textColor = UIColor.NailRedColor()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData  = dataForShow?.data[indexPath.row] as SR_courseDetilListData?
-        var story = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as SR_ORgetCourseVC
-        vc.courseId = cellData?.dataIdentifier
-        vc.title    = cellData?.title
+        var cellData           = dataForShow?.data[indexPath.row] as SR_courseDetilListData?
+        var story              = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
+        var vc                 = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as SR_ORgetCourseVC
+        vc.courseId            = cellData?.dataIdentifier
+        vc.title               = cellData?.title
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

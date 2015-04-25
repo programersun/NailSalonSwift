@@ -10,10 +10,10 @@ import UIKit
 
 class SR_ORgetCourseVC: UIViewController {
 
-    var courseId  : String!
+    var courseId  : String! //样式id
     var stringURL : String!
-    var shareURL  : String!
-    var artWorkID : String!
+//    var shareURL  : String!
+
     private var dataForBtns : SR_CourseUserStatusBaseClass?
     private var zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     
@@ -59,7 +59,7 @@ class SR_ORgetCourseVC: UIViewController {
             self?.dataForBtns = SR_CourseUserStatusBaseClass(dictionary: returnDic)
             var resultDouble  = self?.dataForBtns?.result
             if resultDouble == 1000 {
-                self?.statusChange()
+                self?.reloadStatus()
             }
             else
             {
@@ -74,7 +74,7 @@ class SR_ORgetCourseVC: UIViewController {
     }
     
     //改变点赞和收藏按钮图片和文字颜色
-    func statusChange(){
+    func reloadStatus(){
         if let status = dataForBtns{
             var isStarNum = status.data.isStar
             var isCollectNum = status.data.isCollect
@@ -83,7 +83,7 @@ class SR_ORgetCourseVC: UIViewController {
                 self.praiseBtn.setImage(UIImage(named: "heart_gray"), forState: UIControlState.Normal)
                 self.praiseBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
                 self.praiseBtn.setTitle("已点赞", forState: UIControlState.Normal)
-                self.praiseBtn.titleEdgeInsets.right = 11
+                self.praiseBtn.titleEdgeInsets.right = 10
                 self.praiseBtn.imageEdgeInsets.left  = 40
             }
             else
@@ -91,7 +91,7 @@ class SR_ORgetCourseVC: UIViewController {
                 self.praiseBtn.setImage(UIImage(named: "heart_red"), forState: UIControlState.Normal)
                 self.praiseBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
                 self.praiseBtn.setTitle("点赞", forState: UIControlState.Normal)
-                self.praiseBtn.titleEdgeInsets.right = 11
+                self.praiseBtn.titleEdgeInsets.right = 10
                 self.praiseBtn.imageEdgeInsets.left  = 30
             }
             
@@ -99,7 +99,7 @@ class SR_ORgetCourseVC: UIViewController {
                 self.collectionBtn.setImage(UIImage(named: "star_gray"), forState: UIControlState.Normal)
                 self.collectionBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
                 self.collectionBtn.setTitle("已收藏", forState: UIControlState.Normal)
-                self.collectionBtn.titleEdgeInsets.right = 10
+                self.collectionBtn.titleEdgeInsets.right = 9
                 self.collectionBtn.imageEdgeInsets.left  = 40
             }
             else
@@ -107,12 +107,16 @@ class SR_ORgetCourseVC: UIViewController {
                 self.collectionBtn.setImage(UIImage(named: "star_red"), forState: UIControlState.Normal)
                 self.collectionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
                 self.collectionBtn.setTitle("收藏", forState: UIControlState.Normal)
-                self.collectionBtn.titleEdgeInsets.right = 10
+                self.collectionBtn.titleEdgeInsets.right = 9
                 self.collectionBtn.imageEdgeInsets.left  = 30
             }
         }
     }
     
+    //分享
+    @IBAction func shareBtnClick(sender: AnyObject) {
+        
+    }
     /**
     改变状态码
     
@@ -126,10 +130,6 @@ class SR_ORgetCourseVC: UIViewController {
     //收藏
     @IBAction func collectionBtnClick(sender: AnyObject) {
         self.changeStatus(1)
-    }
-    //分享
-    @IBAction func shareBtnClick(sender: AnyObject) {
-        
     }
     
     func changeStatus(types : Int){
@@ -154,8 +154,7 @@ class SR_ORgetCourseVC: UIViewController {
                 return
             }
             var statusNum = isStarNum
-            if(types == 1)
-            {
+            if(types == 1) {
                 statusNum = isCollect
             }
             
@@ -163,8 +162,7 @@ class SR_ORgetCourseVC: UIViewController {
             {
                 statusNum = "2"
             }
-            else
-            {
+            else {
                 statusNum = "1"
             }
             zxyW.startProgress(self.view)
@@ -178,6 +176,7 @@ class SR_ORgetCourseVC: UIViewController {
                     else{
                         self?.dataForBtns?.data.isStar = statusNum
                     }
+                    self?.reloadStatus()
                     if let s = self
                     {
                         self?.zxyW.hideProgress(s.view)
@@ -185,8 +184,6 @@ class SR_ORgetCourseVC: UIViewController {
                     if self?.requestBlock != nil {
                         self?.requestBlock()
                     }
-
-                    self?.statusChange()
                 }
                 else {
                     var message = ZXY_ErrorMessageHandle.messageForErrorCode(result)

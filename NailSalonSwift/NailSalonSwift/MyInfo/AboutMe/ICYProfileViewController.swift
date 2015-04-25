@@ -319,39 +319,39 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
 //            
 //        })
 //    }
-    
-    func startLoadImgData(img : UIImage)
-    {
-        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-        if(myUserID == nil)
-        {
-            return
-        }
-        zxyW.startProgress(self.view)
-        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
-        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-            var status = returnDic["result"] as Int
-            if(status == 1000)
-            {
-                self?.userInfo.headImage = returnDic["data"] as String
-                self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
-                self?.startDownLoadUserDetailInfo()
-                self?.tableView.reloadData()
-            }
-            if let s = self
-            {
-                s.zxyW.hideProgress(s.view)
-            }
-            }, failure: { [weak self](failError) -> Void in
-                if let s = self
-                {
-                    s.zxyW.hideProgress(s.view)
-                }
-                return
-        })
-
-    }
-    
+//    
+//    func startLoadImgData(img : UIImage)
+//    {
+//        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+//        if(myUserID == nil)
+//        {
+//            return
+//        }
+//        zxyW.startProgress(self.view)
+//        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
+//        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+//            var status = returnDic["result"] as Int
+//            if(status == 1000)
+//            {
+//                self?.userInfo.headImage = returnDic["data"] as String
+//                self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
+//                self?.startDownLoadUserDetailInfo()
+//                self?.tableView.reloadData()
+//            }
+//            if let s = self
+//            {
+//                s.zxyW.hideProgress(s.view)
+//            }
+//            }, failure: { [weak self](failError) -> Void in
+//                if let s = self
+//                {
+//                    s.zxyW.hideProgress(s.view)
+//                }
+//                return
+//        })
+//
+//    }
+//    
     func startLoadInfoData()
     {
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
@@ -381,7 +381,6 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
                 self?.userInfo.sex      = sex
                 self?.userInfo.address  = address
                 self?.userInfo.tel      = tel
-                self?.startDownLoadUserDetailInfo()
                 self?.tableView.reloadData()
                 if self?.requestBlock != nil {
                     self?.requestBlock()
@@ -401,40 +400,40 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         }
     }
     
-    private func startDownLoadUserDetailInfo()
-    {
-        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
-        if(userID == nil)
-        {
-            return
-        }
-        zxyW.startProgress(self.view)
-        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
-        var parameter = ["user_id" : userID!]
-        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            if let s = self
-            {
-                s.zxyW.hideProgress(s.view)
-            }
-            var result = returnDic["result"] as Double
-            if(result == 1000)
-            {
-                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
-                println("\(self?.userInfo!.nickName)")
-            }
-            else
-            {
-                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
-                self?.showAlertEasy("提示", messageContent: messageError)
-            }
-            }) {[weak self] (error) -> Void in
-                if let s = self
-                {
-                    s.zxyW.hideProgress(s.view)
-                }
-        }
-        
-    }
+//    private func startDownLoadUserDetailInfo()
+//    {
+//        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+//        if(userID == nil)
+//        {
+//            return
+//        }
+//        zxyW.startProgress(self.view)
+//        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+//        var parameter = ["user_id" : userID!]
+//        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+//            if let s = self
+//            {
+//                s.zxyW.hideProgress(s.view)
+//            }
+//            var result = returnDic["result"] as Double
+//            if(result == 1000)
+//            {
+//                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+//                println("\(self?.userInfo!.nickName)")
+//            }
+//            else
+//            {
+//                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+//                self?.showAlertEasy("提示", messageContent: messageError)
+//            }
+//            }) {[weak self] (error) -> Void in
+//                if let s = self
+//                {
+//                    s.zxyW.hideProgress(s.view)
+//                }
+//        }
+//        
+//    }
     
     @IBAction func backAction(sender: AnyObject)
     {

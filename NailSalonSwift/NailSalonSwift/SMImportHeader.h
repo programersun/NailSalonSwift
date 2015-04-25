@@ -24,3 +24,9 @@
 //教程点赞、收藏
 #import "SR_CourseUserStatusData.h"
 #import "SR_CourseUserStatusBaseClass.h"
+//我关注的人
+#import "SR_AttentionData.h"
+#import "SR_AttentionBaseClass.h"
+//粉丝
+#import "SR_FansData.h"
+#import "SR_FansBaseClass.h"

@@ -136,6 +136,15 @@
 		A40B88781AE8EE13001BB3D4 /* SR_courseDetilListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88751AE8EE13001BB3D4 /* SR_courseDetilListData.m */; };
 		A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */; };
 		A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */; };
+		A41710A21AEB521D004AA42D /* SR_MIMainStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */; };
+		A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */; };
+		A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A51AEB5741004AA42D /* SR_attentionVC.swift */; };
+		A41710A81AEB653F004AA42D /* SR_attentionTableCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A71AEB653F004AA42D /* SR_attentionTableCellVC.swift */; };
+		A41710B01AEB7F0B004AA42D /* SR_AttentionData.m in Sources */ = {isa = PBXBuildFile; fileRef = A41710AC1AEB7F0B004AA42D /* SR_AttentionData.m */; };
+		A41710B11AEB7F0B004AA42D /* SR_AttentionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A41710AE1AEB7F0B004AA42D /* SR_AttentionBaseClass.m */; };
+		A41710B61AEB9359004AA42D /* SR_FansBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A41710B31AEB9359004AA42D /* SR_FansBaseClass.m */; };
+		A41710B71AEB9359004AA42D /* SR_FansData.m in Sources */ = {isa = PBXBuildFile; fileRef = A41710B51AEB9359004AA42D /* SR_FansData.m */; };
+		A41710BF1AEB961E004AA42D /* SR_fansTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710BE1AEB961E004AA42D /* SR_fansTableVC.swift */; };
 		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
 		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
 		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
@@ -352,6 +361,19 @@
 		A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_courseDetilListBaseClass.m; path = ../SR_courseDetilListBaseClass.m; sourceTree = "<group>"; };
 		A40B88771AE8EE13001BB3D4 /* SR_courseDetilListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_courseDetilListData.h; path = ../SR_courseDetilListData.h; sourceTree = "<group>"; };
 		A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ORgetCourseVC.swift; sourceTree = "<group>"; };
+		A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_MIMainStory.storyboard; sourceTree = "<group>"; };
+		A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionTableVC.swift; sourceTree = "<group>"; };
+		A41710A51AEB5741004AA42D /* SR_attentionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionVC.swift; sourceTree = "<group>"; };
+		A41710A71AEB653F004AA42D /* SR_attentionTableCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionTableCellVC.swift; sourceTree = "<group>"; };
+		A41710AC1AEB7F0B004AA42D /* SR_AttentionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_AttentionData.m; sourceTree = "<group>"; };
+		A41710AD1AEB7F0B004AA42D /* SR_AttentionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_AttentionData.h; sourceTree = "<group>"; };
+		A41710AE1AEB7F0B004AA42D /* SR_AttentionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_AttentionBaseClass.m; sourceTree = "<group>"; };
+		A41710AF1AEB7F0B004AA42D /* SR_AttentionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_AttentionBaseClass.h; sourceTree = "<group>"; };
+		A41710B21AEB9359004AA42D /* SR_FansBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_FansBaseClass.h; sourceTree = "<group>"; };
+		A41710B31AEB9359004AA42D /* SR_FansBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_FansBaseClass.m; sourceTree = "<group>"; };
+		A41710B41AEB9359004AA42D /* SR_FansData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_FansData.h; sourceTree = "<group>"; };
+		A41710B51AEB9359004AA42D /* SR_FansData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_FansData.m; sourceTree = "<group>"; };
+		A41710BE1AEB961E004AA42D /* SR_fansTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_fansTableVC.swift; sourceTree = "<group>"; };
 		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
 		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
 		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
@@ -525,6 +547,7 @@
 		8B4B4DFC1AC502F3001BD10B /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A41710A01AEB51E5004AA42D /* SR_MIMain */,
 				A4B94A6F1AE63F7D003CC29A /* Setting */,
 				A4E211401ADE000900A97CA1 /* AboutMe */,
 				A435B8681AD7ABE2001909A4 /* SR_regist */,
@@ -820,6 +843,34 @@
 			path = SR_courseModel;
 			sourceTree = "<group>";
 		};
+		A41710A01AEB51E5004AA42D /* SR_MIMain */ = {
+			isa = PBXGroup;
+			children = (
+				A41710A91AEB6D8D004AA42D /* Model */,
+				A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */,
+				A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */,
+				A41710A51AEB5741004AA42D /* SR_attentionVC.swift */,
+				A41710A71AEB653F004AA42D /* SR_attentionTableCellVC.swift */,
+				A41710BE1AEB961E004AA42D /* SR_fansTableVC.swift */,
+			);
+			path = SR_MIMain;
+			sourceTree = "<group>";
+		};
+		A41710A91AEB6D8D004AA42D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A41710B21AEB9359004AA42D /* SR_FansBaseClass.h */,
+				A41710B31AEB9359004AA42D /* SR_FansBaseClass.m */,
+				A41710B41AEB9359004AA42D /* SR_FansData.h */,
+				A41710B51AEB9359004AA42D /* SR_FansData.m */,
+				A41710AC1AEB7F0B004AA42D /* SR_AttentionData.m */,
+				A41710AD1AEB7F0B004AA42D /* SR_AttentionData.h */,
+				A41710AE1AEB7F0B004AA42D /* SR_AttentionBaseClass.m */,
+				A41710AF1AEB7F0B004AA42D /* SR_AttentionBaseClass.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A435B8681AD7ABE2001909A4 /* SR_regist */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,6 +1042,7 @@
 				8B1910021ADD4FED0087AECF /* ZXY_DFPArtistTitleView.xib in Resources */,
 				8B5EE2BD1AC8356D00EFF3C4 /* ErrorMessage.plist in Resources */,
 				8BBBDBB71ACA4CC80006A94A /* ZXY_IndicatorCell.xib in Resources */,
+				A41710A21AEB521D004AA42D /* SR_MIMainStory.storyboard in Resources */,
 				8B4B4DFB1AC50267001BD10B /* ArtistStory.storyboard in Resources */,
 				8B4B4E011AC50315001BD10B /* SearchStory.storyboard in Resources */,
 				8B8100CA1AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib in Resources */,
@@ -1062,8 +1114,10 @@
 				8B4B4E0A1AC50697001BD10B /* NSString+Encipher.m in Sources */,
 				A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */,
 				8BBBDBC91ACA764F0006A94A /* ZXYOfferLastAlbum.m in Sources */,
+				A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */,
 				8BBBDBD01ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift in Sources */,
 				8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */,
+				A41710B11AEB7F0B004AA42D /* SR_AttentionBaseClass.m in Sources */,
 				8B95F4751ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift in Sources */,
 				8B8100C51AC7ABD100850B05 /* ZXY_ORSqureTitleView.swift in Sources */,
 				8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */,
@@ -1092,6 +1146,7 @@
 				A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */,
 				8B099B241ADD65D600446F2C /* ZXY_DFPArtistCollectCell.swift in Sources */,
 				A4AF6E221AEA380200FC9755 /* SR_CourseUserStatusData.m in Sources */,
+				A41710A81AEB653F004AA42D /* SR_attentionTableCellVC.swift in Sources */,
 				8B1910061ADD5DF20087AECF /* ZXY_DFPArtistCollectionVC.swift in Sources */,
 				8B871AF11AE69FCB0008915A /* ZXY_UserAlbumListBase.m in Sources */,
 				8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */,
@@ -1118,7 +1173,9 @@
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
 				8B45878A1ADB9E450012B7C4 /* ZXY_AlbumCommentData.m in Sources */,
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
+				A41710B61AEB9359004AA42D /* SR_FansBaseClass.m in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
+				A41710BF1AEB961E004AA42D /* SR_fansTableVC.swift in Sources */,
 				8BAAF03B1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift in Sources */,
 				8BAAF03D1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
@@ -1127,6 +1184,8 @@
 				8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */,
 				8B4587891ADB9E450012B7C4 /* ZXY_AlbumCommentBaseComment.m in Sources */,
 				8B5EE2B71AC834B700EFF3C4 /* MJRefreshFooterView.m in Sources */,
+				A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */,
+				A41710B71AEB9359004AA42D /* SR_FansData.m in Sources */,
 				8B871AF91AE6A72B0008915A /* ZXY_UserCommentData.m in Sources */,
 				A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */,
 				8B871AEC1AE6888F0008915A /* ZXY_ArtistDetailData.m in Sources */,
@@ -1136,6 +1195,7 @@
 				A4BD736C1AE9E6A400BEECEA /* UIDevice+Resolutions.m in Sources */,
 				8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */,
 				8B1910011ADD4FED0087AECF /* ZXY_DFPArtistTitleView.swift in Sources */,
+				A41710B01AEB7F0B004AA42D /* SR_AttentionData.m in Sources */,
 				8B4B4DEC1AC4FD9C001BD10B /* ZXY_LocationRelative.swift in Sources */,
 				8B0141931ACD1FEE000C180B /* ZXY_MIMainItemCell.swift in Sources */,
 				8B5EE2C81AC8381100EFF3C4 /* ZXYOriginAlbumImage.m in Sources */,

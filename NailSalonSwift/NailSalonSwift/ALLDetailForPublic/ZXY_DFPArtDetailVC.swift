@@ -56,6 +56,9 @@ class ZXY_DFPArtDetailVC: UIViewController {
         super.viewDidAppear(animated)
         
     }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
+    }
     
     func addFootterForTable()
     {

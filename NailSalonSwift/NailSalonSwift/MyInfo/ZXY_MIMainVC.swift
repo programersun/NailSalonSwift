@@ -18,9 +18,12 @@ class ZXY_MIMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startDownLoadUserDetailInfo()
-        reloadUserData()
+//        reloadUserData()
         self.navigationController?.navigationBar.hidden = true
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.reloadUserData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +54,7 @@ class ZXY_MIMainVC: UIViewController {
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
 //                self?.userInfo = self?.dataForShow?.data
-                println("\(self?.userInfo!.nickName)")
+//                println("\(self?.userInfo!.nickName)")
                 self?.reloadUserData()
             }
             else
@@ -254,6 +257,41 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+        }
+        var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
+
+        switch indexPath.section {
+            case 1:
+                switch indexPath.row {
+                case 0:
+                    ""
+                case 1:
+                    var vc    = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    ""
+                default:
+                    return
+            }
+            case 2:
+                switch indexPath.row {
+                case 0:
+                    ""
+                case 1:
+                    ""
+                case 2:
+                    ""
+                default:
+                    return
+            }
+            default:
+            return
+        }
         
     }
     
@@ -276,5 +314,17 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     
     func headImgTouch() {
         self.performSegueWithIdentifier("toUserInfo", sender: nil)
+    }
+}
+extension ZXY_MIMainVC : UIAlertViewDelegate  {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 1)
+        {
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            loginVC.delegate = self
+            loginVC.navigationController?.navigationBar.hidden = true
+            self.navigationController?.pushViewController(loginVC, animated: true)
+        }
     }
 }

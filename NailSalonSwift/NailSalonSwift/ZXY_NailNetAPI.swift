@@ -77,6 +77,12 @@ enum ZXY_ADFPAPIType : String
     case ADPF_ArtistDetailInfo = "User/another_user_Info"
 }
 
+enum SR_AttentionAPIType : String
+{
+    case SR_Attention = "UserList2/attention_list"
+    case SR_Fans      = "UserList2/attention_list2"
+}
+
 struct ZXY_NailNetAPI
 {
     /**
@@ -143,6 +149,10 @@ struct ZXY_NailNetAPI
     }
 
     static func ZXY_ADFPAPI(currentType : ZXY_ADFPAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
+    static func SR_AttentionAPI(currentType: SR_AttentionAPIType) -> String
     {
         return ZXY_MainAPI + currentType.rawValue
     }
