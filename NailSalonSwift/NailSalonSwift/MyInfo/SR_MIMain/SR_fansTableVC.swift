@@ -94,6 +94,14 @@ class SR_fansTableVC: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cellData  = dataForTable?.data[indexPath.row] as SR_FansData
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        vc.artistID = cellData.userId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -18,9 +18,10 @@ class ICYProfileViewController: UITableViewController {
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
     var userInfoValue : Dictionary<String , AnyObject?>! = Dictionary<String , AnyObject?>()
     
+    @IBOutlet weak var topBarView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.topBarView.backgroundColor = UIColor.NailRedColor()
         println("\(userInfo)")
         userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
         

@@ -13,9 +13,10 @@ class SettingVC: UIViewController {
     var userInfo: ZXY_UserDetailInfoData!
 
     @IBOutlet weak var logOutBtn: UIButton!
-    
+    @IBOutlet weak var topBarView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.topBarView.backgroundColor = UIColor.NailRedColor()
         logOutBtn.backgroundColor = UIColor.NailRedColor()
         logOutBtn.layer.cornerRadius = 4
         self.navigationController?.navigationBar.hidden = true

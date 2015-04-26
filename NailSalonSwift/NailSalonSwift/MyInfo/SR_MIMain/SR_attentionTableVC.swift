@@ -100,7 +100,11 @@ class SR_attentionTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        var cellData  = dataForTable?.data[indexPath.row] as SR_AttentionData
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        vc.artistID = cellData.userId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     /*

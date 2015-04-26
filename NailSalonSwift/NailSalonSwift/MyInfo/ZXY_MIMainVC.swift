@@ -19,10 +19,11 @@ class ZXY_MIMainVC: UIViewController {
         super.viewDidLoad()
         startDownLoadUserDetailInfo()
 //        reloadUserData()
-        self.navigationController?.navigationBar.hidden = true
+//        self.navigationController?.navigationBar.hidden = true
         
     }
     override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
         self.reloadUserData()
     }
 
@@ -272,7 +273,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                 case 0:
                     ""
                 case 1:
-                    var vc    = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
+                    var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
                     self.navigationController?.pushViewController(vc, animated: true)
                     ""
                 default:
@@ -283,7 +284,9 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                 case 0:
                     ""
                 case 1:
-                    ""
+                    var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
+                    vc.userID = userID!
+                    self.navigationController?.pushViewController(vc, animated: true)
                 case 2:
                     ""
                 default:
