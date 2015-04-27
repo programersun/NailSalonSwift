@@ -1,25 +1,25 @@
 //
-//  SR_AttentionBaseClass.m
+//  SR_albumCollectionBaseClass.m
 //
 //  Created by sun  on 15/4/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
-#import "SR_AttentionBaseClass.h"
-#import "SR_AttentionData.h"
+#import "SR_albumCollectionBaseClass.h"
+#import "SR_albumCollectionData.h"
 
 
-NSString *const kSR_AttentionBaseClassResult = @"result";
-NSString *const kSR_AttentionBaseClassData = @"data";
+NSString *const kSR_albumCollectionBaseClassResult = @"result";
+NSString *const kSR_albumCollectionBaseClassData = @"data";
 
 
-@interface SR_AttentionBaseClass ()
+@interface SR_albumCollectionBaseClass ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation SR_AttentionBaseClass
+@implementation SR_albumCollectionBaseClass
 
 @synthesize result = _result;
 @synthesize data = _data;
@@ -37,20 +37,20 @@ NSString *const kSR_AttentionBaseClassData = @"data";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.result = [[self objectOrNilForKey:kSR_AttentionBaseClassResult fromDictionary:dict] doubleValue];
-    NSObject *receivedSR_AttentionData = [dict objectForKey:kSR_AttentionBaseClassData];
-    NSMutableArray *parsedSR_AttentionData = [NSMutableArray array];
-    if ([receivedSR_AttentionData isKindOfClass:[NSArray class]]) {
-        for (NSDictionary *item in (NSArray *)receivedSR_AttentionData) {
+            self.result = [[self objectOrNilForKey:kSR_albumCollectionBaseClassResult fromDictionary:dict] doubleValue];
+    NSObject *receivedSR_albumCollectionData = [dict objectForKey:kSR_albumCollectionBaseClassData];
+    NSMutableArray *parsedSR_albumCollectionData = [NSMutableArray array];
+    if ([receivedSR_albumCollectionData isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedSR_albumCollectionData) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedSR_AttentionData addObject:[SR_AttentionData modelObjectWithDictionary:item]];
+                [parsedSR_albumCollectionData addObject:[SR_albumCollectionData modelObjectWithDictionary:item]];
             }
        }
-    } else if ([receivedSR_AttentionData isKindOfClass:[NSDictionary class]]) {
-       [parsedSR_AttentionData addObject:[SR_AttentionData modelObjectWithDictionary:(NSDictionary *)receivedSR_AttentionData]];
+    } else if ([receivedSR_albumCollectionData isKindOfClass:[NSDictionary class]]) {
+       [parsedSR_albumCollectionData addObject:[SR_albumCollectionData modelObjectWithDictionary:(NSDictionary *)receivedSR_albumCollectionData]];
     }
 
-    self.data = [NSArray arrayWithArray:parsedSR_AttentionData];
+    self.data = [NSArray arrayWithArray:parsedSR_albumCollectionData];
 
     }
     
@@ -61,7 +61,7 @@ NSString *const kSR_AttentionBaseClassData = @"data";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.result] forKey:kSR_AttentionBaseClassResult];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.result] forKey:kSR_albumCollectionBaseClassResult];
     NSMutableArray *tempArrayForData = [NSMutableArray array];
     for (NSObject *subArrayObject in self.data) {
         if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
@@ -72,7 +72,7 @@ NSString *const kSR_AttentionBaseClassData = @"data";
             [tempArrayForData addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForData] forKey:kSR_AttentionBaseClassData];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForData] forKey:kSR_albumCollectionBaseClassData];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -96,21 +96,21 @@ NSString *const kSR_AttentionBaseClassData = @"data";
 {
     self = [super init];
 
-    self.result = [aDecoder decodeDoubleForKey:kSR_AttentionBaseClassResult];
-    self.data = [aDecoder decodeObjectForKey:kSR_AttentionBaseClassData];
+    self.result = [aDecoder decodeDoubleForKey:kSR_albumCollectionBaseClassResult];
+    self.data = [aDecoder decodeObjectForKey:kSR_albumCollectionBaseClassData];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_result forKey:kSR_AttentionBaseClassResult];
-    [aCoder encodeObject:_data forKey:kSR_AttentionBaseClassData];
+    [aCoder encodeDouble:_result forKey:kSR_albumCollectionBaseClassResult];
+    [aCoder encodeObject:_data forKey:kSR_albumCollectionBaseClassData];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    SR_AttentionBaseClass *copy = [[SR_AttentionBaseClass alloc] init];
+    SR_albumCollectionBaseClass *copy = [[SR_albumCollectionBaseClass alloc] init];
     
     if (copy) {
 

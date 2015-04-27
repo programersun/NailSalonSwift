@@ -52,7 +52,7 @@ class SR_ORgetCourseVC: UIViewController {
         {
             return
         }
-        userID     = userID ?? ""
+//        userID     = userID ?? ""
         var urlString = ZXY_NailNetAPI.ZXY_MainCourseAPI(ZXY_MainCourseAPIType.CourseUserStatus)
         var parameter = ["user_id" : userID! ,"course_id": courseId!]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in

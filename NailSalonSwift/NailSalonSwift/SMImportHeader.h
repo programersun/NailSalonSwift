@@ -30,3 +30,9 @@
 //粉丝
 #import "SR_FansData.h"
 #import "SR_FansBaseClass.h"
+//我收藏的图集
+#import "SR_albumCollectionData.h"
+#import "SR_albumCollectionBaseClass.h"
+//我收藏的教程
+#import "SR_courseCollectionData.h"
+#import "SR_courseCollectionBaseClass.h"

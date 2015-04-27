@@ -1,5 +1,5 @@
 //
-//  SR_FansBaseClass.h
+//  SR_albumCollectionBaseClass.h
 //
 //  Created by sun  on 15/4/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
@@ -9,7 +9,7 @@
 
 
 
-@interface SR_FansBaseClass : NSObject <NSCoding, NSCopying>
+@interface SR_albumCollectionBaseClass : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double result;
 @property (nonatomic, strong) NSArray *data;

@@ -13,7 +13,8 @@ class SR_attentionTableVC: UITableViewController {
     @IBOutlet var attentionTableView: UITableView!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
-    private var dataForTable : SR_AttentionBaseClass?
+    private var dataForTable : NSMutableArray = NSMutableArray()
+    var pageCount : Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +47,14 @@ class SR_attentionTableVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if let datas = dataForTable?.data
-        {
-            return datas.count
-        }
-        return 0
+        return dataForTable.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(SR_attentionTableCellVC.cellId) as SR_attentionTableCellVC
         cell.toolView.backgroundColor = UIColor.NailRedColor()
-        var cellData  = dataForTable?.data[indexPath.row] as SR_AttentionData
+        var cellData  = dataForTable[indexPath.row] as SR_AttentionData
         //美甲师头像
         var imgUrl    = cellData.headImage as String?
         if let url    = imgUrl
@@ -100,7 +97,7 @@ class SR_attentionTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData  = dataForTable?.data[indexPath.row] as SR_AttentionData
+        var cellData  = dataForTable[indexPath.row] as SR_AttentionData
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
         vc.artistID = cellData.userId
@@ -164,11 +161,13 @@ class SR_attentionTableVC: UITableViewController {
     private func addHeaderAndFooterforTable()
     {
         attentionTableView.addFooterWithCallback { [weak self]() -> Void in
+            self?.pageCount++
             self?.startLoadAttentionData()
             ""
         }
         
         attentionTableView.addHeaderWithCallback { [weak self] () -> Void in
+            self?.pageCount = 1
             self?.startLoadAttentionData()
             ""
         }
@@ -177,21 +176,20 @@ class SR_attentionTableVC: UITableViewController {
     func startLoadAttentionData(){
         var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         var urlString = ZXY_NailNetAPI.SR_AttentionAPI(SR_AttentionAPIType.SR_Attention)
-        var parameter : Dictionary<String ,  AnyObject> = [ "user_id" : userID!]
+        var parameter : Dictionary<String ,  AnyObject> = [ "user_id" : userID!, "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            self?.dataForTable = SR_AttentionBaseClass(dictionary: returnDic)
-            var result = self?.dataForTable?.result ?? 0
-            if result == 1000
+            var arr = SR_AttentionBaseClass(dictionary: returnDic).data
+            if(self?.pageCount == 1)
             {
-                self?.attentionTableView.reloadData()
-                self?.endFreshing()
+                self?.dataForTable.removeAllObjects()
+                self?.dataForTable.addObjectsFromArray(arr)
             }
             else
             {
-                var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
-                self?.showAlertEasy("提示", messageContent: errorMessage)
-                self?.endFreshing()
+                self?.dataForTable.addObjectsFromArray(arr)
             }
+            self?.attentionTableView.reloadData()
+            self?.endFreshing()
             if let s = self
             {
                 s.srW.hideProgress(s.view)

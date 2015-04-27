@@ -1,33 +1,34 @@
-
 //
-//  SR_myAlbumVC.swift
+//  SR_albumCollectionVC.swift
 //  NailSalonSwift
 //
-//  Created by sun on 15/4/26.
+//  Created by sun on 15/4/27.
 //  Copyright (c) 2015年 宇周. All rights reserved.
 //
 
 import UIKit
 
-class SR_myAlbumVC: UIViewController {
 
+class SR_albumCollectionVC: UIViewController {
     @IBOutlet weak var ablumCollection: UICollectionView!
-    
-    @IBOutlet weak var topBarView: UIView!
     var layout = CHTCollectionViewWaterfallLayout()
+    var delegatela : ZXY_DFPArtistCollectionVCDelegate?
     var ablumPage : Int = 1
     var userID : String?
     var isDownLoad = false
-    private var dataForShow : NSMutableArray = NSMutableArray()
+    var dataForShow : NSMutableArray = NSMutableArray()
     
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        srW.startProgress(self.view)
+        self.navigationController?.navigationBar.hidden = true
         ablumCollection.backgroundColor = UIColor.NailBackGrayColor()
         self.changeLayoutType(2)
+        
+        startDownLoadAlbum()
         ablumCollection.addFooterWithCallback {[weak self] () -> Void in
             self?.ablumPage++
             self?.startDownLoadAlbum()
@@ -39,24 +40,8 @@ class SR_myAlbumVC: UIViewController {
             self?.startDownLoadAlbum()
             ""
         }
-        
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(animated: Bool) {
-        srW.startProgress(self.ablumCollection)
-        self.startDownLoadAlbum()
-        srW.hideProgress(self.ablumCollection)
-    }
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     private func changeLayoutType(columnNum : Int)
     {
         layout.headerHeight = 0
@@ -71,9 +56,14 @@ class SR_myAlbumVC: UIViewController {
     {
         ablumCollection.footerEndRefreshing()
         ablumCollection.headerEndRefreshing()
-        var urlString = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADPF_ArtistArts)
+        if(isDownLoad)
+        {
+            return
+        }
+        isDownLoad = true
+        var urlString = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.SR_albumCollection)
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: ["user_id" : self.userID! , "p" : ablumPage], successBlock: { [weak self](returnDic) -> Void in
-            var arr = ZXY_UserAlbumListBase(dictionary: returnDic).data
+            var arr = SR_albumCollectionBaseClass(dictionary: returnDic).data
             if(self?.ablumPage == 1)
             {
                 self?.dataForShow.removeAllObjects()
@@ -100,10 +90,12 @@ class SR_myAlbumVC: UIViewController {
         }
         
     }
-    
-    @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
@@ -117,23 +109,12 @@ class SR_myAlbumVC: UIViewController {
 
 }
 
-extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource , CHTCollectionViewDelegateWaterfallLayout
+extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewDataSource , CHTCollectionViewDelegateWaterfallLayout
 {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-        return 1
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return dataForShow.count
-    }
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SR_myAlbumCell.cellID, forIndexPath: indexPath) as SR_myAlbumCell
         var currentRow = indexPath.row
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : SR_albumCollectionData = dataForShow[currentRow] as SR_albumCollectionData
         var artImage : String?      = ZXY_ALLApi.ZXY_MainAPIImage + currentData.cutPath
         if(artImage != nil)
         {
@@ -141,15 +122,21 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         }
         cell.artName.text = currentData.dataDescription
         cell.agreeNum.text = currentData.agreeCount
-        // Configure the cell
-        
         return cell
     }
-
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataForShow.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         var currentRow = indexPath.row
         
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : SR_albumCollectionData = dataForShow[currentRow] as SR_albumCollectionData
         var width       = (currentData.cutWidth as NSString).floatValue
         var height      = (currentData.cutHeight as NSString).floatValue
         
@@ -160,14 +147,13 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         var imgRealHeight = CGFloat(radio) * screenWidths
         
         return CGSizeMake(screenWidths, imgRealHeight + 70)
+        
     }
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
-        var current = dataForShow[indexPath.row] as ZXY_UserAlbumListData
+        var current = dataForShow[indexPath.row] as SR_albumCollectionData
         vc.artWorkID = current.albumId ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }

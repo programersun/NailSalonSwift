@@ -10,11 +10,12 @@ import UIKit
 
 class SR_fansTableVC: UITableViewController {
     
-    @IBOutlet var attentionTableView: UITableView!
+    @IBOutlet var fansTableView: UITableView!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
-    private var dataForTable : SR_FansBaseClass?
-
+   private var dataForTable : NSMutableArray = NSMutableArray()
+    var pageCount : Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addHeaderAndFooterforTable()
@@ -46,18 +47,14 @@ class SR_fansTableVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if let datas = dataForTable?.data
-        {
-            return datas.count
-        }
-        return 0
+        return dataForTable.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(SR_attentionTableCellVC.cellId) as SR_attentionTableCellVC
         cell.toolView.backgroundColor = UIColor.NailRedColor()
-        var cellData  = dataForTable?.data[indexPath.row] as SR_FansData
+        var cellData  = dataForTable[indexPath.row] as SR_FansData
         //美甲师头像
         var imgUrl    = cellData.headImage as String?
         if let url    = imgUrl
@@ -96,7 +93,7 @@ class SR_fansTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData  = dataForTable?.data[indexPath.row] as SR_FansData
+        var cellData  = dataForTable[indexPath.row] as SR_FansData
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
         vc.artistID = cellData.userId
@@ -151,20 +148,22 @@ class SR_fansTableVC: UITableViewController {
     //停止上拉下拉刷新
     private func endFreshing()
     {
-        attentionTableView.footerEndRefreshing()
-        attentionTableView.headerEndRefreshing()
+        fansTableView.footerEndRefreshing()
+        fansTableView.headerEndRefreshing()
     }
     /**
     为tableView 增加上拉加载下拉刷新
     */
     private func addHeaderAndFooterforTable()
     {
-        attentionTableView.addFooterWithCallback { [weak self]() -> Void in
+        fansTableView.addFooterWithCallback { [weak self]() -> Void in
+            self?.pageCount++
             self?.startLoadFansData()
             ""
         }
         
-        attentionTableView.addHeaderWithCallback { [weak self] () -> Void in
+        fansTableView.addHeaderWithCallback { [weak self] () -> Void in
+            self?.pageCount = 1
             self?.startLoadFansData()
             ""
         }
@@ -172,26 +171,24 @@ class SR_fansTableVC: UITableViewController {
     func startLoadFansData(){
         var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         var urlString = ZXY_NailNetAPI.SR_AttentionAPI(SR_AttentionAPIType.SR_Fans)
-        var parameter : Dictionary<String ,  AnyObject> = [ "user_id" : userID!]
+        var parameter : Dictionary<String ,  AnyObject> = [ "user_id" : userID! ,"p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-            
-                        self?.dataForTable = SR_FansBaseClass(dictionary: returnDic)
-                        var result = self?.dataForTable?.result ?? 0
-                        if result == 1000
-                        {
-                            self?.attentionTableView.reloadData()
-                            self?.endFreshing()
-                        }
-                        else
-                        {
-                            var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
-                            self?.showAlertEasy("提示", messageContent: errorMessage)
-                            self?.endFreshing()
-                        }
-                        if let s = self
-                        {
-                            s.srW.hideProgress(s.view)
-                        }
+            var arr = SR_FansBaseClass(dictionary: returnDic).data
+            if(self?.pageCount == 1)
+            {
+                self?.dataForTable.removeAllObjects()
+                self?.dataForTable.addObjectsFromArray(arr)
+            }
+            else
+            {
+                self?.dataForTable.addObjectsFromArray(arr)
+            }
+            self?.fansTableView.reloadData()
+            self?.endFreshing()
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
             }) { [weak self](error) -> Void in
                 println(error)
                 if let s = self
@@ -201,7 +198,6 @@ class SR_fansTableVC: UITableViewController {
                 self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
                 ""
         }
-        
     }
 
 }

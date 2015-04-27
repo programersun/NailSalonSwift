@@ -1,5 +1,5 @@
 //
-//  SR_FansBaseClass.h
+//  SR_courseCollectionBaseClass.h
 //
 //  Created by sun  on 15/4/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
@@ -9,9 +9,9 @@
 
 
 
-@interface SR_FansBaseClass : NSObject <NSCoding, NSCopying>
+@interface SR_courseCollectionBaseClass : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double result;
+@property (nonatomic, strong) NSString *result;
 @property (nonatomic, strong) NSArray *data;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

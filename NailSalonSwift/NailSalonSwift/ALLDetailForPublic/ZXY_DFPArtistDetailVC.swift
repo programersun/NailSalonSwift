@@ -232,45 +232,45 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-//    func attensionChange(){
-//        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-//        if(userID == nil)
-//        {
-//            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
-//            alert.show()
-//            return
-//        }
-//        var parameter : [String : AnyObject] = Dictionary<String , AnyObject>()
-//        var data = self.dataForShow?.data
-//        if artistID != nil
-//        {
-//            var control  = data?.isAttention == 1 ? 2 : 1
-//            parameter = ["user_id" : userID! , "attention_user_id" : artistID! , "control": "\(control)"]
-//            ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(ZXY_ADFPAPIType.ADFP_ArtCollection, parameter: parameter, success: {[weak self] (currentStage) -> Void in
-//                data?.isAttention = Double(control)
-//                self?.isAttensionFunc(Double(control))
-//                ""
-//                }, fail: { (errorMessage) -> Void in
-//                    println(errorMessage)
-//                    ""
-//            })
-//        }
-//    }
-//    func isAttensionFunc(isAtten : Double)
-//    {
-//        if isAtten == 1
-//        {
-//            self.attensionBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
-//            self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
-//            self.attensionBtn.layer.borderColor = UIColor.NailGrayColor().CGColor
-//        }
-//        else
-//        {
-//            self.attensionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
-//            self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
-//            self.attensionBtn.layer.borderColor = UIColor.NailRedColor().CGColor
-//        }
-//    }
+    func attensionChange(){
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+        }
+        var parameter : [String : AnyObject] = Dictionary<String , AnyObject>()
+        var data = self.dataForShow?.data
+        if artistID != nil
+        {
+            var control  = data?.isAttention == 1 ? 2 : 1
+            parameter = ["user_id" : userID! , "attention_user_id" : artistID! , "control": "\(control)"]
+            ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(ZXY_ADFPAPIType.ADFP_ArtAttension, parameter: parameter, success: {[weak self] (currentStage) -> Void in
+                data?.isAttention = Double(control)
+                self?.isAttensionFunc(Double(control))
+                ""
+                }, fail: { (errorMessage) -> Void in
+                    println(errorMessage)
+                    ""
+            })
+        }
+    }
+    func isAttensionFunc(isAtten : Double)
+    {
+        if isAtten == 1
+        {
+            self.attensionBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        }
+        else
+        {
+            self.attensionBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -289,7 +289,7 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     }
 
     @IBAction func attensionAction(sender: AnyObject) {
-//        self.attensionChange()
+        self.attensionChange()
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

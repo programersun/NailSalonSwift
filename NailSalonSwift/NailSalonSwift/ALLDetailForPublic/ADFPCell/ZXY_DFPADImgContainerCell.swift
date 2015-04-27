@@ -15,6 +15,7 @@ protocol ZXY_DFPADImgContainerCellProtocol : class
     func userClickAgreeImg()
     func userClickAvaterImg()
     func clickImageAtIndexPath(indexPath : NSIndexPath)
+    func userClickEditBtn()
 }
 
 class ZXY_DFPADImgContainerCell: UITableViewCell {
@@ -32,6 +33,10 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
     @IBOutlet weak var imgCollection : UICollectionView!
     var delegate : ZXY_DFPADImgContainerCellProtocol?
     var imgS     : [AnyObject]? = []
+    
+    var artistID : String?
+    var userID : String?
+    
     class func cellID() -> String
     {
         return "ZXY_DFPADImgContainerCellID"
@@ -53,7 +58,7 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
         
         var tapDetailArtist = UITapGestureRecognizer(target: self, action: "detialAritstImgClick")
         artistAvatar.addGestureRecognizer(tapDetailArtist)
-        
+        userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -88,24 +93,36 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
     
     func isAttensionFunc(isAtten : Double)
     {
-        if isAtten == 1
-        {
-            self.attensionBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
-            self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
-            self.attensionBtn.layer.borderColor = UIColor.NailGrayColor().CGColor
-        }
-        else
-        {
+        if self.artistID == self.userID {
             self.attensionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
-            self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("编 辑", forState: UIControlState.Normal)
             self.attensionBtn.layer.borderColor = UIColor.NailRedColor().CGColor
+        }
+        else {
+            if isAtten == 1
+            {
+                self.attensionBtn.setTitleColor(UIColor.NailGrayColor(), forState: UIControlState.Normal)
+                self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
+                self.attensionBtn.layer.borderColor = UIColor.NailGrayColor().CGColor
+            }
+            else
+            {
+                self.attensionBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
+                self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
+                self.attensionBtn.layer.borderColor = UIColor.NailRedColor().CGColor
+            }
         }
     }
 
     @IBAction func attensionAction(sender: AnyObject) {
         if let de = delegate
         {
-            de.userClickAttensionImg()
+            if self.artistID == self.userID {
+                de.userClickEditBtn()
+            }
+            else {
+                de.userClickAttensionImg()
+            }
         }
     }
     
