@@ -23,8 +23,10 @@ class SR_SearchMainVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
+    }
     /*
     // MARK: - Navigation
 
@@ -114,6 +116,28 @@ extension SR_SearchMainVC : UITableViewDataSource, UITableViewDelegate {
             SSMainCell.itemTitle.text = titleName
             SSMainCell.itemTitle.textColor = UIColor.NailGrayColor()
             return SSMainCell
+        }
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 1:
+                self.performSegueWithIdentifier("toLabelVC", sender: nil)
+            default:
+                ""
+            }
+        case 1:
+            switch indexPath.row {
+            case 1:
+                self.performSegueWithIdentifier("toNickNameVC", sender: nil)
+            case 2:
+                ""
+            default:
+                ""
+            }
+        default:
+            ""
         }
     }
 }

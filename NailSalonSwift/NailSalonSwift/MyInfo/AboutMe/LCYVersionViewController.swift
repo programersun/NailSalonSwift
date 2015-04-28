@@ -19,7 +19,7 @@ class LCYVersionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topBarView.backgroundColor = UIColor.NailRedColor()
-        iconView.layer.cornerRadius = 30
+        iconView.layer.cornerRadius = CGRectGetWidth(iconView.bounds) / 6
         // Do any additional setup after loading the view.
         if let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.text = "版本号：1.2.0"

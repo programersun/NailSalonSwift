@@ -278,37 +278,42 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
 
         switch indexPath.section {
-            case 1:
-                switch indexPath.row {
-                case 0:
-//                    ""
-//                case 1:
-                    var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
-                    self.navigationController?.pushViewController(vc, animated: true)
-                    ""
-                default:
-                    return
-            }
-            case 2:
-                switch indexPath.row {
-                case 0:
-//                    ""
-//                case 1:
-                    var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
-                    vc.userID = userID!
-                    self.navigationController?.pushViewController(vc, animated: true)
-//                case 2:
-                case 1:
-                    var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as SR_myCollectionVC
-                    vc.userID = userID!
-                    self.navigationController?.pushViewController(vc, animated: true)
-                default:
-                    return
-            }
+        case 0:
+            var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
+            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+            detailArtist.artistID = userID
+            self.navigationController?.pushViewController(detailArtist, animated: true)
+            ""
+        case 1:
+            switch indexPath.row {
+            case 0:
+                ""
+//            case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
+                self.navigationController?.pushViewController(vc, animated: true)
+                ""
             default:
+                return
+        }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                //                    ""
+                //                case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
+                vc.userID = userID!
+                self.navigationController?.pushViewController(vc, animated: true)
+                //                case 2:
+            case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as SR_myCollectionVC
+                vc.userID = userID!
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                return
+            }
+        default:
             return
         }
-        
     }
     
     func userLoginSuccess() {

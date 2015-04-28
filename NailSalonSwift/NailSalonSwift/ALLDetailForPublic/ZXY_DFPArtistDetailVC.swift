@@ -40,12 +40,15 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     var previousYForTable   : CGFloat = 0
     var firstCollectionVC : ZXY_DFPArtistCollectionVC!
     var secontTableVC     : ZXY_DFPArtistTableVC!
+    //加载动画
+    let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     
     @IBOutlet weak var toTopDistance: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.hidden = false
+        srW.startProgress(self.view)
+//        self.navigationController?.navigationBar.hidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         contentScroll.contentSize.width = 2 * screenSize.width
@@ -64,13 +67,13 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.hidden = false
         self.startInitFirst()
         self.startInitSecond()
     }
-    override func viewWillDisappear(animated: Bool) {
+    
+    override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.hidden = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     private func startLoadData()
@@ -89,13 +92,22 @@ class ZXY_DFPArtistDetailVC: UIViewController {
             if result == 1000
             {
                 self?.reloadDataForView()
+                
             }
             else
             {
                 var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
                 self?.showAlertEasy("提示", messageContent: errorMessage)
             }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
         }) { [weak self] (error) -> Void in
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
             ""
             ""
         }

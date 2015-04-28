@@ -122,7 +122,7 @@
                                                 <constraint firstItem="AQV-sL-hZk" firstAttribute="leading" secondItem="b4o-ZN-Ds2" secondAttribute="trailing" constant="12" id="CRg-bF-8iR"/>
                                                 <constraint firstAttribute="trailing" secondItem="zIG-SM-CHM" secondAttribute="trailing" id="FQ2-Ye-MIq"/>
                                                 <constraint firstAttribute="centerX" secondItem="zIG-SM-CHM" secondAttribute="centerX" id="J4R-62-Pgb"/>
-                                                <constraint firstAttribute="bottom" secondItem="7sT-Te-iMl" secondAttribute="bottom" constant="22" id="Jc1-i4-STz"/>
+                                                <constraint firstAttribute="bottom" secondItem="7sT-Te-iMl" secondAttribute="bottom" constant="32" id="Jc1-i4-STz"/>
                                                 <constraint firstAttribute="bottom" secondItem="AQV-sL-hZk" secondAttribute="bottom" constant="67" id="KHI-F2-bjC"/>
                                                 <constraint firstItem="zIG-SM-CHM" firstAttribute="leading" secondItem="lDx-Iu-aeT" secondAttribute="leading" id="P7I-8S-9Jh"/>
                                                 <constraint firstItem="zIG-SM-CHM" firstAttribute="top" secondItem="lDx-Iu-aeT" secondAttribute="top" id="TXA-Ms-R5B"/>
@@ -157,8 +157,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="S0K-8J-so1">
-                                                    <rect key="frame" x="15" y="60" width="570" height="1"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="S0K-8J-so1">
+                                                    <rect key="frame" x="15" y="61" width="570" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="UaF-T8-Waq"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miMessage" translatesAutoresizingMaskIntoConstraints="NO" id="qe8-SX-y2r">
                                                     <rect key="frame" x="20" y="18" width="25" height="25"/>
@@ -1197,10 +1200,15 @@
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-F9-EwA">
-                                            <rect key="frame" x="10" y="59" width="580" height="1"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="TgK-s2-rDp"/>
+                                                <constraint firstAttribute="height" id="TgK-s2-rDp"/>
+                                                <constraint firstAttribute="height" constant="0.5" id="mIs-cp-2k4"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="TgK-s2-rDp"/>
+                                                </mask>
+                                            </variation>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -1236,10 +1244,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="p5Z-an-vqk">
-                                            <rect key="frame" x="10" y="43" width="580" height="1"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="C9q-r0-gc7"/>
+                                                <constraint firstAttribute="height" constant="0.5" id="4Yc-FC-plm"/>
+                                                <constraint firstAttribute="height" id="C9q-r0-gc7"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="C9q-r0-gc7"/>
+                                                </mask>
+                                            </variation>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -1495,7 +1508,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jro-qN-XDI">
-                                                    <rect key="frame" x="15" y="10" width="150" height="24"/>
+                                                    <rect key="frame" x="15" y="10" width="150" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="Nb3-Sw-p58"/>
                                                     </constraints>
@@ -1504,9 +1517,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
-                                                    <rect key="frame" x="10" y="43" width="580" height="1"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="IRc-AA-mq0"/>
+                                                        <constraint firstAttribute="height" id="IRc-AA-mq0"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

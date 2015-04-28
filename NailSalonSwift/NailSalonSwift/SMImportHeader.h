@@ -36,3 +36,11 @@
 //我收藏的教程
 #import "SR_courseCollectionData.h"
 #import "SR_courseCollectionBaseClass.h"
+//搜索图集
+#import "SR_searchLabelData.h"
+#import "SR_searchLabelImage.h"
+#import "SR_searchLabelBaseClass.h"
+#import "SR_searchLabelUser.h"
+//搜索用户
+#import "SR_searchUserData.h"
+#import "SR_searchUserBaseClass.h"
