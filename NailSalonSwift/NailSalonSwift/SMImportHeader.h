@@ -24,3 +24,23 @@
 //教程点赞、收藏
 #import "SR_CourseUserStatusData.h"
 #import "SR_CourseUserStatusBaseClass.h"
+//我关注的人
+#import "SR_AttentionData.h"
+#import "SR_AttentionBaseClass.h"
+//粉丝
+#import "SR_FansData.h"
+#import "SR_FansBaseClass.h"
+//我收藏的图集
+#import "SR_albumCollectionData.h"
+#import "SR_albumCollectionBaseClass.h"
+//我收藏的教程
+#import "SR_courseCollectionData.h"
+#import "SR_courseCollectionBaseClass.h"
+//搜索图集
+#import "SR_searchLabelData.h"
+#import "SR_searchLabelImage.h"
+#import "SR_searchLabelBaseClass.h"
+#import "SR_searchLabelUser.h"
+//搜索用户
+#import "SR_searchUserData.h"
+#import "SR_searchUserBaseClass.h"

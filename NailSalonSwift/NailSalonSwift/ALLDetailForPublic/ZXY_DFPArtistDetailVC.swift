@@ -40,13 +40,17 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     var previousYForTable   : CGFloat = 0
     var firstCollectionVC : ZXY_DFPArtistCollectionVC!
     var secontTableVC     : ZXY_DFPArtistTableVC!
+    //加载动画
+    let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     
     @IBOutlet weak var toTopDistance: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
+        srW.startProgress(self.view)
+//        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         contentScroll.contentSize.width = 2 * screenSize.width
         contentScroll.delegate = self
         self.startInitSeg()
@@ -63,8 +67,13 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.hidden = false
         self.startInitFirst()
         self.startInitSecond()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
     }
 
     private func startLoadData()
@@ -83,13 +92,22 @@ class ZXY_DFPArtistDetailVC: UIViewController {
             if result == 1000
             {
                 self?.reloadDataForView()
+                
             }
             else
             {
                 var errorMessage = ZXY_ErrorMessageHandle.messageForErrorCode(result)
                 self?.showAlertEasy("提示", messageContent: errorMessage)
             }
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
         }) { [weak self] (error) -> Void in
+            if let s = self
+            {
+                s.srW.hideProgress(s.view)
+            }
             ""
             ""
         }
@@ -225,8 +243,46 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    func attensionChange(){
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+        }
+        var parameter : [String : AnyObject] = Dictionary<String , AnyObject>()
+        var data = self.dataForShow?.data
+        if artistID != nil
+        {
+            var control  = data?.isAttention == 1 ? 2 : 1
+            parameter = ["user_id" : userID! , "attention_user_id" : artistID! , "control": "\(control)"]
+            ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(ZXY_ADFPAPIType.ADFP_ArtAttension, parameter: parameter, success: {[weak self] (currentStage) -> Void in
+                data?.isAttention = Double(control)
+                self?.isAttensionFunc(Double(control))
+                ""
+                }, fail: { (errorMessage) -> Void in
+                    println(errorMessage)
+                    ""
+            })
+        }
+    }
+    func isAttensionFunc(isAtten : Double)
+    {
+        if isAtten == 1
+        {
+            self.attensionBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("已关注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        }
+        else
+        {
+            self.attensionBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
+            self.attensionBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -243,8 +299,9 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
+
     @IBAction func attensionAction(sender: AnyObject) {
+        self.attensionChange()
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -333,4 +390,19 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+extension ZXY_DFPArtistDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol {
+    func userLoginSuccess() {
+        self.startLoadData()
+    }
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 1)
+        {
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            loginVC.delegate = self
+            loginVC.navigationController?.navigationBar.hidden = true
+            self.navigationController?.pushViewController(loginVC, animated: true)
+        }
+    }
 }

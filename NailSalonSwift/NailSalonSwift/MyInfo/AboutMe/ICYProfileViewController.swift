@@ -18,9 +18,10 @@ class ICYProfileViewController: UITableViewController {
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
     var userInfoValue : Dictionary<String , AnyObject?>! = Dictionary<String , AnyObject?>()
     
+    @IBOutlet weak var topBarView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.topBarView.backgroundColor = UIColor.NailRedColor()
         println("\(userInfo)")
         userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
         
@@ -319,39 +320,39 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
 //            
 //        })
 //    }
-    
-    func startLoadImgData(img : UIImage)
-    {
-        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-        if(myUserID == nil)
-        {
-            return
-        }
-        zxyW.startProgress(self.view)
-        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
-        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-            var status = returnDic["result"] as Int
-            if(status == 1000)
-            {
-                self?.userInfo.headImage = returnDic["data"] as String
-                self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
-                self?.startDownLoadUserDetailInfo()
-                self?.tableView.reloadData()
-            }
-            if let s = self
-            {
-                s.zxyW.hideProgress(s.view)
-            }
-            }, failure: { [weak self](failError) -> Void in
-                if let s = self
-                {
-                    s.zxyW.hideProgress(s.view)
-                }
-                return
-        })
-
-    }
-    
+//    
+//    func startLoadImgData(img : UIImage)
+//    {
+//        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+//        if(myUserID == nil)
+//        {
+//            return
+//        }
+//        zxyW.startProgress(self.view)
+//        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
+//        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+//            var status = returnDic["result"] as Int
+//            if(status == 1000)
+//            {
+//                self?.userInfo.headImage = returnDic["data"] as String
+//                self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
+//                self?.startDownLoadUserDetailInfo()
+//                self?.tableView.reloadData()
+//            }
+//            if let s = self
+//            {
+//                s.zxyW.hideProgress(s.view)
+//            }
+//            }, failure: { [weak self](failError) -> Void in
+//                if let s = self
+//                {
+//                    s.zxyW.hideProgress(s.view)
+//                }
+//                return
+//        })
+//
+//    }
+//    
     func startLoadInfoData()
     {
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
@@ -408,7 +409,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         {
             return
         }
-        zxyW.startProgress(self.view)
+//        zxyW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
         var parameter = ["user_id" : userID!]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in

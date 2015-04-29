@@ -1,20 +1,24 @@
 //
-//  ZL_SSLabelCell.swift
+//  SR_LabelCellVC.swift
 //  NailSalonSwift
 //
-//  Created by 赵磊 on 15/4/10.
+//  Created by sun on 15/4/28.
 //  Copyright (c) 2015年 宇周. All rights reserved.
 //
 
 import UIKit
 
-class ZL_SSLabelCell: UITableViewCell {
-    @IBOutlet weak var imgName: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+class SR_LabelCellVC: UITableViewCell {
+
+    @IBOutlet weak var headImg: UIImageView!
+    @IBOutlet weak var nickName: UILabel!
+    @IBOutlet weak var toolBar: UIImageView!
+    @IBOutlet weak var isArtist: UILabel!
+    @IBOutlet weak var ablumName: UILabel!
+    
     class func cellID() -> String
     {
-        return "ZL_SSLabelCellID"
+        return "SR_LabelCellID"
     }
     override func awakeFromNib() {
         super.awakeFromNib()
