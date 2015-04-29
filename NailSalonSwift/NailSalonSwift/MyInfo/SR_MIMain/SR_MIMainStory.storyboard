@@ -193,7 +193,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7lT-87-7yt" id="EAF-DJ-u5U">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="92C8A829-AFC9-41B8-B9BA-46307BB6544F" translatesAutoresizingMaskIntoConstraints="NO" id="3dQ-90-Kmz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="94E3EDBE-7BE3-4A9A-B176-CB79595825FB" translatesAutoresizingMaskIntoConstraints="NO" id="3dQ-90-Kmz">
                                             <rect key="frame" x="13" y="12" width="60" height="60"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -275,7 +275,13 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="E4p-ZL-SrO">
                                             <constraints>
                                                 <constraint firstAttribute="height" id="Spm-1n-hhz"/>
+                                                <constraint firstAttribute="height" constant="0.5" id="Zor-ET-mgr"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Spm-1n-hhz"/>
+                                                </mask>
+                                            </variation>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -355,7 +361,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cK5-7E-Fig" id="3dl-ZJ-ivg">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E60CAF50-3662-41F1-A1C1-797F07CC2768" translatesAutoresizingMaskIntoConstraints="NO" id="Qwg-XQ-x3W">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="022F9CC6-2D55-4FB6-93C8-CBE67AFE9FC5" translatesAutoresizingMaskIntoConstraints="NO" id="Qwg-XQ-x3W">
                                             <rect key="frame" x="13" y="12" width="60" height="60"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -434,7 +440,7 @@
                                             <color key="textColor" red="0.97647058819999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="ysW-UK-cqg">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="ysW-UK-cqg">
                                             <constraints>
                                                 <constraint firstAttribute="height" id="toe-QO-LU9"/>
                                             </constraints>
@@ -681,14 +687,14 @@
                                                     <color key="backgroundColor" red="0.97647058819999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_gray" translatesAutoresizingMaskIntoConstraints="NO" id="qNc-NZ-12v">
-                                                    <rect key="frame" x="67" y="197" width="20" height="18"/>
+                                                    <rect key="frame" x="126" y="197" width="20" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="O8Y-Fc-0dx"/>
                                                         <constraint firstAttribute="height" constant="18" id="h5Y-9q-R6L"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixc-DM-10A">
-                                                    <rect key="frame" x="148" y="197" width="31" height="18"/>
+                                                    <rect key="frame" x="151" y="197" width="31" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="9Mv-x0-Bse"/>
                                                         <constraint firstAttribute="width" constant="31" id="NL4-ds-4qC"/>
@@ -711,13 +717,13 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="ixc-DM-10A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qNc-NZ-12v" secondAttribute="trailing" id="1zb-Uj-AII"/>
-                                            <constraint firstItem="qNc-NZ-12v" firstAttribute="leading" secondItem="1Ia-Wv-tqG" secondAttribute="trailing" constant="21" id="4BN-YT-52s"/>
+                                            <constraint firstItem="ixc-DM-10A" firstAttribute="leading" secondItem="qNc-NZ-12v" secondAttribute="trailing" constant="5" id="1zb-Uj-AII"/>
+                                            <constraint firstItem="qNc-NZ-12v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Ia-Wv-tqG" secondAttribute="trailing" constant="5" id="4BN-YT-52s"/>
                                             <constraint firstItem="1Ia-Wv-tqG" firstAttribute="leading" secondItem="k4D-tV-sC9" secondAttribute="leading" constant="8" id="83L-3E-ecK"/>
                                             <constraint firstItem="guH-cc-NXb" firstAttribute="leading" secondItem="k4D-tV-sC9" secondAttribute="leading" id="CP4-sc-luK"/>
                                             <constraint firstAttribute="bottom" secondItem="1Ia-Wv-tqG" secondAttribute="bottom" constant="8" id="Ga2-9l-Odf"/>
                                             <constraint firstItem="ixc-DM-10A" firstAttribute="top" secondItem="guH-cc-NXb" secondAttribute="bottom" constant="6" id="GmZ-Zu-jnB"/>
-                                            <constraint firstAttribute="trailing" secondItem="ixc-DM-10A" secondAttribute="trailing" constant="8" id="L5g-Rw-OzL"/>
+                                            <constraint firstAttribute="trailing" secondItem="ixc-DM-10A" secondAttribute="trailing" constant="5" id="L5g-Rw-OzL"/>
                                             <constraint firstAttribute="bottom" secondItem="qNc-NZ-12v" secondAttribute="bottom" constant="9" id="RNh-bT-NoX"/>
                                             <constraint firstItem="1Ia-Wv-tqG" firstAttribute="top" secondItem="guH-cc-NXb" secondAttribute="bottom" constant="7" id="cES-1M-z9a"/>
                                             <constraint firstAttribute="bottom" secondItem="ixc-DM-10A" secondAttribute="bottom" constant="9" id="p57-mU-XTJ"/>
@@ -923,7 +929,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="92C8A829-AFC9-41B8-B9BA-46307BB6544F" width="12" height="12">
+        <image name="022F9CC6-2D55-4FB6-93C8-CBE67AFE9FC5" width="12" height="12">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1003,7 +1009,7 @@ EJkQoBCoELUQuhC8EL4QwxDLEM4Q0xDbEN4Q8BDzEPgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
 AAAQ+g
 </mutableData>
         </image>
-        <image name="E60CAF50-3662-41F1-A1C1-797F07CC2768" width="12" height="12">
+        <image name="94E3EDBE-7BE3-4A9A-B176-CB79595825FB" width="12" height="12">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

@@ -44,3 +44,7 @@
 //搜索用户
 #import "SR_searchUserData.h"
 #import "SR_searchUserBaseClass.h"
+//搜索附近
+#import "SR_searchNearbyImage.h"
+#import "SR_searchNearbyData.h"
+#import "SR_searchNearbyBaseClass.h"

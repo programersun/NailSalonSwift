@@ -1301,8 +1301,11 @@
 				A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */,
 				8BBBDBD01ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift in Sources */,
 				8B9977B71AC4ED4B00CD1713 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				8B3CB3291AF0D08000183C5F /* ZXY_SendMessageAddInfoCoCell.swift in Sources */,
+=======
 				A45C99441AF0B42A004F2EE9 /* SR_searchNearbyBaseClass.m in Sources */,
+>>>>>>> userThisMaster
 				8B95F4751ADCE81D00408709 /* ZXY_ImagePickerCollectionVC.swift in Sources */,
 				8B8100C51AC7ABD100850B05 /* ZXY_ORSqureTitleView.swift in Sources */,
 				8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */,
@@ -1360,8 +1363,11 @@
 				A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */,
 				8B4B4E031AC5032D001BD10B /* ZXY_MIMainVC.swift in Sources */,
 				8B5EE2B81AC834B700EFF3C4 /* MJRefreshHeaderView.m in Sources */,
+<<<<<<< HEAD
 				8B3CB2E91AF0B33500183C5F /* ZXY_FilterPicCell.swift in Sources */,
+=======
 				A45C99431AF0B42A004F2EE9 /* SR_searchNearbyData.m in Sources */,
+>>>>>>> userThisMaster
 				8B345A3B1ADD044400D914C6 /* ZXY_ImageItemView.swift in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				8B190FF91ADD47F70087AECF /* SR_artistBaseClass.m in Sources */,
