@@ -1199,7 +1199,7 @@
                                                 <constraint firstAttribute="width" constant="44" id="aL4-3f-pzp"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-F9-EwA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-F9-EwA">
                                             <constraints>
                                                 <constraint firstAttribute="height" id="TgK-s2-rDp"/>
                                                 <constraint firstAttribute="height" constant="0.5" id="mIs-cp-2k4"/>
@@ -1243,7 +1243,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="p5Z-an-vqk">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="p5Z-an-vqk">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="4Yc-FC-plm"/>
                                                 <constraint firstAttribute="height" id="C9q-r0-gc7"/>
@@ -1516,7 +1516,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="IRc-AA-mq0"/>
                                                     </constraints>
@@ -1534,8 +1534,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="VK5-vA-yx6"/>
                                                     <exclude reference="tNt-l3-MWJ"/>
+                                                    <exclude reference="VK5-vA-yx6"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

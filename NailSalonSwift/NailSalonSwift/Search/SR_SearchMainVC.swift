@@ -132,7 +132,7 @@ extension SR_SearchMainVC : UITableViewDataSource, UITableViewDelegate {
             case 1:
                 self.performSegueWithIdentifier("toNickNameVC", sender: nil)
             case 2:
-                ""
+                self.performSegueWithIdentifier("toNeabyVC", sender: nil)
             default:
                 ""
             }

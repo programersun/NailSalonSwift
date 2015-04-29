@@ -152,6 +152,7 @@
 		A46EDF7E1AEF827C00B3503B /* SR_searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46EDF7D1AEF827C00B3503B /* SR_searchUserCell.swift */; };
 		A4729CD91AED1DFB000424E8 /* SR_myAlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4729CD81AED1DFB000424E8 /* SR_myAlbumVC.swift */; };
 		A478FBCE1ADCEC0B00F47A97 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */; };
+		A48CDBFB1AF0789600BF42DC /* SR_searchNearbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48CDBFA1AF0789600BF42DC /* SR_searchNearbyVC.swift */; };
 		A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */; };
 		A4AF6E221AEA380200FC9755 /* SR_CourseUserStatusData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */; };
 		A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */; };
@@ -401,6 +402,7 @@
 		A4729CD81AED1DFB000424E8 /* SR_myAlbumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_myAlbumVC.swift; sourceTree = "<group>"; };
 		A478FBCC1ADCEC0B00F47A97 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		A478FBCD1ADCEC0B00F47A97 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		A48CDBFA1AF0789600BF42DC /* SR_searchNearbyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_searchNearbyVC.swift; sourceTree = "<group>"; };
 		A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_CourseUserStatusBaseClass.m; sourceTree = "<group>"; };
 		A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_CourseUserStatusData.m; sourceTree = "<group>"; };
 		A4AF6E1F1AEA380200FC9755 /* SR_CourseUserStatusData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_CourseUserStatusData.h; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				A4FC76691AEE3CC3002B1020 /* SR_SearchMainVC.swift */,
 				A4E2A75F1AEF245400B66011 /* SR_LabelVC.swift */,
 				A4E2A7631AEF300700B66011 /* SR_NickNameVC.swift */,
+				A48CDBFA1AF0789600BF42DC /* SR_searchNearbyVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1239,6 +1242,7 @@
 				8B1910061ADD5DF20087AECF /* ZXY_DFPArtistCollectionVC.swift in Sources */,
 				8B871AF11AE69FCB0008915A /* ZXY_UserAlbumListBase.m in Sources */,
 				8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */,
+				A48CDBFB1AF0789600BF42DC /* SR_searchNearbyVC.swift in Sources */,
 				A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */,
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B345A3A1ADD044400D914C6 /* ZXY_ImageItem.swift in Sources */,
