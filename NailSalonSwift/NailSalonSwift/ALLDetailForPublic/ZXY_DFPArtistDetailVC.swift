@@ -48,7 +48,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         srW.startProgress(self.view)
-//        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.hidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         contentScroll.contentSize.width = 2 * screenSize.width
@@ -67,13 +67,9 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.hidden = false
+//        self.navigationController?.navigationBar.hidden = false
         self.startInitFirst()
         self.startInitSecond()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = false
     }
 
     private func startLoadData()

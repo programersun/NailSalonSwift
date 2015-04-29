@@ -282,6 +282,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
             var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
             detailArtist.artistID = userID
+            detailArtist.navigationController?.navigationBar.hidden = false
             self.navigationController?.pushViewController(detailArtist, animated: true)
             ""
         case 1:

@@ -32,10 +32,13 @@ class SR_NickNameVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         searchText.becomeFirstResponder()
-        self.addHeaderAndFooterforTable()
         self.getUserInfo()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
     }
     
     //停止上拉下拉刷新
@@ -101,6 +104,7 @@ class SR_NickNameVC: UIViewController {
         }
         else
         {
+            srW.startProgress(self.searchTableView)
             self.loadAtristSearch()
         }
     }
@@ -113,6 +117,8 @@ class SR_NickNameVC: UIViewController {
         }
         else
         {
+            self.addHeaderAndFooterforTable()
+            srW.startProgress(self.searchTableView)
             rightBtn.title = "搜索"
             self.loadAtristSearch()
         }
@@ -135,7 +141,6 @@ class SR_NickNameVC: UIViewController {
     
     //搜索美甲师
     func loadAtristSearch(){
-        srW.startProgress(self.searchTableView)
         var urlString = ZXY_NailNetAPI.SR_SearchAPI(SR_SearchAPIType.SR_SearchUser)
         userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         searchString = searchText.text as String!
@@ -248,11 +253,19 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         
         //判断用户身份
         var type = cellData.role
-        if type == "1" {
+        if type == "2" {
             cell.toolBar.hidden = true
             cell.isArtistLabel.hidden = true
         }
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.searchText.resignFirstResponder()
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        var CellData = dataForShow[indexPath.row] as SR_searchUserData
+        detailArtist.artistID = CellData.userId
+        self.navigationController?.pushViewController(detailArtist, animated: true)
     }
 }
 

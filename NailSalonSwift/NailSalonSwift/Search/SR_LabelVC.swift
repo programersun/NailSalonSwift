@@ -26,10 +26,11 @@ class SR_LabelVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         searchText.becomeFirstResponder()
-        self.addHeaderAndFooterforTable()
-
-
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
     }
 
     //停止上拉下拉刷新
@@ -71,19 +72,21 @@ class SR_LabelVC: UIViewController {
         }
         else
         {
+            srW.startProgress(self.searchTableView)
             self.loadLabelSearch()
         }
     }
     
     @IBAction func editSearch(sender: AnyObject) {
         println("\(searchText.text)")
-//        self.addHeaderAndFooterforTable()
         if searchIsEmpty() {
             rightBtn.title = "取消"
         }
         else
         {
             rightBtn.title = "搜索"
+            self.addHeaderAndFooterforTable()
+            srW.startProgress(self.searchTableView)
             self.loadLabelSearch()
         }
     }
@@ -105,12 +108,7 @@ class SR_LabelVC: UIViewController {
     
     //搜索图集
     func loadLabelSearch(){
-//        srW.startProgress(self.searchTableView)
-//        self?.endFreshing()
-//        if let s = self
-//        {
-//            s.srW.hideProgress(s.searchTableView)
-//        }
+
         var urlString = ZXY_NailNetAPI.SR_SearchAPI(SR_SearchAPIType.SR_SearchLabel)
         searchString = searchText.text as String!
         println("\(searchString)+++")
@@ -128,6 +126,10 @@ class SR_LabelVC: UIViewController {
             }
             self?.searchTableView.reloadData()
             self?.endFreshing()
+            if let s = self
+            {
+                s.srW.hideProgress(s.searchTableView)
+            }
 
         }) { [weak self](error) -> Void in
             println(error)
@@ -196,7 +198,16 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
             cell.toolBar.hidden = true
             cell.isArtist.hidden = true
         }
-        
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.searchText.resignFirstResponder()
+        var currentData = dataForShow[indexPath.row] as  SR_searchLabelData
+        var albumID = currentData.albumId ?? ""
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        vc.artWorkID = albumID
+        vc.title     = currentData.user.nickName
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
