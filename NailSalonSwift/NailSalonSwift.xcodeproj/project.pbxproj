@@ -37,7 +37,6 @@
 		8B45878D1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B45878B1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift */; };
 		8B45878E1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B45878C1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib */; };
 		8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */; };
-		8B4B4DE41AC4FB39001BD10B /* OriginPageStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */; };
 		8B4B4DE61AC4FB65001BD10B /* ZXY_ORMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */; };
 		8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */; };
 		8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE91AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift */; };
@@ -121,6 +120,7 @@
 		8BCF6A241ADA180B0085575D /* ZXY_AlbumDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A1D1ADA180B0085575D /* ZXY_AlbumDetailData.m */; };
 		8BCF6A251ADA180B0085575D /* ZXY_AlbumDetailImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A201ADA180B0085575D /* ZXY_AlbumDetailImages.m */; };
 		8BCF6A291ADA43890085575D /* ZXY_TagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A281ADA43890085575D /* ZXY_TagLabelView.swift */; };
+		8BCF96201AF0A3A80099306D /* OriginPageStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF961F1AF0A3A80099306D /* OriginPageStory.storyboard */; };
 		8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */; };
 		8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */; };
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
@@ -236,7 +236,6 @@
 		8B45878B1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_TextInputViewC.swift; sourceTree = "<group>"; };
 		8B45878C1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXY_TextInputViewC.xib; sourceTree = "<group>"; };
 		8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MainTabBarVC.swift; sourceTree = "<group>"; };
-		8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OriginPageStory.storyboard; sourceTree = "<group>"; };
 		8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORMainVC.swift; sourceTree = "<group>"; };
 		8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_ViewControllerExtension.swift; path = ../ZXY_ViewControllerExtension.swift; sourceTree = "<group>"; };
 		8B4B4DE91AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_NetHelperOperate.swift; sourceTree = "<group>"; };
@@ -359,6 +358,7 @@
 		8BCF6A201ADA180B0085575D /* ZXY_AlbumDetailImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_AlbumDetailImages.m; sourceTree = "<group>"; };
 		8BCF6A211ADA180B0085575D /* ZXY_AlbumDetailUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_AlbumDetailUser.h; sourceTree = "<group>"; };
 		8BCF6A281ADA43890085575D /* ZXY_TagLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_TagLabelView.swift; sourceTree = "<group>"; };
+		8BCF961F1AF0A3A80099306D /* OriginPageStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OriginPageStory.storyboard; sourceTree = "<group>"; };
 		8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DataProviderHelper.swift; sourceTree = "<group>"; };
 		8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_UserInfoModel.swift; path = ../../ZXY_UserInfoModel.swift; sourceTree = "<group>"; };
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
@@ -538,6 +538,7 @@
 		8B1F26151AC78F1000DDF8F4 /* ORCell */ = {
 			isa = PBXGroup;
 			children = (
+				8BCF961F1AF0A3A80099306D /* OriginPageStory.storyboard */,
 				8B1F26161AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift */,
 				8B8100C71AC7B59200850B05 /* ZXY_ORSqureTitleCell.swift */,
 				8B8100C81AC7B59200850B05 /* ZXY_ORSqureTitleCell.xib */,
@@ -583,7 +584,6 @@
 				A4E185191AE88E7D00ACCF67 /* SR_ORCourse */,
 				8B5EE2BE1AC8380800EFF3C4 /* ORModel */,
 				8B1F26151AC78F1000DDF8F4 /* ORCell */,
-				8B4B4DE31AC4FB39001BD10B /* OriginPageStory.storyboard */,
 				8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */,
 				8B1F26101AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift */,
 				8BBBDBCD1ACA8E1E0006A94A /* ZXY_ORCourseVC.swift */,
@@ -1115,6 +1115,7 @@
 				8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */,
 				A4E2114A1ADE000900A97CA1 /* ProfilePropertyPlist.plist in Resources */,
 				8B5EE2B41AC834B700EFF3C4 /* MJRefresh.bundle in Resources */,
+				8BCF96201AF0A3A80099306D /* OriginPageStory.storyboard in Resources */,
 				8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */,
 				8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */,
 				8B4B4DFF1AC50307001BD10B /* MyInfoStory.storyboard in Resources */,
@@ -1130,7 +1131,6 @@
 				8B8100C61AC7ABD100850B05 /* ZXY_ORSqureTitleView.xib in Resources */,
 				A4FC76681AEE3C6A002B1020 /* SearchStory.storyboard in Resources */,
 				8BAAF0351AD79EAD00D61B0B /* PublicStory.storyboard in Resources */,
-				8B4B4DE41AC4FB39001BD10B /* OriginPageStory.storyboard in Resources */,
 				8B7B94261AC5441700BAA520 /* ZXY_SegBtnVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
