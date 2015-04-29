@@ -18,6 +18,7 @@ class ZXY_TagLabelView: UIView {
     var lineWidth       : CGFloat? = UIScreen.mainScreen().bounds.width
     weak var superV : UIView!
     var allTags : String?
+    private var allTagArr : [String]? = []
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -25,6 +26,16 @@ class ZXY_TagLabelView: UIView {
         // Drawing code
     }
     */
+    
+    func setAllTagString(tags : String)
+    {
+        allTagArr = tags.componentsSeparatedByString(" ")
+    }
+    
+    func setAllTagArr(tagArr : [String])
+    {
+        allTagArr = tagArr
+    }
     
     func setContentView(superV : UIView)
     {
@@ -48,21 +59,21 @@ class ZXY_TagLabelView: UIView {
         var thisPositionY : CGFloat = 5
         var thisHeight    : CGFloat = 20
         var finalHeight   : CGFloat = 0
-        if allTags == nil
+        if allTagArr == nil
         {
             return defaultHeight
         }
         
-        var tags = allTags?.componentsSeparatedByString(" ")
         
-        if let t = tags
+        
+        if let t = allTagArr
         {
             var isAddHeight = false
             if(t.count == 0)
             {
                 return defaultHeight
             }
-            for tag in tags!
+            for tag in allTagArr!
             {
                 var width = self.getWidthWith(stringValue: tag, minWidth: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintHeight: 20)
                 var remainSpaceX  = lineWidth! - thisPositionX - width - 10
@@ -101,7 +112,7 @@ class ZXY_TagLabelView: UIView {
                 {
                     thisPositionX = width + thisPositionX + 10
                 }
-                if tags?.last == tag
+                if allTagArr?.last == tag
                 {
                     thisPositionY = thisPositionY + 25 + heightOfLabel
                 }
@@ -119,16 +130,16 @@ class ZXY_TagLabelView: UIView {
             return
         }
         
-        var tags = allTags?.componentsSeparatedByString(" ")
+        //var tags = allTags?.componentsSeparatedByString(" ")
         
-        if let t = tags
+        if let t = allTagArr
         {
             var isAddHeight = false
             if(t.count == 0)
             {
                 return
             }
-            for tag in tags!
+            for tag in allTagArr!
             {
                 if tag.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " ")) == ""
                 {
