@@ -26,6 +26,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
     private var dataForTag : String? = ""
 
     var artWorkID : String!
+    var userID : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登出", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("rightBtnAction"))
+        
         // Do any additional setup after loading the view.
         
     }
@@ -55,6 +57,9 @@ class ZXY_DFPArtDetailVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
     }
     
     func addFootterForTable()
@@ -230,6 +235,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             var imgCellData = dataForTable?.data
             var imgCellUser = imgCellData?.user
             var imgs      = imgCellData?.images?
+            imgContentCell.artistID = imgCellData?.userId
             if let si = imgs
             {
                 if si.count > 0
@@ -443,6 +449,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         if(userID == nil)
         {
             var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.tag = 1
             alert.show()
             
             
@@ -458,18 +465,44 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
 extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol , ZXY_DFPADImgContainerCellProtocol
 {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if(buttonIndex == 1)
-        {
-            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
-            loginVC.title = "登录"
-            loginVC.delegate = self
-            loginVC.navigationItem.leftBarButtonItem?.title = "返回"
-            self.navigationController?.pushViewController(loginVC, animated: true)
+        if alertView.tag == 1 {
+            if(buttonIndex == 1)
+            {
+                var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+                var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+                loginVC.title = "登录"
+                loginVC.delegate = self
+                loginVC.navigationItem.leftBarButtonItem?.title = "返回"
+                self.navigationController?.pushViewController(loginVC, animated: true)
+            }
+        }
+        if alertView.tag == 2 {
+            switch buttonIndex {
+            case 0:
+                return
+            case 1:
+                self.deleteAblum()
+                self.navigationController?.popViewControllerAnimated(true)
+            default:
+                return
+            }
+
         }
     }
     
-    
+    func deleteAblum(){
+        zxyW.startProgress(self.view)
+        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_DeleteAlbumAPI
+        var parameter = ["album_id" : artWorkID!]
+        ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+
+        }) { [weak self](error) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+        }
+    }
     
     func userLoginSuccess() {
         self.startDownLoadUserDetailInfo()
@@ -523,6 +556,17 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
     
     func userClickAttensionImg() {
         self.operateStatusChange(ZXY_ADFPAPIType.ADFP_ArtAttension)
+    }
+    
+    func userClickEditBtn() {
+        var editAler = UIAlertView()
+        editAler.message  = "您确定删除图集吗？"
+        editAler.title    = "提示"
+        editAler.addButtonWithTitle("取消")
+        editAler.addButtonWithTitle("确定")
+        editAler.tag = 2
+        editAler.delegate = self
+        editAler.show()
     }
     
     func userClickAvaterImg() {

@@ -25,7 +25,7 @@ class ZXY_LoginRegistVC: UIViewController {
     @IBOutlet weak var miWBBtn: UIButton!
     @IBOutlet weak var miQQLbl: UILabel!
     @IBOutlet weak var miWBLbl: UILabel!
-    
+    @IBOutlet weak var topBarView: UIView!
     weak var delegate : ZXY_LoginRegistVCProtocol?
     private var parameter : Dictionary<String , String> = Dictionary<String , String>()
     let zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
@@ -33,6 +33,7 @@ class ZXY_LoginRegistVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.topBarView.backgroundColor = UIColor.NailRedColor()
         self.startInitColor()
         self.startInitCorner()
         self.titleLbl.text = "登录"

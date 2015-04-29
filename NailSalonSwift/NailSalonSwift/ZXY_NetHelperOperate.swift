@@ -46,7 +46,7 @@ class ZXY_NetHelperOperate: NSObject {
         var stampTime = timeStamp()
     
         
-       // afnet.responseSerializer = AFJSONResponseSerializer()
+//        afnet.responseSerializer = AFJSONResponseSerializer()
         afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
         afnet.requestSerializer  = ser
         var sendParameter = Dictionary<String ,AnyObject>()

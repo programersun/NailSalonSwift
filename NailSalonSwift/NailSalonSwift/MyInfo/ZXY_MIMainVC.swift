@@ -17,10 +17,15 @@ class ZXY_MIMainVC: UIViewController {
     var userInfo: ZXY_UserDetailInfoData!
     override func viewDidLoad() {
         super.viewDidLoad()
+        zxyW.startProgress(self.view)
         startDownLoadUserDetailInfo()
-        reloadUserData()
-        self.navigationController?.navigationBar.hidden = true
+//        reloadUserData()
+//        self.navigationController?.navigationBar.hidden = true
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
+        self.reloadUserData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +41,6 @@ class ZXY_MIMainVC: UIViewController {
         {
             return
         }
-        zxyW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
         var parameter = ["user_id" : userID!]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
@@ -51,7 +55,7 @@ class ZXY_MIMainVC: UIViewController {
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
 //                self?.userInfo = self?.dataForShow?.data
-                println("\(self?.userInfo!.nickName)")
+//                println("\(self?.userInfo!.nickName)")
                 self?.reloadUserData()
             }
             else
@@ -118,26 +122,34 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             switch currentRow
             {
             case 0:
-                return ("miMessage","消息")
-            case 1:
+//                return ("miMessage","消息")
+//            case 1:
                 return ("miAttension","关注")
             default:
-                return ("miMessage","消息")
+                return ("miMessage","关注")
             }
         }
         else
         {
             var currentRow = indexPath.row
             switch currentRow
+//            {
+//            case 0:
+//                return ("miOrder","订单")
+//            case 1:
+//                return ("miAlbum","图集")
+//            case 2:
+//                return ("miCollection","收藏")
+//            default:
+//                return ("miOrder","订单")
+//            }
             {
             case 0:
-                return ("miOrder","订单")
-            case 1:
                 return ("miAlbum","图集")
-            case 2:
+            case 1:
                 return ("miCollection","收藏")
             default:
-                return ("miOrder","订单")
+                return ("miOrder","图集")
             }
 
         }
@@ -223,9 +235,11 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         case 0:
             return 1
         case 1:
-            return 2
+//            return 2
+            return 1
         default:
-            return 3
+//            return 3
+            return 2
         }
     }
     
@@ -254,7 +268,52 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+        }
+        var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
+
+        switch indexPath.section {
+        case 0:
+            var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
+            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+            detailArtist.artistID = userID
+            self.navigationController?.pushViewController(detailArtist, animated: true)
+            ""
+        case 1:
+            switch indexPath.row {
+            case 0:
+                ""
+//            case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
+                self.navigationController?.pushViewController(vc, animated: true)
+                ""
+            default:
+                return
+        }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                //                    ""
+                //                case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
+                vc.userID = userID!
+                self.navigationController?.pushViewController(vc, animated: true)
+                //                case 2:
+            case 1:
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as SR_myCollectionVC
+                vc.userID = userID!
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                return
+            }
+        default:
+            return
+        }
     }
     
     func userLoginSuccess() {
@@ -276,5 +335,17 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     
     func headImgTouch() {
         self.performSegueWithIdentifier("toUserInfo", sender: nil)
+    }
+}
+extension ZXY_MIMainVC : UIAlertViewDelegate  {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 1)
+        {
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            loginVC.delegate = self
+            loginVC.navigationController?.navigationBar.hidden = true
+            self.navigationController?.pushViewController(loginVC, animated: true)
+        }
     }
 }

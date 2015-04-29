@@ -28,7 +28,7 @@ class ZXY_MIRegistVC: UIViewController {
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
     
     @IBOutlet weak var registSegument: UISegmentedControl!
-    
+    @IBOutlet weak var topBarView: UIView!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
 
@@ -39,6 +39,7 @@ class ZXY_MIRegistVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.topBarView.backgroundColor = UIColor.NailRedColor()
         registProtocolBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
         registArtistVC.isArtistRegist = true
         registUserVC.isArtistRegist = false

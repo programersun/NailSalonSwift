@@ -66,8 +66,8 @@ enum ZXY_MyInfoAPIType : String
 
 enum ZXY_ADFPAPIType : String
 {
-    case ADFP_ArtDetail = "Album2/album_detail"
-    case ADFP_ArtComment = "Album2/comment_list"
+    case ADFP_ArtDetail     = "Album2/album_detail"
+    case ADFP_ArtComment    = "Album2/comment_list"
     case ADFP_ArtCommentAdd = "Album2/comment_add"
     case ADFP_ArtCollection = "Album/album_collect"
     case ADFP_ArtAgree      = "Album/album_agree"
@@ -75,6 +75,20 @@ enum ZXY_ADFPAPIType : String
     case ADPF_ArtistArts    = "UserList/my_album"
     case ADPF_ArtistComment = "UserList/order_evalue"
     case ADPF_ArtistDetailInfo = "User/another_user_Info"
+    case SR_albumCollection    = "Album/album_my_collect"
+}
+
+
+enum SR_SearchAPIType : String
+{
+    case SR_SearchLabel  = "Album2/search_album"
+    case SR_SearchUser = "UserList/user_list"
+}
+
+enum SR_AttentionAPIType : String
+{
+    case SR_Attention = "UserList2/attention_list"
+    case SR_Fans      = "UserList2/attention_list2"
 }
 
 struct ZXY_NailNetAPI
@@ -143,6 +157,15 @@ struct ZXY_NailNetAPI
     }
 
     static func ZXY_ADFPAPI(currentType : ZXY_ADFPAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
+    static func SR_AttentionAPI(currentType: SR_AttentionAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
+    
+    static func SR_SearchAPI(currentType: SR_SearchAPIType) -> String
     {
         return ZXY_MainAPI + currentType.rawValue
     }
