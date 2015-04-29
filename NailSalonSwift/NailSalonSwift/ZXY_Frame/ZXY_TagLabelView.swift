@@ -29,6 +29,7 @@ class ZXY_TagLabelView: UIView {
     
     func setAllTagString(tags : String)
     {
+    
         allTagArr = tags.componentsSeparatedByString(" ")
     }
     
@@ -125,7 +126,7 @@ class ZXY_TagLabelView: UIView {
     
     func setContentTag()
     {
-        if allTags == nil || allTags? == ""
+        if allTagArr == nil || allTagArr?.count == 0
         {
             return
         }

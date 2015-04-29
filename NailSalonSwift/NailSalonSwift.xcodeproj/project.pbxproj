@@ -130,6 +130,7 @@
 		8BBBDBD01ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBCF1ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift */; };
 		8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */; };
 		8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */; };
+		8BCEBAFE1AF10C6C00A2F5AC /* TagTypePList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BCEBAFD1AF10C6B00A2F5AC /* TagTypePList.plist */; };
 		8BCF6A221ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A1A1ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m */; };
 		8BCF6A231ADA180B0085575D /* ZXY_AlbumDetailUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A1C1ADA180B0085575D /* ZXY_AlbumDetailUser.m */; };
 		8BCF6A241ADA180B0085575D /* ZXY_AlbumDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A1D1ADA180B0085575D /* ZXY_AlbumDetailData.m */; };
@@ -379,6 +380,7 @@
 		8BBBDBCF1ACAA5710006A94A /* ZXY_ORCourseMainFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainFirstCell.swift; sourceTree = "<group>"; };
 		8BBBDBD11ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainSecondCell.swift; sourceTree = "<group>"; };
 		8BBBDBD31ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORCourseMainThirdCell.swift; sourceTree = "<group>"; };
+		8BCEBAFD1AF10C6B00A2F5AC /* TagTypePList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TagTypePList.plist; sourceTree = "<group>"; };
 		8BCF6A1A1ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_AlbumDetailBaseAlbum.m; sourceTree = "<group>"; };
 		8BCF6A1B1ADA180B0085575D /* ZXY_AlbumDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_AlbumDetailData.h; sourceTree = "<group>"; };
 		8BCF6A1C1ADA180B0085575D /* ZXY_AlbumDetailUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_AlbumDetailUser.m; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				8B3CB2DC1AF0B2F100183C5F /* ZXYTakePic.storyboard */,
 				8B7B941B1AC5241300BAA520 /* takePhotoStory.storyboard */,
 				8B7B941D1AC5243D00BAA520 /* ZXY_TPMainVC.swift */,
+				8BCEBAFD1AF10C6B00A2F5AC /* TagTypePList.plist */,
 			);
 			path = takePhoto;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				8B7B941C1AC5241300BAA520 /* takePhotoStory.storyboard in Resources */,
 				A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */,
 				8B95F4771ADCE81D00408709 /* ZXY_ImgPickBundle.bundle in Resources */,
+				8BCEBAFE1AF10C6C00A2F5AC /* TagTypePList.plist in Resources */,
 				8B9977BF1AC4ED4B00CD1713 /* Main.storyboard in Resources */,
 				A4E2114A1ADE000900A97CA1 /* ProfilePropertyPlist.plist in Resources */,
 				8B5EE2B41AC834B700EFF3C4 /* MJRefresh.bundle in Resources */,

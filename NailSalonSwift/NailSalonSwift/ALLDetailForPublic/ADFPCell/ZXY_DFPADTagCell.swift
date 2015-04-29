@@ -35,7 +35,7 @@ class ZXY_DFPADTagCell: UITableViewCell {
     func setTagView(tag : String?)
     {
         tagCollection.lineWidth = UIScreen.mainScreen().bounds.width - 71
-        tagCollection.allTags = tag
+        tagCollection.setAllTagString(tag ?? "")
         tagCollection.startLoadTag()
     }
 
