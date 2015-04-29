@@ -253,9 +253,14 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         
         //判断用户身份
         var type = cellData.role
-        if type == "2" {
+        if type == "1" {
             cell.toolBar.hidden = true
             cell.isArtistLabel.hidden = true
+        }
+        else
+        {
+            cell.toolBar.hidden = false
+            cell.isArtistLabel.hidden = false
         }
         return cell
     }

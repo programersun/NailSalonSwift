@@ -186,7 +186,8 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
                 cell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
-        cell.headImg.layer.cornerRadius = CGRectGetWidth(cell.headImg.bounds) / 6
+        cell.headImg.layer.cornerRadius = 6
+        cell.headImg.layer.masksToBounds = true
         //图集描述
         cell.ablumName.text = cellData.dataDescription
         //用户昵称
@@ -194,9 +195,14 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
         //判断用户身份
         
         var type = cellData.user.role
-        if type == "2" {
+        if type == "1" {
             cell.toolBar.hidden = true
             cell.isArtist.hidden = true
+        }
+        else
+        {
+            cell.toolBar.hidden = false
+            cell.isArtist.hidden = false
         }
         return cell
     }
