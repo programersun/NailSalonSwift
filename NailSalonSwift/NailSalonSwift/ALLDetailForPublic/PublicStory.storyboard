@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RRJ-uc-iM3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZxT-Fn-T7D">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="294" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kIY-Vb-GEz">

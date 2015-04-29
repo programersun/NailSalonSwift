@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>history</key>
+	<array/>
+	<key>theme</key>
+	<array>
+		<string>雕花</string>
+		<string>法式</string>
+		<string>光疗</string>
+		<string>渐变</string>
+		<string>可爱</string>
+		<string>手绘</string>
+		<string>新娘</string>
+	</array>
+	<key>color</key>
+	<array>
+		<string>粉色</string>
+		<string>红色</string>
+		<string>蓝色</string>
+		<string>紫色</string>
+		<string>黄色</string>
+		<string>绿色</string>
+		<string>黑色</string>
+	</array>
+</dict>
 </plist>

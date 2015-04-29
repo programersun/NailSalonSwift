@@ -81,7 +81,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
-                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 134, s.screenSize.width, 70)
                 }
                 
             })
@@ -100,7 +100,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
-                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 134, s.screenSize.width, 70)
                 }
                 
             })
@@ -335,8 +335,9 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             return 311
         case 1 :
             var tagV = ZXY_TagLabelView()
+            tagV.lineWidth = UIScreen.mainScreen().bounds.width - 71
             dataForTag = dataForTag?.stringByReplacingOccurrencesOfString("\n", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-            tagV.allTags = dataForTag
+            tagV.setAllTagString(dataForTag ?? "")
             var tagViewHeight = tagV.getCellHeight()
             var cellHeight    = tagViewHeight + 44
             return cellHeight
