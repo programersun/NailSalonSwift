@@ -295,21 +295,6 @@
                                     <outlet property="delegate" destination="DYi-n3-1mE" id="B2U-KT-cQ3"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYP-yf-TN2">
-                                <rect key="frame" x="515" y="525" width="55" height="55"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="SdC-Ym-iqa"/>
-                                    <constraint firstAttribute="height" constant="55" id="X6A-lh-Rw0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ldk-xI-bFV" appends="YES" id="d97-v1-0hx"/>
-                                </connections>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
