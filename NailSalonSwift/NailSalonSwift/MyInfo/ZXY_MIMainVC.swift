@@ -19,8 +19,6 @@ class ZXY_MIMainVC: UIViewController {
         super.viewDidLoad()
         zxyW.startProgress(self.view)
         startDownLoadUserDetailInfo()
-//        reloadUserData()
-//        self.navigationController?.navigationBar.hidden = true
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -39,6 +37,7 @@ class ZXY_MIMainVC: UIViewController {
         var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if(userID == nil)
         {
+            zxyW.hideProgress(self.view)
             return
         }
         var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
@@ -122,8 +121,8 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             switch currentRow
             {
             case 0:
-//                return ("miMessage","消息")
-//            case 1:
+                return ("miMessage","消息")
+            case 1:
                 return ("miAttension","关注")
             default:
                 return ("miMessage","关注")
@@ -133,24 +132,24 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         {
             var currentRow = indexPath.row
             switch currentRow
-//            {
-//            case 0:
-//                return ("miOrder","订单")
-//            case 1:
-//                return ("miAlbum","图集")
-//            case 2:
-//                return ("miCollection","收藏")
-//            default:
-//                return ("miOrder","订单")
-//            }
             {
             case 0:
-                return ("miAlbum","图集")
+                return ("miOrder","订单")
             case 1:
+                return ("miAlbum","图集")
+            case 2:
                 return ("miCollection","收藏")
             default:
-                return ("miOrder","图集")
+                return ("miOrder","订单")
             }
+//            {
+//            case 0:
+//                return ("miAlbum","图集")
+//            case 1:
+//                return ("miCollection","收藏")
+//            default:
+//                return ("miOrder","图集")
+//            }
 
         }
     }
@@ -235,11 +234,9 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         case 0:
             return 1
         case 1:
-//            return 2
-            return 1
-        default:
-//            return 3
             return 2
+        default:
+            return 3
         }
     }
     
@@ -289,7 +286,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             switch indexPath.row {
             case 0:
                 ""
-//            case 1:
+            case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
                 self.navigationController?.pushViewController(vc, animated: true)
                 ""
@@ -299,13 +296,13 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         case 2:
             switch indexPath.row {
             case 0:
-                //                    ""
-                //                case 1:
+                ""
+            case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
                 vc.userID = userID!
+                vc.artistID = userID!
                 self.navigationController?.pushViewController(vc, animated: true)
-                //                case 2:
-            case 1:
+            case 2:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as SR_myCollectionVC
                 vc.userID = userID!
                 self.navigationController?.pushViewController(vc, animated: true)

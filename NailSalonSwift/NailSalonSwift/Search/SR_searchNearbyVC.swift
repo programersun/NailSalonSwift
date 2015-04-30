@@ -470,18 +470,6 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
         //作品数量
         cell.userWorkCount.text = cellData.albumCount
         
-        //认证
-        if let pass = cellData.isPass
-        {
-            if pass == "0"
-            {
-                cell.userV.hidden = true
-            }
-            else
-            {
-                cell.userV.hidden = false
-            }
-        }
         
         //用户与美甲师距离
         var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
@@ -501,11 +489,24 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
         if type == "1" {
             cell.toolBar.hidden = true
             cell.isArtistLabel.hidden = true
+            cell.userV.hidden = true
         }
         else
         {
             cell.toolBar.hidden = false
             cell.isArtistLabel.hidden = false
+            //认证
+            if let pass = cellData.isPass
+            {
+                if pass == "0"
+                {
+                    cell.userV.hidden = true
+                }
+                else
+                {
+                    cell.userV.hidden = false
+                }
+            }
         }
         return cell
     }
