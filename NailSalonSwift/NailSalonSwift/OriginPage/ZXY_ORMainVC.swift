@@ -53,7 +53,7 @@ class ZXY_ORMainVC: UIViewController {
     {
         segV = ZXY_SegBtnVC()
         var nib = UINib(nibName: "ZXY_SegBtnVC", bundle: nil)
-        var view = nib.instantiateWithOwner(segV, options: nil)[0] as UIView
+        var view = nib.instantiateWithOwner(segV, options: nil)[0] as! UIView
         segV?.segFirstItem.setTitle("广场", forState: UIControlState.Normal)
         segV?.segSecondItem.setTitle("教程", forState: UIControlState.Normal)
         segV?.firstItemAction = {[weak self]() -> Void in

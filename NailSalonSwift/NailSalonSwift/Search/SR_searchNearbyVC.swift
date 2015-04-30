@@ -265,9 +265,9 @@ class SR_searchNearbyVC: UIViewController {
         {
             if(i <= 5)
             {
-                var currentUser : SR_searchNearbyData = dataForShow[i] as SR_searchNearbyData
+                var currentUser : SR_searchNearbyData = dataForShow[i] as! SR_searchNearbyData
                 var coordinatee : CLLocationCoordinate2D?
-                coordinatee = self.xYStringToCoor(currentUser.longitude, latitude: currentUser.latitude)?
+                coordinatee = self.xYStringToCoor(currentUser.longitude, latitude: currentUser.latitude)
                 if(coordinatee == nil)
                 {
                     continue
@@ -284,10 +284,10 @@ class SR_searchNearbyVC: UIViewController {
                 if(imgUrl != nil)
                 {
                     var url: NSURL? = NSURL(string: imgUrl!)
-                    anno.setImgURL(url)
+                    anno.setImgURLs(url)
                 }
-                anno.setCoordinate(coordinatee!)
-                anno.setUserID(currentUser.userId)
+                anno.setCoordinates(coordinatee!)
+                anno.setUserIDs(currentUser.userId)
                 annos.append(anno)
             }
         }
@@ -365,7 +365,7 @@ extension SR_searchNearbyVC :  BMKMapViewDelegate , BMKLocationServiceDelegate ,
                 annoView!.annotation = annotation
             }
             
-            var zxyAnno : SR_BMKAnnotation = annotation as SR_BMKAnnotation
+            var zxyAnno : SR_BMKAnnotation = annotation as! SR_BMKAnnotation
             if(zxyAnno.imgURL != nil)
             {
                 annoView?.titleImg.setImageWithURL(zxyAnno.imgURL!)
@@ -394,9 +394,9 @@ extension SR_searchNearbyVC :  BMKMapViewDelegate , BMKLocationServiceDelegate ,
     func mapView(mapView: BMKMapView!, didSelectAnnotationView view: BMKAnnotationView!) {
         if(view.isKindOfClass(SR_DAnnotationView.self))
         {
-            var annoView = view as SR_DAnnotationView
+            var annoView = view as! SR_DAnnotationView
             var story  = UIStoryboard(name: "PublicStory", bundle: nil)
-            var vc     = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+            var vc     = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
             if(annoView.userID != nil)
             {
                 vc.artistID = annoView.userID!
@@ -445,9 +445,9 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_searchUserCell.cellID()) as SR_searchUserCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_searchUserCell.cellID()) as! SR_searchUserCell
         cell.toolBar.backgroundColor = UIColor.NailRedColor()
-        var cellData = dataForShow[indexPath.row] as SR_searchNearbyData
+        var cellData = dataForShow[indexPath.row] as! SR_searchNearbyData
         //美甲师头像
         var imgUrl    = cellData.headImage as String?
         if let url    = imgUrl
@@ -512,8 +512,8 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
-        var CellData = dataForShow[indexPath.row] as SR_searchNearbyData
+        var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
+        var CellData = dataForShow[indexPath.row] as! SR_searchNearbyData
         detailArtist.artistID = CellData.userId
         self.navigationController?.pushViewController(detailArtist, animated: true)
     }

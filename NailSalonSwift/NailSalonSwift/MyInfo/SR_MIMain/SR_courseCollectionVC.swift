@@ -118,9 +118,9 @@ extension SR_courseCollectionVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_CourseDetailListCell.identifier) as SR_CourseDetailListCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_CourseDetailListCell.identifier) as! SR_CourseDetailListCell
         cell.backgroundColor = UIColor.NailBackGrayColor()
-        var cellData : SR_courseCollectionData = dataForShow[indexPath.row] as SR_courseCollectionData
+        var cellData : SR_courseCollectionData = dataForShow[indexPath.row] as! SR_courseCollectionData
         var imgUrl    = cellData.imgPath as String?
         if let url    = imgUrl
         {
@@ -145,9 +145,9 @@ extension SR_courseCollectionVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData           = dataForShow[indexPath.row] as SR_courseCollectionData
+        var cellData           = dataForShow[indexPath.row] as! SR_courseCollectionData
         var story              = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
-        var vc                 = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as SR_ORgetCourseVC
+        var vc                 = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as! SR_ORgetCourseVC
         vc.courseId            = cellData.dataIdentifier
         vc.title               = cellData.title
         

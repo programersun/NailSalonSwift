@@ -97,7 +97,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_OrderMainVCCell.cellID()) as SR_OrderMainVCCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_OrderMainVCCell.cellID()) as! SR_OrderMainVCCell
         switch indexPath.row {
         case 0:
             cell.titleLabel.text = "顾客姓名"
@@ -167,7 +167,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
             ""
         case 4:
             var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
-            var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
+            var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
             vc.userID = userId!
             vc.artistID = artistId!
             vc.delegate = self

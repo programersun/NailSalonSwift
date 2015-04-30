@@ -44,8 +44,8 @@ class ZXY_UserInfoDetail {
     
     func getUserID() -> String?
     {
-        var userID:String? = NSUserDefaults.standardUserDefaults().valueForKey(USERIDKEY) as? String
-        return userID?
+        var userID: String? = NSUserDefaults.standardUserDefaults().valueForKey(USERIDKEY) as? String
+        return userID
     }
     
     func isAppFirstLoad() -> Bool
@@ -113,7 +113,7 @@ class ZXY_UserInfoDetail {
         {
             return nil
         }
-        var dictionary : Dictionary<String ,AnyObject>? = NSKeyedUnarchiver.unarchiveObjectWithData(parameter!) as Dictionary<String ,AnyObject>?
+        var dictionary : Dictionary<String ,AnyObject>? = NSKeyedUnarchiver.unarchiveObjectWithData(parameter!) as! Dictionary<String ,AnyObject>?
         return dictionary
     }
     

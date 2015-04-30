@@ -88,7 +88,7 @@ extension UIViewController
         var modelString : String = "0123456789"
         var character   : NSCharacterSet = NSCharacterSet(charactersInString: modelString)
         var currentIndex : Int   = 0
-        while currentIndex < countElements(input)
+        while currentIndex < count(input)
         {
             let indexFrom = advance(input.startIndex, currentIndex)
             let indexTo   = advance(input.startIndex, currentIndex+1)

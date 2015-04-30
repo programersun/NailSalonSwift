@@ -59,8 +59,8 @@ class ICYProfileViewController: UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileAvatarCell.identifier) as UITableViewCell
-                let cell = cell as ICYProfileAvatarCell
+                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileAvatarCell.identifier) as! UITableViewCell
+                let cell = cell as! ICYProfileAvatarCell
                 cell.icyMainLabel.text = "头像"
                 cell.icyImageView.layer.cornerRadius = CGRectGetWidth(cell.icyImageView.bounds) / 2
                 cell.icyImageView.layer.masksToBounds = true
@@ -75,7 +75,7 @@ class ICYProfileViewController: UITableViewController {
                     {
                         self.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
                         var userData = self.dataForShow?.data
-                        var headImg  = userData?.headImage?
+                        var headImg : String?  = userData?.headImage
                         if let hI = headImg
                         {
                             var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + hI
@@ -88,23 +88,23 @@ class ICYProfileViewController: UITableViewController {
                     }
                 }
             case 1:
-                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
-                let cell = cell as ICYProfileCell
+                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as! UITableViewCell
+                let cell = cell as! ICYProfileCell
                 cell.icyMainLabel.text = "昵称"
-                cell.icyDetailLabel.text = userInfoValue["userName"]? as? String
+                cell.icyDetailLabel.text = userInfoValue["userName"] as? String
             case 2:
-                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
-                let cell = cell as ICYProfileCell
+                cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as! UITableViewCell
+                let cell = cell as! ICYProfileCell
                 cell.icyMainLabel.text = "性别"
-                var sexString : String?  = userInfoValue["userSex"]? as? String
+                var sexString : String?  = userInfoValue["userSex"] as? String
                 var sex: String = sexString ?? "3"
                 cell.icyDetailLabel.text = sexString == "1" ? "男" : sexString == "2" ? "女" : "未知"
             default:
                 break
             }
         case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as UITableViewCell
-            let cell = cell as ICYProfileCell
+            cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as! UITableViewCell
+            let cell = cell as! ICYProfileCell
             switch indexPath.row {
             case 0:
                 
@@ -159,7 +159,7 @@ class ICYProfileViewController: UITableViewController {
         var section = indexPath.section
         var row     = indexPath.row
         var story   = UIStoryboard(name: "MyInfoStory", bundle: nil)
-        var vc      = story.instantiateViewControllerWithIdentifier("changeInfoID") as ZXY_DateChangeInfoVC
+        var vc      = story.instantiateViewControllerWithIdentifier("changeInfoID") as! ZXY_DateChangeInfoVC
         vc.delegate = self
         if(section == 0)
         {
@@ -169,7 +169,7 @@ class ICYProfileViewController: UITableViewController {
 //                self.selectProfileFunction()
                 return
             case 1 :
-                vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"]?)
+                vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"] ?? "")
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2 :
                 var changeSexAler = UIAlertView()
@@ -191,11 +191,11 @@ class ICYProfileViewController: UITableViewController {
             switch row
             {
             case 0:
-                vc.setInitValueAndTitle("userTel", initValue: userInfoValue["userTel"]?)
+                vc.setInitValueAndTitle("userTel", initValue: userInfoValue["userTel"] ?? "")
             case 1 :
-                vc.setInitValueAndTitle("userRealName", initValue: userInfoValue["userRealName"]?)
+                vc.setInitValueAndTitle("userRealName", initValue: userInfoValue["userRealName"] ?? "")
             case 2 :
-                vc.setInitValueAndTitle("userAddr", initValue: userInfoValue["userAddr"]?)
+                vc.setInitValueAndTitle("userAddr", initValue: userInfoValue["userAddr"] ?? "")
             default :
                 return
             }
@@ -364,9 +364,9 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         var urlString           = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeInfoAPI
         var nick_Name : String? = userInfoValue["userName"] as? String
         var real_name : String? = userInfoValue["userRealName"] as? String
-        var sex       : String? = userInfoValue["userSex"]? as? String
-        var address   : String? = userInfoValue["userAddr"]? as? String
-        var tel       : String? = userInfoValue["userTel"]? as? String
+        var sex       : String? = userInfoValue["userSex"] as? String
+        var address   : String? = userInfoValue["userAddr"] as? String
+        var tel       : String? = userInfoValue["userTel"] as? String
         var parameter : Dictionary<String , AnyObject> = ["nick_name" : nick_Name == nil ? "" : nick_Name! , "real_name" : real_name == nil ? "" : real_name!, "sex" : sex == nil ? "3" : sex! , "address" : address == nil ? "" : address! , "tel" : tel == nil ? "" : tel!,"user_id" : myUserID!]
 
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
@@ -374,7 +374,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
             {
                 s.zxyW.hideProgress(s.view)
             }
-            var result = returnDic["result"] as Double
+            var result = returnDic["result"] as! Double
             if(result == 1000)
             {
                 self?.userInfo.nickName = nick_Name
@@ -417,7 +417,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
             {
                 s.zxyW.hideProgress(s.view)
             }
-            var result = returnDic["result"] as Double
+            var result = returnDic["result"] as! Double
             if(result == 1000)
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)

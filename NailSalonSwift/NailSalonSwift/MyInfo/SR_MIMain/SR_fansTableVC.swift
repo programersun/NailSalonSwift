@@ -52,9 +52,9 @@ class SR_fansTableVC: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_attentionTableCellVC.cellId) as SR_attentionTableCellVC
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_attentionTableCellVC.cellId) as! SR_attentionTableCellVC
         cell.toolView.backgroundColor = UIColor.NailRedColor()
-        var cellData  = dataForTable[indexPath.row] as SR_FansData
+        var cellData  = dataForTable[indexPath.row] as! SR_FansData
         //美甲师头像
         var imgUrl    = cellData.headImage as String?
         if let url    = imgUrl
@@ -93,9 +93,9 @@ class SR_fansTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData  = dataForTable[indexPath.row] as SR_FansData
+        var cellData  = dataForTable[indexPath.row] as! SR_FansData
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
         vc.artistID = cellData.userId
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -110,7 +110,7 @@ class SR_CourseDetailListVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let destination = segue.destinationViewController as SR_ORgetCourseVC
+        let destination = segue.destinationViewController as! SR_ORgetCourseVC
         destination.requestBlock = {[weak self]() -> Void in
             self?.courseDetilListTableView.reloadData()
             ""
@@ -144,9 +144,9 @@ extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_CourseDetailListCell.identifier) as SR_CourseDetailListCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_CourseDetailListCell.identifier) as! SR_CourseDetailListCell
         cell.backgroundColor = UIColor.NailBackGrayColor()
-        var cellData  = dataForShow?.data[indexPath.row] as SR_courseDetilListData?
+        var cellData  = dataForShow?.data[indexPath.row] as! SR_courseDetilListData?
         var imgUrl    = cellData?.imgPath as String?
         if let url    = imgUrl
         {
@@ -171,9 +171,9 @@ extension SR_CourseDetailListVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cellData           = dataForShow?.data[indexPath.row] as SR_courseDetilListData?
+        var cellData           = dataForShow?.data[indexPath.row] as! SR_courseDetilListData?
         var story              = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
-        var vc                 = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as SR_ORgetCourseVC
+        var vc                 = story.instantiateViewControllerWithIdentifier("SR_ORgetCourseVCID") as! SR_ORgetCourseVC
         vc.courseId            = cellData?.dataIdentifier
         vc.title               = cellData?.title
         

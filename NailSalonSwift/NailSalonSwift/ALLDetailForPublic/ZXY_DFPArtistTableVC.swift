@@ -95,8 +95,8 @@ extension ZXY_DFPArtistTableVC : UITableViewDataSource ,UITableViewDelegate
 {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var currentSection = indexPath.section
-        var emptyCell = tableView.dequeueReusableCellWithIdentifier("emptyCellID") as UITableViewCell
-        var commentCell = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPArtistTableCell.cellID) as ZXY_DFPArtistTableCell
+        var emptyCell = tableView.dequeueReusableCellWithIdentifier("emptyCellID") as! UITableViewCell
+        var commentCell = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPArtistTableCell.cellID) as! ZXY_DFPArtistTableCell
         
         if currentSection == 0
         {
@@ -104,8 +104,8 @@ extension ZXY_DFPArtistTableVC : UITableViewDataSource ,UITableViewDelegate
         }
         else
         {
-            var currentUser : ZXY_UserCommentData = dataForShow[indexPath.row] as ZXY_UserCommentData
-            var stringURL: String? = currentUser.headImage?
+            var currentUser : ZXY_UserCommentData = dataForShow[indexPath.row] as! ZXY_UserCommentData
+            var stringURL: String? = currentUser.headImage
             if let url = stringURL
             {
                 var headURL = ZXY_NailNetAPI.ZXY_MainAPIImage + url
@@ -116,7 +116,7 @@ extension ZXY_DFPArtistTableVC : UITableViewDataSource ,UITableViewDelegate
                 commentCell.criticAvatar.setImageWithURL(NSURL(string: headURL), placeholderImage: UIImage(named: "headImg"))
             }
             
-            var imgURL: String? = currentUser.imagePath?
+            var imgURL: String? = currentUser.imagePath
             if let urlString = imgURL
             {
                 commentCell.artImg.hidden = false
@@ -159,8 +159,8 @@ extension ZXY_DFPArtistTableVC : UITableViewDataSource ,UITableViewDelegate
         }
         else
         {
-            var currentUser : ZXY_UserCommentData = dataForShow[indexPath.row] as ZXY_UserCommentData
-            var imgURL : String? = currentUser.imagePath?
+            var currentUser : ZXY_UserCommentData = dataForShow[indexPath.row] as! ZXY_UserCommentData
+            var imgURL : String? = currentUser.imagePath
             var commentContent = currentUser.comment ?? ""
             var constraintWith = UIScreen.mainScreen().bounds.width - 83
             var labelHeight = UIViewController.getCellHeightWith(textString: commentContent, minHeight: 21, fontSize: UIFont.systemFontOfSize(17), constraintWidth: constraintWith)

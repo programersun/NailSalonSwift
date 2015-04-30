@@ -47,7 +47,7 @@ class ZXY_NetHelperOperate: NSObject {
     
         
 //        afnet.responseSerializer = AFJSONResponseSerializer()
-        afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         afnet.requestSerializer  = ser
         var sendParameter = Dictionary<String ,AnyObject>()
         if(parameter != nil)
@@ -70,7 +70,7 @@ class ZXY_NetHelperOperate: NSObject {
                 println(operation.responseString)
                 var returnData = operation.responseData
                 var json: AnyObject?       = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableLeaves, error: nil)
-                var jsonDic : Dictionary<String , AnyObject> = json as Dictionary<String, AnyObject>
+                var jsonDic : Dictionary<String , AnyObject> = json as! Dictionary<String, AnyObject>
                 success!(returnDic: jsonDic)
             }
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
@@ -104,7 +104,7 @@ class ZXY_NetHelperOperate: NSObject {
         var ser   = AFHTTPRequestSerializer()
         ser.timeoutInterval = 30
         afnet.responseSerializer = AFJSONResponseSerializer()
-        afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        afnet.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         afnet.requestSerializer  = ser
         afnet.requestSerializer  = ser
         var stampTime = timeStamp()
@@ -135,7 +135,7 @@ class ZXY_NetHelperOperate: NSObject {
             {
                 var returnData = operation.responseData
                 var json: AnyObject?       = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableLeaves, error: nil)
-                var jsonDic : Dictionary<String , AnyObject> = json as Dictionary<String, AnyObject>
+                var jsonDic : Dictionary<String , AnyObject> = json as! Dictionary<String, AnyObject>
                 success!(returnDic: jsonDic)
             }
         }) { (operation, error) -> Void in

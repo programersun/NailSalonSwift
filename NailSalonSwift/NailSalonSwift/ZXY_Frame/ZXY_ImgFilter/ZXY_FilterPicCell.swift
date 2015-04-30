@@ -15,8 +15,8 @@ class ZXY_FilterPicCell: UITableViewCell {
     
     
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+     convenience init(frame: CGRect) {
+        self.init(frame: frame)
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,8 +35,8 @@ class ZXY_FilterPicCell: UITableViewCell {
         
     }
     
-    override init() {
-        super.init()
+    convenience init() {
+        self.init()
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.clearColor()
         if(imgView == nil)

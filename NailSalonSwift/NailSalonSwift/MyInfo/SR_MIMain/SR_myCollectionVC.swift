@@ -17,8 +17,8 @@ class SR_myCollectionVC: UIViewController {
     @IBOutlet weak var topBarView: UIView!
     var userID : String?
     
-    var courseCollectionVC : SR_courseCollectionVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_courseCollectionVCID") as SR_courseCollectionVC
-    var albumCollectionVC : SR_albumCollectionVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_albumCollectionVCID") as SR_albumCollectionVC
+    var courseCollectionVC : SR_courseCollectionVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_courseCollectionVCID") as! SR_courseCollectionVC
+    var albumCollectionVC : SR_albumCollectionVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_albumCollectionVCID") as! SR_albumCollectionVC
 
 
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ class SR_myCollectionVC: UIViewController {
     
     
     @IBAction func collectionChange(sender: AnyObject) {
-        var seg = sender as UISegmentedControl
+        var seg = sender as! UISegmentedControl
         if seg.selectedSegmentIndex == 0
         {
             collectionScrollView.setContentOffset(CGPointMake(0, collectionScrollView.contentOffset.y), animated: true)

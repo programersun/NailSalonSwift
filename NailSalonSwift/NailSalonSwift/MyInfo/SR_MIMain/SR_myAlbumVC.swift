@@ -135,9 +135,9 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SR_myAlbumCell.cellID, forIndexPath: indexPath) as SR_myAlbumCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SR_myAlbumCell.cellID, forIndexPath: indexPath) as! SR_myAlbumCell
         var currentRow = indexPath.row
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as! ZXY_UserAlbumListData
         var artImage : String?      = ZXY_ALLApi.ZXY_MainAPIImage + currentData.cutPath
         if(artImage != nil)
         {
@@ -153,7 +153,7 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         var currentRow = indexPath.row
         
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as! ZXY_UserAlbumListData
         var width       = (currentData.cutWidth as NSString).floatValue
         var height      = (currentData.cutHeight as NSString).floatValue
         
@@ -167,13 +167,13 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var current = dataForShow[indexPath.row] as ZXY_UserAlbumListData
+        var current = dataForShow[indexPath.row] as! ZXY_UserAlbumListData
         
         //userID == artistID 跳转到我的图集详细页面
         //userID != artistID 跳转回订单页面
         if self.userID == self.artistID {
             var story = UIStoryboard(name: "PublicStory", bundle: nil)
-            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
             vc.artWorkID = current.albumId ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }

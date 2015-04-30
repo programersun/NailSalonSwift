@@ -49,7 +49,7 @@ class ZXY_MIMainVC: UIViewController {
             }
 //            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
 //            var result = self?.dataForShow?.result
-            var result = returnDic["result"] as Double
+            var result = returnDic["result"] as! Double
             if(result == 1000)
             {
                 ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
@@ -84,12 +84,12 @@ class ZXY_MIMainVC: UIViewController {
         var segueID = segue.identifier
         if(segueID == "toLoginVC")
         {
-            var loginVC = segue.destinationViewController as ZXY_LoginRegistVC
+            var loginVC = segue.destinationViewController as! ZXY_LoginRegistVC
             loginVC.delegate = self
         }
         if( segueID == "toUserInfo")
         {
-            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            var propertyVC = segue.destinationViewController as! ICYProfileViewController
             propertyVC.userInfo = userInfo
             propertyVC.requestBlock = {[weak self]() -> Void in
                 self?.currentTable.reloadData()
@@ -98,7 +98,7 @@ class ZXY_MIMainVC: UIViewController {
         }
         if( segueID == "toSettingVC")
         {
-            var settingVC = segue.destinationViewController as SettingVC
+            var settingVC = segue.destinationViewController as! SettingVC
             settingVC.userInfo = userInfo
         }
     }
@@ -155,9 +155,9 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as ZXY_MIMainVCell
+        var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as! ZXY_MIMainVCell
         bigCell.delegate = self
-        var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as ZXY_MIMainItemCell
+        var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as! ZXY_MIMainItemCell
         if(indexPath.section == 0)
         {
             bigCell.backImg.backgroundColor = UIColor.NailRedColor()
@@ -174,7 +174,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                 {
                     self.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
                     userInfo = self.dataForShow?.data
-                    var headImg  = userInfo?.headImage?
+                    var headImg : String? = userInfo?.headImage
                     if let hI = headImg
                     {
                         var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + hI
@@ -187,7 +187,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                     println("\(userInfo?.nickName)")
                     bigCell.nameLbl.text = userInfo?.nickName
                     bigCell.isArtistLbl.text = "美甲师"
-                    var role = userInfo?.role? ?? "1"
+                    var role = userInfo?.role ?? "1"
                     if role == "2"
                     {
                         bigCell.isArtistImg.hidden = false
@@ -277,7 +277,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         switch indexPath.section {
         case 0:
             var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
-            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
             detailArtist.artistID = userID
             detailArtist.navigationController?.navigationBar.hidden = false
             self.navigationController?.pushViewController(detailArtist, animated: true)
@@ -287,7 +287,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             case 0:
                 ""
             case 1:
-                var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as SR_attentionVC
+                var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as! SR_attentionVC
                 self.navigationController?.pushViewController(vc, animated: true)
                 ""
             default:
@@ -298,12 +298,12 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             case 0:
                 ""
             case 1:
-                var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as SR_myAlbumVC
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
                 vc.userID = userID!
                 vc.artistID = userID!
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2:
-                var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as SR_myCollectionVC
+                var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as! SR_myCollectionVC
                 vc.userID = userID!
                 self.navigationController?.pushViewController(vc, animated: true)
             default:
@@ -340,7 +340,7 @@ extension ZXY_MIMainVC : UIAlertViewDelegate  {
         if(buttonIndex == 1)
         {
             var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
             loginVC.delegate = self
             loginVC.navigationController?.navigationBar.hidden = true
             self.navigationController?.pushViewController(loginVC, animated: true)

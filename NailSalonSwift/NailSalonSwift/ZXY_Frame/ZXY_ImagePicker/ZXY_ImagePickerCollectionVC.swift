@@ -58,7 +58,7 @@ class ZXY_ImagePickerCollectionVC: UIViewController {
         self.delegate?.selectFinish(assetForSelect)
     }
     
-    func setMaxNumOfSelect(maxNum : Int)
+    func setMaxNumOfSelects(maxNum : Int)
     {
         self.maxNumOfSelect = maxNum
     }
@@ -68,7 +68,7 @@ class ZXY_ImagePickerCollectionVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setAssetsArr(assetsArr : ALAssetsGroup)
+    func setAssetsArrs(assetsArr : ALAssetsGroup)
     {
         self.assetGroup = assetsArr
         toBackThread()
@@ -100,7 +100,7 @@ class ZXY_ImagePickerCollectionVC: UIViewController {
 
 extension ZXY_ImagePickerCollectionVC: UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout
 {
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var imageHe      = UIScreen.mainScreen().bounds
         var width        = (imageHe.width - 40)/4
         return CGSizeMake(width , width)

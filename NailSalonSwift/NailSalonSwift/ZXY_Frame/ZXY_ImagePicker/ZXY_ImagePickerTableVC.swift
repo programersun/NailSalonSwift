@@ -33,7 +33,7 @@ class ZXY_ImagePickerTableVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func setMaxNumOfSelect(maxNum : Int)
+    func setMaxNumOfSelects(maxNum : Int)
     {
         self.maxNumOfSelect = maxNum
     }
@@ -138,7 +138,7 @@ extension ZXY_ImagePickerTableVC : UITableViewDelegate , UITableViewDataSource
         var currentGroup = assetGroup![indexPath.row]
         var cgImagea  = currentGroup.posterImage()
         var images = UIImage(CGImage: cgImagea.takeUnretainedValue())
-        var titleName = currentGroup.valueForProperty(ALAssetsGroupPropertyName) as String
+        var titleName = currentGroup.valueForProperty(ALAssetsGroupPropertyName) as! String
         cell?.imageView?.image = images
         cell?.textLabel?.text  = titleName
         // 图库组的系统名称
@@ -166,8 +166,8 @@ extension ZXY_ImagePickerTableVC : UITableViewDelegate , UITableViewDataSource
         var currentGroup = assetGroup![indexPath.row]
         var coVc = ZXY_ImagePickerCollectionVC()
         coVc.delegate = self
-        coVc.setAssetsArr(currentGroup)
-        coVc.setMaxNumOfSelect(maxNumOfSelect)
+        coVc.setAssetsArrs(currentGroup)
+        coVc.setMaxNumOfSelects(maxNumOfSelect)
         self.navigationController?.pushViewController(coVc, animated: true)
     }
 }

@@ -110,9 +110,9 @@ class ZXY_DFPArtistCollectionVC: UIViewController {
 extension ZXY_DFPArtistCollectionVC : UICollectionViewDelegate , UICollectionViewDataSource , CHTCollectionViewDelegateWaterfallLayout
 {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_DFPArtistCollectCell.cellID, forIndexPath: indexPath) as ZXY_DFPArtistCollectCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_DFPArtistCollectCell.cellID, forIndexPath: indexPath) as! ZXY_DFPArtistCollectCell
         var currentRow = indexPath.row
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as! ZXY_UserAlbumListData
         var artImage : String?      = ZXY_ALLApi.ZXY_MainAPIImage + currentData.cutPath
         if(artImage != nil)
         {
@@ -134,14 +134,14 @@ extension ZXY_DFPArtistCollectionVC : UICollectionViewDelegate , UICollectionVie
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var nib = UINib(nibName: "ZXY_DFPArtistTitleView", bundle: nil)
         collectionView.registerNib(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: ZXY_DFPArtistTitleView.cellID())
-        var titleView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ZXY_DFPArtistTitleView.cellID(), forIndexPath: indexPath) as ZXY_DFPArtistTitleView
+        var titleView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ZXY_DFPArtistTitleView.cellID(), forIndexPath: indexPath) as! ZXY_DFPArtistTitleView
         return titleView
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         var currentRow = indexPath.row
         
-        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as ZXY_UserAlbumListData
+        var currentData : ZXY_UserAlbumListData = dataForShow[currentRow] as! ZXY_UserAlbumListData
         var width       = (currentData.cutWidth as NSString).floatValue
         var height      = (currentData.cutHeight as NSString).floatValue
         
@@ -162,7 +162,7 @@ extension ZXY_DFPArtistCollectionVC : UICollectionViewDelegate , UICollectionVie
         }
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var current = dataForShow[indexPath.row] as ZXY_UserAlbumListData
+        var current = dataForShow[indexPath.row] as! ZXY_UserAlbumListData
         var albumID = current.albumId ?? ""
         if let de = delegatela
         {

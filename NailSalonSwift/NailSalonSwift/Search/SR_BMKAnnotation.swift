@@ -27,16 +27,16 @@ class SR_BMKAnnotation: NSObject ,BMKAnnotation{
         self.coordinate = coordinate
     }
     
-    func setUserID(userID : String)
+    func setUserIDs(userID : String)
     {
         self.userID = userID
     }
     
-    func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
+    func setCoordinates(newCoordinate: CLLocationCoordinate2D) {
         self.coordinate = newCoordinate
     }
     
-    func setImgURL(imgURL : NSURL?)
+    func setImgURLs(imgURL : NSURL?)
     {
         self.imgURL = imgURL
     }

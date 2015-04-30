@@ -117,7 +117,7 @@ class ZXY_ARMainVC: UIViewController {
                 
                 for value in resultData
                 {
-                    var dataValue : SR_artistData = value as SR_artistData
+                    var dataValue : SR_artistData = value as! SR_artistData
                     self?.dataForTable?.append(dataValue)
                 }
                 if let s = self
@@ -264,7 +264,7 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(SR_ARTableViewCell.identifier) as SR_ARTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(SR_ARTableViewCell.identifier) as! SR_ARTableViewCell
         
         var cellData  = dataForTable?[indexPath.row]
         
@@ -324,7 +324,7 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cellData  = dataForTable?[indexPath.row]
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
         vc.artistID = cellData?.userId
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -24,8 +24,8 @@ class ZXY_MIRegistVC: UIViewController {
     
     weak var delegate : ZXY_MIRegistVCProtocol?
     
-    var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
-    var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as SR_registTableVC
+    var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as! SR_registTableVC
+    var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as! SR_registTableVC
     
     @IBOutlet weak var registSegument: UISegmentedControl!
     @IBOutlet weak var topBarView: UIView!
@@ -76,14 +76,14 @@ class ZXY_MIRegistVC: UIViewController {
         var segueID = segue.identifier
         if(segueID == "toCheckIdVC")
         {
-            var checkIdVC = segue.destinationViewController as SR_checkIdVC
+            var checkIdVC = segue.destinationViewController as! SR_checkIdVC
             checkIdVC.userName = artistName
             checkIdVC.userPassword = artistPassword
         }
         
         if( segueID == "toUserInfo")
         {
-            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            var propertyVC = segue.destinationViewController as! ICYProfileViewController
             propertyVC.userInfo = userInfo
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
@@ -98,7 +98,7 @@ class ZXY_MIRegistVC: UIViewController {
     
     
     @IBAction func registChange(sender: AnyObject) {
-        var seg = sender as UISegmentedControl
+        var seg = sender as! UISegmentedControl
         if seg.selectedSegmentIndex == 0
         {
             self.delegate?.artistRegist(true)
@@ -174,10 +174,10 @@ extension ZXY_MIRegistVC: SR_registTableVCProtocol {
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_MyInfoAPIType.MI_Regist.rawValue
         var parameter : Dictionary<String , AnyObject> = ["user_name": userName , "password": userPassword , "role": 1]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
-            var result: Double = returnDic["result"] as Double
+            var result: Double = returnDic["result"] as! Double
             if(result == Double(1000))
             {
-                var userid : Double = returnDic["data"] as Double
+                var userid : Double = returnDic["data"] as! Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
                 self?.startDownLoadUserDetailInfo()
             }

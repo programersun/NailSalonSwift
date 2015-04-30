@@ -45,8 +45,8 @@ class ZXY_ImageItemView: UIScrollView {
         self.startInitActivity()
     }
     
-    override init() {
-        super.init()
+    convenience  init() {
+        self.init()
         self.startInitZXYIV()
         self.startInitActivity()
     }

@@ -112,9 +112,9 @@ class SR_albumCollectionVC: UIViewController {
 extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewDataSource , CHTCollectionViewDelegateWaterfallLayout
 {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SR_myAlbumCell.cellID, forIndexPath: indexPath) as SR_myAlbumCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(SR_myAlbumCell.cellID, forIndexPath: indexPath) as! SR_myAlbumCell
         var currentRow = indexPath.row
-        var currentData : SR_albumCollectionData = dataForShow[currentRow] as SR_albumCollectionData
+        var currentData : SR_albumCollectionData = dataForShow[currentRow] as! SR_albumCollectionData
         var artImage : String?      = ZXY_ALLApi.ZXY_MainAPIImage + currentData.cutPath
         if(artImage != nil)
         {
@@ -136,7 +136,7 @@ extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewData
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         var currentRow = indexPath.row
         
-        var currentData : SR_albumCollectionData = dataForShow[currentRow] as SR_albumCollectionData
+        var currentData : SR_albumCollectionData = dataForShow[currentRow] as! SR_albumCollectionData
         var width       = (currentData.cutWidth as NSString).floatValue
         var height      = (currentData.cutHeight as NSString).floatValue
         
@@ -151,8 +151,8 @@ extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewData
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
-        var current = dataForShow[indexPath.row] as SR_albumCollectionData
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
+        var current = dataForShow[indexPath.row] as! SR_albumCollectionData
         vc.artWorkID = current.albumId ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }

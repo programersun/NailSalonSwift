@@ -52,10 +52,11 @@ class ZXY_PictureTakeVC: UIViewController {
         
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.hideView()
     }
     
+       
     @IBAction func takePhotoAction(sender: AnyObject) {
         delegate.clickTakePhotoBtn()
         self.hideView()

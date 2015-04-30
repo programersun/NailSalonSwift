@@ -28,7 +28,7 @@ class ZXY_DataProviderHelper: NSObject {
     
     private class func getDelegate() -> AppDelegate
     {
-        var delegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return delegate
     }
     // MARK: - 关于数据库操作方法save
@@ -45,7 +45,7 @@ class ZXY_DataProviderHelper: NSObject {
     {
         var delegate = ZXY_DataProviderHelper.getDelegate()
         var context  = delegate.managedObjectContext
-        var modelObject : NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName(name, inManagedObjectContext: context!) as NSManagedObject
+        var modelObject : NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName(name, inManagedObjectContext: context!) as! NSManagedObject
         for (key , value) in saveEntity
         {
             modelObject.setValue(value, forKey: key)
@@ -109,7 +109,7 @@ class ZXY_DataProviderHelper: NSObject {
     {
         var delegate = ZXY_DataProviderHelper.getDelegate()
         var context  = delegate.managedObjectContext
-        var arr : [NSManagedObject]      = ZXY_DataProviderHelper.readAllFromDB(DNName: name) as [NSManagedObject]
+        var arr : [NSManagedObject]      = ZXY_DataProviderHelper.readAllFromDB(DNName: name) as! [NSManagedObject]
         for object  in arr
         {
             context?.deleteObject(object)

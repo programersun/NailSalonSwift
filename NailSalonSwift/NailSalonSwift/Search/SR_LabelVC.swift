@@ -169,9 +169,9 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_LabelCellVC.cellID()) as SR_LabelCellVC
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_LabelCellVC.cellID()) as! SR_LabelCellVC
         cell.toolBar.backgroundColor = UIColor.NailRedColor()
-        var cellData = dataForShow[indexPath.row] as SR_searchLabelData
+        var cellData = dataForShow[indexPath.row] as! SR_searchLabelData
         //图集图片
         var imgUrl = cellData.image.cutPath as String?
         if let url    = imgUrl
@@ -208,10 +208,10 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.searchText.resignFirstResponder()
-        var currentData = dataForShow[indexPath.row] as  SR_searchLabelData
+        var currentData = dataForShow[indexPath.row] as!  SR_searchLabelData
         var albumID = currentData.albumId ?? ""
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
         vc.title     = currentData.user.nickName
         self.navigationController?.pushViewController(vc, animated: true)
