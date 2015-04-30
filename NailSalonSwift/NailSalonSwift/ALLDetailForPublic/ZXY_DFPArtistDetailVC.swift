@@ -140,7 +140,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
             }
             else
             {
-                self.attensionBtn.setTitle("关注", forState: UIControlState.Normal)
+                self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
             }
         }
         

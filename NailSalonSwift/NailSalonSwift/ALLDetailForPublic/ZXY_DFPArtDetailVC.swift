@@ -281,6 +281,10 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             }
             var price = CellData?.price ?? "0"
             tagCell.priceValue.text = "￥\(price)"
+            tagCell.artistID = CellData?.userId
+            tagCell.isCommonUser = CellData?.user.role
+            tagCell.isArtistOrSelf()
+            tagCell.delegate = self
             return tagCell
         case 2:
             if indexPath.row == 0
@@ -393,9 +397,9 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         if(userID == nil)
         {
             var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.tag = 1
             alert.show()
             return
-            
         }
         else
         {
@@ -489,7 +493,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
 
         }
     }
-    
+    //删除图集
     func deleteAblum(){
         zxyW.startProgress(self.view)
         var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_DeleteAlbumAPI
@@ -593,6 +597,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
         if userID == nil
         {
             var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.tag = 1
             alert.show()
             return
         }
@@ -662,6 +667,17 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
         }
     }
 
+}
+extension ZXY_DFPArtDetailVC : ZXY_DFPADTagCellProtocol {
+    //跳转到预定点单
+    func toOrderVC() {
+        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil) as UIStoryboard
+        var orderVC = story.instantiateViewControllerWithIdentifier("SR_OrderMainVCID") as SR_OrderMainVC
+        orderVC.ablumName = dataForTable?.data.dataDescription
+        orderVC.ablumId   = dataForTable?.data.albumId
+        orderVC.artistId  = dataForTable?.data.userId
+        self.navigationController?.pushViewController(orderVC, animated: true)
+    }
 }
 
 

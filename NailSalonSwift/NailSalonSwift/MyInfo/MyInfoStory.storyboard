@@ -1507,7 +1507,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rjt-Sw-jUp" id="hHs-qi-Jx9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jro-qN-XDI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jro-qN-XDI">
                                                     <rect key="frame" x="15" y="10" width="150" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="Nb3-Sw-p58"/>
@@ -1516,10 +1516,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-RR-T26">
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="IRc-AA-mq0"/>
+                                                        <constraint firstAttribute="height" constant="0.5" id="IpF-LK-hgH"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="IRc-AA-mq0"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1534,6 +1540,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="kZO-2V-YYy"/>
                                                     <exclude reference="tNt-l3-MWJ"/>
                                                     <exclude reference="VK5-vA-yx6"/>
                                                 </mask>
@@ -1913,8 +1920,8 @@
         <image name="textLineAndroid" width="400" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bwi-J6-DrA"/>
-        <segue reference="Q4V-xk-uK2"/>
-        <segue reference="TVb-3z-G3q"/>
+        <segue reference="Ywn-GM-FN2"/>
+        <segue reference="GOf-40-0Rt"/>
+        <segue reference="WmM-a3-ros"/>
     </inferredMetricsTieBreakers>
 </document>

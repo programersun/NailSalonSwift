@@ -180,6 +180,9 @@
 		A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */; };
 		A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */; };
 		A4BD736C1AE9E6A400BEECEA /* UIDevice+Resolutions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BD736B1AE9E6A400BEECEA /* UIDevice+Resolutions.m */; };
+		A4C1421D1AF1F858003C4A21 /* SR_OrderMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1421C1AF1F858003C4A21 /* SR_OrderMainVC.swift */; };
+		A4C1421F1AF1F8BF003C4A21 /* SR_OrderStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */; };
+		A4C142221AF2029F003C4A21 /* SR_OrderMainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */; };
 		A4D1B64A1AECF9580065DEC4 /* SR_myAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1B6491AECF9580065DEC4 /* SR_myAlbumCell.swift */; };
 		A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */; };
 		A4E1851D1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */; };
@@ -457,6 +460,9 @@
 		A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCYRessetPasswordViewController.swift; sourceTree = "<group>"; };
 		A4BD736B1AE9E6A400BEECEA /* UIDevice+Resolutions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Resolutions.m"; sourceTree = "<group>"; };
 		A4BD736D1AE9E6B900BEECEA /* UIDevice+Resolutions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Resolutions.h"; sourceTree = "<group>"; };
+		A4C1421C1AF1F858003C4A21 /* SR_OrderMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderMainVC.swift; sourceTree = "<group>"; };
+		A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_OrderStory.storyboard; sourceTree = "<group>"; };
+		A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderMainVCCell.swift; sourceTree = "<group>"; };
 		A4D1B6491AECF9580065DEC4 /* SR_myAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_myAlbumCell.swift; sourceTree = "<group>"; };
 		A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_ORCourseStory.storyboard; sourceTree = "<group>"; };
 		A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListVC.swift; sourceTree = "<group>"; };
@@ -802,6 +808,7 @@
 				8B4B4DFC1AC502F3001BD10B /* MyInfo */,
 				8B4B4DFD1AC502F3001BD10B /* Search */,
 				8B7B941A1AC523FF00BAA520 /* takePhoto */,
+				A4C1421B1AF1F849003C4A21 /* SR_Order */,
 				8B9977B61AC4ED4B00CD1713 /* AppDelegate.swift */,
 				8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */,
 				8B8100CD1AC7F37100850B05 /* ZXY_ALLApi.swift */,
@@ -1067,6 +1074,24 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		A4C1421B1AF1F849003C4A21 /* SR_Order */ = {
+			isa = PBXGroup;
+			children = (
+				A4C142201AF20286003C4A21 /* SR_OrderCell */,
+				A4C1421C1AF1F858003C4A21 /* SR_OrderMainVC.swift */,
+				A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */,
+			);
+			path = SR_Order;
+			sourceTree = "<group>";
+		};
+		A4C142201AF20286003C4A21 /* SR_OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */,
+			);
+			path = SR_OrderCell;
+			sourceTree = "<group>";
+		};
 		A4E185191AE88E7D00ACCF67 /* SR_ORCourse */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,6 +1238,7 @@
 				8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */,
 				8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */,
 				8B4B4DFF1AC50307001BD10B /* MyInfoStory.storyboard in Resources */,
+				A4C1421F1AF1F8BF003C4A21 /* SR_OrderStory.storyboard in Resources */,
 				8B345A381ADD044400D914C6 /* ZXY_BrowserImage.bundle in Resources */,
 				8B9977C11AC4ED4B00CD1713 /* Images.xcassets in Resources */,
 				8B3CB2FD1AF0B4CC00183C5F /* ZXYTakePicAsset.xcassets in Resources */,
@@ -1351,7 +1377,9 @@
 				8B1910081ADD5E530087AECF /* ZXY_DFPArtistTableVC.swift in Sources */,
 				A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */,
 				8B345A391ADD044400D914C6 /* ZXY_ImageBrowserVC.swift in Sources */,
+				A4C1421D1AF1F858003C4A21 /* SR_OrderMainVC.swift in Sources */,
 				8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */,
+				A4C142221AF2029F003C4A21 /* SR_OrderMainVCCell.swift in Sources */,
 				8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */,
 				A46EDF721AEF756000B3503B /* SR_searchLabelImage.m in Sources */,
 				8B3CB2EA1AF0B33500183C5F /* ZXY_FilterPicOperationCell.swift in Sources */,

@@ -9,6 +9,10 @@
 
 import UIKit
 
+protocol SR_myAlbumVCProtocol : class {
+    func backToOrder(ablumDesc : String , ablumId : String?) -> Void
+}
+
 class SR_myAlbumVC: UIViewController {
 
     @IBOutlet weak var ablumCollection: UICollectionView!
@@ -17,11 +21,14 @@ class SR_myAlbumVC: UIViewController {
     var layout = CHTCollectionViewWaterfallLayout()
     var ablumPage : Int = 1
     var userID : String?
+    var artistID : String?
     var isDownLoad = false
     private var dataForShow : NSMutableArray = NSMutableArray()
     
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
+    
+    var delegate : SR_myAlbumVCProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +49,9 @@ class SR_myAlbumVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(animated: Bool) {
-        srW.startProgress(self.ablumCollection)
-        self.startDownLoadAlbum()
-        srW.hideProgress(self.ablumCollection)
-    }
     override func viewWillAppear(animated: Bool) {
+        srW.startProgress(self.view)
+        self.startDownLoadAlbum()
         self.navigationController?.navigationBar.hidden = true
         self.topBarView.backgroundColor = UIColor.NailRedColor()
     }
@@ -72,7 +76,7 @@ class SR_myAlbumVC: UIViewController {
         ablumCollection.footerEndRefreshing()
         ablumCollection.headerEndRefreshing()
         var urlString = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADPF_ArtistArts)
-        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: ["user_id" : self.userID! , "p" : ablumPage], successBlock: { [weak self](returnDic) -> Void in
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: ["user_id" : self.artistID! , "p" : ablumPage], successBlock: { [weak self](returnDic) -> Void in
             var arr = ZXY_UserAlbumListBase(dictionary: returnDic).data
             if(self?.ablumPage == 1)
             {
@@ -163,11 +167,20 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
         var current = dataForShow[indexPath.row] as ZXY_UserAlbumListData
-        vc.artWorkID = current.albumId ?? ""
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        //userID == artistID 跳转到我的图集详细页面
+        //userID != artistID 跳转回订单页面
+        if self.userID == self.artistID {
+            var story = UIStoryboard(name: "PublicStory", bundle: nil)
+            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+            vc.artWorkID = current.albumId ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            self.delegate?.backToOrder(current.dataDescription , ablumId: current.albumId)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
 }
