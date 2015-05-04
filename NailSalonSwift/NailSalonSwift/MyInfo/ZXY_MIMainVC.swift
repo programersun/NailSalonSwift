@@ -296,7 +296,11 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         case 2:
             switch indexPath.row {
             case 0:
-                ""
+                var storyOrder = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+                var vc = storyOrder.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
+                vc.userID = userID!
+                vc.role = self.userInfo.role!
+                self.navigationController?.pushViewController(vc, animated: true)
             case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
                 vc.userID = userID!

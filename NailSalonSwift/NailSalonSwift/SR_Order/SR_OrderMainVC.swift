@@ -28,6 +28,7 @@ class SR_OrderMainVC: UIViewController {
     var userAddress : String? = ""
     var ablumName : String?
     var ablumId : String?
+    var artistName : String?
     
     //当前用户信息
     var userInfo : ZXY_UserDetailInfoData!
@@ -74,7 +75,14 @@ class SR_OrderMainVC: UIViewController {
     
     //提交订单
     @IBAction func submitOrder(sender: AnyObject) {
-        
+        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+        var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
+        vc.userID    = self.userId
+        vc.role      = self.userInfo.role
+        vc.artistID  = self.artistId
+        vc.ablumId   = self.ablumId
+        vc.ablumName = self.ablumName
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

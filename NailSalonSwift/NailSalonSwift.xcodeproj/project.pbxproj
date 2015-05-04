@@ -148,6 +148,10 @@
 		A40B88781AE8EE13001BB3D4 /* SR_courseDetilListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88751AE8EE13001BB3D4 /* SR_courseDetilListData.m */; };
 		A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */; };
 		A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */; };
+		A40FD5981AF718A0005C4B33 /* SR_OrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */; };
+		A40FD59A1AF718BA005C4B33 /* SR_OrderTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */; };
+		A40FD5B21AF74EF8005C4B33 /* SR_OrderListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5AE1AF74EF8005C4B33 /* SR_OrderListData.m */; };
+		A40FD5B31AF74EF8005C4B33 /* SR_OrderListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5B11AF74EF8005C4B33 /* SR_OrderListBaseClass.m */; };
 		A41710A21AEB521D004AA42D /* SR_MIMainStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */; };
 		A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */; };
 		A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A51AEB5741004AA42D /* SR_attentionVC.swift */; };
@@ -415,6 +419,12 @@
 		A40B88761AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_courseDetilListBaseClass.m; path = ../SR_courseDetilListBaseClass.m; sourceTree = "<group>"; };
 		A40B88771AE8EE13001BB3D4 /* SR_courseDetilListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_courseDetilListData.h; path = ../SR_courseDetilListData.h; sourceTree = "<group>"; };
 		A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ORgetCourseVC.swift; sourceTree = "<group>"; };
+		A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderTableCell.swift; sourceTree = "<group>"; };
+		A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderTableVC.swift; sourceTree = "<group>"; };
+		A40FD5AE1AF74EF8005C4B33 /* SR_OrderListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderListData.m; sourceTree = "<group>"; };
+		A40FD5AF1AF74EF8005C4B33 /* SR_OrderListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderListData.h; sourceTree = "<group>"; };
+		A40FD5B01AF74EF8005C4B33 /* SR_OrderListBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderListBaseClass.h; sourceTree = "<group>"; };
+		A40FD5B11AF74EF8005C4B33 /* SR_OrderListBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderListBaseClass.m; sourceTree = "<group>"; };
 		A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_MIMainStory.storyboard; sourceTree = "<group>"; };
 		A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionTableVC.swift; sourceTree = "<group>"; };
 		A41710A51AEB5741004AA42D /* SR_attentionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionVC.swift; sourceTree = "<group>"; };
@@ -976,6 +986,17 @@
 			path = SR_courseModel;
 			sourceTree = "<group>";
 		};
+		A40FD5AD1AF7460E005C4B33 /* SR_OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				A40FD5AE1AF74EF8005C4B33 /* SR_OrderListData.m */,
+				A40FD5AF1AF74EF8005C4B33 /* SR_OrderListData.h */,
+				A40FD5B01AF74EF8005C4B33 /* SR_OrderListBaseClass.h */,
+				A40FD5B11AF74EF8005C4B33 /* SR_OrderListBaseClass.m */,
+			);
+			path = SR_OrderModel;
+			sourceTree = "<group>";
+		};
 		A41710A01AEB51E5004AA42D /* SR_MIMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1077,8 +1098,10 @@
 		A4C1421B1AF1F849003C4A21 /* SR_Order */ = {
 			isa = PBXGroup;
 			children = (
+				A40FD5AD1AF7460E005C4B33 /* SR_OrderModel */,
 				A4C142201AF20286003C4A21 /* SR_OrderCell */,
 				A4C1421C1AF1F858003C4A21 /* SR_OrderMainVC.swift */,
+				A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */,
 				A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */,
 			);
 			path = SR_Order;
@@ -1088,6 +1111,7 @@
 			isa = PBXGroup;
 			children = (
 				A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */,
+				A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */,
 			);
 			path = SR_OrderCell;
 			sourceTree = "<group>";
@@ -1336,6 +1360,7 @@
 				8B7B94251AC5441700BAA520 /* ZXY_SegBtnVC.swift in Sources */,
 				A46EDF7E1AEF827C00B3503B /* SR_searchUserCell.swift in Sources */,
 				A4E2A7601AEF245400B66011 /* SR_LabelVC.swift in Sources */,
+				A40FD5981AF718A0005C4B33 /* SR_OrderTableCell.swift in Sources */,
 				8B6467971ACBBFAE00519A1A /* ZXYCourseData.m in Sources */,
 				A4FC764E1AEDCBE9002B1020 /* SR_albumCollectionVC.swift in Sources */,
 				8BCF6A251ADA180B0085575D /* ZXY_AlbumDetailImages.m in Sources */,
@@ -1348,6 +1373,7 @@
 				A4FC76601AEDFF9D002B1020 /* SR_AttentionData.m in Sources */,
 				8B4B4DF21AC50162001BD10B /* ZXY_UserInfoDetail.swift in Sources */,
 				8BBBDBCA1ACA764F0006A94A /* ZXYOfferOfferList.m in Sources */,
+				A40FD5B31AF74EF8005C4B33 /* SR_OrderListBaseClass.m in Sources */,
 				A4FC764A1AEDC93C002B1020 /* SR_myCollectionVC.swift in Sources */,
 				A4D1B64A1AECF9580065DEC4 /* SR_myAlbumCell.swift in Sources */,
 				8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */,
@@ -1392,6 +1418,7 @@
 				A45C99431AF0B42A004F2EE9 /* SR_searchNearbyData.m in Sources */,
 				8B345A3B1ADD044400D914C6 /* ZXY_ImageItemView.swift in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
+				A40FD59A1AF718BA005C4B33 /* SR_OrderTableVC.swift in Sources */,
 				8B190FF91ADD47F70087AECF /* SR_artistBaseClass.m in Sources */,
 				A49C5DD91AF0C9BC0033D57D /* SR_DAnnotationView.swift in Sources */,
 				A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */,
@@ -1401,6 +1428,7 @@
 				A4FC765A1AEDE2C1002B1020 /* SR_courseCollectionBaseClass.m in Sources */,
 				A4FC76581AEDE2C1002B1020 /* SR_courseCollectionData.m in Sources */,
 				8B5EE2D01AC847D700EFF3C4 /* CustomImageView.swift in Sources */,
+				A40FD5B21AF74EF8005C4B33 /* SR_OrderListData.m in Sources */,
 				8B3CB2FF1AF0B57000183C5F /* ZXY_AllColor.swift in Sources */,
 				8B3CB2E81AF0B33500183C5F /* ZXY_FilterImgType.swift in Sources */,
 				8B45878A1ADB9E450012B7C4 /* ZXY_AlbumCommentData.m in Sources */,

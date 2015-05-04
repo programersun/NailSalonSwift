@@ -160,6 +160,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             firstCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            firstCell.headerImg.layer.borderWidth  = 1
             firstCell.headerSubTitleLbl.text    = titleLbl
             firstCell.headerTitleLbl.text       = titleLbl
             firstCell.setImgs(courses)
@@ -172,6 +173,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             secondCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             secondCell.headerImg.layer.cornerRadius = CGRectGetWidth(secondCell.headerImg.bounds) / 2
             secondCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            secondCell.headerImg.layer.borderWidth  = 1
             return secondCell
         case 2 , 5:
             thirdCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -181,6 +183,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             thirdCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             thirdCell.headerImg.layer.cornerRadius = CGRectGetWidth(thirdCell.headerImg.bounds) / 2
             thirdCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            thirdCell.headerImg.layer.borderWidth  = 1
             return thirdCell
         default:
             firstCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -190,6 +193,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             firstCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            firstCell.headerImg.layer.borderWidth  = 1
             return firstCell
         }
         

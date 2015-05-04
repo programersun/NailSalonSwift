@@ -222,7 +222,16 @@ class SR_searchNearbyVC: UIViewController {
     //搜索附近美甲师
     func loadAtristSearch(){
         var urlString = ZXY_NailNetAPI.SR_SearchAPI(SR_SearchAPIType.SR_SearchUser)
-        userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        
+        if let user_id = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        {
+            userID = user_id
+        }
+        else
+        {
+            userID = ""
+        }
+        
         var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName! , "lng": longitude! , "lat": latitude!, "user_id" : userID! , "control" : control , "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
             var arr = SR_searchNearbyBaseClass(dictionary: returnDic).data
