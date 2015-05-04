@@ -116,7 +116,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         var artistName = needShow?.nickName
         var isArtist   = needShow?.role
         var score      = needShow?.score ?? "0"
-        var headURL  : String?  = needShow?.headImage?
+        var headURL  : String?  = needShow?.headImage
         var doubleScore = NSString(string: score).doubleValue
         self.artistName.text = artistName
         var attension = needShow?.isAttention ?? 0
@@ -140,7 +140,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
             }
             else
             {
-                self.attensionBtn.setTitle("关注", forState: UIControlState.Normal)
+                self.attensionBtn.setTitle("关 注", forState: UIControlState.Normal)
             }
         }
         
@@ -213,7 +213,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     {
         if firstCollectionVC == nil
         {
-            firstCollectionVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistCollectionVC.vcID()) as ZXY_DFPArtistCollectionVC
+            firstCollectionVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistCollectionVC.vcID()) as! ZXY_DFPArtistCollectionVC
             firstCollectionVC.userID = self.artistID
             self.addChildViewController(firstCollectionVC)
             firstCollectionVC.delegatela = self
@@ -226,7 +226,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     {
         if secontTableVC == nil
         {
-            secontTableVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistTableVC.vcID()) as ZXY_DFPArtistTableVC
+            secontTableVC = UIStoryboard(name: "PublicStory", bundle: nil).instantiateViewControllerWithIdentifier(ZXY_DFPArtistTableVC.vcID()) as! ZXY_DFPArtistTableVC
             secontTableVC.userID = self.artistID
             self.addChildViewController(secontTableVC)
             secontTableVC.delegateL = self
@@ -381,7 +381,7 @@ extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArt
     }
     func sendAlbumIDToVC(albumID: String) {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -395,7 +395,7 @@ extension ZXY_DFPArtistDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtoco
         if(buttonIndex == 1)
         {
             var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
             loginVC.delegate = self
             loginVC.navigationController?.navigationBar.hidden = true
             self.navigationController?.pushViewController(loginVC, animated: true)

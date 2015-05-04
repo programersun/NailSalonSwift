@@ -48,12 +48,12 @@ class ZXY_DateChangeInfoVC: UIViewController {
         currentDic = valueDic
     }
     
-    func setIsInput(isInput : Bool)
+    func setIsInputs(isInput : Bool)
     {
         self.isInput = isInput
     }
     
-    func setIsInputNum(isInputNum : Bool)
+    func setIsInputNums(isInputNum : Bool)
     {
         self.isInputNum = isInputNum
     }
@@ -78,7 +78,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
     
 
     override func rightNaviButtonAction() {
-        var keyString : String?  = currentDic?["title"]? as? String
+        var keyString : String?  = currentDic?["title"] as? String
         if(keyString != nil)
         {
             if(self.delegate != nil)
@@ -138,7 +138,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
 extension ZXY_DateChangeInfoVC : UITableViewDelegate ,UITableViewDataSource
 {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_ChangeDateInfoCellID) as ZXY_ChangeDateInfoCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_ChangeDateInfoCellID) as! ZXY_ChangeDateInfoCell
             self.infoText = cell.infoText
             
             if(isInputNum)

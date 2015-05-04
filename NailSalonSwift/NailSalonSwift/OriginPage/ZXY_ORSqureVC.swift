@@ -117,7 +117,7 @@ class ZXY_ORSqureVC: UIViewController {
                 */
                 for value in resultData
                 {
-                    var dataValue: ZXYOriginAlbumData = value as ZXYOriginAlbumData
+                    var dataValue: ZXYOriginAlbumData = value as! ZXYOriginAlbumData
                     self?.dataForTable?.append(dataValue)
                 }
                 self?.isWaitingView = false
@@ -154,7 +154,7 @@ class ZXY_ORSqureVC: UIViewController {
                 var recData = baseData.data.recommendAlbum
                 for value in recData
                 {
-                    var dataValue: ZXYOfferRecommendAlbum = value as ZXYOfferRecommendAlbum
+                    var dataValue: ZXYOfferRecommendAlbum = value as! ZXYOfferRecommendAlbum
                     self?.dataForRec?.append(dataValue)
                 }
                 self?.mainCollectionV.reloadData()
@@ -216,14 +216,14 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if(isWaitingView)
         {
-            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_IndicatorCell.cellID(), forIndexPath: indexPath) as ZXY_IndicatorCell
+            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_IndicatorCell.cellID(), forIndexPath: indexPath) as! ZXY_IndicatorCell
             cell.startAnimation()
             return cell
             
         }
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_ORSqureMainCCell.cellID(), forIndexPath: indexPath) as ZXY_ORSqureMainCCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_ORSqureMainCCell.cellID(), forIndexPath: indexPath) as! ZXY_ORSqureMainCCell
         var currentData = dataForTable?[indexPath.row]
-        var currentImg  = currentData?.image?.cutPath?
+        var currentImg : String?  = currentData?.image?.cutPath
         var currentUser = currentData?.user
         cell.artistAva.layer.cornerRadius = 20
         cell.artistAva.layer.masksToBounds = true
@@ -253,7 +253,7 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
         
         cell.artName.text = currentUser?.nickName
         cell.artName.textColor = UIColor.NailGrayColor()
-        var avataURL      = currentUser?.headImage?
+        var avataURL : String?     = currentUser?.headImage
         if let aVA = avataURL
         {
             var headURL = ZXY_NailNetAPI.ZXY_MainAPIImage + aVA
@@ -294,9 +294,9 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
         var currentData = dataForTable?[indexPath.row]
         var albumID = currentData?.albumId ?? ""
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
-        vc.title     = currentData?.user?.nickName?
+        vc.title     = currentData?.user?.nickName
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -339,7 +339,7 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
     
     func sendAlbumIDToVC(albumID: String) {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
         self.navigationController?.pushViewController(vc, animated: true)
     }

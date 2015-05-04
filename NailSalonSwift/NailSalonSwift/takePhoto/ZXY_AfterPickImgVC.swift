@@ -64,7 +64,7 @@ class ZXY_AfterPickImgVC: UIViewController {
         if(userID == nil)
         {
             var story  = UIStoryboard(name: "AboutMe", bundle: nil)
-            var vc     = story.instantiateViewControllerWithIdentifier("login") as UIViewController
+            var vc     = story.instantiateViewControllerWithIdentifier("login") as! UIViewController
             self.navigationController?.pushViewController(vc, animated: true)
             return
         }
@@ -129,7 +129,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         var currentSection = indexPath.section
         if currentSection == 0
         {
-            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_PicTakeImgCellID, forIndexPath: indexPath) as ZXY_PicTakeImgCell
+            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_PicTakeImgCellID, forIndexPath: indexPath) as! ZXY_PicTakeImgCell
             
             if(self.photoImg != nil)
             {
@@ -154,7 +154,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         }
         else
         {
-            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_SendMessageAddInfoCoCell.cellID, forIndexPath: indexPath) as ZXY_SendMessageAddInfoCoCell
+            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_SendMessageAddInfoCoCell.cellID, forIndexPath: indexPath) as! ZXY_SendMessageAddInfoCoCell
             return cell
         }
     }
@@ -163,7 +163,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
     {
 //        if indexPath.section == 0
 //        {
-            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "PicTakeInputCell", forIndexPath: indexPath) as ZXY_PicTakeInputCell
+            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "PicTakeInputCell", forIndexPath: indexPath) as! ZXY_PicTakeInputCell
             cell.inputText.layer.cornerRadius = 4
             cell.inputText.layer.borderWidth  = 1
             cell.inputText.layer.masksToBounds = true
@@ -259,7 +259,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
                     else
                     {
                         var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
-                        var vc    = story.instantiateInitialViewController() as ZXY_PictureTakeVC
+                        var vc    = story.instantiateInitialViewController() as! ZXY_PictureTakeVC
                         vc.delegate = self
                         vc.presentView()
                     }
@@ -286,7 +286,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
     func showItemInMain(img : UIImage , andRow : Int)
     {
         var story : UIStoryboard = UIStoryboard(name: "ZXYTakePic", bundle: nil)
-        var vc    : ZXY_PickImgPictureVC = story.instantiateViewControllerWithIdentifier("pictureVCID") as ZXY_PickImgPictureVC
+        var vc    : ZXY_PickImgPictureVC = story.instantiateViewControllerWithIdentifier("pictureVCID") as! ZXY_PickImgPictureVC
         vc.delegate = self
         vc.setCurrentImage(img, andRow: andRow)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -304,7 +304,7 @@ extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDel
         
         
         var zxy_imgPick = ZXY_ImagePickerTableVC()
-        zxy_imgPick.setMaxNumOfSelect(1)
+        zxy_imgPick.setMaxNumOfSelects(1)
         zxy_imgPick.delegate = self
         zxy_imgPick.presentZXYImagePicker(self)
     }
@@ -336,7 +336,7 @@ extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDel
         
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: {[weak self] () -> Void in
             self?.showFilter(image)
             ""

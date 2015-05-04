@@ -268,7 +268,7 @@ class ZXY_ImageBrowserVC: UIViewController {
         
         for  var i = 0 ;i < _itemCellINUse?.count ; i++
         {
-            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as ZXY_ImageItemView
+            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as! ZXY_ImageItemView
             var index = self.getIndexFromTag(tempItemV.tag)
             if(index < begainIndex || index > endIndex)
             {
@@ -276,7 +276,7 @@ class ZXY_ImageBrowserVC: UIViewController {
                 _itemCellINUse?.removeObject(tempItemV)
             }
         }
-        _itemCellINUse?.minusSet(_itemCellINDeuse!)
+        _itemCellINUse?.minusSet(_itemCellINDeuse as Set<NSObject>!)
         if(_itemCellINDeuse?.count > 2)
         {
             _itemCellINDeuse?.removeObject(_itemCellINDeuse!.anyObject()!)
@@ -320,7 +320,7 @@ class ZXY_ImageBrowserVC: UIViewController {
         
         for  var i = 0 ;i < _itemCellINUse?.count ; i++
         {
-            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as ZXY_ImageItemView
+            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as! ZXY_ImageItemView
             var index = self.getIndexFromTag(tempItemV.tag)
             if(index < begainIndex || index > endIndex)
             {
@@ -328,7 +328,7 @@ class ZXY_ImageBrowserVC: UIViewController {
                 _itemCellINUse?.removeObject(tempItemV)
             }
         }
-        _itemCellINUse?.minusSet(_itemCellINDeuse!)
+        _itemCellINUse?.minusSet(_itemCellINDeuse! as Set<NSObject>)
         if(_itemCellINDeuse?.count > 2)
         {
             _itemCellINDeuse?.removeObject(_itemCellINDeuse!.anyObject()!)
@@ -338,7 +338,7 @@ class ZXY_ImageBrowserVC: UIViewController {
         {
             for  var i = 0 ;i < _itemCellINUse?.count ; i++
             {
-                var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as ZXY_ImageItemView
+                var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as! ZXY_ImageItemView
                 var indexs = self.getIndexFromTag(tempItemV.tag)
                 if(indexs == j)
                 {
@@ -365,7 +365,7 @@ class ZXY_ImageBrowserVC: UIViewController {
     {
         for  var i = 0 ;i < _itemCellINUse?.count ; i++
         {
-            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as ZXY_ImageItemView
+            var tempItemV : ZXY_ImageItemView = _itemCellINUse?.allObjects[i] as! ZXY_ImageItemView
             var indexs = self.getIndexFromTag(tempItemV.tag)
             if(indexs == index)
             {

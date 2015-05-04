@@ -185,7 +185,7 @@ extension ZXY_SheetView :UITableViewDataSource,UITableViewDelegate
     {
         var currentSection = indexPath.section
         var currentRow     = indexPath.row
-        var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_SheetViewCellID) as ZXY_SheetViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(ZXY_SheetViewCellID) as! ZXY_SheetViewCell
         cell.backgroundColor = backCo
         if(currentSection == 0)
         {

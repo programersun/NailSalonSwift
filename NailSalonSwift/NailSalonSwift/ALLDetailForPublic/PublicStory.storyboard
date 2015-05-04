@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7703" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RRJ-uc-iM3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZxT-Fn-T7D">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="294" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kIY-Vb-GEz">
@@ -248,8 +248,8 @@
                                                     <rect key="frame" x="512" y="60" width="80" height="21"/>
                                                     <color key="backgroundColor" red="0.97647058819999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="ul8-dM-zFV"/>
-                                                        <constraint firstAttribute="height" constant="21" id="x1W-zU-JRg"/>
+                                                        <constraint firstAttribute="width" constant="80" id="X77-o7-DyK"/>
+                                                        <constraint firstAttribute="height" constant="21" id="cIX-KZ-ILl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="立即预约">
@@ -263,13 +263,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nD0-iX-vFm" firstAttribute="top" secondItem="zUG-KQ-OMU" secondAttribute="top" constant="9" id="0Uv-HB-QuI"/>
-                                                <constraint firstAttribute="trailing" secondItem="7uc-Ny-fpu" secondAttribute="trailing" constant="8" id="2f5-3x-BTP"/>
                                                 <constraint firstItem="nD0-iX-vFm" firstAttribute="leading" secondItem="zUG-KQ-OMU" secondAttribute="leading" constant="8" id="48D-6M-eGg"/>
                                                 <constraint firstAttribute="bottom" secondItem="b0f-9N-oWY" secondAttribute="bottom" constant="33" id="BVB-Tn-I2h"/>
                                                 <constraint firstAttribute="bottom" secondItem="8VI-P8-D3z" secondAttribute="bottom" constant="7" id="M41-o8-B8L"/>
-                                                <constraint firstItem="7uc-Ny-fpu" firstAttribute="top" secondItem="b0f-9N-oWY" secondAttribute="bottom" constant="5" id="ME3-Cc-nzx"/>
+                                                <constraint firstAttribute="trailing" secondItem="7uc-Ny-fpu" secondAttribute="trailing" constant="8" id="O01-wA-kOt"/>
                                                 <constraint firstItem="n4W-Yn-o5L" firstAttribute="leading" secondItem="zUG-KQ-OMU" secondAttribute="leading" constant="8" id="YU4-EE-iom"/>
                                                 <constraint firstItem="8VI-P8-D3z" firstAttribute="leading" secondItem="n4W-Yn-o5L" secondAttribute="trailing" id="ayp-59-5aM"/>
+                                                <constraint firstItem="7uc-Ny-fpu" firstAttribute="top" secondItem="b0f-9N-oWY" secondAttribute="bottom" constant="5" id="e5b-wd-ppG"/>
                                                 <constraint firstItem="b0f-9N-oWY" firstAttribute="leading" secondItem="nD0-iX-vFm" secondAttribute="trailing" constant="13" id="erh-5A-3e0"/>
                                                 <constraint firstAttribute="trailing" secondItem="b0f-9N-oWY" secondAttribute="trailing" constant="8" id="pOf-gb-7yI"/>
                                                 <constraint firstItem="b0f-9N-oWY" firstAttribute="top" secondItem="zUG-KQ-OMU" secondAttribute="top" constant="11" id="yqP-yz-qTx"/>
@@ -472,7 +472,7 @@
         <!--Artist DetailVC-->
         <scene sceneID="m01-oL-70W">
             <objects>
-                <viewController storyboardIdentifier="ZXY_DFPArtistDetailVCID" automaticallyAdjustsScrollViewInsets="NO" id="tNX-hx-s3d" customClass="ZXY_DFPArtistDetailVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ZXY_DFPArtistDetailVCID" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="tNX-hx-s3d" customClass="ZXY_DFPArtistDetailVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y9e-3M-SWE"/>
                         <viewControllerLayoutGuide type="bottom" id="6WN-cq-tB8"/>
@@ -616,6 +616,7 @@
                             <constraint firstItem="L79-EX-JMI" firstAttribute="leading" secondItem="XZO-P7-TCt" secondAttribute="leading" id="vC4-qU-qZZ"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="artistName" destination="wFQ-E1-3Rv" id="hw2-pe-nRr"/>
@@ -665,17 +666,17 @@
                                                     <color key="backgroundColor" red="0.97647058819999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_gray" translatesAutoresizingMaskIntoConstraints="NO" id="0YJ-Da-OyN">
-                                                    <rect key="frame" x="67" y="197" width="20" height="18"/>
+                                                    <rect key="frame" x="139" y="197" width="20" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="UT8-22-5I7"/>
                                                         <constraint firstAttribute="height" constant="18" id="u7T-Rx-OtG"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a64-hQ-8xW">
-                                                    <rect key="frame" x="148" y="197" width="31" height="18"/>
+                                                    <rect key="frame" x="161" y="197" width="21" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="2Xw-z4-h6r"/>
-                                                        <constraint firstAttribute="width" constant="31" id="dzV-Ex-8Mr"/>
+                                                        <constraint firstAttribute="width" constant="21" id="dzV-Ex-8Mr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -693,11 +694,13 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="OrY-6S-6zw" firstAttribute="top" secondItem="3QY-Za-rqh" secondAttribute="top" id="6BL-f9-ikH"/>
-                                            <constraint firstItem="0YJ-Da-OyN" firstAttribute="leading" secondItem="fN8-Xl-KPb" secondAttribute="trailing" constant="21" id="Nzk-gU-gMU"/>
-                                            <constraint firstAttribute="trailing" secondItem="a64-hQ-8xW" secondAttribute="trailing" constant="8" id="RRX-fD-ECt"/>
+                                            <constraint firstItem="0YJ-Da-OyN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fN8-Xl-KPb" secondAttribute="trailing" constant="5" id="Nzk-gU-gMU"/>
+                                            <constraint firstAttribute="trailing" secondItem="a64-hQ-8xW" secondAttribute="trailing" constant="5" id="RRX-fD-ECt"/>
                                             <constraint firstAttribute="bottom" secondItem="fN8-Xl-KPb" secondAttribute="bottom" constant="8" id="RqG-RX-Mv8"/>
+                                            <constraint firstItem="a64-hQ-8xW" firstAttribute="leading" secondItem="0YJ-Da-OyN" secondAttribute="trailing" constant="2" id="YWT-S8-X8C"/>
                                             <constraint firstAttribute="bottom" secondItem="a64-hQ-8xW" secondAttribute="bottom" constant="9" id="aI5-cO-x70"/>
                                             <constraint firstAttribute="bottom" secondItem="0YJ-Da-OyN" secondAttribute="bottom" constant="9" id="cYh-kO-zv1"/>
                                             <constraint firstAttribute="trailing" secondItem="OrY-6S-6zw" secondAttribute="trailing" id="cnf-HV-rYg"/>

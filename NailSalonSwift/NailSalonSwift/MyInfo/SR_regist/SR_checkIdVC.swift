@@ -82,7 +82,7 @@ class SR_checkIdVC: UIViewController {
         var segueID = segue.identifier
         if( segueID == "toArtistInfo")
         {
-            var propertyVC = segue.destinationViewController as ICYProfileViewController
+            var propertyVC = segue.destinationViewController as! ICYProfileViewController
             propertyVC.userInfo = userInfo
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserID())")
             println("\(ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo())")
@@ -101,10 +101,10 @@ class SR_checkIdVC: UIViewController {
         }
         ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
             
-            var result: Double = returnDic["result"] as Double
+            var result: Double = returnDic["result"] as! Double
             if(result == Double(1000))
             {
-                var userid : Double = returnDic["data"] as Double
+                var userid : Double = returnDic["data"] as! Double
                 ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
                 self?.startDownLoadUserDetailInfo()
             }
@@ -139,7 +139,7 @@ class SR_checkIdVC: UIViewController {
         }
         ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
             
-            var result: Double = returnDic["result"] as Double
+            var result: Double = returnDic["result"] as! Double
             if(result == Double(1000))
             {
                 self?.navigationController?.popViewControllerAnimated(true)
@@ -211,9 +211,9 @@ class SR_checkIdVC: UIViewController {
         var keyBoardInfo = noty.userInfo
         if let key = keyBoardInfo
         {
-            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as! NSValue
             var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
-            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
@@ -232,9 +232,9 @@ class SR_checkIdVC: UIViewController {
         var keyBoardInfo = noty.userInfo
         if let key = keyBoardInfo
         {
-            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as! NSValue
             var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
-            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
@@ -287,20 +287,20 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
         {
         case 0:
             cell = tableView.dequeueReusableCellWithIdentifier("check_0") as? UITableViewCell
-            var idImgView = cell?.viewWithTag(1) as UIImageView
+            var idImgView = cell?.viewWithTag(1) as! UIImageView
             idImgView.image = UIImage(named: "idCheck")
             idImageView = idImgView
         case 1:
             cell = tableView.dequeueReusableCellWithIdentifier("check_1") as? UITableViewCell
-            var realNameText = cell?.viewWithTag(1) as UITextField
+            var realNameText = cell?.viewWithTag(1) as! UITextField
             realName = realNameText.text
         case 2:
             cell = tableView.dequeueReusableCellWithIdentifier("check_2") as? UITableViewCell
-            var idText = cell?.viewWithTag(1) as UITextField
+            var idText = cell?.viewWithTag(1) as! UITextField
             identCode = idText.text
         case 3:
             cell = tableView.dequeueReusableCellWithIdentifier("check_3") as? UITableViewCell
-            var button =  cell?.viewWithTag(1) as UIButton
+            var button =  cell?.viewWithTag(1) as! UIButton
             button.layer.cornerRadius = 4
             button.backgroundColor = UIColor.NailRedColor()
             button.addTarget(self, action: Selector("registBtnClick"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -316,11 +316,11 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
     func registBtnClick()
     {
         var realNameCell : UITableViewCell? = checkTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))
-        var realNameText = realNameCell?.viewWithTag(1) as UITextField
+        var realNameText = realNameCell?.viewWithTag(1) as! UITextField
         realName! = realNameText.text
         println("\(realName)")
         var identCodeCell : UITableViewCell? = checkTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))
-        var idText = identCodeCell?.viewWithTag(1) as UITextField
+        var idText = identCodeCell?.viewWithTag(1) as! UITextField
         identCode! = idText.text
         println("\(identCode)")
         println("\(userName)")
@@ -407,7 +407,7 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
 }
 
 extension SR_checkIdVC: UINavigationControllerDelegate,UIImagePickerControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         var resizeImg =  UIImage(image: image, scaledToFillToSize: CGSize(width: 200, height: 120))
         idImageView.image = resizeImg
         postIdImage = true

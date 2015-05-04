@@ -75,13 +75,13 @@ class ZXY_DFPArtDetailVC: UIViewController {
         var keyBoardInfo = noty.userInfo
         if let key = keyBoardInfo
         {
-            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as! NSValue
             var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
-            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
-                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 134, s.screenSize.width, 70)
                 }
                 
             })
@@ -94,13 +94,13 @@ class ZXY_DFPArtDetailVC: UIViewController {
         var keyBoardInfo = noty.userInfo
         if let key = keyBoardInfo
         {
-            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as NSValue
+            var keyBoardValue : NSValue = key[UIKeyboardFrameEndUserInfoKey] as! NSValue
             var keyBoardHeight          = keyBoardValue.CGRectValue().origin.y
-            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+            var keyBoardShowDuration    = key[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
             UIView.animateWithDuration(keyBoardShowDuration.doubleValue, animations: { [weak self]() -> Void in
                 if let s = self
                 {
-                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 70, s.screenSize.width, 70)
+                    self?.commentView.frame = CGRectMake(0,  keyBoardHeight - 134, s.screenSize.width, 70)
                 }
                 
             })
@@ -136,7 +136,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
             var result = self?.dataForTable?.result ?? 0
             if result == 1000 || result == 1003
             {
-                self?.dataForTag = self?.dataForTable?.data.tag? ?? ""
+                self?.dataForTag = self?.dataForTable?.data.tag ?? ""
                 self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
                 self?.currentTable.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
                 if let s = self
@@ -187,7 +187,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
                 var commentArr = self?.dataForComment?.data ?? []
                 for comment in commentArr
                 {
-                    var value = comment as ZXY_AlbumCommentData
+                    var value = comment as! ZXY_AlbumCommentData
                     self?.dataforCommentArr?.append(value)
                 }
                 self?.currentTable.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.None)
@@ -221,11 +221,11 @@ class ZXY_DFPArtDetailVC: UIViewController {
 extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
 {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var imgContentCell = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADImgContainerCell.cellID()) as ZXY_DFPADImgContainerCell
-        var tagCell        = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADTagCell.cellID()) as ZXY_DFPADTagCell
-        var commentCell    = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADCommentCell.cellID()) as
+        var imgContentCell = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADImgContainerCell.cellID()) as! ZXY_DFPADImgContainerCell
+        var tagCell        = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADTagCell.cellID()) as! ZXY_DFPADTagCell
+        var commentCell    = tableView.dequeueReusableCellWithIdentifier(ZXY_DFPADCommentCell.cellID()) as!
             ZXY_DFPADCommentCell
-        var commentActionCell = tableView.dequeueReusableCellWithIdentifier("commentCellID") as UITableViewCell
+        var commentActionCell = tableView.dequeueReusableCellWithIdentifier("commentCellID") as! UITableViewCell
         
         var currentSection = indexPath.section
         var currentRow     = indexPath.row
@@ -234,13 +234,13 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         case 0:
             var imgCellData = dataForTable?.data
             var imgCellUser = imgCellData?.user
-            var imgs      = imgCellData?.images?
+            var imgs : [AnyObject]?      = imgCellData?.images
             imgContentCell.artistID = imgCellData?.userId
             if let si = imgs
             {
                 if si.count > 0
                 {
-                    var imgURL = si[0] as ZXY_AlbumDetailImages
+                    var imgURL = si[0] as! ZXY_AlbumDetailImages
                     var stringURL = ZXY_NailNetAPI.ZXY_MainAPIImage + imgURL.imagePath
                    // imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
                     
@@ -248,7 +248,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             }
             imgContentCell.imgName.text = imgCellData?.dataDescription
             imgContentCell.artistName.text = imgCellUser?.nickName
-            var avaImg = imgCellUser?.headImage?
+            var avaImg : String? = imgCellUser?.headImage
             if let ava = avaImg
             {
                 var avatarImg = ZXY_NailNetAPI.ZXY_MainAPIImage + ava
@@ -281,16 +281,20 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             }
             var price = CellData?.price ?? "0"
             tagCell.priceValue.text = "￥\(price)"
+            tagCell.artistID = CellData?.userId
+            tagCell.isCommonUser = CellData?.user.role
+            tagCell.isArtistOrSelf()
+            tagCell.delegate = self
             return tagCell
         case 2:
             if indexPath.row == 0
             {
-                var btn = commentActionCell.viewWithTag(111) as UIButton
+                var btn = commentActionCell.viewWithTag(111) as! UIButton
                 btn.addTarget(self, action: Selector("commentBtnAction"), forControlEvents: UIControlEvents.TouchUpInside)
                 return commentActionCell
             }
             var currentData : ZXY_AlbumCommentData? = dataforCommentArr![indexPath.row - 1] as ZXY_AlbumCommentData
-            var headImgUrl  = currentData?.headImage?
+            var headImgUrl : String? = currentData?.headImage
             if let head = headImgUrl
             {
                 var imgURLString = ZXY_NailNetAPI.ZXY_MainAPIImage + head
@@ -335,8 +339,9 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
             return 311
         case 1 :
             var tagV = ZXY_TagLabelView()
+            tagV.lineWidth = UIScreen.mainScreen().bounds.width - 71
             dataForTag = dataForTag?.stringByReplacingOccurrencesOfString("\n", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
-            tagV.allTags = dataForTag
+            tagV.setAllTagString(dataForTag ?? "")
             var tagViewHeight = tagV.getCellHeight()
             var cellHeight    = tagViewHeight + 44
             return cellHeight
@@ -393,9 +398,9 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
         if(userID == nil)
         {
             var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.tag = 1
             alert.show()
             return
-            
         }
         else
         {
@@ -407,7 +412,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
                 {
                     s.zxyW.hideProgress(s.view)
                 }
-                var result: Double = returnDic["result"] as Double
+                var result: Double = returnDic["result"] as! Double
                 if result == 1000
                 {
                     var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
@@ -469,7 +474,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
             if(buttonIndex == 1)
             {
                 var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-                var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+                var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
                 loginVC.title = "登录"
                 loginVC.delegate = self
                 loginVC.navigationItem.leftBarButtonItem?.title = "返回"
@@ -489,7 +494,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
 
         }
     }
-    
+    //删除图集
     func deleteAblum(){
         zxyW.startProgress(self.view)
         var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_DeleteAlbumAPI
@@ -571,7 +576,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
     
     func userClickAvaterImg() {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var detailArtist = storyboard?.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
+        var detailArtist = storyboard?.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as!ZXY_DFPArtistDetailVC
         var imgCellData = dataForTable?.data
         var imgCellUser = imgCellData?.user
         if imgCellUser == nil
@@ -593,6 +598,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
         if userID == nil
         {
             var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.tag = 1
             alert.show()
             return
         }
@@ -650,7 +656,7 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
             var imgs = da.images
             for (index , value) in enumerate(imgs)
             {
-                var realImage: ZXY_AlbumDetailImages = value as ZXY_AlbumDetailImages
+                var realImage: ZXY_AlbumDetailImages = value as! ZXY_AlbumDetailImages
                 var imgURL = ZXY_NailNetAPI.ZXY_MainAPIImage + realImage.imagePath
                 var item = ZXY_ImageItem(itemURL: NSURL(string: imgURL))
                 items.append(item)
@@ -662,6 +668,17 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
         }
     }
 
+}
+extension ZXY_DFPArtDetailVC : ZXY_DFPADTagCellProtocol {
+    //跳转到预定点单
+    func toOrderVC() {
+        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil) as UIStoryboard
+        var orderVC = story.instantiateViewControllerWithIdentifier("SR_OrderMainVCID") as! SR_OrderMainVC
+        orderVC.ablumName = dataForTable?.data.dataDescription
+        orderVC.ablumId   = dataForTable?.data.albumId
+        orderVC.artistId  = dataForTable?.data.userId
+        self.navigationController?.pushViewController(orderVC, animated: true)
+    }
 }
 
 

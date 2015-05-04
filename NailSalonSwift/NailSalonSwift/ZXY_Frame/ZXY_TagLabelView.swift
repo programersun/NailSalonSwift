@@ -29,6 +29,7 @@ class ZXY_TagLabelView: UIView {
     
     func setAllTagString(tags : String)
     {
+    
         allTagArr = tags.componentsSeparatedByString(" ")
     }
     
@@ -80,13 +81,14 @@ class ZXY_TagLabelView: UIView {
                 var heightOfLabel = thisHeight
                 if remainSpaceX < 0
                 {
-                    if(width > (self.frame.width - 10 ))
+                    if(width >= (self.frame.width - 10 ))
                     {
-                        thisPositionX = 5
+                        
                         if(thisPositionX != 5)
                         {
                             thisPositionY += 25
                         }
+                        thisPositionX = 5
                         heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintWidth: lineWidth! - 10)
                         width = lineWidth! - 10
                         isAddHeight = true
@@ -107,6 +109,10 @@ class ZXY_TagLabelView: UIView {
                     thisPositionY = heightOfLabel + thisPositionY + 5
                     isAddHeight = false
                     thisPositionX = 5
+                    if allTagArr?.last == tag
+                    {
+                        return thisPositionY
+                    }
                 }
                 else
                 {
@@ -125,7 +131,7 @@ class ZXY_TagLabelView: UIView {
     
     func setContentTag()
     {
-        if allTags == nil || allTags? == ""
+        if allTagArr == nil || allTagArr?.count == 0
         {
             return
         }
@@ -152,9 +158,10 @@ class ZXY_TagLabelView: UIView {
                 {
                     if(width > (self.frame.width - 10 ))
                     {
-                        currentXPosition = 5
+                        
                         if(currentXPosition != 5)
                         {
+                            currentXPosition = 5
                             currentYPosition += 25
                         }
                         heightOfLabel = self.getHeightWith(textString: tag, minHeight: 20, fontSize: UIFont.systemFontOfSize(fontSize), constraintWidth: lineWidth! - 10)

@@ -169,9 +169,9 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_LabelCellVC.cellID()) as SR_LabelCellVC
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_LabelCellVC.cellID()) as! SR_LabelCellVC
         cell.toolBar.backgroundColor = UIColor.NailRedColor()
-        var cellData = dataForShow[indexPath.row] as SR_searchLabelData
+        var cellData = dataForShow[indexPath.row] as! SR_searchLabelData
         //图集图片
         var imgUrl = cellData.image.cutPath as String?
         if let url    = imgUrl
@@ -186,7 +186,8 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
                 cell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
-        cell.headImg.layer.cornerRadius = CGRectGetWidth(cell.headImg.bounds) / 6
+        cell.headImg.layer.cornerRadius = 6
+        cell.headImg.layer.masksToBounds = true
         //图集描述
         cell.ablumName.text = cellData.dataDescription
         //用户昵称
@@ -194,18 +195,23 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
         //判断用户身份
         
         var type = cellData.user.role
-        if type == "2" {
+        if type == "1" {
             cell.toolBar.hidden = true
             cell.isArtist.hidden = true
+        }
+        else
+        {
+            cell.toolBar.hidden = false
+            cell.isArtist.hidden = false
         }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.searchText.resignFirstResponder()
-        var currentData = dataForShow[indexPath.row] as  SR_searchLabelData
+        var currentData = dataForShow[indexPath.row] as!  SR_searchLabelData
         var albumID = currentData.albumId ?? ""
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as ZXY_DFPArtDetailVC
+        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
         vc.artWorkID = albumID
         vc.title     = currentData.user.nickName
         self.navigationController?.pushViewController(vc, animated: true)

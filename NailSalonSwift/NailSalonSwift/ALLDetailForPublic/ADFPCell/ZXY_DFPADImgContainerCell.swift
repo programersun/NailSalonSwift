@@ -154,9 +154,9 @@ class ZXY_DFPADImgContainerCell: UITableViewCell {
 extension ZXY_DFPADImgContainerCell : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var imgData = imgS![indexPath.row] as ZXY_AlbumDetailImages
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectImgID", forIndexPath: indexPath) as UICollectionViewCell
-        var img : UIImageView  = cell.viewWithTag(11111) as UIImageView
+        var imgData = imgS![indexPath.row] as! ZXY_AlbumDetailImages
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectImgID", forIndexPath: indexPath) as! UICollectionViewCell
+        var img : UIImageView  = cell.viewWithTag(11111) as! UIImageView
         var imgURLString : String? =  imgData.imagePath
         if let stringURL = imgURLString
         {

@@ -102,8 +102,8 @@ extension SR_SearchMainVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var SSMainCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSMainCell.cellID()) as ZL_SSMainCell
-        var SSItemCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSItemCell.cellID()) as ZL_SSItemCell
+        var SSMainCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSMainCell.cellID()) as! ZL_SSMainCell
+        var SSItemCell = tableView.dequeueReusableCellWithIdentifier(ZL_SSItemCell.cellID()) as! ZL_SSItemCell
         if(indexPath.row == 0)
         {
             var imgName = self.itemDataForTable(indexPath).imageName
@@ -132,7 +132,7 @@ extension SR_SearchMainVC : UITableViewDataSource, UITableViewDelegate {
             case 1:
                 self.performSegueWithIdentifier("toNickNameVC", sender: nil)
             case 2:
-                self.performSegueWithIdentifier("toNeabyVC", sender: nil)
+                self.performSegueWithIdentifier("toNearbyVC", sender: nil)
             default:
                 ""
             }

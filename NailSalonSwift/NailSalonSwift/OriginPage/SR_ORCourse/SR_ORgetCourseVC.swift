@@ -168,7 +168,7 @@ class SR_ORgetCourseVC: UIViewController {
             zxyW.startProgress(self.view)
             var parameter = ["user_id": userID , "course_id": courseId! , "status": statusNum]
             ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-                var result = returnDic["result"] as Double
+                var result = returnDic["result"] as! Double
                 if result == 1000 {
                     if types == 1 {
                         self?.dataForBtns?.data.isCollect = statusNum
@@ -223,7 +223,7 @@ extension SR_ORgetCourseVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol {
         if(buttonIndex == 1)
         {
             var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as ZXY_LoginRegistVC
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
             loginVC.delegate = self
             loginVC.navigationController?.navigationBar.hidden = true
             self.navigationController?.pushViewController(loginVC, animated: true)

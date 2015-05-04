@@ -68,7 +68,7 @@ extension ZXY_ORSqureTitleView : UICollectionViewDelegate , UICollectionViewData
                 }
             }
         }
-        var url = current.image?.cutPath?
+        var url : String? = current.image?.cutPath
         if let haha = url
         {
             var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + haha

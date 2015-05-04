@@ -91,6 +91,13 @@ enum SR_AttentionAPIType : String
     case SR_Fans      = "UserList2/attention_list2"
 }
 
+enum SR_OrderAPIType : String
+{
+    case SR_OrderList = "Order2/order_list"
+    case SR_OrderAdd  = "Order/order_add"
+    case SR_OrderDetail  = "Order/order_detail"
+}
+
 struct ZXY_NailNetAPI
 {
     /**
@@ -166,6 +173,11 @@ struct ZXY_NailNetAPI
     }
     
     static func SR_SearchAPI(currentType: SR_SearchAPIType) -> String
+    {
+        return ZXY_MainAPI + currentType.rawValue
+    }
+    
+    static func SR_OrderAPITpye(currentType : SR_OrderAPIType) -> String
     {
         return ZXY_MainAPI + currentType.rawValue
     }

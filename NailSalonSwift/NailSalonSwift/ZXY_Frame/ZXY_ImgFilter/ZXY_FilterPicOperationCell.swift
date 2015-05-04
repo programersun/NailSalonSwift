@@ -26,16 +26,16 @@ class ZXY_FilterPicOperationCell: UITableViewCell {
     var filterImg : UIImage?
    // private var filterContentV : UIView!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience init(frame: CGRect) {
+        self.init(frame: frame)
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    override init() {
-        super.init()
+    convenience init() {
+        self.init(style: UITableViewCellStyle.Default, reuseIdentifier: ZXY_FilterPicOperationCellID)
        self.selectionStyle = UITableViewCellSelectionStyle.None
         
     }

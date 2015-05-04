@@ -44,3 +44,10 @@
 //搜索用户
 #import "SR_searchUserData.h"
 #import "SR_searchUserBaseClass.h"
+//搜索附近
+#import "SR_searchNearbyImage.h"
+#import "SR_searchNearbyData.h"
+#import "SR_searchNearbyBaseClass.h"
+//订单列表
+#import "SR_OrderListData.h"
+#import "SR_OrderListBaseClass.h"

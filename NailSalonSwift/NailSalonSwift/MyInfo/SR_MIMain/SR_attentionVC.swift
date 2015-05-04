@@ -17,8 +17,8 @@ class SR_attentionVC: UIViewController {
     @IBOutlet weak var topBarView: UIView!
     var userID : String?
     
-    var attentionVC : SR_attentionTableVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_attentionID") as SR_attentionTableVC
-    var fansVC : SR_fansTableVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_fansID") as SR_fansTableVC
+    var attentionVC : SR_attentionTableVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_attentionID") as! SR_attentionTableVC
+    var fansVC : SR_fansTableVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_fansID") as! SR_fansTableVC
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class SR_attentionVC: UIViewController {
     
     
     @IBAction func registChange(sender: AnyObject) {
-        var seg = sender as UISegmentedControl
+        var seg = sender as! UISegmentedControl
         if seg.selectedSegmentIndex == 0
         {
             attentionScrollView.setContentOffset(CGPointMake(0, attentionScrollView.contentOffset.y), animated: true)

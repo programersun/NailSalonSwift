@@ -45,19 +45,19 @@ class LCYRessetPasswordViewController: UIViewController {
         var newPass = newPasswordTextField.text
         var newPass2 = confirmPasswordTextField.text
         func checkValid() -> Bool {
-            if countElements(oldPass) == 0 {
+            if count(oldPass) == 0 {
                 self.showAlertEasy("提示", messageContent: "请输入原始密码")
                 return false
             }
-            if countElements(oldPass) < 6 {
+            if count(oldPass) < 6 {
                 self.showAlertEasy("提示", messageContent: "请输入6位以上的原始密码")
                 return false
             }
-            if countElements(newPass) == 0 {
+            if count(newPass) == 0 {
                 self.showAlertEasy("提示", messageContent: "请输入新密码")
                 return false
             }
-            if countElements(newPass) < 6 {
+            if count(newPass) < 6 {
                 self.showAlertEasy("提示", messageContent: "新密码至少要6位")
                 return false
             }
@@ -73,7 +73,7 @@ class LCYRessetPasswordViewController: UIViewController {
             
             var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangePassWordAPI
             ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-                var result = returnDic["result"] as Double
+                var result = returnDic["result"] as! Double
                 if result == 1000 {
                     self?.showAlertEasy("提示", messageContent: "修改成功")
                     self?.navigationController?.popToRootViewControllerAnimated(true)

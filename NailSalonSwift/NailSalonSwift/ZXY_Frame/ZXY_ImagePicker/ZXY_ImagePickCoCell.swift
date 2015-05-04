@@ -18,8 +18,8 @@ class ZXY_ImagePickCoCell: UICollectionViewCell {
 
     }
     
-    override init() {
-        super.init()
+    convenience init() {
+        self.init()
         
     }
 

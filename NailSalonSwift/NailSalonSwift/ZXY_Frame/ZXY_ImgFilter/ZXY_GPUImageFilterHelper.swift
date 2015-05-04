@@ -25,19 +25,19 @@ class ZXY_GPUImageFilterHelper: NSObject {
         switch type
         {
         case ZXY_FilterImgType.FilterImgOrigin:
-            return originImage.copy() as UIImage
+            return originImage.copy() as! UIImage
         case ZXY_FilterImgType.FilterImgContrast:
-            return self.filterImageFilterImgContrast(originImage, contrast: valueO).copy() as UIImage
+            return self.filterImageFilterImgContrast(originImage, contrast: valueO).copy() as! UIImage
         case ZXY_FilterImgType.FilterImgBrightness:
-            return self.filterImageFilterImgBrightness(originImage, brightness: valueO).copy() as UIImage
+            return self.filterImageFilterImgBrightness(originImage, brightness: valueO).copy() as! UIImage
         case ZXY_FilterImgType.FilterImgSaturation:
-            return self.filterImageFilterImgSaturation(originImage, saturation: valueO).copy() as UIImage
+            return self.filterImageFilterImgSaturation(originImage, saturation: valueO).copy() as! UIImage
         case ZXY_FilterImgType.FilterImggrayscale:
-            return self.filterImageFilterImgGray(originImage).copy() as UIImage
+            return self.filterImageFilterImgGray(originImage).copy() as! UIImage
         case ZXY_FilterImgType.FilterImgMonochrome:
-            return self.filterImageFilterImgMonochrome(originImage, intensity: valueO).copy() as UIImage
+            return self.filterImageFilterImgMonochrome(originImage, intensity: valueO).copy() as! UIImage
         case ZXY_FilterImgType.FilterImgVignette:
-            return self.filterImageFilterImgVignette(originImage).copy() as UIImage
+            return self.filterImageFilterImgVignette(originImage).copy() as! UIImage
         default:
             return originImage
             

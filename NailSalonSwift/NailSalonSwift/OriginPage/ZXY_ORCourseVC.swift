@@ -48,7 +48,7 @@ class ZXY_ORCourseVC: UIViewController {
                     realSelf.dataCourseList = []
                     for value in realSelf.dataForTable!.data
                     {
-                        var courseValue: ZXYCourseData = value as ZXYCourseData
+                        var courseValue: ZXYCourseData = value as! ZXYCourseData
                         realSelf.dataCourseList?.append(courseValue)
                         realSelf.currentTable.reloadData()
                     }
@@ -124,15 +124,15 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var firstCell = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainFirstCell.cellID()) as ZXY_ORCourseMainFirstCell
+        var firstCell = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainFirstCell.cellID()) as! ZXY_ORCourseMainFirstCell
         firstCell.headerTitleLbl.textColor = UIColor.NailRedColor()
         firstCell.headerSubTitleLbl.textColor = UIColor.NailGrayColor()
         
-        var secondCell = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainSecondCell.cellID()) as ZXY_ORCourseMainSecondCell
+        var secondCell = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainSecondCell.cellID()) as! ZXY_ORCourseMainSecondCell
         secondCell.headerTitleLbl.textColor = UIColor.NailRedColor()
         secondCell.headerSubTitle.textColor = UIColor.NailGrayColor()
         
-        var thirdCell  = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainThirdCell.cellID()) as ZXY_ORCourseMainThirdCell
+        var thirdCell  = tableView.dequeueReusableCellWithIdentifier(ZXY_ORCourseMainThirdCell.cellID()) as! ZXY_ORCourseMainThirdCell
         thirdCell.headerTitleLbl.textColor = UIColor.NailRedColor()
         thirdCell.headerSubTitle.textColor = UIColor.NailGrayColor()
         
@@ -147,7 +147,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
         var courses: [ZXYCourseCourse]? = []
         for value in currentData.course
         {
-            var dataCourse: ZXYCourseCourse = value as ZXYCourseCourse
+            var dataCourse: ZXYCourseCourse = value as! ZXYCourseCourse
             courses?.append(dataCourse)
         }
         
@@ -160,6 +160,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             firstCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            firstCell.headerImg.layer.borderWidth  = 1
             firstCell.headerSubTitleLbl.text    = titleLbl
             firstCell.headerTitleLbl.text       = titleLbl
             firstCell.setImgs(courses)
@@ -172,6 +173,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             secondCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             secondCell.headerImg.layer.cornerRadius = CGRectGetWidth(secondCell.headerImg.bounds) / 2
             secondCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            secondCell.headerImg.layer.borderWidth  = 1
             return secondCell
         case 2 , 5:
             thirdCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -181,6 +183,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             thirdCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             thirdCell.headerImg.layer.cornerRadius = CGRectGetWidth(thirdCell.headerImg.bounds) / 2
             thirdCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            thirdCell.headerImg.layer.borderWidth  = 1
             return thirdCell
         default:
             firstCell.littleBar.backgroundColor = UIColor.NailRedColor()
@@ -190,6 +193,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
             firstCell.headerImg.setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "headerHolder"))
             firstCell.headerImg.layer.cornerRadius = CGRectGetWidth(firstCell.headerImg.bounds) / 2
             firstCell.headerImg.layer.borderColor = UIColor.NailRedColor().CGColor
+            firstCell.headerImg.layer.borderWidth  = 1
             return firstCell
         }
         
@@ -217,7 +221,7 @@ extension ZXY_ORCourseVC : UITableViewDelegate , UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var type = CourseType.parameterToCourseType(indexPath.row)
         var story = UIStoryboard(name: "SR_ORCourseStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("SR_CourseDetailListVCID") as SR_CourseDetailListVC
+        var vc    = story.instantiateViewControllerWithIdentifier("SR_CourseDetailListVCID") as! SR_CourseDetailListVC
         vc.courseType = type
         var courseData = dataCourseList![indexPath.row]
         vc.cateId    = courseData.cateId

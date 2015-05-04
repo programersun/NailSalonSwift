@@ -200,9 +200,9 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(SR_searchUserCell.cellID()) as SR_searchUserCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(SR_searchUserCell.cellID()) as! SR_searchUserCell
         cell.toolBar.backgroundColor = UIColor.NailRedColor()
-        var cellData = dataForShow[indexPath.row] as SR_searchUserData
+        var cellData = dataForShow[indexPath.row] as! SR_searchUserData
         //美甲师头像
         var imgUrl    = cellData.headImage as String?
         if let url    = imgUrl
@@ -225,19 +225,6 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         //作品数量
         cell.userWorkCount.text = cellData.albumCount
         
-        //认证
-        if let pass = cellData.isPass
-        {
-            if pass == "0"
-            {
-                cell.userV.hidden = true
-            }
-            else
-            {
-                cell.userV.hidden = false
-            }
-        }
-        
         //用户与美甲师距离
         var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
         var lng = cellData.longitude
@@ -253,17 +240,35 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         
         //判断用户身份
         var type = cellData.role
-        if type == "2" {
+        if type == "1" {
             cell.toolBar.hidden = true
             cell.isArtistLabel.hidden = true
+            cell.userV.hidden = true
+        }
+        else
+        {
+            cell.toolBar.hidden = false
+            cell.isArtistLabel.hidden = false
+            //认证
+            if let pass = cellData.isPass
+            {
+                if pass == "0"
+                {
+                    cell.userV.hidden = true
+                }
+                else
+                {
+                    cell.userV.hidden = false
+                }
+            }
         }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.searchText.resignFirstResponder()
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as ZXY_DFPArtistDetailVC
-        var CellData = dataForShow[indexPath.row] as SR_searchUserData
+        var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
+        var CellData = dataForShow[indexPath.row] as! SR_searchUserData
         detailArtist.artistID = CellData.userId
         self.navigationController?.pushViewController(detailArtist, animated: true)
     }

@@ -54,20 +54,20 @@ class ZXY_MainTabBarVC: UITabBarController {
         super.viewDidLoad()
         
         var orStory = UIStoryboard(name: "OriginPageStory", bundle: nil)
-        var orVC    = orStory.instantiateInitialViewController() as UINavigationController
+        var orVC    = orStory.instantiateInitialViewController() as! UINavigationController
         var arStory = UIStoryboard(name: "ArtistStory", bundle: nil)
-        var arVC    = arStory.instantiateInitialViewController() as UINavigationController
+        var arVC    = arStory.instantiateInitialViewController() as! UINavigationController
         var miStory = UIStoryboard(name: "MyInfoStory", bundle: nil)
-        var miVC    = miStory.instantiateInitialViewController() as UINavigationController
+        var miVC    = miStory.instantiateInitialViewController() as! UINavigationController
         var seStory = UIStoryboard(name: "SearchStory", bundle: nil)
-        var seVC    = seStory.instantiateInitialViewController() as UINavigationController
-        var tpVC    = UIStoryboard(name: "takePhotoStory", bundle: nil).instantiateInitialViewController() as UINavigationController
+        var seVC    = seStory.instantiateInitialViewController() as! UINavigationController
+        var tpVC    = UIStoryboard(name: "takePhotoStory", bundle: nil).instantiateInitialViewController() as! UINavigationController
         
         self.setViewControllers([orVC, arVC , tpVC ,seVC, miVC ], animated: true)
         self.tabBar.selectedImageTintColor = UIColor.NailRedColor()
         for var i = 0 ; i < self.tabBar.items?.count ; i++
         {
-            var item           = self.tabBar.items![i] as UITabBarItem
+            var item           = self.tabBar.items![i] as! UITabBarItem
             var desImage       = MainTabImage(rawValue: MainTabImage.originImage.rawValue)?.giveMeItemImage(i)
             item.image         = UIImage(named: desImage!.0)
             item.selectedImage = UIImage(named: desImage!.1)
@@ -104,10 +104,10 @@ class ZXY_MainTabBarVC: UITabBarController {
 extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegate , ZXY_ImagePickerDelegate , UINavigationControllerDelegate,UIImagePickerControllerDelegate , ZXY_ImgFilterVCDelegate
 {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        if(viewController == (tabBarController.viewControllers![2] as UIViewController))
+        if(viewController == (tabBarController.viewControllers![2] as! UIViewController))
         {
             var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
-            var vc    = story.instantiateInitialViewController() as ZXY_PictureTakeVC
+            var vc    = story.instantiateInitialViewController() as! ZXY_PictureTakeVC
             vc.delegate = self
             vc.presentView()
             return false
@@ -119,16 +119,16 @@ extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegat
     }
     
     func clickChoosePictureBtn() {
-        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as UIViewController
+        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as! UIViewController
         
         var zxy_imgPick = ZXY_ImagePickerTableVC()
-        zxy_imgPick.setMaxNumOfSelect(1)
+        zxy_imgPick.setMaxNumOfSelects(1)
         zxy_imgPick.delegate = self
         zxy_imgPick.presentZXYImagePicker(currentVC)
     }
     
     func clickTakePhotoBtn() {
-        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as UIViewController
+        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as! UIViewController
         var photoPicker = UIImagePickerController()
         photoPicker.sourceType = UIImagePickerControllerSourceType.Camera
         photoPicker.delegate = self
@@ -148,7 +148,7 @@ extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegat
         self.showFilter(self.AlssetToUIImage(assetArr[0]))
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: { () -> Void in
             //            var currentVC: UINavigationController = self.viewControllers![self.selectedIndex] as UINavigationController
             //            var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
@@ -170,7 +170,7 @@ extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegat
     func showFilter(filterImage : UIImage)
     {
         var scaleImg =  UIImage(image: filterImage, scaledToFitToSize: CGSizeMake(400, 800))
-        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as UIViewController
+        var currentVC: UIViewController = self.viewControllers![self.selectedIndex] as! UIViewController
         var filterVC = ZXY_ImgFilterVC()
         filterVC.delegate = self
         filterVC.originalImage = scaleImg
@@ -178,9 +178,9 @@ extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegat
     }
     
     func clickFinishBtn(filterImg: UIImage) {
-        var currentVC: UINavigationController = self.viewControllers![self.selectedIndex] as UINavigationController
+        var currentVC: UINavigationController = self.viewControllers![self.selectedIndex] as! UINavigationController
         var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_AfterPickImgVCID") as ZXY_AfterPickImgVC
+        var vc    = story.instantiateViewControllerWithIdentifier("ZXY_AfterPickImgVCID") as! ZXY_AfterPickImgVC
         vc.setPhoto([filterImg])
         currentVC.pushViewController(vc, animated: true)
     }

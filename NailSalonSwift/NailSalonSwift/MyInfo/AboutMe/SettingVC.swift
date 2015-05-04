@@ -52,7 +52,7 @@ class SettingVC: UIViewController {
         var segueID = segue.identifier
         if(segueID == "toCheckIdVC")
         {
-            var checkIdVC = segue.destinationViewController as SR_checkIdVC
+            var checkIdVC = segue.destinationViewController as! SR_checkIdVC
             checkIdVC.userInfo = userInfo
         }
     }
@@ -90,7 +90,7 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(SettingCell.identifier) as SettingCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(SettingCell.identifier) as! SettingCell
         switch indexPath.section {
         case 0:
             switch indexPath.row {
