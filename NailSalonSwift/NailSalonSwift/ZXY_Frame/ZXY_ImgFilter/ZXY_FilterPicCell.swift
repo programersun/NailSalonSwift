@@ -36,7 +36,7 @@ class ZXY_FilterPicCell: UITableViewCell {
     }
     
     convenience init() {
-        self.init()
+        self.init(style: UITableViewCellStyle.Default   , reuseIdentifier: ZXY_FilterPicCellID)
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.clearColor()
         if(imgView == nil)

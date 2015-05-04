@@ -35,7 +35,7 @@ class ZXY_FilterPicOperationCell: UITableViewCell {
     }
     
     convenience init() {
-        self.init()
+        self.init(style: UITableViewCellStyle.Default, reuseIdentifier: ZXY_FilterPicOperationCellID)
        self.selectionStyle = UITableViewCellSelectionStyle.None
         
     }
