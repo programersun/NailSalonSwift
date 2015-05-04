@@ -29,12 +29,28 @@ class ZXY_TagLabelView: UIView {
     
     func setAllTagString(tags : String)
     {
-    
+        currentYPosition = 5.0
+        currentXPosition = 5.0
+        var subView = self.subviews
+        for one in subView
+        {
+            var lala = one as! UIView
+            lala.removeFromSuperview()
+        }
         allTagArr = tags.componentsSeparatedByString(" ")
     }
     
     func setAllTagArr(tagArr : [String])
     {
+        currentYPosition = 5.0
+        currentXPosition = 5.0
+        var subView = self.subviews
+        for one in subView
+        {
+            var lala = one as! UIView
+            lala.removeFromSuperview()
+        }
+
         allTagArr = tagArr
     }
     

@@ -7,9 +7,19 @@
 //
 
 import UIKit
+protocol ZXY_SendMessageAddInfoCoCellProtocol
+{
+    func clickCurrentTagLbl()
+}
+
 
 class ZXY_SendMessageAddInfoCoCell: UICollectionViewCell {
     class var cellID : String {
         return "ZXY_SendMessageAddInfoCoCellID"
     }
+    
+    @IBOutlet weak var priceText: UITextField!
+    
+    @IBOutlet weak var currentTagLbl: ZXY_TagLabelView!
+    
 }

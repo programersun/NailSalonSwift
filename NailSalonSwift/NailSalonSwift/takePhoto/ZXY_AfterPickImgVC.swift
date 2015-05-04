@@ -16,6 +16,10 @@ class ZXY_AfterPickImgVC: UIViewController {
     var isPhoto     = false
     var desTxt      : UITextView?
     var photoImg  : [UIImage]? = []
+    var addTagVC : ZXY_AddTagVC!
+    var isShowTagAdd : Bool = false
+    var backImg  : UIImageView!
+    var dataForTag : [String]? = []
     //private var currentProgress : MBProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,14 @@ class ZXY_AfterPickImgVC: UIViewController {
             isBarHidden = true
         }
         self.navigationController?.navigationBar.hidden = false
+        addTagVC = UIStoryboard(name: "ZXYTakePic", bundle: nil).instantiateViewControllerWithIdentifier("tagVCID") as! ZXY_AddTagVC
+        addTagVC.view.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width , UIScreen.mainScreen().bounds.height - 104)
         
+        backImg = UIImageView(frame : CGRectMake(0, -64, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+        backImg.backgroundColor = UIColor.darkGrayColor()
+        backImg.layer.opacity = 0
+        self.addChildViewController(addTagVC)
+        addTagVC.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "提交", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("submitAction"))
         // Do any additional setup after loading the view.
     }
@@ -122,7 +133,7 @@ class ZXY_AfterPickImgVC: UIViewController {
 
 }
 
-extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
+extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout 
 {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var currentRow = indexPath.row
@@ -155,14 +166,20 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         else
         {
             var cell = collectionView.dequeueReusableCellWithReuseIdentifier(ZXY_SendMessageAddInfoCoCell.cellID, forIndexPath: indexPath) as! ZXY_SendMessageAddInfoCoCell
+            var tapGes = UITapGestureRecognizer(target: self, action: Selector("showAddTagView"))
+            cell.currentTagLbl.addGestureRecognizer(tapGes)
+            cell.currentTagLbl.lineWidth =  UIScreen.mainScreen().bounds.width - 53
+            if dataForTag != nil
+            {
+                cell.currentTagLbl.setAllTagArr(dataForTag!)
+                cell.currentTagLbl.startLoadTag()
+            }
             return cell
         }
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
     {
-//        if indexPath.section == 0
-//        {
             var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "PicTakeInputCell", forIndexPath: indexPath) as! ZXY_PicTakeInputCell
             cell.inputText.layer.cornerRadius = 4
             cell.inputText.layer.borderWidth  = 1
@@ -170,13 +187,6 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
             cell.inputText.layer.borderColor  = ZXY_AllColor.SEARCH_RED_COLOR.CGColor
             desTxt = cell.inputText
             return cell
-//        }
-//        else
-//        {
-//            var cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ZXY_SendMessageAddInfoCoCell.cellID, forIndexPath: indexPath) as ZXY_SendMessageAddInfoCoCell
-//            return cell
-//            
-//        }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -214,7 +224,24 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         }
         else
         {
-            var width = (self.view.frame.size.width )
+            var tagTest = ZXY_TagLabelView()
+             var width = (self.view.frame.size.width )
+            tagTest.lineWidth = UIScreen.mainScreen().bounds.width - 53
+            if dataForTag != nil
+            {
+                tagTest.setAllTagArr(dataForTag!)
+                var realHeight = tagTest.getCellHeight()
+                if realHeight < 30
+                {
+                    return CGSizeMake(width, 99)
+                }
+                else
+                {
+                    
+                    return CGSizeMake(width, realHeight + 69)
+                }
+            }
+           
             return CGSizeMake(width, 99)
         }
 
@@ -291,10 +318,41 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         vc.setCurrentImage(img, andRow: andRow)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func showAddTagView()
+    {
+        if !isShowTagAdd
+        {
+            isShowTagAdd = true
+            self.view.addSubview(backImg)
+            backImg.layer.opacity = 0.8
+            backImg.layer.addAnimation(ZXY_AnimationHelper.animationForAlpha(0, to: 0.8), forKey: "alpha")
+            self.view.addSubview(addTagVC.view)
+        }
+        else
+        {
+            isShowTagAdd = false
+            backImg.layer.opacity = 0
+            backImg.layer.addAnimation(ZXY_AnimationHelper.animationForAlpha(0.8, to: 0), forKey: "alpha")
+            addTagVC.view.removeFromSuperview()
+        }
+    }
+    
+
 }
 
-extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , ZXY_ImgFilterVCDelegate
+extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , ZXY_ImgFilterVCDelegate , ZXY_AddTagVCDelegate
 {
+    func sureClick(tags: [String]) {
+        self.showAddTagView()
+        self.dataForTag = tags
+        currentCollectionV.reloadData()
+    }
+    
+    func cancelClick() {
+        self.showAddTagView()
+    }
+    
     func deletePhoto(img: UIImage, row: Int) {
         self.photoImg?.removeAtIndex(row)
         currentCollectionV.reloadData()
