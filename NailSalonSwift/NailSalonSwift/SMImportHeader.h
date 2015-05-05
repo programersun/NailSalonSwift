@@ -51,3 +51,8 @@
 //订单列表
 #import "SR_OrderListData.h"
 #import "SR_OrderListBaseClass.h"
+//订单详情及评论
+#import "SR_OrderDetailData.h"
+#import "SR_OrderDetailCustom.h"
+#import "SR_OrderDetailBaseClass.h"
+#import "SR_OrderDetailUser.h"

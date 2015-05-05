@@ -159,6 +159,14 @@
 		A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A51AEB5741004AA42D /* SR_attentionVC.swift */; };
 		A41710A81AEB653F004AA42D /* SR_attentionTableCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A71AEB653F004AA42D /* SR_attentionTableCellVC.swift */; };
 		A41710BF1AEB961E004AA42D /* SR_fansTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710BE1AEB961E004AA42D /* SR_fansTableVC.swift */; };
+		A430E7731AF861F700534180 /* SR_OrderDetailFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7721AF861F700534180 /* SR_OrderDetailFirstCell.swift */; };
+		A430E7751AF8622F00534180 /* SR_OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */; };
+		A430E7771AF8628000534180 /* SR_OrderDetailSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */; };
+		A430E7791AF8629C00534180 /* SR_OrderDetailThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */; };
+		A430E7841AF8837100534180 /* SR_OrderDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E77E1AF8837100534180 /* SR_OrderDetailData.m */; };
+		A430E7851AF8837100534180 /* SR_OrderDetailCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */; };
+		A430E7861AF8837100534180 /* SR_OrderDetailBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */; };
+		A430E7871AF8837100534180 /* SR_OrderDetailUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7831AF8837100534180 /* SR_OrderDetailUser.m */; };
 		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
 		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
 		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
@@ -434,6 +442,18 @@
 		A41710A51AEB5741004AA42D /* SR_attentionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionVC.swift; sourceTree = "<group>"; };
 		A41710A71AEB653F004AA42D /* SR_attentionTableCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionTableCellVC.swift; sourceTree = "<group>"; };
 		A41710BE1AEB961E004AA42D /* SR_fansTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_fansTableVC.swift; sourceTree = "<group>"; };
+		A430E7721AF861F700534180 /* SR_OrderDetailFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailFirstCell.swift; sourceTree = "<group>"; };
+		A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailVC.swift; sourceTree = "<group>"; };
+		A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailSecondCell.swift; sourceTree = "<group>"; };
+		A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailThirdCell.swift; sourceTree = "<group>"; };
+		A430E77C1AF8837100534180 /* SR_OrderDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailData.h; sourceTree = "<group>"; };
+		A430E77D1AF8837100534180 /* SR_OrderDetailCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailCustom.h; sourceTree = "<group>"; };
+		A430E77E1AF8837100534180 /* SR_OrderDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailData.m; sourceTree = "<group>"; };
+		A430E77F1AF8837100534180 /* SR_OrderDetailUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailUser.h; sourceTree = "<group>"; };
+		A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailCustom.m; sourceTree = "<group>"; };
+		A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailBaseClass.m; sourceTree = "<group>"; };
+		A430E7821AF8837100534180 /* SR_OrderDetailBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailBaseClass.h; sourceTree = "<group>"; };
+		A430E7831AF8837100534180 /* SR_OrderDetailUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailUser.m; sourceTree = "<group>"; };
 		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
 		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
 		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
@@ -995,6 +1015,14 @@
 		A40FD5AD1AF7460E005C4B33 /* SR_OrderModel */ = {
 			isa = PBXGroup;
 			children = (
+				A430E77C1AF8837100534180 /* SR_OrderDetailData.h */,
+				A430E77E1AF8837100534180 /* SR_OrderDetailData.m */,
+				A430E77D1AF8837100534180 /* SR_OrderDetailCustom.h */,
+				A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */,
+				A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */,
+				A430E7821AF8837100534180 /* SR_OrderDetailBaseClass.h */,
+				A430E77F1AF8837100534180 /* SR_OrderDetailUser.h */,
+				A430E7831AF8837100534180 /* SR_OrderDetailUser.m */,
 				A40FD5AE1AF74EF8005C4B33 /* SR_OrderListData.m */,
 				A40FD5AF1AF74EF8005C4B33 /* SR_OrderListData.h */,
 				A40FD5B01AF74EF8005C4B33 /* SR_OrderListBaseClass.h */,
@@ -1108,6 +1136,7 @@
 				A4C142201AF20286003C4A21 /* SR_OrderCell */,
 				A4C1421C1AF1F858003C4A21 /* SR_OrderMainVC.swift */,
 				A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */,
+				A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */,
 				A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */,
 			);
 			path = SR_Order;
@@ -1118,6 +1147,9 @@
 			children = (
 				A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */,
 				A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */,
+				A430E7721AF861F700534180 /* SR_OrderDetailFirstCell.swift */,
+				A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */,
+				A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */,
 			);
 			path = SR_OrderCell;
 			sourceTree = "<group>";
@@ -1335,6 +1367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BCF6A291ADA43890085575D /* ZXY_TagLabelView.swift in Sources */,
+				A430E7731AF861F700534180 /* SR_OrderDetailFirstCell.swift in Sources */,
 				A46EDF751AEF756000B3503B /* SR_searchLabelData.m in Sources */,
 				8B3CB2DE1AF0B2F100183C5F /* ZXY_AfterPickImgVC.swift in Sources */,
 				A4FC764C1AEDCBB8002B1020 /* SR_courseCollectionVC.swift in Sources */,
@@ -1407,6 +1440,7 @@
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B345A3A1ADD044400D914C6 /* ZXY_ImageItem.swift in Sources */,
 				8B1910081ADD5E530087AECF /* ZXY_DFPArtistTableVC.swift in Sources */,
+				A430E7771AF8628000534180 /* SR_OrderDetailSecondCell.swift in Sources */,
 				A40B88791AE8EE13001BB3D4 /* SR_courseDetilListBaseClass.m in Sources */,
 				8B345A391ADD044400D914C6 /* ZXY_ImageBrowserVC.swift in Sources */,
 				A4C1421D1AF1F858003C4A21 /* SR_OrderMainVC.swift in Sources */,
@@ -1422,6 +1456,7 @@
 				8B5EE2B81AC834B700EFF3C4 /* MJRefreshHeaderView.m in Sources */,
 				8B3CB2E91AF0B33500183C5F /* ZXY_FilterPicCell.swift in Sources */,
 				A45C99431AF0B42A004F2EE9 /* SR_searchNearbyData.m in Sources */,
+				A430E7751AF8622F00534180 /* SR_OrderDetailVC.swift in Sources */,
 				8B345A3B1ADD044400D914C6 /* ZXY_ImageItemView.swift in Sources */,
 				8BBBDBC81ACA764F0006A94A /* ZXYOfferImage.m in Sources */,
 				A40FD59A1AF718BA005C4B33 /* SR_OrderTableVC.swift in Sources */,
@@ -1440,16 +1475,19 @@
 				8B45878A1ADB9E450012B7C4 /* ZXY_AlbumCommentData.m in Sources */,
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
+				A430E7791AF8629C00534180 /* SR_OrderDetailThirdCell.swift in Sources */,
 				A41710BF1AEB961E004AA42D /* SR_fansTableVC.swift in Sources */,
 				A4FC76651AEE04F8002B1020 /* SR_FansData.m in Sources */,
 				8BAAF03B1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift in Sources */,
 				8BAAF03D1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
 				A49C5DD01AF0C4EC0033D57D /* SR_BMKAnnotation.swift in Sources */,
+				A430E7841AF8837100534180 /* SR_OrderDetailData.m in Sources */,
 				8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */,
 				8B3CB2ED1AF0B33500183C5F /* ZXY_SystemReative.swift in Sources */,
 				8B3CB2FB1AF0B4CC00183C5F /* ZXY_PicTakeInputCell.swift in Sources */,
 				8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */,
+				A430E7851AF8837100534180 /* SR_OrderDetailCustom.m in Sources */,
 				8B4587891ADB9E450012B7C4 /* ZXY_AlbumCommentBaseComment.m in Sources */,
 				8B5EE2B71AC834B700EFF3C4 /* MJRefreshFooterView.m in Sources */,
 				A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */,
@@ -1500,6 +1538,8 @@
 				8B5EE2CC1AC839C600EFF3C4 /* ZXY_ErrorMessageHandle.swift in Sources */,
 				8B5EE2CA1AC8381100EFF3C4 /* ZXYOriginAlbumUser.m in Sources */,
 				8B1910041ADD5DA00087AECF /* ZXY_DFPArtistDetailVC.swift in Sources */,
+				A430E7871AF8837100534180 /* SR_OrderDetailUser.m in Sources */,
+				A430E7861AF8837100534180 /* SR_OrderDetailBaseClass.m in Sources */,
 				A4FC76571AEDE2C1002B1020 /* SR_albumCollectionBaseClass.m in Sources */,
 				A4FC76591AEDE2C1002B1020 /* SR_albumCollectionData.m in Sources */,
 				8B45878D1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift in Sources */,
