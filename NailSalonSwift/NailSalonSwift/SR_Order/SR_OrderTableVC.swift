@@ -150,8 +150,8 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         cell.nickName.text = cellData.nickName
         
         //预约时间
-        cell.orderTime.text = cellData.addTime
-        println("\(cellData.addTime)")
+        var timeString = timeStampToDateString(cellData.addTime)
+        cell.orderTime.text = timeString
         
         //预约地址
         if (cellData.detailAddr == "null") {
@@ -253,6 +253,10 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        var cellData = dataForShow[indexPath.section] as! SR_OrderListData
+        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+        var vc = story.instantiateViewControllerWithIdentifier("SR_OrderDetailVCID") as! SR_OrderDetailVC
+        vc.orderID = cellData.orderId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

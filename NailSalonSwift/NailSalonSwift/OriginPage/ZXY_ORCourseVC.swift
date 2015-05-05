@@ -17,6 +17,7 @@ class ZXY_ORCourseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startLoadData()
+        self.addHeaderAndFooterforTable()
         // Do any additional setup after loading the view.
     }
 
@@ -25,6 +26,28 @@ class ZXY_ORCourseVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //停止上拉下拉刷新
+    private func endFreshing()
+    {
+        currentTable.footerEndRefreshing()
+        currentTable.headerEndRefreshing()
+    }
+    /**
+    为tableView 增加上拉加载下拉刷新
+    */
+    private func addHeaderAndFooterforTable()
+    {
+        currentTable.addFooterWithCallback { [weak self]() -> Void in
+            self?.startLoadData()
+            ""
+        }
+        
+        currentTable.addHeaderWithCallback { [weak self] () -> Void in
+            self?.startLoadData()
+            ""
+        }
+    }
+
     
     func startLoadData()
     {
@@ -51,12 +74,14 @@ class ZXY_ORCourseVC: UIViewController {
                         var courseValue: ZXYCourseData = value as! ZXYCourseData
                         realSelf.dataCourseList?.append(courseValue)
                         realSelf.currentTable.reloadData()
+                        self?.endFreshing()
                     }
                 }
             }
             else
             {
                 var alertString = ZXY_ErrorMessageHandle.messageForErrorCode(result!)
+                self?.endFreshing()
                 self?.showAlertEasy("提示", messageContent: alertString)
             }
             
