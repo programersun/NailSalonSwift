@@ -20,6 +20,8 @@ class ZXY_AfterPickImgVC: UIViewController {
     var isShowTagAdd : Bool = false
     var backImg  : UIImageView!
     var dataForTag : [String]? = []
+    var priceTxt : UITextField?
+    
     //private var currentProgress : MBProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +76,8 @@ class ZXY_AfterPickImgVC: UIViewController {
         
         if(userID == nil)
         {
-            var story  = UIStoryboard(name: "AboutMe", bundle: nil)
-            var vc     = story.instantiateViewControllerWithIdentifier("login") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
             return
         }
         
@@ -88,7 +89,34 @@ class ZXY_AfterPickImgVC: UIViewController {
             return
         })
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        var parameter : Dictionary<String , AnyObject> = ["user_id": userID! , "description" : desTxt!.text ]
+        var price = "0"
+        var inputPrice = priceTxt?.text
+        if let inla = inputPrice
+        {
+            if self.checkStringISNum(inla)
+            {
+                price = inla
+            }
+            else
+            {
+                price = ""
+            }
+        }
+        else
+        {
+            price = ""
+        }
+        
+        var tagString = ""
+        if let tags = dataForTag
+        {
+            for one in tags
+            {
+                tagString = tagString + one + " "
+            }
+        }
+        
+        var parameter : Dictionary<String , AnyObject> = ["user_id": userID! , "description" : desTxt!.text , "price" : price ,"tag" : tagString  ]
         ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData: dataArr, fileKey: "Filedata[]", success: {[weak self] (returnDic) -> Void in
             
             MBProgressHUD.hideHUDForView(self?.view, animated: true)
@@ -169,6 +197,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
             var tapGes = UITapGestureRecognizer(target: self, action: Selector("showAddTagView"))
             cell.currentTagLbl.addGestureRecognizer(tapGes)
             cell.currentTagLbl.lineWidth =  UIScreen.mainScreen().bounds.width - 53
+            priceTxt =  cell.priceText
             if dataForTag != nil
             {
                 cell.currentTagLbl.setAllTagArr(dataForTag!)
@@ -225,7 +254,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         else
         {
             var tagTest = ZXY_TagLabelView()
-             var width = (self.view.frame.size.width )
+            var width = (self.view.frame.size.width )
             tagTest.lineWidth = UIScreen.mainScreen().bounds.width - 53
             if dataForTag != nil
             {
@@ -254,7 +283,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
         }
         else
         {
-            return UIEdgeInsetsMake(25, 0, 0, 0)
+            return UIEdgeInsetsMake(20, 0, 0, 0)
         }
     }
     
@@ -271,6 +300,8 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
+        priceTxt?.resignFirstResponder()
+        desTxt?.resignFirstResponder()
         var currentRow = indexPath.row
         var currentSection = indexPath.section
         if currentSection == 0
@@ -281,10 +312,12 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
                 {
                     if(self.photoImg?.count == maxNumOfPhoto)
                     {
-                        self.showAlertEasy("提示", messageContent: "最多只能选择一张图片")
+                        
+                        self.showAlertEasy("提示", messageContent: "最多只能选择 6 张图片")
                     }
                     else
                     {
+                        
                         var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
                         var vc    = story.instantiateInitialViewController() as! ZXY_PictureTakeVC
                         vc.delegate = self
@@ -293,6 +326,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
                 }
                 else
                 {
+                    
                     var currentAsset = self.photoImg![currentRow]
                     //var img = self.AlssetToUIImage(currentAsset)
                     self.showItemInMain(currentAsset , andRow: currentRow)
@@ -327,6 +361,16 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
             self.view.addSubview(backImg)
             backImg.layer.opacity = 0.8
             backImg.layer.addAnimation(ZXY_AnimationHelper.animationForAlpha(0, to: 0.8), forKey: "alpha")
+            var startTags : NSMutableArray = NSMutableArray()
+            if let real = self.dataForTag
+            {
+                for one in real
+                {
+                    startTags.addObject(one)
+                }
+            }
+            addTagVC.dataSelect = startTags
+            addTagVC.resetTagV()
             self.view.addSubview(addTagVC.view)
         }
         else
@@ -341,7 +385,7 @@ extension ZXY_AfterPickImgVC : UICollectionViewDelegate, UICollectionViewDataSou
 
 }
 
-extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , ZXY_ImgFilterVCDelegate , ZXY_AddTagVCDelegate
+extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , ZXY_ImgFilterVCDelegate , ZXY_AddTagVCDelegate , UIAlertViewDelegate
 {
     func sureClick(tags: [String]) {
         self.showAddTagView()
@@ -425,5 +469,14 @@ extension ZXY_AfterPickImgVC : ZXY_PickImgPictureVCDelegate , ZXY_ImagePickerDel
         self.currentCollectionV.reloadData()
     }
 
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 1)
+        {
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
+            //loginVC.navigationController?.navigationBar.hidden = true
+            self.navigationController?.pushViewController(loginVC, animated: true)
+        }
+    }
 
 }

@@ -30,6 +30,9 @@ class ZXY_AddTagVC: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
 
     @IBAction func cancelAction(sender: AnyObject) {
+//        dataSelect = []
+        currentTable.reloadData()
+        self.resetTagV()
         delegate.cancelClick()
     }
     
@@ -39,9 +42,41 @@ class ZXY_AddTagVC: UIViewController {
         for var i = 0 ; i < dataSelect.count ; i++
         {
             var temp = dataSelect[i] as! String
+            if(!dataArrCo.containsObject(temp))
+            {
+                if (!dataArrThe.containsObject(temp))
+                {
+                    if !dataArrHis.containsObject(temp)
+                    {
+                        dataArrHis.insertObject(temp, atIndex: 0)
+                    }
+                }
+            }
             lala.append(temp)
         }
+        if dataArrHis.count != 0
+        {
+            for var i = 0 ; i < dataArrHis.count ;i++
+            {
+                if i >= 10
+                {
+                    dataArrHis.removeObject(dataArrHis[i])
+                }
+            }
+            
+            var pathString = ZXY_DataProviderHelper.tagListFilePath()
+            var dataForTableTemp = NSMutableDictionary(contentsOfFile: pathString)!
+            dataForTableTemp["history"] = dataArrHis
+            dataForTableTemp.writeToFile(pathString, atomically: true)
+            dataForTable = NSMutableDictionary(contentsOfFile: pathString)!
+            dataArrHis   = dataForTable["history"] as! NSMutableArray
+            dataArrThe   = dataForTable["theme"] as! NSMutableArray
+            dataArrCo   = dataForTable["color"] as! NSMutableArray
+            currentTable.reloadData()
 
+        }
+        
+        
         delegate.sureClick(lala)
     }
     
@@ -57,6 +92,7 @@ class ZXY_AddTagVC: UIViewController {
     var dataSelect  : NSMutableArray = NSMutableArray()
 
     @IBAction func addBtnAction(sender: AnyObject) {
+        commentText.text = ""
         commentText.becomeFirstResponder()
     }
     @IBAction func inputBtnAction(sender: AnyObject) {
@@ -88,8 +124,8 @@ class ZXY_AddTagVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var pathString = NSBundle.mainBundle().pathForResource("TagTypePList", ofType: "plist")
-        dataForTable = NSMutableDictionary(contentsOfFile: pathString!)!
+        var pathString = ZXY_DataProviderHelper.tagListFilePath()
+        dataForTable = NSMutableDictionary(contentsOfFile: pathString)!
         dataArrHis   = dataForTable["history"] as! NSMutableArray
         dataArrThe   = dataForTable["theme"] as! NSMutableArray
         dataArrCo   = dataForTable["color"] as! NSMutableArray
@@ -99,6 +135,8 @@ class ZXY_AddTagVC: UIViewController {
         addBtn.layer.borderColor = UIColor.NailRedColor().CGColor
         currentTagLbl.lineWidth = UIScreen.mainScreen().bounds.width - 120
         commentView.frame = CGRectMake(0, screenSize.height , screenSize.width , 70)
+        currentTagLbl.canClick = true
+        currentTagLbl.delegate = self
         self.view.addSubview(commentView)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
@@ -174,6 +212,7 @@ class ZXY_AddTagVC: UIViewController {
         }
         heightOfTag.constant = height
         currentTagLbl.startLoadTag()
+        currentTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -194,7 +233,7 @@ class ZXY_AddTagVC: UIViewController {
 
 }
 
-extension ZXY_AddTagVC : UITableViewDelegate , UITableViewDataSource
+extension ZXY_AddTagVC : UITableViewDelegate , UITableViewDataSource , ZXY_TagLabelViewDelegate
 {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var section = indexPath.section
@@ -332,5 +371,14 @@ extension ZXY_AddTagVC : UITableViewDelegate , UITableViewDataSource
         }
         tableView.reloadData()
         self.resetTagV()
+    }
+    
+    func clickTag(tagString: String) {
+        if dataSelect.containsObject(tagString)
+        {
+            dataSelect.removeObject(tagString)
+            currentTable.reloadData()
+            self.resetTagV()
+        }
     }
 }

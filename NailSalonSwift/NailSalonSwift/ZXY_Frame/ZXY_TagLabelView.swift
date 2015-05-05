@@ -7,6 +7,11 @@
 //
 
 import UIKit
+protocol ZXY_TagLabelViewDelegate : class
+{
+    func clickTag(tagString : String)
+}
+
 
 class ZXY_TagLabelView: UIView {
 
@@ -14,6 +19,9 @@ class ZXY_TagLabelView: UIView {
     private var currentXPosition: CGFloat = 5.0
     private var labelHeight     : CGFloat = 20.0
     private var fontSize : CGFloat = 15
+    var delegate : ZXY_TagLabelViewDelegate?
+    
+    var canClick = false
     var defaultHeight : CGFloat = 43
     var lineWidth       : CGFloat? = UIScreen.mainScreen().bounds.width
     weak var superV : UIView!
@@ -54,17 +62,6 @@ class ZXY_TagLabelView: UIView {
         allTagArr = tagArr
     }
     
-    func setContentView(superV : UIView)
-    {
-        if(lineWidth == nil)
-        {
-            lineWidth = superV.frame.width
-        }
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, lineWidth!, superV.frame.size.height)
-        superV.addSubview(self)
-        self.setContentTag()
-    }
-    
     func startLoadTag()
     {
         self.setContentTag()
@@ -97,7 +94,7 @@ class ZXY_TagLabelView: UIView {
                 var heightOfLabel = thisHeight
                 if remainSpaceX < 0
                 {
-                    if(width >= (self.frame.width - 10 ))
+                    if(width > (self.lineWidth! - 10 ))
                     {
                         
                         if(thisPositionX != 5)
@@ -136,7 +133,7 @@ class ZXY_TagLabelView: UIView {
                 }
                 if allTagArr?.last == tag
                 {
-                    thisPositionY = thisPositionY + 25 + heightOfLabel
+                    thisPositionY = thisPositionY + 25 //+ heightOfLabel
                 }
 
             }
@@ -172,7 +169,7 @@ class ZXY_TagLabelView: UIView {
                 var heightOfLabel = labelHeight
                 if remainSpaceX < 0
                 {
-                    if(width > (self.frame.width - 10 ))
+                    if(width > (self.lineWidth! - 10 ))
                     {
                         
                         if(currentXPosition != 5)
@@ -197,6 +194,12 @@ class ZXY_TagLabelView: UIView {
                 }
                 var label = UILabel(frame: CGRectMake(currentXPosition, currentYPosition, width + 3, heightOfLabel))
                 self.addSubview(label)
+                if canClick
+                {
+                    label.userInteractionEnabled = true
+                    var tapGes = UITapGestureRecognizer(target: self, action: Selector("clickTagLbl:"))
+                    label.addGestureRecognizer(tapGes)
+                }
                 label.text = tag
                 label.numberOfLines = 0
                 label.backgroundColor = UIColor.NailRedColor()
@@ -262,5 +265,19 @@ class ZXY_TagLabelView: UIView {
         }
     }
 
+    func clickTagLbl(tap : UITapGestureRecognizer)
+    {
+        
+        var currentClickLbl : UILabel? = tap.view as? UILabel
+        if let label = currentClickLbl
+        {
+            if delegate != nil
+            {
+                var tagString = label.text ?? ""
+                delegate?.clickTag(tagString)
+            }
+        }
+        
+    }
     
 }

@@ -265,13 +265,13 @@
                                                 <constraint firstItem="nD0-iX-vFm" firstAttribute="top" secondItem="zUG-KQ-OMU" secondAttribute="top" constant="9" id="0Uv-HB-QuI"/>
                                                 <constraint firstItem="nD0-iX-vFm" firstAttribute="leading" secondItem="zUG-KQ-OMU" secondAttribute="leading" constant="8" id="48D-6M-eGg"/>
                                                 <constraint firstAttribute="bottom" secondItem="b0f-9N-oWY" secondAttribute="bottom" constant="33" id="BVB-Tn-I2h"/>
+                                                <constraint firstAttribute="trailing" secondItem="b0f-9N-oWY" secondAttribute="trailing" constant="8" id="KQw-O0-Ta2"/>
                                                 <constraint firstAttribute="bottom" secondItem="8VI-P8-D3z" secondAttribute="bottom" constant="7" id="M41-o8-B8L"/>
                                                 <constraint firstAttribute="trailing" secondItem="7uc-Ny-fpu" secondAttribute="trailing" constant="8" id="O01-wA-kOt"/>
                                                 <constraint firstItem="n4W-Yn-o5L" firstAttribute="leading" secondItem="zUG-KQ-OMU" secondAttribute="leading" constant="8" id="YU4-EE-iom"/>
                                                 <constraint firstItem="8VI-P8-D3z" firstAttribute="leading" secondItem="n4W-Yn-o5L" secondAttribute="trailing" id="ayp-59-5aM"/>
                                                 <constraint firstItem="7uc-Ny-fpu" firstAttribute="top" secondItem="b0f-9N-oWY" secondAttribute="bottom" constant="5" id="e5b-wd-ppG"/>
                                                 <constraint firstItem="b0f-9N-oWY" firstAttribute="leading" secondItem="nD0-iX-vFm" secondAttribute="trailing" constant="13" id="erh-5A-3e0"/>
-                                                <constraint firstAttribute="trailing" secondItem="b0f-9N-oWY" secondAttribute="trailing" constant="8" id="pOf-gb-7yI"/>
                                                 <constraint firstItem="b0f-9N-oWY" firstAttribute="top" secondItem="zUG-KQ-OMU" secondAttribute="top" constant="11" id="yqP-yz-qTx"/>
                                                 <constraint firstAttribute="bottom" secondItem="n4W-Yn-o5L" secondAttribute="bottom" constant="8" id="z3z-LW-308"/>
                                             </constraints>

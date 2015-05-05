@@ -162,7 +162,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             }
             if let s = self
             {
-                s.zxyW.hideProgress(s.view)
+                //s.zxyW.hideProgress(s.view)
                 var userId = s.userInfo?.data.userId
                 
                 //                var userDic = s.userInfo?.data
@@ -177,8 +177,8 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
                 //                }
                 
             }
-            self?.delegate?.userLoginSuccess()
-            self?.navigationController?.popViewControllerAnimated(true)
+            self?.startDownLoadUserDetailInfo()
+            
             }, onQueue: nil)
     }
 
@@ -212,6 +212,8 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         })
         
     }
+    
+    
     
     @IBAction func weiBoLoginAction(sender: AnyObject)
     {
@@ -251,6 +253,48 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
         alertSex.show()
         
     }
+    
+    private func startDownLoadUserDetailInfo()
+    {
+        var userID : String? = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID == nil)
+        {
+            zxyW.hideProgress(self.view)
+            return
+        }
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
+        var parameter = ["user_id" : userID!]
+        ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            if let s = self
+            {
+                s.zxyW.hideProgress(s.view)
+            }
+            //            self?.dataForShow = ZXY_UserDetailInfoUserDetailBase(dictionary: returnDic)
+            //            var result = self?.dataForShow?.result
+            var result = returnDic["result"] as! Double
+            if(result == 1000)
+            {
+                ZXY_UserInfoDetail.sharedInstance.saveUserDetailInfo(returnDic)
+                //                self?.userInfo = self?.dataForShow?.data
+                //                println("\(self?.userInfo!.nickName)")
+                self?.delegate?.userLoginSuccess()
+                self?.navigationController?.popViewControllerAnimated(true)
+            }
+            else
+            {
+                var messageError = ZXY_ErrorMessageHandle.messageForErrorCode(result ?? 0)
+                self?.showAlertEasy("提示", messageContent: messageError)
+            }
+            
+            }) {[weak self] (error) -> Void in
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
+        }
+        
+    }
+
     
     @IBAction func backAction(sender: AnyObject)
     {

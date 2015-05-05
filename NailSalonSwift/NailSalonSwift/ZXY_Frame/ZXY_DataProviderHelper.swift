@@ -116,4 +116,12 @@ class ZXY_DataProviderHelper: NSObject {
         }
         return context?.save(nil) ?? false
     }
+    
+    class func tagListFilePath() -> String
+    {
+        var documentPath : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var pathString      = documentPath[0] as! String
+        var realPath        = pathString.stringByAppendingPathComponent("TagTypePList.plist")
+        return realPath
+    }
 }

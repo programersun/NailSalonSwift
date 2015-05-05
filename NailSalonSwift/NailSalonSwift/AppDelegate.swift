@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        var documentPath : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var pathString      = documentPath[0] as! String
+        var realPath        = pathString.stringByAppendingPathComponent("TagTypePList.plist")
+        var bundlePlistPath = NSBundle.mainBundle().pathForResource("TagTypePList", ofType: "plist")
+        if !NSFileManager.defaultManager().fileExistsAtPath(realPath)
+        {
+            NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)
+        }
+        
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]

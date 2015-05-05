@@ -124,7 +124,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入价格" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0t8-3F-hTP">
                                                     <rect key="frame" x="45" y="8" width="547" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSw-Y0-D5B" customClass="ZXY_TagLabelView" customModule="NailSalonSwift" customModuleProvider="target">
                                                     <rect key="frame" x="45" y="58" width="547" height="30"/>
@@ -153,8 +153,8 @@
                                             <constraint firstItem="eST-k9-c0d" firstAttribute="top" secondItem="0t8-3F-hTP" secondAttribute="top" id="KBj-Nc-lLs"/>
                                             <constraint firstItem="6Ex-Ko-xgN" firstAttribute="top" secondItem="vSw-Y0-D5B" secondAttribute="top" id="Pal-dL-00O"/>
                                             <constraint firstItem="6Ex-Ko-xgN" firstAttribute="top" secondItem="dnD-rW-tPy" secondAttribute="bottom" constant="11" id="TNb-Fq-vMW"/>
-                                            <constraint firstItem="6Ex-Ko-xgN" firstAttribute="bottom" secondItem="vSw-Y0-D5B" secondAttribute="bottom" id="Ta9-Y9-5St"/>
                                             <constraint firstItem="eST-k9-c0d" firstAttribute="bottom" secondItem="0t8-3F-hTP" secondAttribute="bottom" id="U0U-bd-3We"/>
+                                            <constraint firstItem="kWN-td-Y8R" firstAttribute="top" secondItem="vSw-Y0-D5B" secondAttribute="bottom" constant="10" id="UJm-Q7-4Bm"/>
                                             <constraint firstItem="6Ex-Ko-xgN" firstAttribute="leading" secondItem="eST-k9-c0d" secondAttribute="leading" id="c6d-c9-bzq"/>
                                             <constraint firstItem="kWN-td-Y8R" firstAttribute="leading" secondItem="vgO-cE-920" secondAttribute="leading" constant="8" id="cQE-CW-AEq"/>
                                             <constraint firstItem="dnD-rW-tPy" firstAttribute="top" secondItem="eST-k9-c0d" secondAttribute="bottom" constant="8" symbolic="YES" id="hza-kr-h0s"/>
@@ -359,6 +359,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="QUG-c7-hUd" secondAttribute="bottom" constant="11" id="PKi-kB-XOZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="kcn-sy-DVB" secondAttribute="bottom" constant="10" id="Wt7-t3-GHf"/>
                                                 <constraint firstItem="QUG-c7-hUd" firstAttribute="top" secondItem="0WQ-LB-Jij" secondAttribute="top" constant="11" id="aft-vY-EU4"/>
+                                                <constraint firstItem="kcn-sy-DVB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QUG-c7-hUd" secondAttribute="trailing" constant="20" id="aiY-Qd-yXm"/>
                                                 <constraint firstItem="QUG-c7-hUd" firstAttribute="leading" secondItem="0WQ-LB-Jij" secondAttribute="leading" id="gLA-Hn-mnF"/>
                                             </constraints>
                                         </tableViewCellContentView>

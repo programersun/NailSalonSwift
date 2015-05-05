@@ -96,7 +96,7 @@ struct ZXY_ALLApi
     /**
     *  添加图集
     */
-    static let ZXY_SubmitAlbumAPI     = "Album/add_album"
+    static let ZXY_SubmitAlbumAPI     = "Album2/add_album"
     
     /**
     *  删除图集
