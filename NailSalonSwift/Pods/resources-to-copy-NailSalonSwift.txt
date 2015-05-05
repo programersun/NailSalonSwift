@@ -1,0 +1,9 @@
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/Baidu-Maps-iOS-SDK/mapapi.bundle
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/EaseMobSDK/EaseMobSDK/resources/EaseMob.bundle
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/GPUImage/framework/Resources/lookup.png
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/GPUImage/framework/Resources/lookup_amatorka.png
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/GPUImage/framework/Resources/lookup_miss_etikate.png
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/GPUImage/framework/Resources/lookup_soft_elegance_1.png
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/GPUImage/framework/Resources/lookup_soft_elegance_2.png
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/UMengSocial/umeng_ios_social_sdk_4.2.1_arm64_custom/UMSocial_Sdk_4.2.1/UMSocialSDKResourcesNew.bundle
+/Users/developer/Desktop/NewNailSalon/NailSalonSwift/Pods/UMengSocial/umeng_ios_social_sdk_4.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI/TencentOpenApi_IOS_Bundle.bundle
