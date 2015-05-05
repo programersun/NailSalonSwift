@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol SR_OrderDetailFirstCellProtocol : class
+{
+    func clickHeadImg()
+    func clickMessage()
+    func clickTel()
+}
+
 class SR_OrderDetailFirstCell: UITableViewCell {
-    
+
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var orderStatus: UILabel!
+    
+    var delegate : SR_OrderDetailFirstCellProtocol?
     
     class func cellID() -> String
     {
@@ -21,6 +30,12 @@ class SR_OrderDetailFirstCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        headImg.layer.cornerRadius = CGRectGetWidth(headImg.bounds) / 2
+        headImg.layer.masksToBounds = true
+        headImg.layer.borderColor  = UIColor.NailRedColor().CGColor
+        headImg.layer.borderWidth  = 1
+        var tapDetailHead = UITapGestureRecognizer(target: self, action: "detialHeadImgClick")
+        headImg.addGestureRecognizer(tapDetailHead)
         // Initialization code
     }
 
@@ -29,11 +44,26 @@ class SR_OrderDetailFirstCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func detialHeadImgClick(){
+        if let de = delegate
+        {
+            de.clickHeadImg()
+        }
+    }
+    
     @IBAction func messageBtnClick(sender: AnyObject) {
-        
+        if let de = delegate
+        {
+            de.clickMessage()
+        }
     }
     
     @IBAction func telBtnClick(sender: AnyObject) {
+        if let de = delegate
+        {
+            de.clickTel()
+        }
     }
 
 }

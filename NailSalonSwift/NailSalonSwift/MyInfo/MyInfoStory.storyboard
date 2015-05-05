@@ -47,7 +47,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEl-v4-LQ9" id="lDx-Iu-aeT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imBackImg" translatesAutoresizingMaskIntoConstraints="NO" id="zIG-SM-CHM">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imBackImg" translatesAutoresizingMaskIntoConstraints="NO" id="zIG-SM-CHM">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="168" id="eHA-X0-qxh"/>
@@ -1920,8 +1920,8 @@
         <image name="textLineAndroid" width="400" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ywn-GM-FN2"/>
-        <segue reference="GOf-40-0Rt"/>
+        <segue reference="Bwi-J6-DrA"/>
         <segue reference="WmM-a3-ros"/>
+        <segue reference="GOf-40-0Rt"/>
     </inferredMetricsTieBreakers>
 </document>
