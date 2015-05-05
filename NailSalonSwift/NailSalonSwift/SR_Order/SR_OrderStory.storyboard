@@ -419,7 +419,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fIP-yF-GPx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fIP-yF-GPx">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -429,7 +429,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z5r-Qh-n8Y" id="AuX-ev-cHU">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWv-yu-epD">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWv-yu-epD">
                                                     <rect key="frame" x="10" y="12" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -570,6 +570,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="dnD-Yo-jbm" secondAttribute="trailing" constant="10" id="D3d-a6-FNi"/>
                                                 <constraint firstItem="EmE-tD-0tb" firstAttribute="leading" secondItem="7zb-BI-Vpt" secondAttribute="leading" constant="10" id="PoW-4Q-sIM"/>
                                                 <constraint firstAttribute="centerY" secondItem="Pnv-K2-3iZ" secondAttribute="centerY" id="RrZ-WK-h2q"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pnv-K2-3iZ" secondAttribute="trailing" constant="10" id="VDv-D1-MhT"/>
                                                 <constraint firstAttribute="bottom" secondItem="dnD-Yo-jbm" secondAttribute="bottom" id="k5a-G3-gwm"/>
                                                 <constraint firstAttribute="centerY" secondItem="EmE-tD-0tb" secondAttribute="centerY" id="nZk-yI-dOZ"/>
                                                 <constraint firstItem="dnD-Yo-jbm" firstAttribute="leading" secondItem="7zb-BI-Vpt" secondAttribute="leading" constant="10" id="vZW-fM-Zsy"/>

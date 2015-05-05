@@ -276,11 +276,6 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
 
         switch indexPath.section {
         case 0:
-            var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
-            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
-            detailArtist.artistID = userID
-            detailArtist.navigationController?.navigationBar.hidden = false
-            self.navigationController?.pushViewController(detailArtist, animated: true)
             ""
         case 1:
             switch indexPath.row {
@@ -337,6 +332,17 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     
     func headImgTouch() {
         self.performSegueWithIdentifier("toUserInfo", sender: nil)
+    }
+    func backImgTouch() {
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(userID != nil)
+        {
+            var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
+            var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
+            detailArtist.artistID = userID
+            detailArtist.navigationController?.navigationBar.hidden = false
+            self.navigationController?.pushViewController(detailArtist, animated: true)
+        }
     }
 }
 extension ZXY_MIMainVC : UIAlertViewDelegate  {
