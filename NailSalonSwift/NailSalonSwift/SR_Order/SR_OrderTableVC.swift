@@ -28,10 +28,15 @@ class SR_OrderTableVC: UIViewController {
         super.viewDidLoad()
         self.topBar.backgroundColor = UIColor.NailRedColor()
         self.orderListTableView.backgroundColor = UIColor.NailBackGrayColor()
+        self.navigationController?.navigationBar.hidden = true
         srW.startProgress(self.view)
         self.loadOrderInfo()
         self.addHeaderAndFooterforTable()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
     }
     
     //停止上拉下拉刷新
@@ -257,6 +262,7 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
         var vc = story.instantiateViewControllerWithIdentifier("SR_OrderDetailVCID") as! SR_OrderDetailVC
         vc.orderID = cellData.orderId
+        vc.orderStatus = cellData.orderStatus
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -13,6 +13,7 @@ protocol ZXY_MIMainVCellProtocol : class
     func loginBtnClick() -> Void
     func settingBtnClick() -> Void
     func headImgTouch() -> Void
+    func backImgTouch() -> Void
 }
 
 class ZXY_MIMainVCell: UITableViewCell {
@@ -50,6 +51,9 @@ class ZXY_MIMainVCell: UITableViewCell {
         userAvatar.addGestureRecognizer(tapAvatar)
         userAvatar.layer.cornerRadius = CGRectGetWidth(userAvatar.bounds) / 2
         userAvatar.layer.masksToBounds  = true
+        
+        var tapBackImgClick = UITapGestureRecognizer(target: self, action: Selector("backImgClick"))
+        backImg.addGestureRecognizer(tapBackImgClick)
         // Initialization code
     }
 
@@ -87,6 +91,13 @@ class ZXY_MIMainVCell: UITableViewCell {
         if let p = delegate
         {
             p.headImgTouch()
+        }
+    }
+    
+    func backImgClick() {
+        if let p = delegate
+        {
+            p.backImgTouch()
         }
     }
     
