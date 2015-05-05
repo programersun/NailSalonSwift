@@ -11,7 +11,7 @@ import UIKit
 class ZXY_AnimationHelper: CAAnimation {
     
     typealias ZXY_AnimationHelperComplete = (isFinish  : Bool) -> Void
-    
+    private var endBlock : (() -> Void )?
     /**
     循环渐隐效果
     
@@ -115,6 +115,46 @@ class ZXY_AnimationHelper: CAAnimation {
         rotationAnimation.repeatCount = 1e100
         //rotationAnimation.autoreverses = true
         return rotationAnimation
+    }
+    
+    func animationForPositionOrRotation(fromPoint : CGPoint , endPoint : CGPoint , endBlock : (() -> Void)?) -> CAAnimationGroup
+    {
+        
+        
+        var layer = CALayer()
+        var rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = M_PI * 4
+        rotationAnimation.duration = 0.4
+        rotationAnimation.cumulative  = true
+        var positionAnimation = CABasicAnimation(keyPath : "position")
+        var startPosition = NSValue(CGPoint: fromPoint)
+        var endPosition   = NSValue(CGPoint : endPoint)
+        positionAnimation.toValue = endPosition
+        positionAnimation.fromValue = startPosition
+        positionAnimation.duration = 0.4
+        positionAnimation.cumulative  = true
+
+        var group = CAAnimationGroup()
+        group.duration = 0.4
+        if(endBlock != nil)
+        {
+            var delayTime = Int64(2 * NSEC_PER_SEC / 5)
+            var t = dispatch_time(DISPATCH_TIME_NOW, delayTime)
+            dispatch_after(t, dispatch_get_main_queue(), { [weak self]() -> Void in
+                endBlock!()
+                ""
+                })
+            
+        }
+
+        group.autoreverses = false
+        group.removedOnCompletion = false;
+        group.fillMode = kCAFillModeForwards;
+        group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        group.animations = [rotationAnimation , positionAnimation]
+        return group
+
+        
     }
     
     /**

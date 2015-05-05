@@ -604,15 +604,55 @@
                                     <constraint firstItem="bLu-Gx-VIO" firstAttribute="top" secondItem="Ove-1J-gj2" secondAttribute="bottom" constant="42" id="ux3-8f-1Sb"/>
                                 </constraints>
                             </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatBao" translatesAutoresizingMaskIntoConstraints="NO" id="s2Y-Jy-umB">
+                                <rect key="frame" x="489" y="470" width="50" height="50"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NLO-ED-gJy"/>
+                                    <constraint firstAttribute="width" constant="50" id="tS9-QS-scR"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Jkj-ud-XMV" appends="YES" id="xpe-YA-aMH"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yue" translatesAutoresizingMaskIntoConstraints="NO" id="k38-oN-V6N">
+                                <rect key="frame" x="464" y="520" width="50" height="50"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="0bD-Hb-OVy"/>
+                                    <constraint firstAttribute="height" constant="50" id="FOZ-j7-CIM"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QAB-Xb-3U3" appends="YES" id="yeq-51-ra7"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lingdang" translatesAutoresizingMaskIntoConstraints="NO" id="CTP-JF-iFY">
+                                <rect key="frame" x="520" y="520" width="50" height="50"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="AvF-YI-AlO"/>
+                                    <constraint firstAttribute="height" constant="50" id="d2t-CA-HwC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="vdT-Js-0Aw" appends="YES" id="8C5-2X-DVK"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="k38-oN-V6N" secondAttribute="bottom" constant="30" id="0df-Ly-sBk"/>
                             <constraint firstItem="tl0-VI-ioJ" firstAttribute="top" secondItem="XZO-P7-TCt" secondAttribute="top" id="1EN-Wb-6Sw"/>
+                            <constraint firstItem="k38-oN-V6N" firstAttribute="top" secondItem="s2Y-Jy-umB" secondAttribute="bottom" id="236-V4-5s5"/>
                             <constraint firstItem="tl0-VI-ioJ" firstAttribute="leading" secondItem="XZO-P7-TCt" secondAttribute="leading" id="3NL-SV-NoS"/>
+                            <constraint firstAttribute="trailing" secondItem="CTP-JF-iFY" secondAttribute="trailing" constant="30" id="End-Gm-Oe0"/>
+                            <constraint firstAttribute="trailing" secondItem="s2Y-Jy-umB" secondAttribute="trailing" constant="61" id="QEx-ZU-2fd"/>
                             <constraint firstItem="L79-EX-JMI" firstAttribute="top" secondItem="XZO-P7-TCt" secondAttribute="top" id="Vhg-tP-G5S"/>
                             <constraint firstAttribute="trailing" secondItem="tl0-VI-ioJ" secondAttribute="trailing" id="aXG-aa-8Go"/>
+                            <constraint firstItem="CTP-JF-iFY" firstAttribute="leading" secondItem="k38-oN-V6N" secondAttribute="trailing" constant="6" id="mPU-Bm-ejz"/>
                             <constraint firstAttribute="bottom" secondItem="L79-EX-JMI" secondAttribute="bottom" id="nGH-uH-qgQ"/>
+                            <constraint firstAttribute="bottom" secondItem="CTP-JF-iFY" secondAttribute="bottom" constant="30" id="pCQ-5M-xar"/>
                             <constraint firstAttribute="trailing" secondItem="L79-EX-JMI" secondAttribute="trailing" id="raD-zi-NYZ"/>
+                            <constraint firstItem="k38-oN-V6N" firstAttribute="top" secondItem="s2Y-Jy-umB" secondAttribute="bottom" id="tgD-bN-FUg"/>
                             <constraint firstItem="L79-EX-JMI" firstAttribute="leading" secondItem="XZO-P7-TCt" secondAttribute="leading" id="vC4-qU-qZZ"/>
                         </constraints>
                     </view>
@@ -622,6 +662,7 @@
                         <outlet property="artistName" destination="wFQ-E1-3Rv" id="hw2-pe-nRr"/>
                         <outlet property="attensionBtn" destination="Ove-1J-gj2" id="RL3-9s-K2T"/>
                         <outlet property="avaterAristImg" destination="Xl3-oR-3M7" id="s5f-DJ-8JD"/>
+                        <outlet property="chatBtn" destination="s2Y-Jy-umB" id="ofd-2C-43D"/>
                         <outlet property="contentScroll" destination="L79-EX-JMI" id="FId-fu-48w"/>
                         <outlet property="distanceLbl" destination="USN-TR-3av" id="YhV-OJ-3Q4"/>
                         <outlet property="evalueateView" destination="OF1-CF-10k" id="sdV-u0-gZe"/>
@@ -629,11 +670,28 @@
                         <outlet property="headerV" destination="tl0-VI-ioJ" id="6QM-ue-n03"/>
                         <outlet property="isAristLbl" destination="wKD-Fa-A4T" id="vJU-XN-RfS"/>
                         <outlet property="isArtistImg" destination="dy3-le-LCW" id="MOK-Hn-KHt"/>
+                        <outlet property="lingdangBtn" destination="CTP-JF-iFY" id="EOC-lf-Nku"/>
                         <outlet property="toTopDistance" destination="1EN-Wb-6Sw" id="Bg9-0M-7bP"/>
                         <outlet property="widthOfAttensionBtn" destination="Cca-pi-tfi" id="b1h-0A-bFl"/>
+                        <outlet property="yueBtm" destination="k38-oN-V6N" id="LfJ-QI-RGM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06f-d7-ejF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jkj-ud-XMV">
+                    <connections>
+                        <action selector="chatBaoAction:" destination="tNX-hx-s3d" id="NFe-NG-rra"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="vdT-Js-0Aw">
+                    <connections>
+                        <action selector="lingDangAction:" destination="tNX-hx-s3d" id="cfZ-yJ-RgF"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QAB-Xb-3U3">
+                    <connections>
+                        <action selector="yueAction:" destination="tNX-hx-s3d" id="moK-zz-1w4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="981" y="239"/>
         </scene>
@@ -779,18 +837,12 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiA-N6-h7F">
                                                     <rect key="frame" x="62" y="42" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="6eh-QJ-d50"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012-03-05 11:23:06" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-I6-8s3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2012-03-05 11:23:06" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-I6-8s3">
                                                     <rect key="frame" x="448" y="9" width="144" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="g5L-HT-QSu"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -870,11 +922,14 @@
     <resources>
         <image name="backArrow" width="11" height="19"/>
         <image name="chat" width="20" height="20"/>
+        <image name="chatBao" width="50" height="50"/>
         <image name="headImg" width="78" height="91"/>
         <image name="headerHolder" width="130" height="164"/>
         <image name="heartEmpty" width="20" height="20"/>
         <image name="heart_gray" width="20" height="18"/>
         <image name="imgHolder" width="170" height="214"/>
+        <image name="lingdang" width="50" height="50"/>
         <image name="starEmpty" width="20" height="20"/>
+        <image name="yue" width="50" height="50"/>
     </resources>
 </document>

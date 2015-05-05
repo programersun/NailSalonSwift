@@ -31,7 +31,63 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     @IBOutlet weak var headerV: UIView!
     
+    private var isShowChat = false
+    
+    
     private var dataForShow : ZXY_ArtistDetailModelBase?
+    
+    @IBOutlet weak var lingdangBtn: UIImageView!
+    
+    @IBAction func lingDangAction(sender: AnyObject) {
+        println("我是铃铛")
+        if isShowChat
+        {
+            isShowChat = false
+            self.hideTheChatOrYue()
+        }
+        else
+        {
+            isShowChat = true
+            self.showTheChatOrYue()
+        }
+        
+    }
+    @IBOutlet weak var chatBtn: UIImageView!
+    
+    @IBAction func chatBaoAction(sender: AnyObject) {
+        println("你聊天么")
+    }
+    
+    
+    @IBOutlet weak var yueBtm: UIImageView!
+    
+    @IBAction func yueAction(sender: AnyObject) {
+        println("你越么")
+    }
+    
+    
+    func showTheChatOrYue()
+    {
+        chatBtn.hidden = false
+        yueBtm.hidden  = false
+        chatBtn.layer.addAnimation(ZXY_AnimationHelper().animationForPositionOrRotation(lingdangBtn.center, endPoint: chatBtn.center, endBlock: nil), forKey: "chatBtn")
+        yueBtm.layer.addAnimation(ZXY_AnimationHelper().animationForPositionOrRotation(lingdangBtn.center, endPoint: yueBtm.center, endBlock: nil), forKey: "chatBtn")
+    }
+    
+    func hideTheChatOrYue()
+    {
+        chatBtn.layer.addAnimation(ZXY_AnimationHelper().animationForPositionOrRotation(chatBtn.center, endPoint: lingdangBtn.center, endBlock: {[weak self] () -> Void in
+            self?.chatBtn.hidden = true
+            ""
+        }), forKey: "chatBtn")
+        
+        yueBtm.layer.addAnimation(ZXY_AnimationHelper().animationForPositionOrRotation(yueBtm.center, endPoint: lingdangBtn.center, endBlock: {[weak self] () -> Void in
+            self?.yueBtm.hidden = true
+            ""
+            }), forKey: "chatBtn")
+
+        
+    }
     
     var artistID : String?
     
@@ -47,6 +103,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideTheChatOrYue()
         srW.startProgress(self.view)
         self.navigationController?.navigationBar.hidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
