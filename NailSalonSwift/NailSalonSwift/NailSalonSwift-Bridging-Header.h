@@ -22,9 +22,18 @@
 #import "ZXYCourseBaseList.h"
 #import "ZXYCourseData.h"
 #import "ZXYCourseCourse.h"
+
+#import "ChatViewController.h"
+//#import "ChatListViewController.h"
 #import <EasemobSDK/EaseMobHeaders.h>
 #import <EasemobSDK/EaseMob.h>
 #import<EasemobSDK/EMErrorDefs.h>
+#import "ArtistList.h"
+
+
+#import <UIKit/UIKit.h>
+#import <CommonCrypto/CommonDigest.h>
+
 #import "SMImportHeader.h"
 #import<UMengSocial/UMSocial.h>
 #import <UMengSocial/UMSocialWechatHandler.h>

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate {
 
     var window: UIWindow?
     var bmkAuthor : BMKMapManager?
@@ -32,9 +32,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        
         bmkAuthor = BMKMapManager()
-        var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "duostecIOSDis")
+        var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "MJDev")
         EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
+        
+        if(application.respondsToSelector(Selector("registerForRemoteNotifications")))
+        {
+            application.registerForRemoteNotifications()
+            var notiType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+            var settings = UIUserNotificationSettings(forTypes: notiType, categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        else
+        {
+            
+            var notiType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+            application.registerForRemoteNotificationTypes(notiType)
+            
+        }
+        var notiType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        var settings = UIUserNotificationSettings(forTypes: notiType, categories: nil)
+        application.registerUserNotificationSettings(settings)
+
+        
+        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(myUserID == nil)
+        {
+        }
+        else
+        {
+            EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(myUserID, password: "12345678", completion: { (loginInfo, error) -> Void in
+                
+                }, onQueue: nil)
+        }
+        EaseMob.sharedInstance().chatManager.addDelegate(self, delegateQueue: nil)
+        
+        
         if(( bmkAuthor!.start(ZXY_ConstValue.BDMAPKEY.rawValue, generalDelegate: nil)))
         {
             println("授权成功")
@@ -62,6 +99,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         return true
     }
 
+    func applicationWillEnterForeground(application: UIApplication) {
+        EaseMob.sharedInstance().applicationWillEnterForeground(application)
+    }
+    
+//    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+//        EaseMob.sharedInstance().application(application, didRegisterUserNotificationSettings: notificationSettings)
+//    }
+    
+//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+//        EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: notification)
+//    }
+    
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         return UMSocialSnsService.handleOpenURL(url)
     }
@@ -83,7 +132,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
     }
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("本地通知")
+        EaseMob.sharedInstance().application(application, didReceiveLocalNotification: notification)
+    }
     
+    
+    
+        
     func applicationWillResignActive(application: UIApplication) {
         EaseMob.sharedInstance().applicationWillResignActive(application)
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -96,12 +152,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         EaseMob.sharedInstance().applicationDidEnterBackground(application)
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        EaseMob.sharedInstance().applicationWillEnterForeground(application)
-    }
-
     func applicationDidBecomeActive(application: UIApplication) {
+        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if(myUserID == nil)
+        {
+            
+            
+            
+        }
+        else
+        {
+            EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(myUserID, password: "12345678", completion: { (loginInfo, error) -> Void in
+                
+                }, onQueue: nil)
+        }
+
         EaseMob.sharedInstance().applicationDidBecomeActive(application)
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
@@ -122,6 +187,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
         EaseMob.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
         println(error)
     }
+    
+    
+    
 
     // MARK: - Core Data stack
 
@@ -193,5 +261,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate {
     func onGetPermissionState(iError: Int32) {
         println(iError)
     }
+}
+
+extension AppDelegate
+{
+        
 }
 

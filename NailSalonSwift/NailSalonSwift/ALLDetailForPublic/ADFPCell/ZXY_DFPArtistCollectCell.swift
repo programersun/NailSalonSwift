@@ -19,4 +19,5 @@ class ZXY_DFPArtistCollectCell: UICollectionViewCell {
     @IBOutlet weak var artName: UILabel!
     
     @IBOutlet weak var agreeNum: UILabel!
+    @IBOutlet weak var layerView: UIView!
 }

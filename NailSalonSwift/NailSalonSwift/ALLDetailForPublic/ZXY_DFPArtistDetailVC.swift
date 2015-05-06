@@ -4,7 +4,7 @@
 //
 //  Created by 宇周 on 15/4/14.
 //  Copyright (c) 2015年 宇周. All rights reserved.
-//
+//  美甲师 2 普通用户1
 
 import UIKit
 
@@ -31,6 +31,12 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     
     @IBOutlet weak var headerV: UIView!
     
+    var zxyW = ZXY_WaitProgressVC()
+    
+    private var currentUserRole = "1"
+    private var currentArtRole  = "1"
+    
+    
     private var isShowChat = false
     
     
@@ -39,31 +45,86 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     @IBOutlet weak var lingdangBtn: UIImageView!
     
     @IBAction func lingDangAction(sender: AnyObject) {
-        println("我是铃铛")
-        if isShowChat
+        if currentUserRole == "1" && currentArtRole != "1"
         {
-            isShowChat = false
-            self.hideTheChatOrYue()
+            if isShowChat
+            {
+                isShowChat = false
+                self.hideTheChatOrYue()
+            }
+            else
+            {
+                isShowChat = true
+                self.showTheChatOrYue()
+            }
         }
         else
         {
-            isShowChat = true
-            self.showTheChatOrYue()
+            self.chatBaoAction("")
         }
         
     }
     @IBOutlet weak var chatBtn: UIImageView!
     
     @IBAction func chatBaoAction(sender: AnyObject) {
-        println("你聊天么")
+        println("交流")
+        
+        var userInfo = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+        
+        if userInfo == nil
+        {
+            var alert = UIAlertView(title: "提示", message: "您还没有登录，请先登录吧", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "取消", "确定")
+            alert.show()
+            return
+
+        }
+        else
+        {
+            var my = ZXY_UserDetailInfoUserDetailBase(dictionary: userInfo)
+            var myData = my.data
+            var artData = dataForShow?.data
+            if artData == nil
+            {
+                return
+            }
+            else
+            {
+                if artistID == nil
+                {
+                    return
+                }
+                var chatView = ChatViewController(chatter: artistID!, isGroup: false)
+                chatView.title = artData?.nickName
+                var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + artData!.headImage
+                if(artData!.headImage.hasPrefix("http"))
+                {
+                    stringURL = artData!.headImage
+                }
+                chatView.imgURLTo = stringURL
+                var myHeadImg : String? = myData.headImage
+                if let myI = myHeadImg
+                {
+                    var imgURL =  ZXY_ALLApi.ZXY_MainAPIImage + myData.headImage
+                    if myI.hasPrefix("http")
+                    {
+                        imgURL = myI
+                    }
+                    chatView.imgURLMy = imgURL
+                }
+                self.navigationController?.pushViewController(chatView, animated: true)
+            }
+            
+        }
+
     }
     
     
     @IBOutlet weak var yueBtm: UIImageView!
     
     @IBAction func yueAction(sender: AnyObject) {
-        println("你越么")
+        println("约")
     }
+    
     
     
     func showTheChatOrYue()
@@ -104,7 +165,6 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideTheChatOrYue()
-        srW.startProgress(self.view)
         self.navigationController?.navigationBar.hidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -119,6 +179,7 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         self.attensionBtn.layer.masksToBounds  = true
         self.attensionBtn.layer.borderColor    = UIColor.whiteColor().CGColor
         self.attensionBtn.layer.borderWidth    = 1
+        self.lingdangBtn.hidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -135,6 +196,8 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         {
             return 
         }
+        
+        srW.startProgress(self.view)
         var stringURL = ZXY_NailNetAPI.ZXY_ADFPAPI(ZXY_ADFPAPIType.ADPF_ArtistDetailInfo)
         var myID = ZXY_UserInfoDetail.sharedInstance.getUserID() ?? ""
         
@@ -223,11 +286,13 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         
         if isArtist == "1"
         {
+            currentArtRole = "1"
             isAristLbl.hidden = true
             isArtistImg.hidden = true
         }
         else
         {
+            currentArtRole = "2"
             isAristLbl.hidden = false
             isArtistImg.hidden = false
         }
@@ -245,8 +310,35 @@ class ZXY_DFPArtistDetailVC: UIViewController {
             }
             self.avaterAristImg.setImageWithURL(NSURL(string: imgURL))
         }
+        self.startInitLoadChatImg()
         
     }
+    
+    func startInitLoadChatImg()
+    {
+        var userInfo = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+        if userInfo == nil
+        {
+            return
+        }
+        else
+        {
+            var user = ZXY_UserInfoBase(dictionary: userInfo)
+            var userData = user.data
+            currentUserRole = userData.role
+        }
+        
+        if currentUserRole == "1" && currentArtRole != "1"
+        {
+            lingdangBtn.image = UIImage(named: "lingdang")
+        }
+        else
+        {
+            lingdangBtn.image = UIImage(named: "chatBao")
+        }
+        lingdangBtn.hidden = false
+    }
+
     
     func startInitSeg()
     {
@@ -347,8 +439,9 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     */
 
 }
-extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArtistTableVCDelegate , UIScrollViewDelegate
+extension ZXY_DFPArtistDetailVC : ZXY_DFPArtistCollectionVCDelegate , ZXY_DFPArtistTableVCDelegate , UIScrollViewDelegate , UIAlertViewDelegate
 {
+    
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
