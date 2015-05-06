@@ -18,9 +18,10 @@ class SR_fansTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addHeaderAndFooterforTable()
         srW.startProgress(self.view)
         self.startLoadFansData()
+        self.addHeaderAndFooterforTable()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

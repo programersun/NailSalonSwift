@@ -12,23 +12,24 @@ class SR_OrderMainVC: UIViewController {
 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var orderTableView: UITableView!
-    
+    //加载动画
+    let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
     /**
     订单页面
     1用户信息在本页面获取 : getUserInfo()
-    2.如果从美甲师详细信息页面预约，需传递美甲师id
-    3.如果从图集详细页面预约，需传递图集id和描述、美甲师id
-    
+    2.如果从美甲师详细信息页面预约，需传递美甲师id和orderType = 0
+    3.如果从图集详细页面预约，需传递图集id和描述、美甲师id 和orderType = 1
     **/
     var userId : String?
     var artistId : String?
     var userName : String?
     var orderTel : String?
     var orderTime : String? = ""
-    var userAddress : String? = ""
+    var userAddress : String?
     var ablumName : String?
     var ablumId : String?
     var artistName : String?
+    var orderType : Int?
     
     //当前用户信息
     var userInfo : ZXY_UserDetailInfoData!
@@ -59,30 +60,60 @@ class SR_OrderMainVC: UIViewController {
         if let user = userInfoDic {
             self.userData = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
             self.userInfo = self.userData?.data
+            self.userName = self.userInfo.nickName
+            if let telString = self.userInfo.tel {
+                self.orderTel = telString
+            }
+            else {
+                self.orderTel = "null"
+            }
+            if  self.userInfo.address != "null" {
+                self.userAddress = self.userInfo.address
+            }
+            else {
+                self.userAddress = "待定"
+            }
+
         }
     }
 
     func startSubmit() {
-        self.orderTime = "2015-05-08 17:04:00"
-        self.orderTel  = "18565650000"
-        self.userAddress = "阳光数码大厦"
+        srW.startProgress(self.view)
+        
+        /**
+        orderTime要转换成时间戳
+        **/
+        self.orderTime = "1430819820"
+        
+        
         if self.orderTime == "" {
             self.showAlertEasy("提示", messageContent: "预约时间不能为空")
         }
         else {
             var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_OrderAdd)
             var parameter : Dictionary<String ,  AnyObject> = ["user_id": self.artistId! , "custom_id" : self.userId!,"real_name" : self.userName!,"sex": self.userInfo.sex! ,"order_time": self.orderTime! ,"tel": self.orderTel! , "detail_addr": self.userAddress! ,"album_id": self.ablumId! ,"ablum_desc": self.ablumName!]
+            println("\(parameter)")
             ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
-                
-//                var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
-//                var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
-//                vc.userID    = self?.userId
-//                vc.role      = self?.userInfo.role
-//                vc.artistID  = self?.artistId
-//                vc.ablumId   = self?.ablumId
-//                self?.navigationController?.pushViewController(vc, animated: true)
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+                var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
+                vc.userID    = self?.userId
+                vc.role      = self?.userInfo.role
+                vc.artistID  = self?.artistId
+                vc.ablumId   = self?.ablumId
+                vc.orderType = self?.orderType
+                self?.navigationController?.pushViewController(vc, animated: true)
             }, failBlock: { [weak self](error) -> Void in
-                
+                println(error)
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                ""
             })
         }
     }
@@ -128,35 +159,17 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
         switch indexPath.row {
         case 0:
             cell.titleLabel.text = "顾客姓名"
-            if let userNameString = self.userName {
-                cell.insertLabel.text = userNameString
-            }
-            else {
-                cell.insertLabel.text = userInfo.nickName
-            }
-            
+            cell.insertLabel.text = self.userName
         case 1:
             cell.titleLabel.text = "顾客电话"
-            if let telString = self.orderTel {
-                cell.insertLabel.text = telString
-            }
-            else {
-                cell.insertLabel.text = userInfo.tel
-            }
-            
+            cell.insertLabel.text = self.orderTel
         case 2:
             cell.titleLabel.text = "预约时间"
             cell.insertLabel.text = self.orderTime
             
         case 3:
             cell.titleLabel.text = "预约地点"
-            if  self.userAddress == "" {
-                cell.insertLabel.text = userInfo.address
-            }
-            else {
-                cell.insertLabel.text = self.userAddress
-            }
-
+            cell.insertLabel.text = self.userAddress
         case 4:
             cell.titleLabel.text = "预约主题"
             if let ablumString = self.ablumName {
@@ -203,13 +216,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
         case 3:
             var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
             var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
-            if  self.userAddress == "" {
-                vc.changeInfo = userInfo.address
-            }
-            else {
-                vc.changeInfo = self.userAddress
-            }
-
+            vc.changeInfo = self.userAddress
             vc.changeType = 2
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
