@@ -20,6 +20,7 @@ class SR_OrderTableVC: UIViewController {
     var role : String!
     var pageCount : Int = 1
     var dataForShow : NSMutableArray = NSMutableArray()
+    var orderType : Int!
     
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
@@ -105,13 +106,47 @@ class SR_OrderTableVC: UIViewController {
             {
                 s.srW.hideProgress(s.view)
             }
+            self?.endFreshing()
             self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
             ""
         }
     }
+    
+    //删除订单
+    func orderDelete(nextStatus: String ,orderId : String) {
+        srW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_ChangeOrderStatus)
+        var parameter : Dictionary<String ,  AnyObject> = ["status": nextStatus ,"role": self.role! ,"user_id" : self.userID!, "order_id": orderId]
+        println("\(parameter)")
+        ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            var result : Double = returnDic["result"] as! Double
+            if result == 1000 {
+                self?.loadOrderInfo()
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+        }, failBlock: { [weak self](error) -> Void in
+            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+            ""
+        })
+    }
 
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
+//        switch self.orderType {
+//        case 0:
+////            self.navigationController?.popToViewController(ZXY_DFPArtistDetailVC(), animated: true)
+//            ""
+//        case 1:
+//            self.navigationController?.popToViewController(ZXY_DFPArtDetailVC(), animated: true)
+//        case 2:
+//            self.navigationController?.popViewControllerAnimated(true)
+//        default:
+//            ""
+//        }
     }
 }
 
@@ -157,7 +192,6 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         //预约时间
         var timeString = timeStampToDateString(cellData.addTime)
         cell.orderTime.text = timeString
-        println("\(timeString)")
         
         //预约地址
         if (cellData.detailAddr == "null") {
@@ -168,6 +202,9 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
 
         }
         
+        //订单id
+        cell.orderID = cellData.orderId
+        cell.delegate = self
         //预约主题
         if (cellData.albumDesc != nil) {
             cell.orderAblum.text = cellData.albumDesc
@@ -263,7 +300,18 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
         var vc = story.instantiateViewControllerWithIdentifier("SR_OrderDetailVCID") as! SR_OrderDetailVC
         vc.orderID = cellData.orderId
-        vc.orderStatus = cellData.orderStatus
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension SR_OrderTableVC : SR_OrderTableCellProtocol {
+    func orderDelete( orderId : String ) {
+        println("\(orderId)")
+        if self.role == "1" {
+            self.orderDelete("8", orderId: orderId)
+        }
+        else {
+            self.orderDelete("9", orderId: orderId)
+        }
     }
 }

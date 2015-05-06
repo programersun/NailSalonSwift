@@ -20,7 +20,6 @@ class SR_OrderDetailVC: UIViewController {
     
     var orderID : String?
     var userId : String?
-    var orderStatus : String!
     
     var dataForShow : SR_OrderDetailBaseClass?
     
@@ -35,8 +34,10 @@ class SR_OrderDetailVC: UIViewController {
         super.viewDidLoad()
         self.topView.backgroundColor = UIColor.NailRedColor()
         self.navigationController?.navigationBar.hidden = true
+        userCancel.hidden = true
+        orderRefuse.hidden = true
+        orderAccept.hidden = true
         self.getUserInfo()
-        self.userRole()
         srW.startProgress(self.view)
         self.loadOrderDetail()
         // Do any additional setup after loading the view.
@@ -88,15 +89,18 @@ class SR_OrderDetailVC: UIViewController {
             8：用户删除订单（隐藏）
             9：美甲师删除订单（隐藏）
             **/
-            switch self.orderStatus {
+            switch dataForShow!.data.orderStatus {
             case "1":
                 userCancel.hidden = false
+                userCancel.setTitle("取消订单", forState: UIControlState.Normal)
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
             case "4":
-                userCancel.hidden = false
-                orderRefuse.hidden = true
-                orderAccept.hidden = true
+                userCancel.hidden = true
+                orderRefuse.hidden = false
+                orderRefuse.setTitle("取消订单", forState: UIControlState.Normal)
+                orderAccept.hidden = false
+                orderAccept.setTitle("完成订单", forState: UIControlState.Normal)
             case "7":
                 userCancel.hidden = false
                 userCancel.setTitle("填写评价", forState: UIControlState.Normal)
@@ -108,17 +112,18 @@ class SR_OrderDetailVC: UIViewController {
                 orderAccept.hidden = true
             }
         case "2":
-            switch self.orderStatus {
+            switch dataForShow!.data.orderStatus {
             case "1":
                 userCancel.hidden = true
                 orderRefuse.hidden = false
+                orderRefuse.setTitle("拒绝订单", forState: UIControlState.Normal)
                 orderAccept.hidden = false
+                orderAccept.setTitle("接受订单", forState: UIControlState.Normal)
             case "4":
-                userCancel.hidden = true
-                orderRefuse.hidden = false
-                orderRefuse.setTitle("取消订单", forState: UIControlState.Normal)
-                orderAccept.hidden = false
-                orderRefuse.setTitle("完成订单", forState: UIControlState.Normal)
+                userCancel.hidden = false
+                userCancel.setTitle("取消订单", forState: UIControlState.Normal)
+                orderRefuse.hidden = true
+                orderAccept.hidden = true
             case "7":
                 userCancel.hidden = false
                 userCancel.setTitle("填写评价", forState: UIControlState.Normal)
@@ -142,7 +147,7 @@ class SR_OrderDetailVC: UIViewController {
             self?.dataForShow = SR_OrderDetailBaseClass(dictionary: returnDic)
             var result = self?.dataForShow?.result ?? 0
             if result == 1000 {
-                println("hello")
+                self?.userRole()
                 self?.orderDetailTableView.reloadData()
             }
             else
@@ -156,6 +161,9 @@ class SR_OrderDetailVC: UIViewController {
             }
         }) { [weak self](error) -> Void in
             println(error)
+            self?.userCancel.hidden = true
+            self?.orderRefuse.hidden = true
+            self?.orderAccept.hidden = true
             if let s = self
             {
                 s.srW.hideProgress(s.view)
@@ -175,19 +183,63 @@ class SR_OrderDetailVC: UIViewController {
     }
     */
     
+    func changeOrderStatus(nextStatus : String) {
+        srW.startProgress(self.view)
+        var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_ChangeOrderStatus)
+        var parameter : Dictionary<String ,  AnyObject> = ["status": nextStatus ,"role": self.userInfo.role! ,"user_id" : self.userId!, "order_id": self.orderID!]
+        println("\(parameter)")
+        ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+            var result : Double = returnDic["result"] as! Double
+            if result == 1000 {
+                self?.loadOrderDetail()
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+
+        }, failBlock: { [weak self](error) -> Void in
+            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+            ""
+        })
+    }
     //取消订单or完成评价
     @IBAction func userCancelBtnClick(sender: AnyObject) {
-        
+        switch dataForShow!.data.orderStatus {
+        case "1":
+            self.changeOrderStatus("2")
+        case "4":
+            self.changeOrderStatus("5")
+        case "7":
+            ""
+        default:
+            ""
+        }
     }
     
     //美甲师拒绝订单or美甲师接受后用户取消订单
     @IBAction func orderRefuseBtnClick(sender: AnyObject) {
-        
+        switch dataForShow!.data.orderStatus {
+        case "1":
+            self.changeOrderStatus("3")
+        case "4":
+            self.changeOrderStatus("6")
+        default:
+            ""
+        }
     }
     
     //美甲师接受or美甲师接受后用户完成订单
     @IBAction func orderAcceptBtnClick(sender: AnyObject) {
-        
+        switch dataForShow!.data.orderStatus {
+        case "1":
+            self.changeOrderStatus("4")
+        case "4":
+            self.changeOrderStatus("7")
+        default:
+            ""
+        }
     }
 
     @IBAction func backAction(sender: AnyObject) {

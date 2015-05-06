@@ -211,6 +211,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="k2k-xD-yg6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderTableCellID" id="ysD-wm-hX3" customClass="SR_OrderTableCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -289,6 +291,9 @@
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="orderDeleteBtnClick:" destination="ysD-wm-hX3" eventType="touchUpInside" id="zVL-Hv-aeT"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO1-M3-t2D">
                                                     <rect key="frame" x="85" y="117" width="40" height="20"/>
@@ -473,7 +478,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="6Ug-YZ-NOO"/>
                                                         <constraint firstAttribute="width" constant="30" id="AwW-XI-QRL"/>
                                                     </constraints>
-                                                    <state key="normal" image="miMessage">
+                                                    <state key="normal" image="miTel">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -638,12 +643,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sIO-W1-ZEN"/>
                                 </constraints>
-                                <state key="normal" title="取消订单">
+                                <state key="normal">
                                     <color key="titleColor" red="0.98823529409999999" green="0.28235294119999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="orderAcceptBtnClick:" destination="nSs-aR-vcd" eventType="touchUpInside" id="sqR-55-I3l"/>
                                     <action selector="userCancelBtnClick:" destination="nSs-aR-vcd" eventType="touchUpInside" id="Zuc-vX-xrY"/>
                                 </connections>
                             </button>
@@ -652,7 +656,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fGe-dm-WgO"/>
                                 </constraints>
-                                <state key="normal" title="拒绝订单">
+                                <state key="normal">
                                     <color key="titleColor" red="0.98823529409999999" green="0.28235294119999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -665,10 +669,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="S3I-8z-V7F"/>
                                 </constraints>
-                                <state key="normal" title="接受订单">
+                                <state key="normal">
                                     <color key="titleColor" red="0.98823529409999999" green="0.28235294119999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="orderAcceptBtnClick:" destination="nSs-aR-vcd" eventType="touchUpInside" id="DD8-xq-MoD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -809,6 +816,7 @@
         <image name="backArrow" width="11" height="19"/>
         <image name="lineToSR" width="1" height="60"/>
         <image name="miMessage" width="25" height="25"/>
+        <image name="miTel" width="25" height="25"/>
         <image name="rightSimple" width="30" height="30"/>
         <image name="segLine" width="200" height="1"/>
         <image name="textLineAndroid" width="400" height="50"/>

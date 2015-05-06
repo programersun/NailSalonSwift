@@ -19,8 +19,9 @@ class SR_attentionTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         srW.startProgress(self.view)
-        self.addHeaderAndFooterforTable()
         self.startLoadAttentionData()
+        self.addHeaderAndFooterforTable()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -295,6 +295,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                 var vc = storyOrder.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
                 vc.userID = userID!
                 vc.role = self.userInfo.role!
+                vc.orderType = 2
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC

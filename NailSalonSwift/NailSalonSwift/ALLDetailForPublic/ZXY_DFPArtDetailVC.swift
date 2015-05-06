@@ -677,6 +677,7 @@ extension ZXY_DFPArtDetailVC : ZXY_DFPADTagCellProtocol {
         orderVC.ablumName = dataForTable?.data.dataDescription
         orderVC.ablumId   = dataForTable?.data.albumId
         orderVC.artistId  = dataForTable?.data.userId
+        orderVC.orderType = 1
         self.navigationController?.pushViewController(orderVC, animated: true)
     }
 }
