@@ -43,6 +43,7 @@ class SR_OrderMainVC: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.orderTableView.reloadData()
         self.navigationController?.navigationBar.hidden = true
     }
 
@@ -62,7 +63,28 @@ class SR_OrderMainVC: UIViewController {
     }
 
     func startSubmit() {
-        
+        self.orderTime = "2015-05-08 17:04:00"
+        self.orderTel  = "18565650000"
+        self.userAddress = "阳光数码大厦"
+        if self.orderTime == "" {
+            self.showAlertEasy("提示", messageContent: "预约时间不能为空")
+        }
+        else {
+            var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_OrderAdd)
+            var parameter : Dictionary<String ,  AnyObject> = ["user_id": self.artistId! , "custom_id" : self.userId!,"real_name" : self.userName!,"sex": self.userInfo.sex! ,"order_time": self.orderTime! ,"tel": self.orderTel! , "detail_addr": self.userAddress! ,"album_id": self.ablumId! ,"ablum_desc": self.ablumName!]
+            ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+                
+//                var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+//                var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
+//                vc.userID    = self?.userId
+//                vc.role      = self?.userInfo.role
+//                vc.artistID  = self?.artistId
+//                vc.ablumId   = self?.ablumId
+//                self?.navigationController?.pushViewController(vc, animated: true)
+            }, failBlock: { [weak self](error) -> Void in
+                
+            })
+        }
     }
     /*
     // MARK: - Navigation
@@ -79,14 +101,7 @@ class SR_OrderMainVC: UIViewController {
     
     //提交订单
     @IBAction func submitOrder(sender: AnyObject) {
-        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
-        var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
-        vc.userID    = self.userId
-        vc.role      = self.userInfo.role
-        vc.artistID  = self.artistId
-        vc.ablumId   = self.ablumId
-        vc.ablumName = self.ablumName
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.startSubmit()
     }
 
 }
@@ -160,23 +175,44 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
-            ""
+            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
+            if let userNameString = self.userName {
+                 vc.changeInfo = userNameString
+            }
+            else {
+                 vc.changeInfo = userInfo.nickName
+            }
+            vc.changeType = 0
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            ""
+            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
+            if let telString = self.orderTel {
+                vc.changeInfo = telString
+            }
+            else {
+                vc.changeInfo = userInfo.tel
+            }
+            vc.changeType = 1
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
-//            var alert = UIAlertView()
-//            alert.title    = "选择时间"
-//            var datePicker = UIDatePicker(frame: CGRectMake(0, 0, self.view.frame.size.width * 0.8, 200))
-//            datePicker.datePickerMode = UIDatePickerMode.DateAndTime
-//            alert.addSubview(datePicker)
-//            alert.addButtonWithTitle("取消")
-//            alert.addButtonWithTitle("确定")
-//            alert.delegate = self
-//            alert.show()
             ""
-
         case 3:
-            ""
+            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
+            if  self.userAddress == "" {
+                vc.changeInfo = userInfo.address
+            }
+            else {
+                vc.changeInfo = self.userAddress
+            }
+
+            vc.changeType = 2
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
         case 4:
             var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
             var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
@@ -190,7 +226,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
     }
 }
 
-extension SR_OrderMainVC : SR_myAlbumVCProtocol , UIAlertViewDelegate {
+extension SR_OrderMainVC : SR_myAlbumVCProtocol ,SR_ChangeOrderInfoProtocol  {
     //选择主题样式返回值
     func backToOrder(ablumDesc: String, ablumId: String?) {
         self.ablumName = ablumDesc
@@ -198,10 +234,14 @@ extension SR_OrderMainVC : SR_myAlbumVCProtocol , UIAlertViewDelegate {
         self.orderTableView.reloadData()
     }
     
-    //编辑时间
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
-            
-        }
+    //修改订单信息的代理
+    func changeNickName(nickName: String) {
+        self.userName = nickName
+    }
+    func changeTel(tel: String) {
+        self.orderTel = tel
+    }
+    func changeAddress(address: String) {
+        self.userAddress = address
     }
 }

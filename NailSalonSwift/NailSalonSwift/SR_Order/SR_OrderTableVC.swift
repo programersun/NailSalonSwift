@@ -157,6 +157,7 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         //预约时间
         var timeString = timeStampToDateString(cellData.addTime)
         cell.orderTime.text = timeString
+        println("\(timeString)")
         
         //预约地址
         if (cellData.detailAddr == "null") {
@@ -168,13 +169,13 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         }
         
         //预约主题
-        if (self.ablumName != nil) {
-            cell.orderAblum.text = self.ablumName
+        if (cellData.albumDesc != nil) {
+            cell.orderAblum.text = cellData.albumDesc
         }
         else {
             cell.orderAblum.text = "待定"
         }
-        
+    
         /**
             订单状态
             1：发出订单
@@ -217,7 +218,7 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
                 cell.orderState.textColor = UIColor.NailRedColor()
                 cell.orderDeleteBtn.hidden = false
             case "7":
-                cell.orderState.text = "交易完成"
+                cell.orderState.text = "已完成"
                 cell.orderState.textColor = UIColor.NailRedColor()
                 cell.orderDeleteBtn.hidden = false
             default:
@@ -247,7 +248,7 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
                     cell.orderState.textColor = UIColor.NailGrayColor()
                     cell.orderDeleteBtn.hidden = false
                 case "7":
-                    cell.orderState.text = "交易完成"
+                    cell.orderState.text = "已完成"
                     cell.orderState.textColor = UIColor.NailRedColor()
                     cell.orderDeleteBtn.hidden = false
                 default:

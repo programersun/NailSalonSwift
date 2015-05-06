@@ -1,7 +1,7 @@
 //
 //  SR_OrderListData.h
 //
-//  Created by sun  on 15/5/4
+//  Created by sun  on 15/5/6
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *preStatus;
 @property (nonatomic, strong) NSString *realName;
 @property (nonatomic, strong) NSString *orderStatus;
+@property (nonatomic, strong) NSString *albumDesc;
 @property (nonatomic, strong) NSString *addTime;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
