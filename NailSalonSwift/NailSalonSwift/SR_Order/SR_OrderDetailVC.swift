@@ -279,7 +279,7 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                 firstCell.orderStatus.text = "顾客取消"
                 firstCell.orderStatus.textColor = UIColor.NailRedColor()
             case "7":
-                firstCell.orderStatus.text = "交易完成"
+                firstCell.orderStatus.text = "已完成"
                 firstCell.orderStatus.textColor = UIColor.NailRedColor()
             default:
                 switch dataForShow!.data.preStatus {
@@ -304,7 +304,7 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                     firstCell.orderStatus.text = "顾客取消"
                     firstCell.orderStatus.textColor = UIColor.NailGrayColor()
                 case "7":
-                    firstCell.orderStatus.text = "交易完成"
+                    firstCell.orderStatus.text = "已完成"
                     firstCell.orderStatus.textColor = UIColor.NailRedColor()
                 default:
                     ""

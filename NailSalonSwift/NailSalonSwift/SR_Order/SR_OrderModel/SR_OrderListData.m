@@ -1,7 +1,7 @@
 //
 //  SR_OrderListData.m
 //
-//  Created by sun  on 15/5/4
+//  Created by sun  on 15/5/6
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ NSString *const kSR_OrderListDataDetailAddr = @"detail_addr";
 NSString *const kSR_OrderListDataPreStatus = @"pre_status";
 NSString *const kSR_OrderListDataRealName = @"real_name";
 NSString *const kSR_OrderListDataOrderStatus = @"order_status";
+NSString *const kSR_OrderListDataAlbumDesc = @"album_desc";
 NSString *const kSR_OrderListDataAddTime = @"add_time";
 
 
@@ -35,6 +36,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
 @synthesize preStatus = _preStatus;
 @synthesize realName = _realName;
 @synthesize orderStatus = _orderStatus;
+@synthesize albumDesc = _albumDesc;
 @synthesize addTime = _addTime;
 
 
@@ -58,6 +60,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
             self.preStatus = [self objectOrNilForKey:kSR_OrderListDataPreStatus fromDictionary:dict];
             self.realName = [self objectOrNilForKey:kSR_OrderListDataRealName fromDictionary:dict];
             self.orderStatus = [self objectOrNilForKey:kSR_OrderListDataOrderStatus fromDictionary:dict];
+            self.albumDesc = [self objectOrNilForKey:kSR_OrderListDataAlbumDesc fromDictionary:dict];
             self.addTime = [self objectOrNilForKey:kSR_OrderListDataAddTime fromDictionary:dict];
 
     }
@@ -77,6 +80,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
     [mutableDict setValue:self.preStatus forKey:kSR_OrderListDataPreStatus];
     [mutableDict setValue:self.realName forKey:kSR_OrderListDataRealName];
     [mutableDict setValue:self.orderStatus forKey:kSR_OrderListDataOrderStatus];
+    [mutableDict setValue:self.albumDesc forKey:kSR_OrderListDataAlbumDesc];
     [mutableDict setValue:self.addTime forKey:kSR_OrderListDataAddTime];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -109,6 +113,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
     self.preStatus = [aDecoder decodeObjectForKey:kSR_OrderListDataPreStatus];
     self.realName = [aDecoder decodeObjectForKey:kSR_OrderListDataRealName];
     self.orderStatus = [aDecoder decodeObjectForKey:kSR_OrderListDataOrderStatus];
+    self.albumDesc = [aDecoder decodeObjectForKey:kSR_OrderListDataAlbumDesc];
     self.addTime = [aDecoder decodeObjectForKey:kSR_OrderListDataAddTime];
     return self;
 }
@@ -124,6 +129,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
     [aCoder encodeObject:_preStatus forKey:kSR_OrderListDataPreStatus];
     [aCoder encodeObject:_realName forKey:kSR_OrderListDataRealName];
     [aCoder encodeObject:_orderStatus forKey:kSR_OrderListDataOrderStatus];
+    [aCoder encodeObject:_albumDesc forKey:kSR_OrderListDataAlbumDesc];
     [aCoder encodeObject:_addTime forKey:kSR_OrderListDataAddTime];
 }
 
@@ -141,6 +147,7 @@ NSString *const kSR_OrderListDataAddTime = @"add_time";
         copy.preStatus = [self.preStatus copyWithZone:zone];
         copy.realName = [self.realName copyWithZone:zone];
         copy.orderStatus = [self.orderStatus copyWithZone:zone];
+        copy.albumDesc = [self.albumDesc copyWithZone:zone];
         copy.addTime = [self.addTime copyWithZone:zone];
     }
     
