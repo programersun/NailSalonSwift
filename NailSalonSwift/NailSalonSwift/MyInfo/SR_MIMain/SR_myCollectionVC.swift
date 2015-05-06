@@ -14,7 +14,7 @@ class SR_myCollectionVC: UIViewController {
     @IBOutlet weak var collectionSegument: UISegmentedControl!
     @IBOutlet weak var collectionScrollView: UIScrollView!
     
-    @IBOutlet weak var topBarView: UIView!
+    
     var userID : String?
     
     var courseCollectionVC : SR_courseCollectionVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_courseCollectionVCID") as! SR_courseCollectionVC
@@ -23,6 +23,7 @@ class SR_myCollectionVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.titleView = collectionSegument
         // Do any additional setup after loading the view.
     }
 
@@ -43,11 +44,7 @@ class SR_myCollectionVC: UIViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
-    }
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

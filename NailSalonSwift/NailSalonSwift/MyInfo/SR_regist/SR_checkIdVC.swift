@@ -11,7 +11,7 @@ import UIKit
 class SR_checkIdVC: UIViewController {
     
     @IBOutlet weak var checkTableView: UITableView!
-    @IBOutlet weak var topBarView: UIView!
+    
     @IBOutlet weak var cameraBackgroundView: UIControl!
     @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var registPhotoBtn: UIButton!
@@ -38,7 +38,7 @@ class SR_checkIdVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+       
         checkTableView.backgroundColor = UIColor.NailBackGrayColor()
         cameraBackgroundView.hidden = true
         cameraBackgroundView.layer.opacity = 0

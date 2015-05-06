@@ -19,10 +19,10 @@ class LCYRessetPasswordViewController: UIViewController {
     @IBOutlet private weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordLine: UIImageView!
     
-    @IBOutlet weak var topBarView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        
         // Do any additional setup after loading the view.
     }
 

@@ -24,7 +24,6 @@ class SR_albumCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         srW.startProgress(self.view)
-        self.navigationController?.navigationBar.hidden = true
         ablumCollection.backgroundColor = UIColor.NailBackGrayColor()
         self.changeLayoutType(2)
         

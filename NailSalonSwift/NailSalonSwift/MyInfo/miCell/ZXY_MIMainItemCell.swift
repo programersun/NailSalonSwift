@@ -15,6 +15,7 @@ class ZXY_MIMainItemCell: UITableViewCell {
     @IBOutlet weak var itemImg: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     
+    @IBOutlet weak var tipInfoLbl: UILabel!
     class func cellID() -> String
     {
         return "ZXY_MIMainItemCellID"
@@ -25,6 +26,8 @@ class ZXY_MIMainItemCell: UITableViewCell {
         var scale = UIScreen.mainScreen().scale
         var segHight = segLineImg.frame.size.height / scale
         segLineImg.frame = CGRectMake(segLineImg.frame.origin.x, segLineImg.frame.origin.y, segLineImg.frame.size.width, segHight)
+        tipInfoLbl.layer.cornerRadius = 15
+        tipInfoLbl.layer.masksToBounds = true
         // Initialization code
     }
 

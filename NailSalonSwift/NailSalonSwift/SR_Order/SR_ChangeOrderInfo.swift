@@ -17,7 +17,7 @@ protocol SR_ChangeOrderInfoProtocol : class
 
 class SR_ChangeOrderInfo: UIViewController {
 
-    @IBOutlet weak var topBarView: UIView!
+    
     @IBOutlet weak var changeInfoText: UITextField!
     
     var changeInfo : String?
@@ -26,7 +26,7 @@ class SR_ChangeOrderInfo: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        self.setNaviBarRightImage("rightSimple")
         changeInfoText.text = changeInfo
         // Do any additional setup after loading the view.
     }
@@ -36,12 +36,7 @@ class SR_ChangeOrderInfo: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-        
-    }
-    
-    @IBAction func doneAction(sender: AnyObject) {
+    override func rightNaviButtonAction() {
         self.changeInfo = self.changeInfoText.text
         switch changeType {
         case 0:
@@ -49,7 +44,7 @@ class SR_ChangeOrderInfo: UIViewController {
             {
                 de.changeNickName(changeInfo!)
             }
-
+            
         case 1:
             if let de = delegate
             {
@@ -65,7 +60,8 @@ class SR_ChangeOrderInfo: UIViewController {
         }
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    
+   
     /*
     // MARK: - Navigation
 

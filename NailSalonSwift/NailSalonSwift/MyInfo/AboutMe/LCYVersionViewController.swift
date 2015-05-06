@@ -15,10 +15,10 @@ class LCYVersionViewController: UIViewController {
 
     @IBOutlet private weak var versionLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var topBarView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        
         iconView.layer.cornerRadius = 10
         iconView.layer.masksToBounds = true
         // Do any additional setup after loading the view.

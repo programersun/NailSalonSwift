@@ -11,7 +11,7 @@ import UIKit
 class SR_OrderTableVC: UIViewController {
     
     @IBOutlet weak var orderListTableView: UITableView!
-    @IBOutlet weak var topBar: UIView!
+    
     
     var artistID : String?
     var userID : String?
@@ -27,18 +27,15 @@ class SR_OrderTableVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBar.backgroundColor = UIColor.NailRedColor()
+        
         self.orderListTableView.backgroundColor = UIColor.NailBackGrayColor()
-        self.navigationController?.navigationBar.hidden = true
+        
         srW.startProgress(self.view)
         self.loadOrderInfo()
         self.addHeaderAndFooterforTable()
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-    }
     
     //停止上拉下拉刷新
     private func endFreshing()

@@ -103,13 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         EaseMob.sharedInstance().applicationWillEnterForeground(application)
     }
     
-//    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-//        EaseMob.sharedInstance().application(application, didRegisterUserNotificationSettings: notificationSettings)
-//    }
-    
-//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-//        EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: notification)
-//    }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         return UMSocialSnsService.handleOpenURL(url)

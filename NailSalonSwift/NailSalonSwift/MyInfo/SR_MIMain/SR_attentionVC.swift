@@ -14,7 +14,7 @@ class SR_attentionVC: UIViewController {
     @IBOutlet weak var attentionSegument: UISegmentedControl!
     @IBOutlet weak var attentionScrollView: UIScrollView!
     
-    @IBOutlet weak var topBarView: UIView!
+    
     var userID : String?
     
     var attentionVC : SR_attentionTableVC =  UIStoryboard(name: "SR_MIMainStory", bundle: nil).instantiateViewControllerWithIdentifier("SR_attentionID") as! SR_attentionTableVC
@@ -22,6 +22,7 @@ class SR_attentionVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.titleView = attentionSegument
         // Do any additional setup after loading the view.
     }
     
@@ -36,10 +37,6 @@ class SR_attentionVC: UIViewController {
         self.attentionScrollView.addSubview(fansVC.tableView)
         attentionScrollView.delegate = self
 
-    }
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
     }
     
     override func didReceiveMemoryWarning() {

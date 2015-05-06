@@ -10,7 +10,7 @@ import UIKit
 
 class SR_OrderMainVC: UIViewController {
 
-    @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var orderTableView: UITableView!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
@@ -37,15 +37,15 @@ class SR_OrderMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topView.backgroundColor = UIColor.NailRedColor()
+        
         self.getUserInfo()
-        self.navigationController?.navigationBar.hidden = true
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         self.orderTableView.reloadData()
-        self.navigationController?.navigationBar.hidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {

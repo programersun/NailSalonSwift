@@ -11,7 +11,7 @@ import UIKit
 
 class SR_OrderDetailVC: UIViewController {
 
-    @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var orderDetailTableView: UITableView!
     
     @IBOutlet weak var userCancel: UIButton!
@@ -32,8 +32,7 @@ class SR_OrderDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topView.backgroundColor = UIColor.NailRedColor()
-        self.navigationController?.navigationBar.hidden = true
+        
         userCancel.hidden = true
         orderRefuse.hidden = true
         orderAccept.hidden = true
@@ -43,9 +42,6 @@ class SR_OrderDetailVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
-    }
     
     //获取当前用户的信息
     func getUserInfo() {

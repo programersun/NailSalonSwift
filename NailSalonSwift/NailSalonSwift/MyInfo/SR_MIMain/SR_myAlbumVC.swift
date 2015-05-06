@@ -17,7 +17,7 @@ class SR_myAlbumVC: UIViewController {
 
     @IBOutlet weak var ablumCollection: UICollectionView!
     
-    @IBOutlet weak var topBarView: UIView!
+    
     var layout = CHTCollectionViewWaterfallLayout()
     var ablumPage : Int = 1
     var userID : String?
@@ -32,7 +32,7 @@ class SR_myAlbumVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        self.title = "我的图集"
         ablumCollection.backgroundColor = UIColor.NailBackGrayColor()
         self.changeLayoutType(2)
         ablumCollection.addFooterWithCallback {[weak self] () -> Void in
@@ -52,8 +52,7 @@ class SR_myAlbumVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         srW.startProgress(self.view)
         self.startDownLoadAlbum()
-        self.navigationController?.navigationBar.hidden = true
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        
     }
 
     override func didReceiveMemoryWarning() {

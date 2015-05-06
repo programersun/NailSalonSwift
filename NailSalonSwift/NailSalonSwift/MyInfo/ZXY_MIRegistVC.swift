@@ -15,6 +15,7 @@ protocol ZXY_MIRegistVCProtocol: class
 
 class ZXY_MIRegistVC: UIViewController {
     
+    @IBOutlet var registSegment: UISegmentedControl!
     //接受美甲师用户名和密码
     var artistName : String?
     var artistPassword : String?
@@ -27,8 +28,7 @@ class ZXY_MIRegistVC: UIViewController {
     var registUserVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as! SR_registTableVC
     var registArtistVC : SR_registTableVC =  UIStoryboard(name: "MyInfoStory", bundle: nil).instantiateViewControllerWithIdentifier("registIdentity") as! SR_registTableVC
     
-    @IBOutlet weak var registSegument: UISegmentedControl!
-    @IBOutlet weak var topBarView: UIView!
+    
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
 
@@ -39,7 +39,7 @@ class ZXY_MIRegistVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        self.navigationItem.titleView = registSegment
         registProtocolBtn.setTitleColor(UIColor.NailRedColor(), forState: UIControlState.Normal)
         registArtistVC.isArtistRegist = true
         registUserVC.isArtistRegist = false
@@ -213,12 +213,12 @@ extension ZXY_MIRegistVC : UIScrollViewDelegate {
         println("1")
         if scrollView.contentOffset.x < screenWidth
         {
-            registSegument.selectedSegmentIndex = 0
+            registSegment.selectedSegmentIndex = 0
             self.delegate?.artistRegist(true)
         }
         else
         {
-            registSegument.selectedSegmentIndex = 1
+            registSegment.selectedSegmentIndex = 1
             self.delegate?.userRegist(false)
         }
 

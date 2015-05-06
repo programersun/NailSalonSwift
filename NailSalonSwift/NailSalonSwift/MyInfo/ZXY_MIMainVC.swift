@@ -19,10 +19,11 @@ class ZXY_MIMainVC: UIViewController {
         super.viewDidLoad()
         zxyW.startProgress(self.view)
         startDownLoadUserDetailInfo()
-        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
+        
         self.reloadUserData()
     }
 
@@ -205,7 +206,16 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         }
         else
         {
-            
+            smallCell.tipInfoLbl.hidden = true
+            var numNoRead = EaseMob.sharedInstance().chatManager.totalUnreadMessagesCount?() 
+            if indexPath.section == 1 && indexPath.row == 0
+            {
+                if numNoRead > 0
+                {
+                    smallCell.tipInfoLbl.text = "\(numNoRead!)"
+                    smallCell.tipInfoLbl.hidden = false
+                }
+            }
             var imgName = self.itemDataForTable(indexPath).imageName
             var titleName = self.itemDataForTable(indexPath).itemTitle
             smallCell.itemImg.image = UIImage(named: imgName)
@@ -326,9 +336,9 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
     }
     
     func settingBtnClick() {
-        EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (object, error) -> Void in
-            self.performSegueWithIdentifier("toSettingVC", sender: nil)
-        }, onQueue: nil)
+       
+        self.performSegueWithIdentifier("toSettingVC", sender: nil)
+        
     }
     
     func headImgTouch() {
@@ -341,7 +351,6 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
             var storyHead = UIStoryboard(name: "PublicStory", bundle: nil)
             var detailArtist = storyHead.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
             detailArtist.artistID = userID
-            detailArtist.navigationController?.navigationBar.hidden = false
             self.navigationController?.pushViewController(detailArtist, animated: true)
         }
     }
@@ -353,7 +362,7 @@ extension ZXY_MIMainVC : UIAlertViewDelegate  {
             var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
             var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
             loginVC.delegate = self
-            loginVC.navigationController?.navigationBar.hidden = true
+            
             self.navigationController?.pushViewController(loginVC, animated: true)
         }
     }

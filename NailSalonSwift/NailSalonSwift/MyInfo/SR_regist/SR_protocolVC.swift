@@ -11,10 +11,10 @@ import UIKit
 class SR_protocolVC: UIViewController {
     
     @IBOutlet weak var protocolWebView: UIWebView!
-    @IBOutlet weak var topBarView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        
         let fileURL = NSBundle.mainBundle().URLForResource("register_help", withExtension: "html")!
         let data = NSData(contentsOfURL: fileURL)
         protocolWebView.loadData(data, MIMEType: "text/html", textEncodingName: "utf-8", baseURL: nil)

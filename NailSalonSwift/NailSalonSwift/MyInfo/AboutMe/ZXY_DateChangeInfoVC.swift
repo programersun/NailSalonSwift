@@ -19,7 +19,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
 
 
     
-    @IBOutlet weak var topBarView: UIView!
+    
     @IBOutlet weak var currentTable: UITableView!
     private var infoText : UITextField?
     private var initTitle : String!
@@ -66,7 +66,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topBarView.backgroundColor = UIColor.NailRedColor()
+        
         currentTable.tableFooterView = UIView(frame: CGRectZero)
         // Do any additional setup after loading the view.
     }
