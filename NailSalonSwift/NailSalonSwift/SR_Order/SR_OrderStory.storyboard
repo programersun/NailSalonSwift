@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderMainVCCellID" id="Mhe-mz-Eia" customClass="SR_OrderMainVCCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderMainVCCellID" id="Mhe-mz-Eia" customClass="SR_OrderMainVCCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mhe-mz-Eia" id="lOs-nQ-hSg">
@@ -263,10 +263,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="k2k-xD-yg6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderTableCellID" id="ysD-wm-hX3" customClass="SR_OrderTableCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderTableCellID" id="ysD-wm-hX3" customClass="SR_OrderTableCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ysD-wm-hX3" id="NWJ-e9-CnP">
@@ -381,7 +379,6 @@
                                                 <constraint firstItem="pSS-x3-gJL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yO1-M3-t2D" secondAttribute="trailing" constant="10" id="tCJ-rg-Zd3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="headImg" destination="myj-r7-ZwI" id="AvN-8Y-KFD"/>
                                             <outlet property="nickName" destination="xIM-hT-4fJ" id="wxy-nk-SBf"/>
@@ -431,7 +428,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SR_OrderDetailFirstCellID" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderDetailFirstCellID" rowHeight="125" id="Z5r-Qh-n8Y" customClass="SR_OrderDetailFirstCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SR_OrderDetailFirstCellID" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderDetailFirstCellID" rowHeight="125" id="Z5r-Qh-n8Y" customClass="SR_OrderDetailFirstCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z5r-Qh-n8Y" id="AuX-ev-cHU">
@@ -541,7 +538,7 @@
                                             <outlet property="orderStatus" destination="mg5-NO-UIX" id="Lyh-5Z-sfX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SR_OrderDetailSecondCellID" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderDetailSecondCellID" id="G7e-7f-Vd7" customClass="SR_OrderDetailSecondCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SR_OrderDetailSecondCellID" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderDetailSecondCellID" id="G7e-7f-Vd7" customClass="SR_OrderDetailSecondCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7e-7f-Vd7" id="7zb-BI-Vpt">
@@ -589,7 +586,7 @@
                                             <outlet property="titleLabel" destination="EmE-tD-0tb" id="uSQ-rF-nDH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SR_OrderDetailThirdCellID" id="PTh-hg-shu" customClass="SR_OrderDetailThirdCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderDetailThirdCellID" id="PTh-hg-shu" customClass="SR_OrderDetailThirdCell" customModule="NailSalonSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PTh-hg-shu" id="y6p-nj-n64">
@@ -713,6 +710,204 @@
             </objects>
             <point key="canvasLocation" x="2312" y="239"/>
         </scene>
+        <!--填写评价-->
+        <scene sceneID="RON-cO-Irr">
+            <objects>
+                <viewController storyboardIdentifier="SR_OrderCommentVCID" title="填写评价" id="xDS-Z3-wAq" customClass="SR_OrderCommentVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="98Y-Fh-dK5"/>
+                        <viewControllerLayoutGuide type="bottom" id="LCm-oJ-c3G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nUa-Xc-juQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HEn-D7-J3u">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderCommentFirstCellID" rowHeight="150" id="M9E-p3-cxv" customClass="SR_OrderCommentFirstCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M9E-p3-cxv" id="QKl-6E-pjz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="对本次指尖之旅的评价..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gL4-Rl-HQb">
+                                                    <rect key="frame" x="20" y="10" width="560" height="130"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="vjo-v8-BDo">
+                                                    <rect key="frame" x="10" y="150" width="580" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="BhF-Xh-p0g"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="Mhc-vZ-eXb"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gL4-Rl-HQb" firstAttribute="top" secondItem="QKl-6E-pjz" secondAttribute="top" constant="10" id="Fb4-aF-Q2r"/>
+                                                <constraint firstItem="vjo-v8-BDo" firstAttribute="top" secondItem="gL4-Rl-HQb" secondAttribute="bottom" constant="10" id="Ldx-Vq-9ju"/>
+                                                <constraint firstAttribute="trailing" secondItem="gL4-Rl-HQb" secondAttribute="trailing" constant="20" id="Lze-IR-a1b"/>
+                                                <constraint firstAttribute="trailing" secondItem="vjo-v8-BDo" secondAttribute="trailing" constant="10" id="bsX-CB-t7S"/>
+                                                <constraint firstAttribute="bottom" secondItem="gL4-Rl-HQb" secondAttribute="bottom" constant="10" id="htM-mT-ysq"/>
+                                                <constraint firstItem="vjo-v8-BDo" firstAttribute="leading" secondItem="QKl-6E-pjz" secondAttribute="leading" constant="10" id="isc-vb-yeb"/>
+                                                <constraint firstItem="gL4-Rl-HQb" firstAttribute="leading" secondItem="QKl-6E-pjz" secondAttribute="leading" constant="20" id="nvT-Xg-J6T"/>
+                                                <constraint firstAttribute="bottom" secondItem="vjo-v8-BDo" secondAttribute="bottom" id="ucO-X3-8ne"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="htM-mT-ysq"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentText" destination="gL4-Rl-HQb" id="sbr-AM-Iqu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderCommentSecondCellID" rowHeight="160" id="hbd-jj-K72" customClass="SR_OrderCommentSecondCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hbd-jj-K72" id="IfP-lJ-Ife">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美丽晒出来" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c6-vh-OEz">
+                                                    <rect key="frame" x="20" y="15" width="85" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="xdr-Ox-JQU">
+                                                    <rect key="frame" x="10" y="160" width="580" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="hOa-Kd-zFv"/>
+                                                        <constraint firstAttribute="height" constant="0.5" id="jw0-hC-Bce"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="0.5" id="yuB-JT-XBG"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idCheck" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-5C-37N">
+                                                    <rect key="frame" x="20" y="52" width="100" height="100"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="1es-xg-3gL"/>
+                                                        <constraint firstAttribute="height" constant="100" id="teW-fc-zuH"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3c6-vh-OEz" firstAttribute="leading" secondItem="IfP-lJ-Ife" secondAttribute="leading" constant="20" id="5r9-GR-GYp"/>
+                                                <constraint firstItem="xdr-Ox-JQU" firstAttribute="top" secondItem="5Op-5C-37N" secondAttribute="bottom" constant="8" id="EEJ-J5-VHa"/>
+                                                <constraint firstAttribute="bottom" secondItem="xdr-Ox-JQU" secondAttribute="bottom" id="Idf-RT-qgm"/>
+                                                <constraint firstAttribute="trailing" secondItem="xdr-Ox-JQU" secondAttribute="trailing" constant="10" id="XPd-kC-j6y"/>
+                                                <constraint firstItem="5Op-5C-37N" firstAttribute="leading" secondItem="IfP-lJ-Ife" secondAttribute="leading" constant="20" id="fp9-oe-rlU"/>
+                                                <constraint firstItem="5Op-5C-37N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3c6-vh-OEz" secondAttribute="bottom" constant="5" id="l0Q-ey-waE"/>
+                                                <constraint firstItem="xdr-Ox-JQU" firstAttribute="leading" secondItem="IfP-lJ-Ife" secondAttribute="leading" constant="10" id="p7K-Q4-0T3"/>
+                                                <constraint firstItem="3c6-vh-OEz" firstAttribute="top" secondItem="IfP-lJ-Ife" secondAttribute="top" constant="15" id="u4Q-EX-UiU"/>
+                                                <constraint firstItem="5Op-5C-37N" firstAttribute="top" relation="lessThanOrEqual" secondItem="3c6-vh-OEz" secondAttribute="bottom" constant="30" id="w93-Xi-cbx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="showImgView" destination="5Op-5C-37N" id="bgt-hu-PY6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SR_OrderCommentThirdCellID" rowHeight="60" id="yFo-sr-LeW" customClass="SR_OrderCommentThirdCell" customModule="NailSalonSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yFo-sr-LeW" id="3iu-ly-X1I">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp0-hc-tZJ">
+                                                    <rect key="frame" x="115" y="24" width="130" height="35"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="GPU-Kp-vsv"/>
+                                                        <constraint firstAttribute="width" constant="130" id="uzn-cK-DBu"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为我打分：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxD-Qm-Hpg">
+                                                    <rect key="frame" x="20" y="29" width="85" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="bpA-5Q-Ghe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UxD-Qm-Hpg" firstAttribute="bottom" secondItem="mp0-hc-tZJ" secondAttribute="bottom" id="7st-Lg-Dp2"/>
+                                                <constraint firstAttribute="bottom" secondItem="UxD-Qm-Hpg" secondAttribute="bottom" constant="10" id="8FA-bd-R8g"/>
+                                                <constraint firstItem="mp0-hc-tZJ" firstAttribute="leading" secondItem="UxD-Qm-Hpg" secondAttribute="trailing" constant="10" id="DZQ-ga-uDM"/>
+                                                <constraint firstItem="UxD-Qm-Hpg" firstAttribute="leading" secondItem="3iu-ly-X1I" secondAttribute="leading" constant="20" id="Mpf-ZV-DvS"/>
+                                                <constraint firstItem="UxD-Qm-Hpg" firstAttribute="height" secondItem="mp0-hc-tZJ" secondAttribute="height" id="SrO-dw-ZNc"/>
+                                                <constraint firstAttribute="centerY" secondItem="UxD-Qm-Hpg" secondAttribute="centerY" constant="-6" id="Wia-3d-Ili"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mp0-hc-tZJ" secondAttribute="trailing" constant="192" id="ZBt-TD-eRF"/>
+                                                <constraint firstAttribute="centerY" secondItem="mp0-hc-tZJ" secondAttribute="centerY" constant="-6" id="hYE-AL-6rf"/>
+                                                <constraint firstItem="UxD-Qm-Hpg" firstAttribute="centerY" secondItem="mp0-hc-tZJ" secondAttribute="centerY" constant="-2" id="zUE-G1-MSZ"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="7st-Lg-Dp2"/>
+                                                    <exclude reference="SrO-dw-ZNc"/>
+                                                    <exclude reference="Wia-3d-Ili"/>
+                                                    <exclude reference="ZBt-TD-eRF"/>
+                                                    <exclude reference="hYE-AL-6rf"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="starView" destination="mp0-hc-tZJ" id="Tfs-6t-td7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xDS-Z3-wAq" id="svP-TX-Jhi"/>
+                                    <outlet property="delegate" destination="xDS-Z3-wAq" id="VFk-1B-50q"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7N-di-DLL">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="6ci-Sb-R8l"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ns6-dP-e14"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="发表评论">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.28235294119999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6ci-Sb-R8l"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="commentBtnClick:" destination="xDS-Z3-wAq" eventType="touchUpInside" id="2fo-NQ-ka6"/>
+                                    <action selector="userCancelBtnClick:" destination="nSs-aR-vcd" eventType="touchUpInside" id="fcX-Y5-JdJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="k7N-di-DLL" secondAttribute="bottom" id="5nY-5U-Hhb"/>
+                            <constraint firstItem="k7N-di-DLL" firstAttribute="top" secondItem="HEn-D7-J3u" secondAttribute="bottom" id="73G-hl-aQf"/>
+                            <constraint firstAttribute="trailing" secondItem="HEn-D7-J3u" secondAttribute="trailing" id="EX4-Xt-9FT"/>
+                            <constraint firstItem="HEn-D7-J3u" firstAttribute="top" secondItem="nUa-Xc-juQ" secondAttribute="top" id="PDD-ou-mhA"/>
+                            <constraint firstItem="HEn-D7-J3u" firstAttribute="leading" secondItem="nUa-Xc-juQ" secondAttribute="leading" id="iyd-ng-ICX"/>
+                            <constraint firstItem="k7N-di-DLL" firstAttribute="top" secondItem="HEn-D7-J3u" secondAttribute="bottom" id="p8j-4U-YWa"/>
+                            <constraint firstItem="k7N-di-DLL" firstAttribute="leading" secondItem="nUa-Xc-juQ" secondAttribute="leading" id="rxZ-Ai-igZ"/>
+                            <constraint firstAttribute="trailing" secondItem="k7N-di-DLL" secondAttribute="trailing" id="vVe-AY-VqI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentBtn" destination="k7N-di-DLL" id="Nof-8U-fI2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yW-3o-5Tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2312" y="933"/>
+        </scene>
         <!--填写信息-->
         <scene sceneID="3Ud-G7-79H">
             <objects>
@@ -757,6 +952,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="idCheck" width="200" height="120"/>
         <image name="lineToSR" width="1" height="60"/>
         <image name="miMessage" width="25" height="25"/>
         <image name="miTel" width="25" height="25"/>

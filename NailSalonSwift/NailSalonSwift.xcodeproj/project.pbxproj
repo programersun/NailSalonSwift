@@ -465,6 +465,10 @@
 		A4C1421F1AF1F8BF003C4A21 /* SR_OrderStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */; };
 		A4C142221AF2029F003C4A21 /* SR_OrderMainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */; };
 		A4D1B64A1AECF9580065DEC4 /* SR_myAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1B6491AECF9580065DEC4 /* SR_myAlbumCell.swift */; };
+		A4D8FB281AFB6120008DEF5D /* SR_OrderCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D8FB271AFB6120008DEF5D /* SR_OrderCommentVC.swift */; };
+		A4D8FB2A1AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D8FB291AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift */; };
+		A4D8FB2C1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D8FB2B1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift */; };
+		A4D8FB2E1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D8FB2D1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift */; };
 		A4DFFAC91AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFAC81AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift */; };
 		A4DFFACE1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFACA1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m */; };
 		A4DFFACF1AF9D3C700BB0BE6 /* SR_OrderListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFACC1AF9D3C700BB0BE6 /* SR_OrderListData.m */; };
@@ -1128,6 +1132,10 @@
 		A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_OrderStory.storyboard; sourceTree = "<group>"; };
 		A4C142211AF2029F003C4A21 /* SR_OrderMainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderMainVCCell.swift; sourceTree = "<group>"; };
 		A4D1B6491AECF9580065DEC4 /* SR_myAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_myAlbumCell.swift; sourceTree = "<group>"; };
+		A4D8FB271AFB6120008DEF5D /* SR_OrderCommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderCommentVC.swift; sourceTree = "<group>"; };
+		A4D8FB291AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderCommentFirstCell.swift; sourceTree = "<group>"; };
+		A4D8FB2B1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderCommentSecondCell.swift; sourceTree = "<group>"; };
+		A4D8FB2D1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderCommentThirdCell.swift; sourceTree = "<group>"; };
 		A4DFFAC81AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ChangeOrderInfo.swift; sourceTree = "<group>"; };
 		A4DFFACA1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderListBaseClass.m; sourceTree = "<group>"; };
 		A4DFFACB1AF9D3C700BB0BE6 /* SR_OrderListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderListData.h; sourceTree = "<group>"; };
@@ -2464,6 +2472,7 @@
 				A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */,
 				A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */,
 				A4DFFAC81AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift */,
+				A4D8FB271AFB6120008DEF5D /* SR_OrderCommentVC.swift */,
 				A4C1421E1AF1F8BF003C4A21 /* SR_OrderStory.storyboard */,
 			);
 			path = SR_Order;
@@ -2477,6 +2486,9 @@
 				A430E7721AF861F700534180 /* SR_OrderDetailFirstCell.swift */,
 				A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */,
 				A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */,
+				A4D8FB291AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift */,
+				A4D8FB2B1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift */,
+				A4D8FB2D1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift */,
 			);
 			path = SR_OrderCell;
 			sourceTree = "<group>";
@@ -2898,6 +2910,7 @@
 				8B2994631AF9E62400BAECF4 /* EMSDImageCache.m in Sources */,
 				44A205C21AD7900E009196B7 /* ZL_SSItemCell.swift in Sources */,
 				8B8100CE1AC7F37100850B05 /* ZXY_ALLApi.swift in Sources */,
+				A4D8FB2E1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift in Sources */,
 				8B2994601AF9E62400BAECF4 /* MWTapDetectingView.m in Sources */,
 				8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */,
 				8B29945A1AF9E62400BAECF4 /* MWCaptionView.m in Sources */,
@@ -2934,6 +2947,7 @@
 				8BCF6A251ADA180B0085575D /* ZXY_AlbumDetailImages.m in Sources */,
 				8B29939A1AF9E62400BAECF4 /* NSDate+Category.m in Sources */,
 				A4E211481ADE000900A97CA1 /* ICYProfileCell.swift in Sources */,
+				A4D8FB281AFB6120008DEF5D /* SR_OrderCommentVC.swift in Sources */,
 				8B4B4DE61AC4FB65001BD10B /* ZXY_ORMainVC.swift in Sources */,
 				8B3CB2DD1AF0B2F100183C5F /* ZXY_PictureTakeVC.swift in Sources */,
 				8B2994541AF9E62400BAECF4 /* EMChooseViewController.m in Sources */,
@@ -3028,6 +3042,7 @@
 				8B29947E1AF9E62400BAECF4 /* PSTGridLayoutRow.m in Sources */,
 				8B2994A31AF9E62400BAECF4 /* THProgressView.m in Sources */,
 				A4FC765A1AEDE2C1002B1020 /* SR_courseCollectionBaseClass.m in Sources */,
+				A4D8FB2C1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift in Sources */,
 				A4DFFAC91AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift in Sources */,
 				A4FC76581AEDE2C1002B1020 /* SR_courseCollectionData.m in Sources */,
 				8B2993B71AF9E62400BAECF4 /* MessageModel.m in Sources */,
@@ -3046,6 +3061,7 @@
 				8B2994731AF9E62400BAECF4 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				8B2993AF1AF9E62400BAECF4 /* EMChatBaseBubbleView.m in Sources */,
 				8B29947D1AF9E62400BAECF4 /* PSTGridLayoutItem.m in Sources */,
+				A4D8FB2A1AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift in Sources */,
 				A41710BF1AEB961E004AA42D /* SR_fansTableVC.swift in Sources */,
 				8B2994741AF9E62400BAECF4 /* PSTCollectionView.m in Sources */,
 				A4FC76651AEE04F8002B1020 /* SR_FansData.m in Sources */,

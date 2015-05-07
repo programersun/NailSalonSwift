@@ -208,7 +208,11 @@ class SR_OrderDetailVC: UIViewController {
         case "4":
             self.changeOrderStatus("5")
         case "7":
-            ""
+            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc    = story.instantiateViewControllerWithIdentifier("SR_OrderCommentVCID") as! SR_OrderCommentVC
+            
+            vc.title     = "填写评价"
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             ""
         }
