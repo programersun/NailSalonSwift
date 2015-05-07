@@ -15,8 +15,6 @@ class SR_OrderTableVC: UIViewController {
     
     var artistID : String?
     var userID : String?
-    var ablumName : String?
-    var ablumId : String?
     var role : String!
     var pageCount : Int = 1
     var dataForShow : NSMutableArray = NSMutableArray()
@@ -25,9 +23,13 @@ class SR_OrderTableVC: UIViewController {
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
 
+    //当前用户信息
+    var userInfo : ZXY_UserDetailInfoData!
+    private var userData : ZXY_UserDetailInfoUserDetailBase?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getUserInfo()
         self.orderListTableView.backgroundColor = UIColor.NailBackGrayColor()
         
         srW.startProgress(self.view)
@@ -35,6 +37,18 @@ class SR_OrderTableVC: UIViewController {
         self.addHeaderAndFooterforTable()
         // Do any additional setup after loading the view.
     }
+    
+    //获取当前用户的信息
+    func getUserInfo() {
+        self.userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        var userInfoDic = ZXY_UserInfoDetail.sharedInstance.getUserDetailInfo()
+        if let user = userInfoDic {
+            self.userData = ZXY_UserDetailInfoUserDetailBase(dictionary: user)
+            self.userInfo = self.userData?.data
+            self.role     = self.userInfo.role
+        }
+    }
+
     
     
     //停止上拉下拉刷新
@@ -132,18 +146,19 @@ class SR_OrderTableVC: UIViewController {
     }
 
     @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-//        switch self.orderType {
-//        case 0:
-////            self.navigationController?.popToViewController(ZXY_DFPArtistDetailVC(), animated: true)
-//            ""
-//        case 1:
-//            self.navigationController?.popToViewController(ZXY_DFPArtDetailVC(), animated: true)
-//        case 2:
-//            self.navigationController?.popViewControllerAnimated(true)
-//        default:
-//            ""
-//        }
+        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+        switch self.orderType {
+        case 0:
+            var vc = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
+            self.navigationController?.popToViewController(vc, animated: true)
+        case 1:
+            var vc = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtDetailVCID") as! ZXY_DFPArtDetailVC
+            self.navigationController?.popToViewController(vc, animated: true)
+        case 2:
+            self.navigationController?.popViewControllerAnimated(true)
+        default:
+            ""
+        }
     }
 }
 
@@ -202,8 +217,9 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         //订单id
         cell.orderID = cellData.orderId
         cell.delegate = self
+        
         //预约主题
-        if (cellData.albumDesc != nil) {
+        if (cellData.albumDesc != "") {
             cell.orderAblum.text = cellData.albumDesc
         }
         else {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7703" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -48,15 +48,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fjJ-1o-DZQ" id="6MU-fx-Qbn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImg" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="headImg" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
                                                     <rect key="frame" x="13" y="9" width="60" height="60"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="M7f-cB-5aH"/>
                                                         <constraint firstAttribute="height" constant="60" id="rEH-0T-AGc"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="rEH-0T-AGc"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artistMask" translatesAutoresizingMaskIntoConstraints="NO" id="8qr-Cb-nyK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="artistMask" translatesAutoresizingMaskIntoConstraints="NO" id="8qr-Cb-nyK">
                                                     <rect key="frame" x="13" y="9" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="BdD-Pp-k2u"/>
@@ -127,14 +132,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="03A-q0-QLd">
-                                                    <rect key="frame" x="5" y="78" width="590" height="1"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="segLine" translatesAutoresizingMaskIntoConstraints="NO" id="03A-q0-QLd">
+                                                    <rect key="frame" x="5" y="79" width="590" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="Tt8-HV-0hQ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="03A-q0-QLd" firstAttribute="top" secondItem="rus-V8-o6y" secondAttribute="bottom" constant="9" id="3XD-G6-2If"/>
                                                 <constraint firstItem="9mZ-9D-NkH" firstAttribute="top" secondItem="LvS-hn-1SO" secondAttribute="bottom" constant="3" id="84h-Ng-y6y"/>
                                                 <constraint firstItem="03A-q0-QLd" firstAttribute="leading" secondItem="6MU-fx-Qbn" secondAttribute="leading" constant="5" id="9u8-fp-ID8"/>
                                                 <constraint firstItem="0Wl-5d-k1n" firstAttribute="centerY" secondItem="VgW-D9-HKO" secondAttribute="centerY" constant="-1.5" id="EfY-XG-H7O"/>
@@ -150,6 +156,7 @@
                                                 <constraint firstItem="VgW-D9-HKO" firstAttribute="top" secondItem="LvS-hn-1SO" secondAttribute="bottom" constant="4" id="dKJ-3i-NWV"/>
                                                 <constraint firstItem="LvS-hn-1SO" firstAttribute="top" secondItem="6MU-fx-Qbn" secondAttribute="top" constant="16" id="f1O-a8-nPq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="rus-V8-o6y" secondAttribute="bottom" constant="2" id="gLf-ku-2SL"/>
+                                                <constraint firstItem="8qr-Cb-nyK" firstAttribute="top" secondItem="6MU-fx-Qbn" secondAttribute="topMargin" constant="1" id="hKS-tv-WUV"/>
                                                 <constraint firstAttribute="trailing" secondItem="03A-q0-QLd" secondAttribute="trailing" constant="5" id="hn8-iV-3Kj"/>
                                                 <constraint firstItem="rus-V8-o6y" firstAttribute="width" secondItem="8qr-Cb-nyK" secondAttribute="width" id="k7h-qD-CX8"/>
                                                 <constraint firstItem="VgW-D9-HKO" firstAttribute="leading" secondItem="9mZ-9D-NkH" secondAttribute="trailing" constant="2" id="ldC-ot-joi"/>
@@ -160,6 +167,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="hq4-6S-ocH" secondAttribute="trailing" constant="8" id="y2c-1g-7bc"/>
                                                 <constraint firstItem="rus-V8-o6y" firstAttribute="height" secondItem="8qr-Cb-nyK" secondAttribute="height" id="yg5-Y1-3RA"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Qj1-et-Hnh"/>
+                                                    <exclude reference="gLf-ku-2SL"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artistDistance" destination="hq4-6S-ocH" id="Xce-IQ-ccU"/>

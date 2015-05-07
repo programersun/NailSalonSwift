@@ -393,11 +393,18 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 3 {
-            var story = UIStoryboard(name: "PublicStory", bundle: nil)
-            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
-            vc.artWorkID = dataForShow?.data.albumId
-            vc.title     = "美甲室"
-            self.navigationController?.pushViewController(vc, animated: true)
+            if dataForShow?.data.albumId != "0" {
+                var story = UIStoryboard(name: "PublicStory", bundle: nil)
+                var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
+                vc.artWorkID = dataForShow?.data.albumId
+                vc.title     = "美甲室"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else
+            {
+                self.showAlertEasy("提示", messageContent: "用户未选定图集")
+                println("hello")
+            }
         }
     }
 }
@@ -408,7 +415,12 @@ extension SR_OrderDetailVC : SR_OrderDetailFirstCellProtocol {
     func clickHeadImg() {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as!ZXY_DFPArtistDetailVC
-        detailArtist.artistID = dataForShow?.data.userId
+        if self.userInfo.role == "1" {
+            detailArtist.artistID = dataForShow?.data.userId
+        }
+        else {
+            detailArtist.artistID = dataForShow?.data.commId
+        }
         self.navigationController?.pushViewController(detailArtist, animated: true)
     }
     

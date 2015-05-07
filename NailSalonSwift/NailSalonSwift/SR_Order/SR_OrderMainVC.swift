@@ -10,7 +10,9 @@ import UIKit
 
 class SR_OrderMainVC: UIViewController {
 
-    
+    @IBOutlet weak var backgroundView: UIControl!
+    @IBOutlet weak var srPickerBackgroundView: UIView!
+    @IBOutlet weak var srPicker: UIDatePicker!
     @IBOutlet weak var orderTableView: UITableView!
     //加载动画
     let srW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
@@ -31,13 +33,21 @@ class SR_OrderMainVC: UIViewController {
     var artistName : String?
     var orderType : Int?
     
+    var orderDate : Int?
+    
     //当前用户信息
     var userInfo : ZXY_UserDetailInfoData!
     private var userData : ZXY_UserDetailInfoUserDetailBase?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.srPicker.timeZone = NSTimeZone.systemTimeZone()
+        self.srPickerBackgroundView.hidden = true
+        self.backgroundView.hidden = true
+        self.backgroundView.backgroundColor = UIColor.NailGrayColor()
+        self.srPicker.backgroundColor = UIColor.NailBackGrayColor()
+        self.srPickerBackgroundView.layer.cornerRadius = 10
+        self.srPickerBackgroundView.layer.masksToBounds = true
         self.getUserInfo()
         
         // Do any additional setup after loading the view.
@@ -45,7 +55,6 @@ class SR_OrderMainVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.orderTableView.reloadData()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,25 +82,31 @@ class SR_OrderMainVC: UIViewController {
             else {
                 self.userAddress = "待定"
             }
+            if let ablumString = self.ablumName {
+                self.ablumName = ablumString
+            }
+            else {
+                self.ablumName = "待定"
+            }
+            if let ablumIDString = self.ablumId {
+                self.ablumId = ablumIDString
+            }
+            else {
+                self.ablumId = "0"
+            }
 
         }
     }
 
     func startSubmit() {
-        srW.startProgress(self.view)
-        
-        /**
-        orderTime要转换成时间戳
-        **/
-        self.orderTime = "1430819820"
-        
         
         if self.orderTime == "" {
             self.showAlertEasy("提示", messageContent: "预约时间不能为空")
         }
         else {
+            srW.startProgress(self.view)
             var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_OrderAdd)
-            var parameter : Dictionary<String ,  AnyObject> = ["user_id": self.artistId! , "custom_id" : self.userId!,"real_name" : self.userName!,"sex": self.userInfo.sex! ,"order_time": self.orderTime! ,"tel": self.orderTel! , "detail_addr": self.userAddress! ,"album_id": self.ablumId! ,"ablum_desc": self.ablumName!]
+            var parameter : Dictionary<String ,  AnyObject> = ["user_id": self.artistId! , "custom_id" : self.userId!,"real_name" : self.userName!,"sex": self.userInfo.sex! ,"order_time": self.orderDate! ,"tel": self.orderTel! , "detail_addr": self.userAddress! ,"album_id": self.ablumId! ,"album_desc": self.ablumName!]
             println("\(parameter)")
             ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
                 if let s = self
@@ -100,10 +115,7 @@ class SR_OrderMainVC: UIViewController {
                 }
                 var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
                 var vc = story.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
-                vc.userID    = self?.userId
-                vc.role      = self?.userInfo.role
                 vc.artistID  = self?.artistId
-                vc.ablumId   = self?.ablumId
                 vc.orderType = self?.orderType
                 self?.navigationController?.pushViewController(vc, animated: true)
             }, failBlock: { [weak self](error) -> Void in
@@ -126,9 +138,52 @@ class SR_OrderMainVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    
+    //DatePicker出现
+    func pickViewAppear() {
+        self.backgroundView.hidden = false
+        self.srPickerBackgroundView.hidden = false
+        self.backgroundView.alpha = 0.8
+        self.srPickerBackgroundView.alpha = 1
+        self.backgroundView.layer.addAnimation(SR_Animation.animationForAlpha(0, to: 0.8), forKey: "alpha")
+        self.srPickerBackgroundView.layer.addAnimation(SR_Animation.animationForAlpha(0, to: 1), forKey: "alpha")
     }
+    //DatePicker推出
+    func pickViewDisappear() {
+        self.backgroundView.alpha = 0.0
+        self.srPickerBackgroundView.alpha = 0.0
+        self.backgroundView.layer.addAnimation(SR_Animation().animationForAlpha(0.8, to: 0, finishBlock: { (isFinish) -> Void in
+            self.backgroundView.hidden = true
+        }), forKey: "alpha")
+        self.srPickerBackgroundView.layer.addAnimation(SR_Animation().animationForAlpha(1, to: 0, finishBlock: { (isFinish) -> Void in
+            self.srPickerBackgroundView.hidden = true
+        }), forKey: "alpha")
+    }
+    
+    @IBAction func pickChannlClick(sender: AnyObject) {
+        self.pickViewDisappear()
+        self.orderTableView.reloadData()
+    }
+    
+    @IBAction func backgroundTouch(sender: AnyObject) {
+        self.pickViewDisappear()
+        self.orderTableView.reloadData()
+    }
+    
+    @IBAction func pickDoneClick(sender: AnyObject) {
+        self.pickViewDisappear()
+        self.orderDate = Int(self.srPicker.date.timeIntervalSince1970)
+        
+        var date = self.srPicker.date
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
+        self.orderTime = formatter.stringFromDate(date)
+        
+        println("\(self.orderDate)")
+        println("\(self.orderTime)")
+        self.orderTableView.reloadData()
+    }
+    
     
     //提交订单
     @IBAction func submitOrder(sender: AnyObject) {
@@ -172,13 +227,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
             cell.insertLabel.text = self.userAddress
         case 4:
             cell.titleLabel.text = "预约主题"
-            if let ablumString = self.ablumName {
-                cell.insertLabel.text = ablumString
-            }
-            else {
-                cell.insertLabel.text = ""
-            }
-            
+            cell.insertLabel.text = self.ablumName
         default:
             ""
         }
@@ -212,7 +261,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
-            ""
+            self.pickViewAppear()
         case 3:
             var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
             var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
@@ -225,6 +274,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
             var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
             vc.userID = userId!
             vc.artistID = artistId!
+            vc.title = "图集"
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         default:
