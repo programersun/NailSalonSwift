@@ -30,7 +30,7 @@
 #import<EasemobSDK/EMErrorDefs.h>
 #import "ArtistList.h"
 
-
+#import "APService.h"
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonDigest.h>
 

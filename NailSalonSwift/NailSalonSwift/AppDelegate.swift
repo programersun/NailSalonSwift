@@ -34,12 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         
+        
         bmkAuthor = BMKMapManager()
+        
+        // MARK: 环信注册
         var error = EaseMob.sharedInstance().registerSDKWithAppKey("duostec#meijiabang", apnsCertName: "MJDev")
         EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
-        
         if(application.respondsToSelector(Selector("registerForRemoteNotifications")))
         {
             application.registerForRemoteNotifications()
@@ -54,10 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             application.registerForRemoteNotificationTypes(notiType)
             
         }
-        var notiType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
-        var settings = UIUserNotificationSettings(forTypes: notiType, categories: nil)
-        application.registerUserNotificationSettings(settings)
-
+        
+        EaseMob.sharedInstance().chatManager.did
         
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if(myUserID == nil)
@@ -71,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         }
         EaseMob.sharedInstance().chatManager.addDelegate(self, delegateQueue: nil)
         
-        
+        // MARK: 百度地图授权
         if(( bmkAuthor!.start(ZXY_ConstValue.BDMAPKEY.rawValue, generalDelegate: nil)))
         {
             println("授权成功")
@@ -96,7 +94,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         
         UMSocialData.setAppKey(ZXY_ConstValue.UMAPPKEY.rawValue)
         UMSocialData.openLog(true)
+        
+        // MARK: 极光推送
+        if UIDevice.currentDevice().systemVersion.doubleValue >= 8.0
+        {
+            APService.registerForRemoteNotificationTypes(
+                //UIUserNotificationType.Badge.rawValue |
+                UIUserNotificationType.Sound.rawValue |
+                    UIUserNotificationType.Alert.rawValue
+                , categories: nil)
+
+        }
+        else 
+        {
+            APService.registerForRemoteNotificationTypes(
+                //UIUserNotificationType.Badge.rawValue |
+                UIRemoteNotificationType.Sound.rawValue |
+                UIRemoteNotificationType.Alert.rawValue
+                , categories: nil)
+        }
+        APService.setupWithOption(launchOptions)
+        var noti: Void = NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("JPushReceiveData:"), name: kJPFNetworkDidReceiveMessageNotification, object: nil)
+        var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        if userID != nil
+        {
+            APService.setAlias(userID, callbackSelector: Selector("JPushAlias:"), object: nil)
+        }
+        
+        
+        
         return true
+    }
+    
+    func JPushAlias(code : Int , tags : NSSet , alias : String)
+    {
+        println(alias)
+    }
+    
+    /// 此处获取极光推送的内容
+    func JPushReceiveData(noti : NSNotification)
+    {
+        println(noti.userInfo)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -115,6 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("收到消息")
         EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
+        APService.handleRemoteNotification(userInfo)
         //APService.handleRemoteNotification(userInfo)
     }
     
@@ -122,6 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         println("didReceiveRemoteNotification fetchCompletionHandler \(userInfo)")
        // APService.handleRemoteNotification(userInfo)
         completionHandler(UIBackgroundFetchResult.NewData)
+        APService.handleRemoteNotification(userInfo)
         EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
     }
 
@@ -173,6 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         EaseMob.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+        APService.registerDeviceToken(deviceToken)
        // APService.registerDeviceToken(deviceToken)
     }
     

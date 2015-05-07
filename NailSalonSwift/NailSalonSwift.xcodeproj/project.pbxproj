@@ -379,6 +379,14 @@
 		8B9977C11AC4ED4B00CD1713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977C01AC4ED4B00CD1713 /* Images.xcassets */; };
 		8B9977C41AC4ED4B00CD1713 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9977C21AC4ED4B00CD1713 /* LaunchScreen.xib */; };
 		8B9977D01AC4ED4B00CD1713 /* NailSalonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9977CF1AC4ED4B00CD1713 /* NailSalonSwiftTests.swift */; };
+		8B9A77F71AFAF3BB0049295F /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B9A77F61AFAF3BB0049295F /* PushConfig.plist */; };
+		8B9A77FB1AFAF5C20049295F /* libPushSDK-1.8.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A77FA1AFAF5C20049295F /* libPushSDK-1.8.3.a */; };
+		8B9A77FD1AFAF5F30049295F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A77FC1AFAF5F30049295F /* Security.framework */; };
+		8B9A77FF1AFAF5FE0049295F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A77FE1AFAF5FE0049295F /* CoreGraphics.framework */; };
+		8B9A78011AFAF6070049295F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A78001AFAF6070049295F /* SystemConfiguration.framework */; };
+		8B9A78031AFAF6110049295F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A78021AFAF6110049295F /* CoreTelephony.framework */; };
+		8B9A78051AFAF61A0049295F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A78041AFAF61A0049295F /* CoreFoundation.framework */; };
+		8B9A78071AFAF6230049295F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9A78061AFAF6230049295F /* CFNetwork.framework */; };
 		8BAAF0311AD76B1600D61B0B /* ZXY_UserDetailInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */; };
 		8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */; };
 		8BAAF0351AD79EAD00D61B0B /* PublicStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAF0341AD79EAD00D61B0B /* PublicStory.storyboard */; };
@@ -1008,6 +1016,15 @@
 		8B9977C91AC4ED4B00CD1713 /* NailSalonSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NailSalonSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9977CE1AC4ED4B00CD1713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B9977CF1AC4ED4B00CD1713 /* NailSalonSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NailSalonSwiftTests.swift; sourceTree = "<group>"; };
+		8B9A77F61AFAF3BB0049295F /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		8B9A77F91AFAF5C20049295F /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		8B9A77FA1AFAF5C20049295F /* libPushSDK-1.8.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.3.a"; sourceTree = "<group>"; };
+		8B9A77FC1AFAF5F30049295F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8B9A77FE1AFAF5FE0049295F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8B9A78001AFAF6070049295F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8B9A78021AFAF6110049295F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8B9A78041AFAF61A0049295F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		8B9A78061AFAF6230049295F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8BAAF02D1AD76B1600D61B0B /* ZXY_UserDetailInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_UserDetailInfoData.h; sourceTree = "<group>"; };
 		8BAAF02E1AD76B1600D61B0B /* ZXY_UserDetailInfoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoData.m; sourceTree = "<group>"; };
 		8BAAF02F1AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_UserDetailInfoUserDetailBase.m; sourceTree = "<group>"; };
@@ -1177,6 +1194,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B9A78071AFAF6230049295F /* CFNetwork.framework in Frameworks */,
+				8B9A78051AFAF61A0049295F /* CoreFoundation.framework in Frameworks */,
+				8B9A78031AFAF6110049295F /* CoreTelephony.framework in Frameworks */,
+				8B9A78011AFAF6070049295F /* SystemConfiguration.framework in Frameworks */,
+				8B9A77FF1AFAF5FE0049295F /* CoreGraphics.framework in Frameworks */,
+				8B9A77FD1AFAF5F30049295F /* Security.framework in Frameworks */,
+				8B9A77FB1AFAF5C20049295F /* libPushSDK-1.8.3.a in Frameworks */,
 				8B4B4E071AC505F3001BD10B /* AssetsLibrary.framework in Frameworks */,
 				30568B74CEF19CF0023B7248 /* libPods.a in Frameworks */,
 			);
@@ -1195,6 +1219,12 @@
 		525EC96CCE2970D829AE0836 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B9A78061AFAF6230049295F /* CFNetwork.framework */,
+				8B9A78041AFAF61A0049295F /* CoreFoundation.framework */,
+				8B9A78021AFAF6110049295F /* CoreTelephony.framework */,
+				8B9A78001AFAF6070049295F /* SystemConfiguration.framework */,
+				8B9A77FE1AFAF5FE0049295F /* CoreGraphics.framework */,
+				8B9A77FC1AFAF5F30049295F /* Security.framework */,
 				8B4B4E061AC505F3001BD10B /* AssetsLibrary.framework */,
 				35397CF563ED6DD2D8885501 /* libPods.a */,
 			);
@@ -2193,6 +2223,7 @@
 		8B9977B41AC4ED4B00CD1713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B9A77F61AFAF3BB0049295F /* PushConfig.plist */,
 				A440D1071ADB7C5F004252A7 /* register_help.html */,
 				8B9977B51AC4ED4B00CD1713 /* Info.plist */,
 				8BFA1E661AD4F81300E74A31 /* SMImportHeader.h */,
@@ -2215,6 +2246,15 @@
 				8B9977CE1AC4ED4B00CD1713 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B9A77F81AFAF5C20049295F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8B9A77F91AFAF5C20049295F /* APService.h */,
+				8B9A77FA1AFAF5C20049295F /* libPushSDK-1.8.3.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		8BAAF0331AD79E6300D61B0B /* ALLDetailForPublic */ = {
@@ -2510,6 +2550,7 @@
 		A4F6B9141AD76D4D007A1CA4 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				8B9A77F81AFAF5C20049295F /* lib */,
 				A4E211511ADE09F200A97CA1 /* MBProgressHUD.h */,
 				8B2992071AF9E62300BAECF4 /* EaseFolder */,
 				A4E211521ADE09F200A97CA1 /* MBProgressHUD.m */,
@@ -2807,6 +2848,7 @@
 				8B2993BD1AF9E62400BAECF4 /* chatFire_audioPlaying0@2x.png in Resources */,
 				8B29948A1AF9E62400BAECF4 /* groupPrivateHeader@2x.png in Resources */,
 				8B2993DC1AF9E62400BAECF4 /* VoiceSearchFeedback013.png in Resources */,
+				8B9A77F71AFAF3BB0049295F /* PushConfig.plist in Resources */,
 				8B2994201AF9E62400BAECF4 /* chatBar_colorMore_audioCall@2x.png in Resources */,
 				8B2994041AF9E62400BAECF4 /* chat_location_detail_disclosureHL.png in Resources */,
 				8B2993C41AF9E62400BAECF4 /* VoiceSearchFeedback001.png in Resources */,
@@ -3284,6 +3326,10 @@
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NailSalonSwift/ThirdPart/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
@@ -3304,6 +3350,10 @@
 				INFOPLIST_FILE = NailSalonSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NailSalonSwift/ThirdPart/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NailSalonSwift/NailSalonSwift-Bridging-Header.h";
