@@ -450,15 +450,15 @@
 
 }
 
-- (void)networkChanged:(EMConnectionState)connectionState
-{
-    if (connectionState == eEMConnectionDisconnected) {
-        _tableView.tableHeaderView = _networkStateView;
-    }
-    else{
-        _tableView.tableHeaderView = nil;
-    }
-}
+//- (void)networkChanged:(EMConnectionState)connectionState
+//{
+//    if (connectionState == eEMConnectionDisconnected) {
+//        _tableView.tableHeaderView = _networkStateView;
+//    }
+//    else{
+//        _tableView.tableHeaderView = nil;
+//    }
+//}
 
 - (void)willReceiveOfflineMessages{
     NSLog(NSLocalizedString(@"message.beginReceiveOffine", @"Begin to receive offline messages"));

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate , IChatManagerDelegate {
 
     var window: UIWindow?
     var bmkAuthor : BMKMapManager?
@@ -54,8 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             application.registerForRemoteNotificationTypes(notiType)
             
         }
-        
-        EaseMob.sharedInstance().chatManager.did
         
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if(myUserID == nil)
@@ -124,6 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         
         
         return true
+    }
+    
+    func didReceiveMessage(message: EMMessage!) {
+        println("哈哈")
     }
     
     func JPushAlias(code : Int , tags : NSSet , alias : String)

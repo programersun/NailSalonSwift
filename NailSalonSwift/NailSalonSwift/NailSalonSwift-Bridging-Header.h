@@ -24,7 +24,7 @@
 #import "ZXYCourseCourse.h"
 
 #import "ChatViewController.h"
-//#import "ChatListViewController.h"
+#import "ChatListViewController.h"
 #import <EasemobSDK/EaseMobHeaders.h>
 #import <EasemobSDK/EaseMob.h>
 #import<EasemobSDK/EMErrorDefs.h>

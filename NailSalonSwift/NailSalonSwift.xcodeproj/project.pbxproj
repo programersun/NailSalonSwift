@@ -35,7 +35,6 @@
 		8B29939E1AF9E62400BAECF4 /* UIViewController+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2992121AF9E62300BAECF4 /* UIViewController+DismissKeyboard.m */; };
 		8B29939F1AF9E62400BAECF4 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2992141AF9E62300BAECF4 /* UIViewController+HUD.m */; };
 		8B2993A01AF9E62400BAECF4 /* ChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2992181AF9E62300BAECF4 /* ChatListCell.m */; };
-		8B2993A11AF9E62400BAECF4 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29921A1AF9E62300BAECF4 /* ChatListViewController.m */; };
 		8B2993A21AF9E62400BAECF4 /* callRing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B29921C1AF9E62300BAECF4 /* callRing.mp3 */; };
 		8B2993A41AF9E62400BAECF4 /* ChatSendHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2992201AF9E62300BAECF4 /* ChatSendHelper.m */; };
 		8B2993A51AF9E62400BAECF4 /* ChatViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2992221AF9E62300BAECF4 /* ChatViewController+Category.m */; };
@@ -419,6 +418,7 @@
 		8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */; };
 		8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */; };
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
+		8BF041141AFCB8C100B1288B /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF041121AFCB8C100B1288B /* ChatListViewController.m */; };
 		8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */; };
 		8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */; };
 		8BFA1E651AD4ED0600E74A31 /* SR_ARTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */; };
@@ -557,8 +557,6 @@
 		8B2992141AF9E62300BAECF4 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		8B2992171AF9E62300BAECF4 /* ChatListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListCell.h; sourceTree = "<group>"; };
 		8B2992181AF9E62300BAECF4 /* ChatListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListCell.m; sourceTree = "<group>"; };
-		8B2992191AF9E62300BAECF4 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
-		8B29921A1AF9E62300BAECF4 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		8B29921C1AF9E62300BAECF4 /* callRing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = callRing.mp3; sourceTree = "<group>"; };
 		8B29921F1AF9E62300BAECF4 /* ChatSendHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSendHelper.h; sourceTree = "<group>"; };
 		8B2992201AF9E62300BAECF4 /* ChatSendHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSendHelper.m; sourceTree = "<group>"; };
@@ -1069,6 +1067,8 @@
 		8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DataProviderHelper.swift; sourceTree = "<group>"; };
 		8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_UserInfoModel.swift; path = ../../ZXY_UserInfoModel.swift; sourceTree = "<group>"; };
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
+		8BF041121AFCB8C100B1288B /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
+		8BF041131AFCB8C100B1288B /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
 		8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MIRegistVC.swift; sourceTree = "<group>"; };
 		8BFA1E621AD4ED0600E74A31 /* SR_Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_Animation.swift; sourceTree = "<group>"; };
 		8BFA1E631AD4ED0600E74A31 /* SR_ARTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ARTableViewCell.swift; sourceTree = "<group>"; };
@@ -1350,8 +1350,8 @@
 			children = (
 				8B2992171AF9E62300BAECF4 /* ChatListCell.h */,
 				8B2992181AF9E62300BAECF4 /* ChatListCell.m */,
-				8B2992191AF9E62300BAECF4 /* ChatListViewController.h */,
-				8B29921A1AF9E62300BAECF4 /* ChatListViewController.m */,
+				8BF041131AFCB8C100B1288B /* ChatListViewController.h */,
+				8BF041121AFCB8C100B1288B /* ChatListViewController.m */,
 			);
 			path = ChatList;
 			sourceTree = "<group>";
@@ -2998,7 +2998,6 @@
 				8BBBDBD41ACAA84D0006A94A /* ZXY_ORCourseMainThirdCell.swift in Sources */,
 				8B4B4DF41AC50169001BD10B /* ZXY_ConstValue.swift in Sources */,
 				44A205BD1AD660AE009196B7 /* ZL_SSMainCell.swift in Sources */,
-				8B2993A11AF9E62400BAECF4 /* ChatListViewController.m in Sources */,
 				8B29945C1AF9E62400BAECF4 /* MWGridViewController.m in Sources */,
 				8B4B4DF91AC5024C001BD10B /* ZXY_ARMainVC.swift in Sources */,
 				8B2994A41AF9E62400BAECF4 /* TTGlobalUICommon.m in Sources */,
@@ -3158,6 +3157,7 @@
 				8B1F26191AC78F5900DDF8F4 /* ZXY_ORSqureSubCCell.swift in Sources */,
 				8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */,
 				A4E2114B1ADE000900A97CA1 /* SettingCell.swift in Sources */,
+				8BF041141AFCB8C100B1288B /* ChatListViewController.m in Sources */,
 				8B2993AD1AF9E62400BAECF4 /* DXRecordView.m in Sources */,
 				8B3CB2FA1AF0B4CC00183C5F /* ZXY_PicTakeImgCell.swift in Sources */,
 				8BCF6A221ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m in Sources */,
