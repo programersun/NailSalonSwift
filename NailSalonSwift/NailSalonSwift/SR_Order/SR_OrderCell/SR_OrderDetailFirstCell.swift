@@ -21,7 +21,7 @@ class SR_OrderDetailFirstCell: UITableViewCell {
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var orderStatus: UILabel!
     
-    var delegate : SR_OrderDetailFirstCellProtocol?
+    weak var delegate : SR_OrderDetailFirstCellProtocol?
     
     class func cellID() -> String
     {

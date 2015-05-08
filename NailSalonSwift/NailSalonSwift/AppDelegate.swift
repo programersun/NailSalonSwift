@@ -55,8 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             
         }
         var notiType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
-        var settings = UIUserNotificationSettings(forTypes: notiType, categories: nil)
-        application.registerUserNotificationSettings(settings)
+//        var settings = UIUserNotificationSettings(forTypes: notiType, categories: nil)
+//        application.registerUserNotificationSettings(settings)
 
         
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()

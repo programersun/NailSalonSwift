@@ -22,7 +22,7 @@ class SR_OrderTableCell: UITableViewCell {
     @IBOutlet weak var orderState: UILabel!
     @IBOutlet weak var orderDeleteBtn: UIButton!
     
-    var delegate : SR_OrderTableCellProtocol?
+    weak var delegate : SR_OrderTableCellProtocol?
     var orderID : String?
     
     class func cellID() -> String

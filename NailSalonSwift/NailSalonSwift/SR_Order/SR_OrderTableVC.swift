@@ -11,8 +11,7 @@ import UIKit
 class SR_OrderTableVC: UIViewController {
     
     @IBOutlet weak var orderListTableView: UITableView!
-    
-    
+
     var artistID : String?
     var userID : String?
     var role : String!

@@ -16,7 +16,7 @@ protocol SR_OrderCommentSecondCellProtocol : class
 class SR_OrderCommentSecondCell: UITableViewCell {
 
     @IBOutlet weak var showImgView: UIImageView!
-    var delegate : SR_OrderCommentSecondCellProtocol?
+    weak var delegate : SR_OrderCommentSecondCellProtocol?
     class func cellID() -> String
     {
         return "SR_OrderCommentSecondCellID"

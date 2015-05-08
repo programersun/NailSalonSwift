@@ -430,10 +430,6 @@
 		A430E7751AF8622F00534180 /* SR_OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */; };
 		A430E7771AF8628000534180 /* SR_OrderDetailSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */; };
 		A430E7791AF8629C00534180 /* SR_OrderDetailThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */; };
-		A430E7841AF8837100534180 /* SR_OrderDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E77E1AF8837100534180 /* SR_OrderDetailData.m */; };
-		A430E7851AF8837100534180 /* SR_OrderDetailCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */; };
-		A430E7861AF8837100534180 /* SR_OrderDetailBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */; };
-		A430E7871AF8837100534180 /* SR_OrderDetailUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A430E7831AF8837100534180 /* SR_OrderDetailUser.m */; };
 		A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */; };
 		A440D1041ADB69F7004252A7 /* SR_checkIdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */; };
 		A440D1061ADB72C5004252A7 /* SR_protocolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */; };
@@ -457,6 +453,12 @@
 		A49C5DD91AF0C9BC0033D57D /* SR_DAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C5DD81AF0C9BC0033D57D /* SR_DAnnotationView.swift */; };
 		A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1D1AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m */; };
 		A4AF6E221AEA380200FC9755 /* SR_CourseUserStatusData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */; };
+		A4B5CC6D1AFCAA6000EA5D9C /* SR_OrderDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC6C1AFCAA6000EA5D9C /* SR_OrderDetailCommentCell.swift */; };
+		A4B5CC781AFCBAE200EA5D9C /* SR_OrderDetailComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC721AFCBAE200EA5D9C /* SR_OrderDetailComment.m */; };
+		A4B5CC791AFCBAE200EA5D9C /* SR_OrderDetailCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC731AFCBAE200EA5D9C /* SR_OrderDetailCustom.m */; };
+		A4B5CC7A1AFCBAE200EA5D9C /* SR_OrderDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC741AFCBAE200EA5D9C /* SR_OrderDetailData.m */; };
+		A4B5CC7B1AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC751AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.m */; };
+		A4B5CC7C1AFCBAE200EA5D9C /* SR_OrderDetailUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5CC771AFCBAE200EA5D9C /* SR_OrderDetailUser.m */; };
 		A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */; };
 		A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */; };
 		A4B94A711AE63FB7003CC29A /* LCYRessetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */; };
@@ -1080,14 +1082,6 @@
 		A430E7741AF8622F00534180 /* SR_OrderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailVC.swift; sourceTree = "<group>"; };
 		A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailSecondCell.swift; sourceTree = "<group>"; };
 		A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailThirdCell.swift; sourceTree = "<group>"; };
-		A430E77C1AF8837100534180 /* SR_OrderDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailData.h; sourceTree = "<group>"; };
-		A430E77D1AF8837100534180 /* SR_OrderDetailCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailCustom.h; sourceTree = "<group>"; };
-		A430E77E1AF8837100534180 /* SR_OrderDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailData.m; sourceTree = "<group>"; };
-		A430E77F1AF8837100534180 /* SR_OrderDetailUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailUser.h; sourceTree = "<group>"; };
-		A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailCustom.m; sourceTree = "<group>"; };
-		A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailBaseClass.m; sourceTree = "<group>"; };
-		A430E7821AF8837100534180 /* SR_OrderDetailBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailBaseClass.h; sourceTree = "<group>"; };
-		A430E7831AF8837100534180 /* SR_OrderDetailUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailUser.m; sourceTree = "<group>"; };
 		A435B8691AD7AC20001909A4 /* SR_registTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_registTableVC.swift; sourceTree = "<group>"; };
 		A440D1031ADB69F7004252A7 /* SR_checkIdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_checkIdVC.swift; sourceTree = "<group>"; };
 		A440D1051ADB72C5004252A7 /* SR_protocolVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_protocolVC.swift; sourceTree = "<group>"; };
@@ -1123,6 +1117,17 @@
 		A4AF6E1E1AEA380200FC9755 /* SR_CourseUserStatusData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_CourseUserStatusData.m; sourceTree = "<group>"; };
 		A4AF6E1F1AEA380200FC9755 /* SR_CourseUserStatusData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_CourseUserStatusData.h; sourceTree = "<group>"; };
 		A4AF6E201AEA380200FC9755 /* SR_CourseUserStatusBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_CourseUserStatusBaseClass.h; sourceTree = "<group>"; };
+		A4B5CC6C1AFCAA6000EA5D9C /* SR_OrderDetailCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderDetailCommentCell.swift; sourceTree = "<group>"; };
+		A4B5CC6E1AFCBAE200EA5D9C /* SR_OrderDetailComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailComment.h; sourceTree = "<group>"; };
+		A4B5CC6F1AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailBaseClass.h; sourceTree = "<group>"; };
+		A4B5CC701AFCBAE200EA5D9C /* SR_OrderDetailCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailCustom.h; sourceTree = "<group>"; };
+		A4B5CC711AFCBAE200EA5D9C /* SR_OrderDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailData.h; sourceTree = "<group>"; };
+		A4B5CC721AFCBAE200EA5D9C /* SR_OrderDetailComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailComment.m; sourceTree = "<group>"; };
+		A4B5CC731AFCBAE200EA5D9C /* SR_OrderDetailCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailCustom.m; sourceTree = "<group>"; };
+		A4B5CC741AFCBAE200EA5D9C /* SR_OrderDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailData.m; sourceTree = "<group>"; };
+		A4B5CC751AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailBaseClass.m; sourceTree = "<group>"; };
+		A4B5CC761AFCBAE200EA5D9C /* SR_OrderDetailUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderDetailUser.h; sourceTree = "<group>"; };
+		A4B5CC771AFCBAE200EA5D9C /* SR_OrderDetailUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderDetailUser.m; sourceTree = "<group>"; };
 		A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingVC.swift; path = ../AboutMe/SettingVC.swift; sourceTree = "<group>"; };
 		A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LCYVersionViewController.swift; path = ../AboutMe/LCYVersionViewController.swift; sourceTree = "<group>"; };
 		A4B94A701AE63FB7003CC29A /* LCYRessetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCYRessetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -2349,14 +2354,16 @@
 		A40FD5AD1AF7460E005C4B33 /* SR_OrderModel */ = {
 			isa = PBXGroup;
 			children = (
-				A430E77C1AF8837100534180 /* SR_OrderDetailData.h */,
-				A430E77E1AF8837100534180 /* SR_OrderDetailData.m */,
-				A430E77D1AF8837100534180 /* SR_OrderDetailCustom.h */,
-				A430E7801AF8837100534180 /* SR_OrderDetailCustom.m */,
-				A430E7811AF8837100534180 /* SR_OrderDetailBaseClass.m */,
-				A430E7821AF8837100534180 /* SR_OrderDetailBaseClass.h */,
-				A430E77F1AF8837100534180 /* SR_OrderDetailUser.h */,
-				A430E7831AF8837100534180 /* SR_OrderDetailUser.m */,
+				A4B5CC6E1AFCBAE200EA5D9C /* SR_OrderDetailComment.h */,
+				A4B5CC721AFCBAE200EA5D9C /* SR_OrderDetailComment.m */,
+				A4B5CC701AFCBAE200EA5D9C /* SR_OrderDetailCustom.h */,
+				A4B5CC731AFCBAE200EA5D9C /* SR_OrderDetailCustom.m */,
+				A4B5CC711AFCBAE200EA5D9C /* SR_OrderDetailData.h */,
+				A4B5CC741AFCBAE200EA5D9C /* SR_OrderDetailData.m */,
+				A4B5CC6F1AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.h */,
+				A4B5CC751AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.m */,
+				A4B5CC761AFCBAE200EA5D9C /* SR_OrderDetailUser.h */,
+				A4B5CC771AFCBAE200EA5D9C /* SR_OrderDetailUser.m */,
 				A4DFFACA1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m */,
 				A4DFFACB1AF9D3C700BB0BE6 /* SR_OrderListData.h */,
 				A4DFFACC1AF9D3C700BB0BE6 /* SR_OrderListData.m */,
@@ -2486,6 +2493,7 @@
 				A430E7721AF861F700534180 /* SR_OrderDetailFirstCell.swift */,
 				A430E7761AF8628000534180 /* SR_OrderDetailSecondCell.swift */,
 				A430E7781AF8629C00534180 /* SR_OrderDetailThirdCell.swift */,
+				A4B5CC6C1AFCAA6000EA5D9C /* SR_OrderDetailCommentCell.swift */,
 				A4D8FB291AFB616A008DEF5D /* SR_OrderCommentFirstCell.swift */,
 				A4D8FB2B1AFB6184008DEF5D /* SR_OrderCommentSecondCell.swift */,
 				A4D8FB2D1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift */,
@@ -2912,6 +2920,7 @@
 				8B8100CE1AC7F37100850B05 /* ZXY_ALLApi.swift in Sources */,
 				A4D8FB2E1AFB61A1008DEF5D /* SR_OrderCommentThirdCell.swift in Sources */,
 				8B2994601AF9E62400BAECF4 /* MWTapDetectingView.m in Sources */,
+				A4B5CC7B1AFCBAE200EA5D9C /* SR_OrderDetailBaseClass.m in Sources */,
 				8B1F26171AC78F4400DDF8F4 /* ZXY_ORSqureMainCCell.swift in Sources */,
 				8B29945A1AF9E62400BAECF4 /* MWCaptionView.m in Sources */,
 				8B2994551AF9E62400BAECF4 /* EMNavigationController.m in Sources */,
@@ -3057,6 +3066,7 @@
 				8BF0C98F1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift in Sources */,
 				8B5EE2B91AC834B700EFF3C4 /* UIScrollView+MJExtension.m in Sources */,
 				8B29945F1AF9E62400BAECF4 /* MWTapDetectingImageView.m in Sources */,
+				A4B5CC791AFCBAE200EA5D9C /* SR_OrderDetailCustom.m in Sources */,
 				A430E7791AF8629C00534180 /* SR_OrderDetailThirdCell.swift in Sources */,
 				8B2994731AF9E62400BAECF4 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				8B2993AF1AF9E62400BAECF4 /* EMChatBaseBubbleView.m in Sources */,
@@ -3070,13 +3080,11 @@
 				8B2993AA1AF9E62400BAECF4 /* DXFaceView.m in Sources */,
 				8B6467951ACBBFAE00519A1A /* ZXYCourseBaseList.m in Sources */,
 				A49C5DD01AF0C4EC0033D57D /* SR_BMKAnnotation.swift in Sources */,
-				A430E7841AF8837100534180 /* SR_OrderDetailData.m in Sources */,
 				8BAAF0321AD76B1600D61B0B /* ZXY_UserDetailInfoUserDetailBase.m in Sources */,
 				8B2994581AF9E62400BAECF4 /* Emoji.m in Sources */,
 				8B3CB2ED1AF0B33500183C5F /* ZXY_SystemReative.swift in Sources */,
 				8B3CB2FB1AF0B4CC00183C5F /* ZXY_PicTakeInputCell.swift in Sources */,
 				8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */,
-				A430E7851AF8837100534180 /* SR_OrderDetailCustom.m in Sources */,
 				8B4587891ADB9E450012B7C4 /* ZXY_AlbumCommentBaseComment.m in Sources */,
 				8B5EE2B71AC834B700EFF3C4 /* MJRefreshFooterView.m in Sources */,
 				A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */,
@@ -3090,6 +3098,7 @@
 				8B0141911ACD1FC1000C180B /* ZXY_MIMainVCell.swift in Sources */,
 				8B871AF21AE69FCB0008915A /* ZXY_UserAlbumListData.m in Sources */,
 				8B29939B1AF9E62400BAECF4 /* NSDateFormatter+Category.m in Sources */,
+				A4B5CC781AFCBAE200EA5D9C /* SR_OrderDetailComment.m in Sources */,
 				A4BD736C1AE9E6A400BEECEA /* UIDevice+Resolutions.m in Sources */,
 				8B29948E1AF9E62400BAECF4 /* RealtimeSearchUtil.m in Sources */,
 				8BBBDBD21ACAA82F0006A94A /* ZXY_ORCourseMainSecondCell.swift in Sources */,
@@ -3104,6 +3113,7 @@
 				8B29947A1AF9E62400BAECF4 /* PSTCollectionViewLayout.m in Sources */,
 				A4FC76661AEE04F8002B1020 /* SR_FansBaseClass.m in Sources */,
 				8BFA1E641AD4ED0600E74A31 /* SR_Animation.swift in Sources */,
+				A4B5CC6D1AFCAA6000EA5D9C /* SR_OrderDetailCommentCell.swift in Sources */,
 				8B3CB2EB1AF0B33500183C5F /* ZXY_GPUImageFilterHelper.swift in Sources */,
 				8B2993A41AF9E62400BAECF4 /* ChatSendHelper.m in Sources */,
 				8B2994711AF9E62400BAECF4 /* UIImageView+EMWebCache.m in Sources */,
@@ -3137,6 +3147,7 @@
 				8BCF6A221ADA180B0085575D /* ZXY_AlbumDetailBaseAlbum.m in Sources */,
 				A40B88781AE8EE13001BB3D4 /* SR_courseDetilListData.m in Sources */,
 				8BAAF0371AD79EDE00D61B0B /* ZXY_DFPArtDetailVC.swift in Sources */,
+				A4B5CC7A1AFCBAE200EA5D9C /* SR_OrderDetailData.m in Sources */,
 				8B2994621AF9E62400BAECF4 /* DACircularProgressView.m in Sources */,
 				8B4B4DEB1AC4FD9C001BD10B /* ZXY_NetHelperOperate.swift in Sources */,
 				8B099B261ADD663700446F2C /* ZXY_DFPArtistTableCell.swift in Sources */,
@@ -3146,8 +3157,6 @@
 				8B5EE2CA1AC8381100EFF3C4 /* ZXYOriginAlbumUser.m in Sources */,
 				8B29945B1AF9E62400BAECF4 /* MWGridCell.m in Sources */,
 				8B1910041ADD5DA00087AECF /* ZXY_DFPArtistDetailVC.swift in Sources */,
-				A430E7871AF8837100534180 /* SR_OrderDetailUser.m in Sources */,
-				A430E7861AF8837100534180 /* SR_OrderDetailBaseClass.m in Sources */,
 				A4FC76571AEDE2C1002B1020 /* SR_albumCollectionBaseClass.m in Sources */,
 				A4FC76591AEDE2C1002B1020 /* SR_albumCollectionData.m in Sources */,
 				8B45878D1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift in Sources */,
@@ -3161,6 +3170,7 @@
 				8BBBDBCC1ACA81090006A94A /* ZXYOfferRecommendAlbum.m in Sources */,
 				8BFA1E6C1AD4F86900E74A31 /* ZXY_UserInfoBase.m in Sources */,
 				8B2994771AF9E62400BAECF4 /* PSTCollectionViewData.m in Sources */,
+				A4B5CC7C1AFCBAE200EA5D9C /* SR_OrderDetailUser.m in Sources */,
 				8B5EE2B61AC834B700EFF3C4 /* MJRefreshConst.m in Sources */,
 				A4E185211AE897BC00ACCF67 /* SR_CourseDetailListCell.swift in Sources */,
 				A4E211531ADE09F200A97CA1 /* MBProgressHUD.m in Sources */,
