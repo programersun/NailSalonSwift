@@ -122,7 +122,11 @@ class ZXY_DFPArtistDetailVC: UIViewController {
     @IBOutlet weak var yueBtm: UIImageView!
     
     @IBAction func yueAction(sender: AnyObject) {
-        println("约")
+        var story = UIStoryboard(name: "SR_OrderStory", bundle: nil) as UIStoryboard
+        var orderVC = story.instantiateViewControllerWithIdentifier("SR_OrderMainVCID") as! SR_OrderMainVC
+        orderVC.artistId  = self.artistID
+        orderVC.orderType = 1
+        self.navigationController?.pushViewController(orderVC, animated: true)
     }
     
     

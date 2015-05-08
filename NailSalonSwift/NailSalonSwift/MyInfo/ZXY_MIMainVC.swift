@@ -303,14 +303,15 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             case 0:
                 var storyOrder = UIStoryboard(name: "SR_OrderStory", bundle: nil)
                 var vc = storyOrder.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
-                vc.userID = userID!
-                vc.role = self.userInfo.role!
+//                vc.userID = userID!
+//                vc.role = self.userInfo.role!
                 vc.orderType = 2
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
                 vc.userID = userID!
                 vc.artistID = userID!
+                vc.title = "我的图集"
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_myCollectionVCID") as! SR_myCollectionVC

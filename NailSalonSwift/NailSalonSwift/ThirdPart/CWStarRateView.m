@@ -69,11 +69,11 @@
 }
 
 - (void)userTapRateView:(UITapGestureRecognizer *)gesture {
-//    CGPoint tapPoint = [gesture locationInView:self];
-//    CGFloat offset = tapPoint.x;
-//    CGFloat realStarScore = offset / (self.bounds.size.width / self.numberOfStars);
-//    CGFloat starScore = self.allowIncompleteStar ? realStarScore : ceilf(realStarScore);
-//    self.scorePercent = starScore / self.numberOfStars;
+    CGPoint tapPoint = [gesture locationInView:self];
+    CGFloat offset = tapPoint.x;
+    CGFloat realStarScore = offset / (self.bounds.size.width / self.numberOfStars);
+    CGFloat starScore = self.allowIncompleteStar ? realStarScore : ceilf(realStarScore);
+    self.scorePercent = starScore / self.numberOfStars;
 }
 
 - (UIView *)createStarViewWithImage:(NSString *)imageName {

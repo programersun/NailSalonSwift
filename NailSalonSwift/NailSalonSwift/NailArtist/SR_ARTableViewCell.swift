@@ -34,6 +34,7 @@ class SR_ARTableViewCell: UITableViewCell {
         self.starRateView?.allowIncompleteStar = true
         starRateView?.hasAnimation = true
         self.artistStar.addSubview(starRateView!)
+        self.artistStar.userInteractionEnabled = false
         
         // Initialization code
     }

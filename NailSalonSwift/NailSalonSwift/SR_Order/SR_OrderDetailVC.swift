@@ -37,9 +37,12 @@ class SR_OrderDetailVC: UIViewController {
         orderRefuse.hidden = true
         orderAccept.hidden = true
         self.getUserInfo()
-        srW.startProgress(self.view)
-        self.loadOrderDetail()
+//        self.loadOrderDetail()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.loadOrderDetail()
     }
     
     
@@ -102,11 +105,16 @@ class SR_OrderDetailVC: UIViewController {
                 userCancel.setTitle("填写评价", forState: UIControlState.Normal)
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
+                //判断是否评论过
+                if dataForShow?.data.commId != "0" {
+                    userCancel.hidden = true
+                }
             default:
                 userCancel.hidden = true
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
             }
+            
         case "2":
             switch dataForShow!.data.orderStatus {
             case "1":
@@ -125,6 +133,14 @@ class SR_OrderDetailVC: UIViewController {
                 userCancel.setTitle("填写评价", forState: UIControlState.Normal)
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
+                //判断是否评论过
+                if dataForShow?.data.commTouserId != "0" {
+                    userCancel.hidden = true
+                }
+                //用户是否评论
+                if dataForShow?.data.commId == "0" {
+                    userCancel.hidden = true
+                }
             default:
                 userCancel.hidden = true
                 orderRefuse.hidden = true
@@ -137,6 +153,7 @@ class SR_OrderDetailVC: UIViewController {
     
     //加载订单详情数据
     func loadOrderDetail() {
+        srW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_OrderDetail)
         var parameter : Dictionary<String ,  AnyObject> = ["order_id": self.orderID!]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
@@ -180,7 +197,6 @@ class SR_OrderDetailVC: UIViewController {
     */
     
     func changeOrderStatus(nextStatus : String) {
-        srW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_ChangeOrderStatus)
         var parameter : Dictionary<String ,  AnyObject> = ["status": nextStatus ,"role": self.userInfo.role! ,"user_id" : self.userId!, "order_id": self.orderID!]
         println("\(parameter)")
@@ -200,6 +216,23 @@ class SR_OrderDetailVC: UIViewController {
             ""
         })
     }
+    
+    /**
+    订单状态改变
+    role ： 1.普通用户 2.美甲师
+    1.用户：
+        1.发订单           1 --> 2         6 --> 8
+        2.取消(未接受)      2 --> 8         7 --> 8
+        6.取消(已接受)      3 --> 8
+        7.完成             4 --> 6、7
+        8.删除             5 --> 8
+    2.美甲师：
+        3.拒绝             1 --> 3、4      5 --> 9
+        4.接受                             6 --> 9
+        5.取消             3 --> 9         7 --> 9
+        9.删除             4 --> 5
+    **/
+    
     //取消订单or完成评价
     @IBAction func userCancelBtnClick(sender: AnyObject) {
         switch dataForShow!.data.orderStatus {
@@ -208,7 +241,11 @@ class SR_OrderDetailVC: UIViewController {
         case "4":
             self.changeOrderStatus("5")
         case "7":
-            ""
+            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc    = story.instantiateViewControllerWithIdentifier("SR_OrderCommentVCID") as! SR_OrderCommentVC
+            vc.orderID = self.orderID
+            vc.title     = "填写评价"
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             ""
         }
@@ -245,6 +282,9 @@ class SR_OrderDetailVC: UIViewController {
 
 extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if self.dataForShow?.data.commId != "0" {
+        
+        }
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -269,68 +309,48 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
         var firstCell = tableView.dequeueReusableCellWithIdentifier(SR_OrderDetailFirstCell.cellID()) as! SR_OrderDetailFirstCell
         var secondCell = tableView.dequeueReusableCellWithIdentifier(SR_OrderDetailSecondCell.cellID()) as! SR_OrderDetailSecondCell
         var thirdCell = tableView.dequeueReusableCellWithIdentifier(SR_OrderDetailThirdCell.cellID()) as! SR_OrderDetailThirdCell
-        switch indexPath.row {
+        var commentCell = tableView.dequeueReusableCellWithIdentifier(SR_OrderDetailCommentCell.cellID()) as! SR_OrderDetailCommentCell
+        switch indexPath.section {
         case 0:
-            //美甲师头像
-            var imgUrl : String?
-            if self.userInfo.role == "1" {
-                imgUrl = dataForShow?.data.user.headImage
-                firstCell.nickName.text = dataForShow?.data.user.nickName
-            }
-            else {
-                imgUrl = dataForShow?.data.custom.headImage
-                firstCell.nickName.text = dataForShow?.data.custom.nickName
-            }
-            if let url = imgUrl
-            {
-                if (imgUrl!.hasPrefix("http"))
-                {
-                    firstCell.headImg.setImageWithURL(NSURL(string: imgUrl!), placeholderImage: UIImage(named: "imgHolder"))
+            switch indexPath.row {
+            case 0:
+                //美甲师头像
+                var imgUrl : String?
+                if self.userInfo.role == "1" {
+                    imgUrl = dataForShow?.data.user.headImage
+                    firstCell.nickName.text = dataForShow?.data.user.nickName
                 }
-                else
-                {
-                    var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + imgUrl!
-                    firstCell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
+                else {
+                    imgUrl = dataForShow?.data.custom.headImage
+                    firstCell.nickName.text = dataForShow?.data.custom.nickName
                 }
-            }
-
-            /**
-            订单状态
-            1：发出订单
-            2：用户取消订单
-            3：美甲师拒绝订单
-            4：美甲师接受订单
-            5：美甲师取消订单
-            6：用户取消订单（美甲师接受订单后）
-            7：交易完成
-            8：用户删除订单（隐藏）
-            9：美甲师删除订单（隐藏）
-            **/
-
-            switch dataForShow!.data.orderStatus {
-            case "1" :
-                firstCell.orderStatus.text = "待接受"
-                firstCell.orderStatus.textColor = UIColor.NailGrayColor()
-            case "2":
-                firstCell.orderStatus.text = "顾客取消"
-                firstCell.orderStatus.textColor = UIColor.NailRedColor()
-            case "3" :
-                firstCell.orderStatus.text = "美甲师拒绝"
-                firstCell.orderStatus.textColor = UIColor.NailRedColor()
-            case "4":
-                firstCell.orderStatus.text = "美甲师接受"
-                firstCell.orderStatus.textColor = UIColor.NailGrayColor()
-            case "5":
-                firstCell.orderStatus.text = "美甲师取消"
-                firstCell.orderStatus.textColor = UIColor.NailRedColor()
-            case "6":
-                firstCell.orderStatus.text = "顾客取消"
-                firstCell.orderStatus.textColor = UIColor.NailRedColor()
-            case "7":
-                firstCell.orderStatus.text = "已完成"
-                firstCell.orderStatus.textColor = UIColor.NailRedColor()
-            default:
-                switch dataForShow!.data.preStatus {
+                if let url = imgUrl
+                {
+                    if (imgUrl!.hasPrefix("http"))
+                    {
+                        firstCell.headImg.setImageWithURL(NSURL(string: imgUrl!), placeholderImage: UIImage(named: "imgHolder"))
+                    }
+                    else
+                    {
+                        var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + imgUrl!
+                        firstCell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
+                    }
+                }
+                
+                /**
+                订单状态
+                1：发出订单
+                2：用户取消订单
+                3：美甲师拒绝订单
+                4：美甲师接受订单
+                5：美甲师取消订单
+                6：用户取消订单（美甲师接受订单后）
+                7：交易完成
+                8：用户删除订单（隐藏）
+                9：美甲师删除订单（隐藏）
+                **/
+                
+                switch dataForShow!.data.orderStatus {
                 case "1" :
                     firstCell.orderStatus.text = "待接受"
                     firstCell.orderStatus.textColor = UIColor.NailGrayColor()
@@ -340,52 +360,92 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                 case "3" :
                     firstCell.orderStatus.text = "美甲师拒绝"
                     firstCell.orderStatus.textColor = UIColor.NailRedColor()
-
                 case "4":
                     firstCell.orderStatus.text = "美甲师接受"
                     firstCell.orderStatus.textColor = UIColor.NailGrayColor()
-
                 case "5":
                     firstCell.orderStatus.text = "美甲师取消"
                     firstCell.orderStatus.textColor = UIColor.NailRedColor()
                 case "6":
                     firstCell.orderStatus.text = "顾客取消"
-                    firstCell.orderStatus.textColor = UIColor.NailGrayColor()
+                    firstCell.orderStatus.textColor = UIColor.NailRedColor()
                 case "7":
                     firstCell.orderStatus.text = "已完成"
                     firstCell.orderStatus.textColor = UIColor.NailRedColor()
                 default:
-                    ""
+                    switch dataForShow!.data.preStatus {
+                    case "1" :
+                        firstCell.orderStatus.text = "待接受"
+                        firstCell.orderStatus.textColor = UIColor.NailGrayColor()
+                    case "2":
+                        firstCell.orderStatus.text = "顾客取消"
+                        firstCell.orderStatus.textColor = UIColor.NailRedColor()
+                    case "3" :
+                        firstCell.orderStatus.text = "美甲师拒绝"
+                        firstCell.orderStatus.textColor = UIColor.NailRedColor()
+                        
+                    case "4":
+                        firstCell.orderStatus.text = "美甲师接受"
+                        firstCell.orderStatus.textColor = UIColor.NailGrayColor()
+                        
+                    case "5":
+                        firstCell.orderStatus.text = "美甲师取消"
+                        firstCell.orderStatus.textColor = UIColor.NailRedColor()
+                    case "6":
+                        firstCell.orderStatus.text = "顾客取消"
+                        firstCell.orderStatus.textColor = UIColor.NailGrayColor()
+                    case "7":
+                        firstCell.orderStatus.text = "已完成"
+                        firstCell.orderStatus.textColor = UIColor.NailRedColor()
+                    default:
+                        ""
+                    }
                 }
+                firstCell.delegate = self
+                return firstCell
+            case 1:
+                //预约时间
+                secondCell.titleLabel.text = "预约时间："
+                var timeString = dataForShow?.data.orderTime as String!
+                secondCell.orderTimeOrAddress.text = timeStampToDateString(timeString)
+                return secondCell
+            case 2:
+                secondCell.titleLabel.text = "预约地点："
+                //预约地址
+                if (dataForShow?.data.detailAddr == "null") {
+                    secondCell.orderTimeOrAddress.text = "待定"
+                }
+                else {
+                    secondCell.orderTimeOrAddress.text = dataForShow?.data.detailAddr
+                    
+                }
+                return secondCell
+            case 3:
+                //预约主题
+                if (dataForShow?.data.albumDesc != nil) {
+                    thirdCell.orderAblum.text = dataForShow?.data.albumDesc
+                }
+                else {
+                    thirdCell.orderAblum.text = "待定"
+                }
+                return thirdCell
+            default:
+                return firstCell
             }
-            firstCell.delegate = self
-            return firstCell
         case 1:
-            //预约时间
-            secondCell.titleLabel.text = "预约时间："
-            var timeString = dataForShow?.data.orderTime as String!
-            secondCell.orderTimeOrAddress.text = timeStampToDateString(timeString)
-            return secondCell
-        case 2:
-            secondCell.titleLabel.text = "预约地点："
-            //预约地址
-            if (dataForShow?.data.detailAddr == "null") {
-                secondCell.orderTimeOrAddress.text = "待定"
-            }
-            else {
-                secondCell.orderTimeOrAddress.text = dataForShow?.data.detailAddr
+            switch indexPath.row {
+            case 0:
+//                commentCell.headImg = data
+                if self.dataForShow?.data.commId == "0" {
                 
+                }
+                ""
+            case 1:
+                ""
+            default:
+                ""
             }
-            return secondCell
-        case 3:
-            //预约主题
-            if (dataForShow?.data.albumDesc != nil) {
-                thirdCell.orderAblum.text = dataForShow?.data.albumDesc
-            }
-            else {
-                thirdCell.orderAblum.text = "待定"
-            }
-            return thirdCell
+            return commentCell
         default:
             return firstCell
         }
@@ -393,11 +453,18 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 3 {
-            var story = UIStoryboard(name: "PublicStory", bundle: nil)
-            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
-            vc.artWorkID = dataForShow?.data.albumId
-            vc.title     = "美甲室"
-            self.navigationController?.pushViewController(vc, animated: true)
+            if dataForShow?.data.albumId != "0" {
+                var story = UIStoryboard(name: "PublicStory", bundle: nil)
+                var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
+                vc.artWorkID = dataForShow?.data.albumId
+                vc.title     = "美甲室"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else
+            {
+                self.showAlertEasy("提示", messageContent: "用户未选定图集")
+                println("hello")
+            }
         }
     }
 }
@@ -408,7 +475,12 @@ extension SR_OrderDetailVC : SR_OrderDetailFirstCellProtocol {
     func clickHeadImg() {
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as!ZXY_DFPArtistDetailVC
-        detailArtist.artistID = dataForShow?.data.userId
+        if self.userInfo.role == "1" {
+            detailArtist.artistID = dataForShow?.data.userId
+        }
+        else {
+            detailArtist.artistID = dataForShow?.data.customId
+        }
         self.navigationController?.pushViewController(detailArtist, animated: true)
     }
     

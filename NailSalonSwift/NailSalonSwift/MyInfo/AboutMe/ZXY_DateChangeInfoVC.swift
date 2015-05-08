@@ -68,6 +68,8 @@ class ZXY_DateChangeInfoVC: UIViewController {
         super.viewDidLoad()
         
         currentTable.tableFooterView = UIView(frame: CGRectZero)
+        // MARK: right
+        self.setNaviBarRightImage("rightSimple")
         // Do any additional setup after loading the view.
     }
 
@@ -76,7 +78,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+     
     override func rightNaviButtonAction() {
         var keyString : String?  = currentDic?["title"] as? String
         if(keyString != nil)

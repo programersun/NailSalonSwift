@@ -22,7 +22,7 @@ class SR_ChangeOrderInfo: UIViewController {
     
     var changeInfo : String?
     var changeType : Int!
-    var delegate : SR_ChangeOrderInfoProtocol?
+    weak var delegate : SR_ChangeOrderInfoProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -22,7 +22,7 @@ class SR_OrderTableCell: UITableViewCell {
     @IBOutlet weak var orderState: UILabel!
     @IBOutlet weak var orderDeleteBtn: UIButton!
     
-    var delegate : SR_OrderTableCellProtocol?
+    weak var delegate : SR_OrderTableCellProtocol?
     var orderID : String?
     
     class func cellID() -> String
@@ -42,6 +42,24 @@ class SR_OrderTableCell: UITableViewCell {
     }
 
     @IBAction func orderDeleteBtnClick(sender: AnyObject) {
-        self.delegate?.orderDelete(self.orderID!)
+        
+        var editAler = UIAlertView()
+        editAler.message  = "您确定删除订单吗？"
+        editAler.title    = "提示"
+        editAler.addButtonWithTitle("取消")
+        editAler.addButtonWithTitle("确定")
+        editAler.delegate = self
+        editAler.show()
+        
+    }
+}
+extension SR_OrderTableCell : UIAlertViewDelegate {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            self.delegate?.orderDelete(self.orderID!)
+        }
+        else {
+            return
+        }
     }
 }

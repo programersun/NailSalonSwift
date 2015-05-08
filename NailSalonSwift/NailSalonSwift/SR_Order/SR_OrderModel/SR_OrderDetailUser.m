@@ -1,18 +1,20 @@
 //
 //  SR_OrderDetailUser.m
 //
-//  Created by sun  on 15/5/5
+//  Created by sun  on 15/5/8
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "SR_OrderDetailUser.h"
+#import "SR_OrderDetailComment.h"
 
 
 NSString *const kSR_OrderDetailUserNickName = @"nick_name";
-NSString *const kSR_OrderDetailUserUserName = @"user_name";
 NSString *const kSR_OrderDetailUserScore = @"score";
-NSString *const kSR_OrderDetailUserUserId = @"user_id";
 NSString *const kSR_OrderDetailUserHeadImage = @"head_image";
+NSString *const kSR_OrderDetailUserUserId = @"user_id";
+NSString *const kSR_OrderDetailUserUserName = @"user_name";
+NSString *const kSR_OrderDetailUserComment = @"comment";
 NSString *const kSR_OrderDetailUserTel = @"tel";
 
 
@@ -25,10 +27,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
 @implementation SR_OrderDetailUser
 
 @synthesize nickName = _nickName;
-@synthesize userName = _userName;
 @synthesize score = _score;
-@synthesize userId = _userId;
 @synthesize headImage = _headImage;
+@synthesize userId = _userId;
+@synthesize userName = _userName;
+@synthesize comment = _comment;
 @synthesize tel = _tel;
 
 
@@ -45,10 +48,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.nickName = [self objectOrNilForKey:kSR_OrderDetailUserNickName fromDictionary:dict];
-            self.userName = [self objectOrNilForKey:kSR_OrderDetailUserUserName fromDictionary:dict];
             self.score = [self objectOrNilForKey:kSR_OrderDetailUserScore fromDictionary:dict];
-            self.userId = [self objectOrNilForKey:kSR_OrderDetailUserUserId fromDictionary:dict];
             self.headImage = [self objectOrNilForKey:kSR_OrderDetailUserHeadImage fromDictionary:dict];
+            self.userId = [self objectOrNilForKey:kSR_OrderDetailUserUserId fromDictionary:dict];
+            self.userName = [self objectOrNilForKey:kSR_OrderDetailUserUserName fromDictionary:dict];
+            self.comment = [SR_OrderDetailComment modelObjectWithDictionary:[dict objectForKey:kSR_OrderDetailUserComment]];
             self.tel = [self objectOrNilForKey:kSR_OrderDetailUserTel fromDictionary:dict];
 
     }
@@ -61,10 +65,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.nickName forKey:kSR_OrderDetailUserNickName];
-    [mutableDict setValue:self.userName forKey:kSR_OrderDetailUserUserName];
     [mutableDict setValue:self.score forKey:kSR_OrderDetailUserScore];
-    [mutableDict setValue:self.userId forKey:kSR_OrderDetailUserUserId];
     [mutableDict setValue:self.headImage forKey:kSR_OrderDetailUserHeadImage];
+    [mutableDict setValue:self.userId forKey:kSR_OrderDetailUserUserId];
+    [mutableDict setValue:self.userName forKey:kSR_OrderDetailUserUserName];
+    [mutableDict setValue:[self.comment dictionaryRepresentation] forKey:kSR_OrderDetailUserComment];
     [mutableDict setValue:self.tel forKey:kSR_OrderDetailUserTel];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
@@ -90,10 +95,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
     self = [super init];
 
     self.nickName = [aDecoder decodeObjectForKey:kSR_OrderDetailUserNickName];
-    self.userName = [aDecoder decodeObjectForKey:kSR_OrderDetailUserUserName];
     self.score = [aDecoder decodeObjectForKey:kSR_OrderDetailUserScore];
-    self.userId = [aDecoder decodeObjectForKey:kSR_OrderDetailUserUserId];
     self.headImage = [aDecoder decodeObjectForKey:kSR_OrderDetailUserHeadImage];
+    self.userId = [aDecoder decodeObjectForKey:kSR_OrderDetailUserUserId];
+    self.userName = [aDecoder decodeObjectForKey:kSR_OrderDetailUserUserName];
+    self.comment = [aDecoder decodeObjectForKey:kSR_OrderDetailUserComment];
     self.tel = [aDecoder decodeObjectForKey:kSR_OrderDetailUserTel];
     return self;
 }
@@ -102,10 +108,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
 {
 
     [aCoder encodeObject:_nickName forKey:kSR_OrderDetailUserNickName];
-    [aCoder encodeObject:_userName forKey:kSR_OrderDetailUserUserName];
     [aCoder encodeObject:_score forKey:kSR_OrderDetailUserScore];
-    [aCoder encodeObject:_userId forKey:kSR_OrderDetailUserUserId];
     [aCoder encodeObject:_headImage forKey:kSR_OrderDetailUserHeadImage];
+    [aCoder encodeObject:_userId forKey:kSR_OrderDetailUserUserId];
+    [aCoder encodeObject:_userName forKey:kSR_OrderDetailUserUserName];
+    [aCoder encodeObject:_comment forKey:kSR_OrderDetailUserComment];
     [aCoder encodeObject:_tel forKey:kSR_OrderDetailUserTel];
 }
 
@@ -116,10 +123,11 @@ NSString *const kSR_OrderDetailUserTel = @"tel";
     if (copy) {
 
         copy.nickName = [self.nickName copyWithZone:zone];
-        copy.userName = [self.userName copyWithZone:zone];
         copy.score = [self.score copyWithZone:zone];
-        copy.userId = [self.userId copyWithZone:zone];
         copy.headImage = [self.headImage copyWithZone:zone];
+        copy.userId = [self.userId copyWithZone:zone];
+        copy.userName = [self.userName copyWithZone:zone];
+        copy.comment = [self.comment copyWithZone:zone];
         copy.tel = [self.tel copyWithZone:zone];
     }
     

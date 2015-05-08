@@ -98,7 +98,6 @@ enum SR_OrderAPIType : String
     case SR_OrderDetail  = "Order/order_detail"
     case SR_ChangeOrderStatus = "Order2/change_order_status"
     case SR_CommentAdd = "Order/order_comment_add"
-    case SR_ImgAdd = "Order/add_image"
 }
 
 struct ZXY_NailNetAPI
