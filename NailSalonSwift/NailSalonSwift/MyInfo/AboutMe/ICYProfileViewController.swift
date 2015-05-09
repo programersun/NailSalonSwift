@@ -10,6 +10,9 @@ import UIKit
 
 class ICYProfileViewController: UITableViewController {
     
+    @IBOutlet var cameraView: UIControl!
+    @IBOutlet weak var cameraV: UIView!
+    
     typealias RequestBlock = () -> Void
     var requestBlock : RequestBlock!
     
@@ -18,10 +21,17 @@ class ICYProfileViewController: UITableViewController {
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
     var userInfoValue : Dictionary<String , AnyObject?>! = Dictionary<String , AnyObject?>()
     
+    var headChangeImg : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.cameraView.hidden = true
+        self.cameraView.layer.opacity = 0
+        self.cameraView.frame = CGRectMake(0, 0, self.tableView.frame.width, self.tableView.frame.height)
+        self.cameraV.hidden = true
+        var tapCameraBackground = UITapGestureRecognizer(target: self, action: "cameraBackgroundTouch")
+        self.cameraView.addGestureRecognizer(tapCameraBackground)
+        self.view.addSubview(cameraView)
         println("\(userInfo)")
         userInfoValue.extend(["userName" : userInfo.nickName , "userProfile" : userInfo.headImage , "userSex" : userInfo.sex , "userTel" : userInfo.tel , "userRealName" : userInfo.realName , "userAddr" : userInfo.address])
         
@@ -83,9 +93,14 @@ class ICYProfileViewController: UITableViewController {
                             {
                                 imgURL = hI
                             }
-                            cell.imagePath = imgURL
+                            cell.icyImageView.setImageWithURL(NSURL(string : imgURL))
                         }
                     }
+                }
+                //修改的头像
+                if headChangeImg != nil
+                {
+                    cell.icyImageView.image = self.headChangeImg
                 }
             case 1:
                 cell = tableView.dequeueReusableCellWithIdentifier(ICYProfileCell.identifier) as! UITableViewCell
@@ -166,8 +181,8 @@ class ICYProfileViewController: UITableViewController {
             switch row
             {
             case 0:
-//                self.selectProfileFunction()
-                return
+                self.cameraAppear()
+                
             case 1 :
                 vc.setInitValueAndTitle("userName", initValue: userInfoValue["userName"] ?? "")
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -178,9 +193,6 @@ class ICYProfileViewController: UITableViewController {
                 changeSexAler.addButtonWithTitle("女")
                 changeSexAler.delegate = self
                 changeSexAler.show()
-                
-//                vc.setInitValueAndTitle("userSex", initValue: userInfoValue["userSex"]?)
-//                vc.setIsInput(false)
 
             default:
                 return
@@ -203,12 +215,55 @@ class ICYProfileViewController: UITableViewController {
         }
     }
     
-    func selectProfileFunction()
+    //点击照片背景
+    func cameraBackgroundTouch() {
+        self.cameraBackgroundOut()
+    }
+    
+    //弹出拍照
+    func cameraAppear() {
+        cameraV.hidden = false
+        cameraView.hidden = false
+        cameraView.layer.opacity = 0.95
+        cameraView.layer.addAnimation(SR_Animation.animationForAlpha(0, to: 0.95), forKey: "opacity")
+        cameraV.layer.addAnimation(SR_Animation.animationDown(), forKey: "scale")
+        cameraV.layer.anchorPoint = CGPointMake(0.5, 0.5)
+    }
+    
+    //推出加入照片选项
+    func cameraBackgroundOut()
     {
-//        var story = UIStoryboard(name: "ZXYTakePic", bundle: nil)
-//        var vc    = story.instantiateInitialViewController() as ZXY_PictureTakeVC
-//        vc.delegate = self
-//        vc.presentView()
+        self.cameraView.layer.opacity = 0
+        cameraV.layer.addAnimation(SR_Animation().animationUp({ (isFinish) -> Void in
+            self.cameraV.hidden = true
+            ""
+        }), forKey: "scale")
+        cameraV.layer.anchorPoint = CGPointMake(0.5, 0.5)
+        cameraView.layer.addAnimation(SR_Animation().animationForAlpha(0.95, to: 0, finishBlock: { (isFinish) -> Void in
+            self.cameraView.hidden = true
+            ""
+        }), forKey: "opacity")
+    }
+    
+    @IBAction func cameraBtnClick(sender: AnyObject) {
+        var sourceType: UIImagePickerControllerSourceType = UIImagePickerControllerSourceType.Camera
+        var picker: UIImagePickerController               = UIImagePickerController()
+        picker.delegate                                   = self
+        picker.allowsEditing                              = true
+        picker.sourceType                                 = sourceType
+        self.presentViewController(picker, animated: true) { () -> Void in
+        }
+    }
+    
+    @IBAction func registPhotoBtnClick(sender: AnyObject) {
+        var sourceType: UIImagePickerControllerSourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        var picker: UIImagePickerController               = UIImagePickerController()
+        picker.delegate                                   = self
+        picker.allowsEditing                              = true
+        picker.sourceType                                 = sourceType
+        self.presentViewController(picker, animated: true) { () -> Void in
+            
+        }
     }
     
     /*
@@ -255,104 +310,18 @@ class ICYProfileViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
 
 extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePickerControllerDelegate, ZXY_DateChangeInfoVCDelegate
-//    , ZXY_ImagePickerDelegate , ZXY_PictureTakeDelegate
 {
     func afterChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
         self.startLoadInfoData()
     }
     
-//    func clickChoosePictureBtn() {
-////        var zxy_imgPick = ZXY_ImagePickerTableVC()
-////        zxy_imgPick.setMaxNumOfSelect(1)
-////        zxy_imgPick.delegate = self
-////        zxy_imgPick.presentZXYImagePicker(self)
-//    }
-//    
-//    func clickTakePhotoBtn() {
-//        
-////        var photoPicker = UIImagePickerController()
-////        photoPicker.sourceType = UIImagePickerControllerSourceType.Camera
-////        photoPicker.delegate = self
-////        self.presentViewController(photoPicker, animated: true) { () -> Void in
-////            
-////        }
-//    }
-//    
-//    func ZXY_ImagePicker(imagePicker: ZXY_ImagePickerTableVC, didFinishPicker assetArr: [ALAsset]) {
-//        if(assetArr.count > 0)
-//        {
-////            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
-//            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-//            if(myUserID == nil)
-//            {
-//                return
-//            }
-//            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//            var firstProfile : UIImage = self.AlssetToUIImage(assetArr[0])
-//            firstProfile     = UIImage(image: firstProfile, scaledToFillToSize: CGSize(width: 400  ,height: 400))
-//            self.startLoadImgData(firstProfile)
-//        }
-//    }
-//    
-//    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        picker.dismissViewControllerAnimated(true, completion: { [weak self]() -> Void in
-////            var myUserID = LCYCommon.sharedInstance.userInfo?.userID
-//            var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-//            if(myUserID == nil)
-//            {
-//                return
-//            }
-//            
-//            var firstProfile     = UIImage(image: image, scaledToFillToSize: CGSize(width: 400  ,height: 400))
-//            self?.startLoadImgData(firstProfile)
-//        })
-//        
-//    }
-//    
-//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-//        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            
-//        })
-//    }
-//    
-//    func startLoadImgData(img : UIImage)
-//    {
-//        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-//        if(myUserID == nil)
-//        {
-//            return
-//        }
-//        zxyW.startProgress(self.view)
-//        var urlString = ZXY_ALLApi.ZXY_MainAPI + ZXY_ALLApi.ZXY_ChangeProfileAPI
-//        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: ["user_id" : myUserID!], imgData: [UIImageJPEGRepresentation(img, 0.8)], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-//            var status = returnDic["result"] as Int
-//            if(status == 1000)
-//            {
-//                self?.userInfo.headImage = returnDic["data"] as String
-//                self?.userInfoValue.extend(["userProfile" : returnDic["data"] as String])
-//                self?.startDownLoadUserDetailInfo()
-//                self?.tableView.reloadData()
-//            }
-//            if let s = self
-//            {
-//                s.zxyW.hideProgress(s.view)
-//            }
-//            }, failure: { [weak self](failError) -> Void in
-//                if let s = self
-//                {
-//                    s.zxyW.hideProgress(s.view)
-//                }
-//                return
-//        })
-//
-//    }
-//    
     func startLoadInfoData()
     {
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
@@ -409,7 +378,6 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         {
             return
         }
-//        zxyW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.MI_MyInfo)
         var parameter = ["user_id" : userID!]
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
@@ -434,12 +402,51 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
                     s.zxyW.hideProgress(s.view)
                 }
         }
-        
     }
     
-    @IBAction func backAction(sender: AnyObject)
-    {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+    //修改头像
+    func loadHeadImg() {
+        var urlString = ZXY_NailNetAPI.ZXY_MyInfoAPI(ZXY_MyInfoAPIType.SR_ModifyHeadImg)
+        var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        var parameter : Dictionary<String ,  AnyObject> = [ "user_id" : myUserID!]
+        var imgData = NSData()
+        imgData = UIImageJPEGRepresentation(self.headChangeImg, 1)
+        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: parameter, imgData: [imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+            var result: Double = returnDic["result"] as! Double
+            if result == 1000 {
+                self?.tableView.reloadData()
+                if self?.requestBlock != nil {
+                    self?.requestBlock()
+                }
+            }
+            else
+            {
+                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                self?.showAlertEasy("提示", messageContent: errorString)
+            }
+        }) { [weak self](failError) -> Void in
+            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+            ""
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        var resizeImg =  UIImage(image: image, scaledToFillToSize: CGSize(width: 80, height: 80))
+        cameraBackgroundOut()
+        self.headChangeImg = resizeImg
+        self.loadHeadImg()
+        println("success")
+        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        cameraBackgroundOut()
+        println("cancel")
+        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
     }
 }
 

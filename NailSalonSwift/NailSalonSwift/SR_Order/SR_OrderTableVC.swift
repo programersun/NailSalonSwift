@@ -34,6 +34,7 @@ class SR_OrderTableVC: UIViewController {
         srW.startProgress(self.view)
         self.loadOrderInfo()
         self.addHeaderAndFooterforTable()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -144,15 +145,12 @@ class SR_OrderTableVC: UIViewController {
         })
     }
 
-    @IBAction func backAction(sender: AnyObject) {
-        var story = UIStoryboard(name: "PublicStory", bundle: nil)
+    override func leftNaviButtonAction() {
         switch self.orderType {
         case 0:
-            var vc = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as! ZXY_DFPArtistDetailVC
-            self.navigationController?.popToViewController(vc, animated: true)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         case 1:
-            var vc = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtDetailVCID") as! ZXY_DFPArtDetailVC
-            self.navigationController?.popToViewController(vc, animated: true)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         case 2:
             self.navigationController?.popViewControllerAnimated(true)
         default:
