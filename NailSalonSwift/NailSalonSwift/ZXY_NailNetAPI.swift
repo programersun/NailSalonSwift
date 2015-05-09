@@ -62,6 +62,7 @@ enum ZXY_MyInfoAPIType : String
     case MI_ThirdLogin = "User/third_login"
     case MI_Regist  = "User/register"
     case MI_MyInfo  = "User/userInfo"
+    case SR_ModifyHeadImg = "User/modifyHeadImage"
 }
 
 enum ZXY_ADFPAPIType : String

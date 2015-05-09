@@ -195,6 +195,16 @@ extension UIViewController
         return dateString
     }
     
+    func timeStampToDate(timeStamp : String) -> String
+    {
+        var interVal : NSTimeInterval = (timeStamp as NSString).doubleValue
+        var dates = NSDate(timeIntervalSince1970: interVal)
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        var dateString = formatter.stringFromDate(dates)
+        return dateString
+    }
+    
     func layerCustomerViewCorner(customerV : UIView , cornerValue: CGFloat) -> Void
     {
         

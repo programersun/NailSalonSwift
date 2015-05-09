@@ -10,10 +10,8 @@
 import UIKit
 
 class SR_OrderDetailVC: UIViewController {
-
     
     @IBOutlet weak var orderDetailTableView: UITableView!
-    
     @IBOutlet weak var userCancel: UIButton!
     @IBOutlet weak var orderRefuse: UIButton!
     @IBOutlet weak var orderAccept: UIButton!
@@ -32,19 +30,18 @@ class SR_OrderDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         userCancel.hidden = true
         orderRefuse.hidden = true
         orderAccept.hidden = true
         self.getUserInfo()
-//        self.loadOrderDetail()
+        srW.startProgress(self.view)
+        self.loadOrderDetail()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         self.loadOrderDetail()
     }
-    
     
     //获取当前用户的信息
     func getUserInfo() {
@@ -153,7 +150,6 @@ class SR_OrderDetailVC: UIViewController {
     
     //加载订单详情数据
     func loadOrderDetail() {
-        srW.startProgress(self.view)
         var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_OrderDetail)
         var parameter : Dictionary<String ,  AnyObject> = ["order_id": self.orderID!]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
@@ -282,26 +278,64 @@ class SR_OrderDetailVC: UIViewController {
 
 extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if self.dataForShow?.data.commId != "0" {
-        
+        if self.dataForShow?.data.commTouserId != "0" || self.dataForShow?.data.commId != "0" {
+            self.orderDetailTableView.scrollEnabled = true
+            return 2
         }
-        return 1
+        else {
+            self.orderDetailTableView.scrollEnabled = false
+            return 1
+        }
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataForShow == nil {
             return 0
         }
         else {
-            return 4
+            switch section {
+            case 0:
+                return 4
+            case 1:
+                var commentNum : Int = 0
+                if self.dataForShow?.data.commTouserId != "0" {
+                    commentNum++
+                }
+                if self.dataForShow?.data.commId != "0" {
+                    commentNum++
+                }
+                return commentNum
+            default:
+                return 4
+            }
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 125
-        }
-        else {
-            return 50
+        
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                return 125
+            }
+            else {
+                return 50
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                if self.dataForShow?.data.user.comment.imageId == "0" {
+                    return 85
+                }
+                else {
+                    return 175
+                }
+            case 1:
+                return 85
+            default:
+                return 0
+            }
+        default:
+            return 0
         }
     }
     
@@ -335,6 +369,15 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                         var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + imgUrl!
                         firstCell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
                     }
+                }
+                
+                if self.dataForShow?.data.user.tel == ""{
+                    firstCell.chatBtnWidth.constant = 15
+                    firstCell.telBtn.hidden = true
+                }
+                else {
+                    firstCell.chatBtnWidth.constant = 50
+                    firstCell.telBtn.hidden = false
                 }
                 
                 /**
@@ -433,18 +476,77 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                 return firstCell
             }
         case 1:
+            var headImgUrl : String?
+            var nameString : String?
+            var commentScore : NSString?
+            var commentTime : String?
+            var commentString : String?
+            var commentImgUrl : String?
             switch indexPath.row {
             case 0:
-//                commentCell.headImg = data
-                if self.dataForShow?.data.commId == "0" {
-                
+                headImgUrl    = dataForShow?.data.custom.headImage
+                nameString    = dataForShow?.data.custom.nickName
+                commentScore  = NSString(format: "%@", dataForShow!.data.user.comment.score)
+                commentTime   = dataForShow?.data.user.comment.addTime
+                commentString = dataForShow?.data.user.comment.comment
+                commentImgUrl = dataForShow?.data.user.comment.imagePath
+                if self.dataForShow?.data.user.comment.imageId == "0" {
+                    commentCell.commentImg.hidden = true
                 }
                 ""
             case 1:
+                headImgUrl = dataForShow?.data.user.headImage
+                nameString = dataForShow?.data.user.nickName
+                commentScore  = NSString(format: "%@", dataForShow!.data.custom.comment.score)
+                commentTime   = dataForShow?.data.custom.comment.addTime
+                commentString = dataForShow?.data.custom.comment.comment
+                commentImgUrl = dataForShow?.data.custom.comment.imagePath
+                commentCell.commentImg.hidden = true
                 ""
             default:
                 ""
             }
+            
+            //评论头像
+            if let url = headImgUrl
+            {
+                if (url.hasPrefix("http"))
+                {
+                    commentCell.headImg.setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "imgHolder"))
+                }
+                else
+                {
+                    var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + url
+                    commentCell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
+                }
+            }
+            //评论昵称
+            commentCell.nickName.text = nameString
+            
+            //用户评价等级
+            var doubleScore = commentScore!.doubleValue
+            commentCell.starRateView?.scorePercent = CGFloat(doubleScore/5.0)
+            
+            //评价时间
+            commentCell.commentTime.text = self.timeStampToDate(commentTime!)
+            
+            //评价内容
+            commentCell.commentString.text = commentString
+            
+            //评价图片
+            if let url = commentImgUrl
+            {
+                if (url.hasPrefix("http"))
+                {
+                    commentCell.commentImg.setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "imgHolder"))
+                }
+                else
+                {
+                    var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + url
+                    commentCell.commentImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
+                }
+            }
+            
             return commentCell
         default:
             return firstCell
@@ -486,11 +588,51 @@ extension SR_OrderDetailVC : SR_OrderDetailFirstCellProtocol {
     
     //发送消息
     func clickMessage() {
-        
+        println("交流")
+        var myData = self.userData?.data
+        var artistID : String?
+        var headImgString : String?
+        var nameString : String?
+        if self.userInfo.role == "1" {
+            artistID = dataForShow?.data.userId
+            headImgString = dataForShow?.data.user.headImage
+            nameString = dataForShow?.data.user.nickName
+        }
+        else {
+            artistID = dataForShow?.data.customId
+            headImgString = dataForShow?.data.custom.headImage
+            nameString = dataForShow?.data.custom.nickName
+        }
+        var chatView = ChatViewController(chatter: artistID!, isGroup: false)
+        chatView.title = nameString
+        var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + headImgString!
+        if(headImgString!.hasPrefix("http"))
+        {
+            stringURL = headImgString!
+        }
+        chatView.imgURLTo = stringURL
+        var myHeadImg : String? = myData!.headImage
+        if let myI = myHeadImg
+        {
+            var imgURL =  ZXY_ALLApi.ZXY_MainAPIImage + myData!.headImage!
+            if myI.hasPrefix("http")
+            {
+                imgURL = myI
+            }
+            chatView.imgURLMy = imgURL
+        }
+        self.navigationController?.pushViewController(chatView, animated: true)
+
     }
-    
+
     //拨打电话
     func clickTel() {
-        
+        println("\(self.dataForShow?.data.user.tel)")
+        if let userTel = self.dataForShow?.data.user.tel {
+            var tel = "tel://" + userTel
+            println("\(tel))")
+            var urlTel = NSURL(string: tel)
+            UIApplication.sharedApplication().openURL(urlTel!)
+        }
     }
 }

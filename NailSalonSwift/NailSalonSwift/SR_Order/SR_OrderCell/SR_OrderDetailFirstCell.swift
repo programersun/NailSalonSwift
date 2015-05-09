@@ -20,6 +20,9 @@ class SR_OrderDetailFirstCell: UITableViewCell {
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var orderStatus: UILabel!
+    @IBOutlet weak var telBtn: UIButton!
+    @IBOutlet weak var chatBtnWidth: NSLayoutConstraint!
+    
     
     weak var delegate : SR_OrderDetailFirstCellProtocol?
     
