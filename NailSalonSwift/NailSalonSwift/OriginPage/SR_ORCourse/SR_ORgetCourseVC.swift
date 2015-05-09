@@ -24,9 +24,11 @@ class SR_ORgetCourseVC: UIViewController {
     
     typealias RequestBlock = () -> Void
     var requestBlock : RequestBlock!
-    
+    var shareURL : String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareURL  = ZXY_ALLApi.ZXY_ShareMainCourseAPI + courseId
+
         self.navigationController?.navigationBar.hidden = false
         var timeStamp = ZXY_NetHelperOperate().timeStamp()
         var token     = ZXY_NetHelperOperate().timeStampMD5("meijia\(timeStamp)")
@@ -115,7 +117,9 @@ class SR_ORgetCourseVC: UIViewController {
     
     //分享
     @IBAction func shareBtnClick(sender: AnyObject) {
-        
+        UMSocialWechatHandler.setWXAppId(ZXY_ConstValue.WXAPPKEY.rawValue, appSecret: ZXY_ConstValue.WXAPPSECURITY.rawValue, url: shareURL)
+        UMSocialQQHandler.setQQWithAppId(ZXY_ConstValue.QQAPPID.rawValue, appKey: ZXY_ConstValue.QQAPPKEY.rawValue, url: shareURL)
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey: ZXY_ConstValue.UMAPPKEY.rawValue, shareText: self.title, shareImage: UIImage(named: "iconForShare"), shareToSnsNames: [UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline], delegate: nil)
     }
     /**
     改变状态码

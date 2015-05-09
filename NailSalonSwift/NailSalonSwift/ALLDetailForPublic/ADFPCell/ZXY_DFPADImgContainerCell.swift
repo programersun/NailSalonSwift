@@ -16,6 +16,7 @@ protocol ZXY_DFPADImgContainerCellProtocol : class
     func userClickAvaterImg()
     func clickImageAtIndexPath(indexPath : NSIndexPath)
     func userClickEditBtn()
+    func userClickShareBtn()
 }
 
 class ZXY_DFPADImgContainerCell: UITableViewCell {
@@ -203,6 +204,12 @@ extension ZXY_DFPADImgContainerCell : UICollectionViewDelegate , UICollectionVie
         self.pageNum.currentPage = Int(currentPage)
     }
     
+    @IBAction func sharedAction(sender: AnyObject) {
+        if let de = delegate
+        {
+            de.userClickShareBtn()
+        }
+    }
 }
 
 

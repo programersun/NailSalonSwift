@@ -11,15 +11,19 @@
   */
 
 #import <UIKit/UIKit.h>
-
+@class ZXY_ArtistDetailModelBase;
+@class ZXY_ArtistDetailData;
 @interface ChatListCell : UITableViewCell
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *detailMsg;
 @property (nonatomic, strong) NSString *time;
+@property (nonatomic, strong) ZXY_ArtistDetailModelBase *baseData;
+@property (nonatomic, strong) ZXY_ArtistDetailData *dataUser;
 @property (nonatomic) NSInteger unreadCount;
 
 +(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)startDownLoadInfo;
 @end

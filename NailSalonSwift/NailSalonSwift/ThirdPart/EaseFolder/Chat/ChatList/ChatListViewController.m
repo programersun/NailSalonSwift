@@ -276,7 +276,7 @@
         cell.name = conversation.chatter;
         cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
     }
-    
+    [cell startDownLoadInfo];
     
     
     cell.detailMsg = [self subTitleMessageByConversation:conversation];
@@ -302,7 +302,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     EMConversation *conversation = [self.dataSource objectAtIndex:indexPath.row];
-    
+    ChatListCell *cell = (ChatListCell *)[tableView cellForRowAtIndexPath:indexPath] ;
     ChatViewController *chatController;
     NSString *title = conversation.chatter;
     if (conversation.isGroup) {
@@ -316,31 +316,31 @@
     }
     
     NSString *chatter = conversation.chatter;
-    ZXY_DataProvider *provider   = [[ZXY_DataProvider alloc] init];
-    ArtistList *currentArt = [provider fetchArt:conversation.chatter];
+    
+    
     chatController = [[ChatViewController alloc] initWithChatter:chatter isGroup:conversation.isGroup];
-    chatController.title = title;
-    //chatController.shouleEx = YES;
-    if(currentArt != nil)
+    chatController.title = cell.name;
+    NSString *imgURL = cell.dataUser.headImage;
+    imgURL = [NSString stringWithFormat:@"http://www.meijiab.cn/admin/%@",imgURL];
+    if ([cell.dataUser.headImage hasPrefix:@"http"])
     {
-        chatController.title = currentArt.artistName;
-        NSString *stringURL = [NSString stringWithFormat:@"%@%@",self.mainImgURL,currentArt.artistImg];
-        if([currentArt.artistImg hasPrefix:@"http"])
-        {
-            stringURL = currentArt.artistImg;
-        }
-        chatController.imgURLTo = stringURL;
-//        [[LCYCommon sharedInstance] getUserDetailInfo:^(CYMJUserInfoData *hello) {
-//            NSString *stringURLMe = [NSString stringWithFormat:@"%@%@",self.mainImgURL,hello.headImage];
-//            chatController.imgURLMy = stringURLMe;
-//        } failBlock:^{
-//            
-//        }];
-        
-        
+        imgURL = cell.dataUser.headImage;
     }
+
+    chatController.imgURLTo = imgURL ; 
+    
+    NSData *userInfoData = (NSData *)[[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfoDetail_UserDetail"];
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:userInfoData];
+    ZXY_UserDetailInfoUserDetailBase *dataBase = [ZXY_UserDetailInfoUserDetailBase modelObjectWithDictionary:dic];
+    ZXY_UserDetailInfoData *data = dataBase.data;
+    chatController.imgURLMy = data.headImage;
     
     [self.navigationController pushViewController:chatController animated:YES];
+}
+
+-(void)startLoadData
+{
+    
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

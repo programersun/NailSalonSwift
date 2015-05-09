@@ -76,7 +76,14 @@ class ICYProfileViewController: UITableViewController {
                 cell.icyImageView.layer.masksToBounds = true
                 if let headImg = userInfoValue["userProfile"] as? String
                 {
-                    cell.imagePath = headImg.toAbsoluteImagePath()
+                    if headImg.hasPrefix("http")
+                    {
+                        cell.imagePath = headImg
+                    }
+                    else
+                    {
+                        cell.imagePath = headImg.toAbsoluteImagePath()
+                    }
                 }
                 else
                 {

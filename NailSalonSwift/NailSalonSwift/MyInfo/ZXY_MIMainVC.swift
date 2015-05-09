@@ -93,7 +93,8 @@ class ZXY_MIMainVC: UIViewController {
             var propertyVC = segue.destinationViewController as! ICYProfileViewController
             propertyVC.userInfo = userInfo
             propertyVC.requestBlock = {[weak self]() -> Void in
-                self?.currentTable.reloadData()
+//                self?.currentTable.reloadData()
+                self?.startDownLoadUserDetailInfo()
                 ""
             }
         }

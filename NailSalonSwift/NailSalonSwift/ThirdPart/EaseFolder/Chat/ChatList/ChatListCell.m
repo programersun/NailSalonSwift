@@ -13,12 +13,16 @@
 
 #import "ChatListCell.h"
 #import "UIImageView+EMWebCache.h"
-
+#import "NailSalonSwift-swift.h"
+#import "ZXY_ArtistDetailModelBase.h"
+#import "ZXY_ArtistDetailData.h"
 @interface ChatListCell (){
     UILabel *_timeLabel;
     UILabel *_unreadLabel;
     UILabel *_detailLabel;
     UIView *_lineView;
+    
+    
 }
 
 @end
@@ -81,14 +85,49 @@
     }
 }
 
+- (void)startDownLoadInfo
+{
+    NSString *stringURL = @"http://www.meijiab.cn/admin/index.php/Api/User/another_user_Info";
+
+    NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:self.name,@"user_id", @"",@"my_user_id",  nil];
+    __weak __typeof(self) weakSelf = self;
+    [[ZXY_NetHelperOperate alloc] startGetDataPost:stringURL parameter:parameter successBlock:^(NSDictionary * returnDic) {
+        self.baseData = [ZXY_ArtistDetailModelBase modelObjectWithDictionary:returnDic];
+        self.dataUser = self.baseData.data;
+        [weakSelf reLoadViewData];
+    } failBlock:^(NSError * error) {
+        
+    }];
+    
+}
+
+- (void)reLoadViewData
+{
+    NSString *imgURL = self.dataUser.headImage;
+    imgURL = [NSString stringWithFormat:@"http://www.meijiab.cn/admin/%@",imgURL];
+    if ([self.dataUser.headImage hasPrefix:@"http"])
+    {
+        imgURL = self.dataUser.headImage;
+    }
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:_placeholderImage];
+    self.textLabel.text = self.dataUser.nickName;
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     CGRect frame = self.imageView.frame;
     
-    [self.imageView sd_setImageWithURL:_imageURL placeholderImage:_placeholderImage];
+//    NSString *imgURL = dataUser.headImage;
+//    imgURL = [NSString stringWithFormat:@"http://www.meijiab.cn/admin/%@",imgURL];
+//    if ([dataUser.headImage hasPrefix:@"http"])
+//    {
+//        imgURL = dataUser.headImage;
+//    }
+//    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"imgURL"] placeholderImage:_placeholderImage];
+//    self.textLabel.text = dataUser.nickName;
     self.imageView.frame = CGRectMake(10, 7, 45, 45);
     
-    self.textLabel.text = _name;
+    
     self.textLabel.frame = CGRectMake(65, 7, 175, 20);
     
     _detailLabel.text = _detailMsg;

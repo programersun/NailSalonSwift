@@ -24,6 +24,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
     private var currentPage : Int = 1
     @IBOutlet weak var currentTable: UITableView!
     private var dataForTag : String? = ""
+    private var firstImg : UIImage?
 
     var artWorkID : String!
     var userID : String!
@@ -253,7 +254,17 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
                 {
                     avatarImg = ava
                 }
-                imgContentCell.artistAvatar.setImageWithURL(NSURL(string: avatarImg), placeholderImage: UIImage(named: "imgHolder"))
+//                imgContentCell.artistAvatar.setImageWithURL(NSURL(string: avatarImg), placeholderImage: UIImage(named: "imgHolder"))
+                var request = NSURLRequest(URL: NSURL(string: avatarImg)!)
+                imgContentCell.artistAvatar.setImageWithURLRequest(request, placeholderImage: UIImage(named: "imgHolder"), success: {[weak self] (request, response, img) -> Void in
+                    ""
+                    ""
+                    imgContentCell.artistAvatar.image = img
+                    self?.firstImg = img
+                }, failure: { (request, response, error) -> Void in
+                    ""
+                    ""
+                })
             }
             var isCollection = imgCellData?.isCollect ?? 0
             var isAgree      = imgCellData?.isAgree   ?? 0
@@ -464,7 +475,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
     
 }
 
-extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol , ZXY_DFPADImgContainerCellProtocol
+extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol , ZXY_DFPADImgContainerCellProtocol , UMSocialUIDelegate
 {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if alertView.tag == 1 {
@@ -546,6 +557,18 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
                 }
         }
         
+    }
+    
+    func userClickShareBtn() {
+        if(firstImg == nil)
+        {
+            return
+        }
+        var urlString = ZXY_ALLApi.ZXY_ShareMainAPI + artWorkID!
+        var nibSizeImg = UIImage(image: firstImg, scaledToFitToSize: CGSizeMake(50, 50))
+        UMSocialWechatHandler.setWXAppId(ZXY_ConstValue.WXAPPKEY.rawValue, appSecret: ZXY_ConstValue.WXAPPSECURITY.rawValue, url: urlString)
+        UMSocialQQHandler.setQQWithAppId(ZXY_ConstValue.QQAPPID.rawValue, appKey: ZXY_ConstValue.QQAPPKEY.rawValue, url: urlString)
+        UMSocialSnsService.presentSnsIconSheetView(self, appKey: ZXY_ConstValue.UMAPPKEY.rawValue, shareText: "美甲邦上的美甲真心不错，快来看看哟！", shareImage: nibSizeImg, shareToSnsNames: [UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline], delegate: self)
     }
     
     func userClickCollectionImg() {

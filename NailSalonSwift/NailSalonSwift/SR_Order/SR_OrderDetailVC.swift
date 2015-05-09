@@ -629,7 +629,7 @@ extension SR_OrderDetailVC : SR_OrderDetailFirstCellProtocol {
     func clickTel() {
         println("\(self.dataForShow?.data.user.tel)")
         if let userTel = self.dataForShow?.data.user.tel {
-            var tel = "tel://" + userTel
+            var tel = "telprompt://" + userTel
             println("\(tel))")
             var urlTel = NSURL(string: tel)
             UIApplication.sharedApplication().openURL(urlTel!)
