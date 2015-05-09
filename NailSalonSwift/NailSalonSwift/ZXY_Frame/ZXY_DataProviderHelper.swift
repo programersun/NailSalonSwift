@@ -55,6 +55,28 @@ class ZXY_DataProviderHelper: NSObject {
         return result ?? false
     }
     
+    class func saveOneDic(DBName name : String , saveEntity : Dictionary<String , AnyObject?> , predictString : String , argumentArr : [AnyObject]?) -> Bool
+    {
+        var delegate = ZXY_DataProviderHelper.getDelegate()
+        var context  = delegate.managedObjectContext
+        var modelObject : NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName(name, inManagedObjectContext: context!) as! NSManagedObject
+        var arrInPreSearch = ZXY_DataProviderHelper.readFromDBWithPredict(DBName: name, predictString: predictString, argumentArr: argumentArr)
+        if arrInPreSearch.count > 0
+        {
+            for one in arrInPreSearch
+            {
+                var value = one as! NSManagedObject
+                context?.deleteObject(value)
+            }
+        }
+        for (key , value) in saveEntity
+        {
+            modelObject.setValue(value, forKey: key)
+        }
+        var result = context?.save(nil)
+        return result ?? false
+    }
+    
     /**
     将一组数组<字典<String , 任意类型>>，类型需要与数据库中的类型保持一致，key对应sqlite 关键字
     
@@ -115,6 +137,20 @@ class ZXY_DataProviderHelper: NSObject {
             context?.deleteObject(object)
         }
         return context?.save(nil) ?? false
+    }
+    
+    class func deleteObject(DBName name : String , object : NSManagedObject)
+    {
+        var delegate = ZXY_DataProviderHelper.getDelegate()
+        var context  = delegate.managedObjectContext
+        var arr : [NSManagedObject]      = ZXY_DataProviderHelper.readAllFromDB(DNName: name) as! [NSManagedObject]
+        for objectN  in arr
+        {
+            if object == objectN
+            {
+                context?.deleteObject(object)
+            }
+        }
     }
     
     class func tagListFilePath() -> String

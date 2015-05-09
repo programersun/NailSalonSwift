@@ -291,6 +291,10 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             switch indexPath.row {
             case 0:
                 ""
+                var vc = UIStoryboard(name: "MyMessageStory", bundle: nil).instantiateInitialViewController() as! ZXY_MyMessageVC
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+                
             case 1:
                 var vc = story.instantiateViewControllerWithIdentifier("SR_attentionVCID") as! SR_attentionVC
                 self.navigationController?.pushViewController(vc, animated: true)

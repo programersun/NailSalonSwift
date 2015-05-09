@@ -46,7 +46,7 @@
     [self addSubview:deleteButton];
     
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendButton setTitle:NSLocalizedString(@"send", @"Send") forState:UIControlStateNormal];
+    [sendButton setTitle:NSLocalizedString(@"send", @"发送") forState:UIControlStateNormal];
     [sendButton setFrame:CGRectMake((maxCol - 2) * itemWidth - 10, (maxRow - 1) * itemHeight + 5, itemWidth + 10, itemHeight - 10)];
     [sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
     [sendButton setBackgroundColor:[UIColor colorWithRed:10 / 255.0 green:82 / 255.0 blue:104 / 255.0 alpha:1.0]];

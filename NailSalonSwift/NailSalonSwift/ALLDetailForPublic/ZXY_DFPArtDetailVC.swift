@@ -40,7 +40,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登出", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("rightBtnAction"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "举报", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("rightBtnAction"))
         
         // Do any additional setup after loading the view.
         
@@ -48,10 +48,7 @@ class ZXY_DFPArtDetailVC: UIViewController {
     
     func rightBtnAction()
     {
-        ZXY_UserInfoDetail.sharedInstance.logoutUser()
-        EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (object, error) -> Void in
-            
-        }, onQueue: nil)
+        self.performSegueWithIdentifier("toTSVC", sender: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

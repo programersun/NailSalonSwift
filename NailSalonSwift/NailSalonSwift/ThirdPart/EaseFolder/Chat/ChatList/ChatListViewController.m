@@ -70,7 +70,7 @@
     [super viewWillAppear:animated];
 //    [self setHidesBottomBarWhenPushed:YES];
     self.originalFrame = self.tabBarController.tabBar.frame;
-    self.tabBarController.tabBar.hidden = YES;
+    
     //self.tabBarController.tabBar.frame  = CGRectMake(0, self.view.window.bounds.size.height, self.view.window.bounds.size.width, self.tabBarController.tabBar.frame.size.height);
     [self refreshDataSource];
     [self registerNotifications];
@@ -163,7 +163,7 @@
         label.font = [UIFont systemFontOfSize:15.0];
         label.textColor = [UIColor grayColor];
         label.backgroundColor = [UIColor clearColor];
-        label.text = NSLocalizedString(@"network.disconnection", @"Network disconnection");
+        label.text = NSLocalizedString(@"network.disconnection", @"网络状况不佳");
         [_networkStateView addSubview:label];
     }
     
@@ -320,7 +320,7 @@
     ArtistList *currentArt = [provider fetchArt:conversation.chatter];
     chatController = [[ChatViewController alloc] initWithChatter:chatter isGroup:conversation.isGroup];
     chatController.title = title;
-    chatController.shouleEx = YES;
+    //chatController.shouleEx = YES;
     if(currentArt != nil)
     {
         chatController.title = currentArt.artistName;

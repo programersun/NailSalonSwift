@@ -126,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     
     func didReceiveMessage(message: EMMessage!) {
         println("哈哈")
+        var la = NSTimeInterval()
     }
     
     func JPushAlias(code : Int , tags : NSSet , alias : String)
@@ -136,7 +137,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     /// 此处获取极光推送的内容
     func JPushReceiveData(noti : NSNotification)
     {
-        println(noti.userInfo)
+        var notiInfo = noti.userInfo
+        if let noty = notiInfo
+        {
+            var mainNoti: NSString? = noty["content"] as? NSString
+            var jsonData: AnyObject? = NSJSONSerialization.JSONObjectWithData(mainNoti!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableLeaves, error: nil)
+            var typeData     = jsonData!["type"] as! NSString
+            if typeData == "4000"
+            {
+                var dataDic = jsonData!["data"] as! NSDictionary
+                var dataNick  = dataDic["nick"] as! NSString
+                var dataID    = dataDic["id"] as! NSString
+                var headImg   = dataDic["head"] as! NSString
+                var time      = dataDic["send_time"] as! NSNumber
+                var role      = dataDic["role"] as! NSString
+                var toCDDic   = ["atten_avatar" : headImg , "atten_id" : dataID , "atten_name" : dataNick , "atten_role" : role ,"atten_time" : time.stringValue]
+                ZXY_DataProviderHelper.saveOneDic(DBName: "AttensionNoti", saveEntity: toCDDic, predictString: "atten_id = %@", argumentArr: [dataID])
+               
+
+            }
+            
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7700" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ArtistList" representedClassName="ArtistList" syncable="YES">
+        <attribute name="artistID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artistImg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="AttensionNoti" representedClassName="AttensionNoti" syncable="YES">
+        <attribute name="atten_avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atten_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atten_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atten_role" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atten_time" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ZXY_UserInfoModel" representedClassName="ZXY_UserInfoModel" syncable="YES">
         <attribute name="nick_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,5 +19,7 @@
     </entity>
     <elements>
         <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="AttensionNoti" positionX="-63" positionY="9" width="128" height="120"/>
+        <element name="ArtistList" positionX="-54" positionY="45" width="128" height="90"/>
     </elements>
 </model>

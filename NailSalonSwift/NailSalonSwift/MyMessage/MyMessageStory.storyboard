@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7703" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fhN-dU-npS">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+    </dependencies>
+    <scenes>
+        <!--My MessageVC-->
+        <scene sceneID="AEG-06-EL8">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="fhN-dU-npS" customClass="ZXY_MyMessageVC" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2P-uh-CjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="gKl-Gj-dzb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jTg-Ht-Cwl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzr-Gi-Qcq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gzr-Gi-Qcq" firstAttribute="leading" secondItem="jTg-Ht-Cwl" secondAttribute="leading" id="FYz-DT-mcN"/>
+                            <constraint firstItem="gzr-Gi-Qcq" firstAttribute="top" secondItem="jTg-Ht-Cwl" secondAttribute="top" id="GTA-cA-r7Y"/>
+                            <constraint firstAttribute="trailing" secondItem="gzr-Gi-Qcq" secondAttribute="trailing" id="Q4F-FH-d6c"/>
+                            <constraint firstAttribute="bottom" secondItem="gzr-Gi-Qcq" secondAttribute="bottom" id="YZ7-A0-s71"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentScroll" destination="gzr-Gi-Qcq" id="TY7-Xv-TLt"/>
+                        <outlet property="filterSeg" destination="pIB-Qx-7Rg" id="JCC-TC-xFB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adz-si-Q4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="pIB-Qx-7Rg">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.98823529409999999" green="0.28235294119999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <segments>
+                        <segment title="消息"/>
+                        <segment title="私信"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="filterAction:" destination="fhN-dU-npS" eventType="valueChanged" id="uTg-hN-gKB"/>
+                    </connections>
+                </segmentedControl>
+            </objects>
+            <point key="canvasLocation" x="335" y="202"/>
+        </scene>
+        <!--Attension List-->
+        <scene sceneID="gME-SU-5Oq">
+            <objects>
+                <viewController storyboardIdentifier="attenID" id="wRc-P5-CX4" customClass="ZXY_MMAttensionList" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PfP-b1-MxM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vwu-L1-Egj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zfP-zf-AmC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="e7d-Kd-xsJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lala" rowHeight="70" id="A5T-fv-phD">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A5T-fv-phD" id="eK2-rs-qw4">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="222" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0z2-YK-hAJ">
+                                                    <rect key="frame" x="8" y="10" width="50" height="50"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="22222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1989-08-30 11:22:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbn-Sp-aqz">
+                                                    <rect key="frame" x="66" y="40" width="269" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="王尼玛关住了你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-7n-fXB">
+                                                    <rect key="frame" x="66" y="10" width="269" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wRc-P5-CX4" id="wJC-sI-VbE"/>
+                                    <outlet property="delegate" destination="wRc-P5-CX4" id="ycx-ON-5r4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="e7d-Kd-xsJ" secondAttribute="trailing" id="F0w-9a-CFY"/>
+                            <constraint firstAttribute="bottom" secondItem="e7d-Kd-xsJ" secondAttribute="bottom" id="HLs-fu-Zeb"/>
+                            <constraint firstItem="e7d-Kd-xsJ" firstAttribute="leading" secondItem="zfP-zf-AmC" secondAttribute="leading" id="SnY-zj-6Mb"/>
+                            <constraint firstItem="e7d-Kd-xsJ" firstAttribute="top" secondItem="zfP-zf-AmC" secondAttribute="top" id="U5V-ee-nTU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentTable" destination="e7d-Kd-xsJ" id="dmL-AJ-lR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcn-lY-N3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975" y="202"/>
+        </scene>
+    </scenes>
+</document>

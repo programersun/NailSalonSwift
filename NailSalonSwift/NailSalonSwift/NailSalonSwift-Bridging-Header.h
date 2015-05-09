@@ -57,3 +57,7 @@
 
 #import "ZXY_UserCommentData.h"
 #import "ZXY_UserCommentBase.h"
+
+#import "ZXY_NotiForAttensionContent.h"
+#import "ZXY_NotiForAttensionData.h"
+#import "ZXY_NotiForAttensionBaseModel.h"
