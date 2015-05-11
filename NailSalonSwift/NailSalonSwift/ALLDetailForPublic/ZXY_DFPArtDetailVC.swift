@@ -240,7 +240,7 @@ extension ZXY_DFPArtDetailVC : UITableViewDelegate , UITableViewDataSource
                 {
                     var imgURL = si[0] as! ZXY_AlbumDetailImages
                     var stringURL = ZXY_NailNetAPI.ZXY_MainAPIImage + imgURL.imagePath
-                   // imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
+//                    imgContentCell.contentImg.setImageWithURL(NSURL(string: stringURL), placeholderImage: UIImage(named: "imgHolder"))
                     
                 }
             }
@@ -636,7 +636,8 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
                 parameter = ["user_id" : userID! , "attention_user_id" : artistID! , "control": "\(control)"]
                 ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
                     data?.isAtten = Double(control)
-                    self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+//                    self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                    self?.currentTable.reloadData()
                     ""
                 }, fail: { (errorMessage) -> Void in
                     println(errorMessage)
@@ -648,7 +649,18 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
             parameter = ["user_id" : userID! , "album_id" : artWorkID , "status": status]
             ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
                 data?.isAgree = Double(status)
-                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+//                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                var agreeNum = self?.dataForTable?.data.agreeCount
+                var num : Int! = agreeNum?.toInt()
+                if data?.isAgree == 1 {
+                    num = num + 1
+                    self?.dataForTable?.data.agreeCount = "\(num)"
+                }
+                else {
+                    num = num - 1
+                    self?.dataForTable?.data.agreeCount = "\(num)"
+                }
+                self?.currentTable.reloadData()
             }, fail: { (errorMessage) -> Void in
                 
             })
@@ -657,7 +669,19 @@ extension ZXY_DFPArtDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtocol ,
             parameter = ["user_id" : userID! , "album_id" : artWorkID , "status": status]
             ZXY_NetHelperOperate().albumAgreeOrCollectionAndAtten(type, parameter: parameter, success: {[weak self] (currentStage) -> Void in
                 data?.isCollect = Double(status)
-                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+//                self?.currentTable.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+                var collectNum = self?.dataForTable?.data.collectCount
+                var num : Int! = collectNum?.toInt()
+                if data?.isCollect == 1 {
+                    num = num + 1
+                    self?.dataForTable?.data.collectCount = "\(num)"
+                }
+                else {
+                    num = num - 1
+                    self?.dataForTable?.data.collectCount = "\(num)"
+                }
+
+                self?.currentTable.reloadData()
                 
                 }, fail: { (errorMessage) -> Void in
                     

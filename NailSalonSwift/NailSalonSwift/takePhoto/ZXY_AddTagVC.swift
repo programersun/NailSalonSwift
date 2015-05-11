@@ -20,6 +20,8 @@ class ZXY_AddTagVC: UIViewController {
     
     var delegate : ZXY_AddTagVCDelegate!
     
+    var label : UILabel!
+    
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var heightOfTag: NSLayoutConstraint!
     @IBOutlet weak var currentTable: UITableView!
@@ -92,6 +94,7 @@ class ZXY_AddTagVC: UIViewController {
     var dataSelect  : NSMutableArray = NSMutableArray()
 
     @IBAction func addBtnAction(sender: AnyObject) {
+        self.label.hidden = false
         commentText.text = ""
         commentText.becomeFirstResponder()
     }
@@ -142,6 +145,17 @@ class ZXY_AddTagVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoradFrameChange:"), name: UIKeyboardWillChangeFrameNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyBoardHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
+        self.label = UILabel(frame: CGRectMake(5, 7, 200, 20))
+        self.label.enabled = false
+        self.label.text = "不同样式之间请输入空格..."
+        self.label.font = UIFont.systemFontOfSize(14)
+        self.label.textColor = UIColor.NailGrayColor()
+        self.commentText.addSubview(self.label)
+        self.commentText.delegate = self
+        
+        self.sendBtn.layer.borderColor = UIColor.NailRedColor().CGColor
+        self.sendBtn.layer.borderWidth = 1
+        self.sendBtn.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
 
@@ -379,6 +393,17 @@ extension ZXY_AddTagVC : UITableViewDelegate , UITableViewDataSource , ZXY_TagLa
             dataSelect.removeObject(tagString)
             currentTable.reloadData()
             self.resetTagV()
+        }
+    }
+}
+
+extension ZXY_AddTagVC : UITextViewDelegate {
+    func textViewDidChange(textView: UITextView) {
+        if commentText.text.isEmpty {
+            self.label.hidden = false
+        }
+        else {
+            self.label.hidden = true
         }
     }
 }

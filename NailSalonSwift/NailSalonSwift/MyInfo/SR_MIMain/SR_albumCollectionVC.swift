@@ -121,6 +121,18 @@ extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewData
         }
         cell.artName.text = currentData.dataDescription
         cell.agreeNum.text = currentData.agreeCount
+        
+        cell.layer.cornerRadius  = 5
+        var path = UIBezierPath(rect: cell.bounds)
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOffset  = CGSizeMake(1, 1)
+        cell.layer.shadowColor   = UIColor.darkGrayColor().CGColor
+        cell.layer.shadowPath    = path.CGPath
+        cell.layer.shadowRadius  = 3
+        cell.artImg.layer.cornerRadius = 5
+        cell.artImg.layer.masksToBounds = true
+        
         return cell
     }
     
