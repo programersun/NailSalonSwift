@@ -39,7 +39,7 @@ class SR_OrderCommentVC: UIViewController {
         cameraBackgroundView.layer.opacity = 0
         cameraBtn.hidden = true
         registPhotoBtn.hidden = true
-        commentImg = UIImage(named: "commentImg")
+//        commentImg = UIImage(named: "commentImg")
         // Do any additional setup after loading the view.
     }
 
@@ -95,31 +95,58 @@ class SR_OrderCommentVC: UIViewController {
         var urlString = ZXY_NailNetAPI.SR_OrderAPITpye(SR_OrderAPIType.SR_CommentAdd)
         var parameter : Dictionary<String ,  AnyObject> = ["order_id": self.orderID! ,"role": self.userInfo.role! ,"comment" : self.commentString, "score": self.score]
         println("\(parameter)")
-        var imgData = NSData()
-        imgData = UIImageJPEGRepresentation(commentImg, 1)
-        ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: parameter, imgData: [imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-            var result: Double = returnDic["result"] as! Double
-            if let s = self
-            {
-                s.srW.hideProgress(s.view)
+        if self.commentImg != nil {
+            var imgData = NSData()
+            imgData = UIImageJPEGRepresentation(commentImg, 1)
+            ZXY_NetHelperOperate.sharedInstance.startPostImg(urlString, parameter: parameter, imgData: [imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+                var result: Double = returnDic["result"] as! Double
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                if result == 1000 {
+                    self?.navigationController?.popViewControllerAnimated(true)
+                }
+                else
+                {
+                    var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                    self?.showAlertEasy("提示", messageContent: errorString)
+                }
+                
+                }) { [weak self](failError) -> Void in
+                    if let s = self
+                    {
+                        s.srW.hideProgress(s.view)
+                    }
+                    self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                    ""
             }
-            if result == 1000 {
-                self?.navigationController?.popViewControllerAnimated(true)
-            }
-            else
-            {
-                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
-                self?.showAlertEasy("提示", messageContent: errorString)
-            }
-            
-        }) { [weak self](failError) -> Void in
-            if let s = self
-            {
-                s.srW.hideProgress(s.view)
-            }
-            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
-            ""
         }
+        else {
+            ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
+                var result: Double = returnDic["result"] as! Double
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                if result == 1000 {
+                    self?.navigationController?.popViewControllerAnimated(true)
+                }
+                else
+                {
+                    var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                    self?.showAlertEasy("提示", messageContent: errorString)
+                }
+            }, failBlock: { [weak self](error) -> Void in
+                if let s = self
+                {
+                    s.srW.hideProgress(s.view)
+                }
+                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                ""
+            })
+        }
+        
     }
     
     //上传图片背景点击
@@ -200,7 +227,12 @@ extension SR_OrderCommentVC : UITableViewDataSource , UITableViewDelegate {
         case 1:
             var cell : UITableViewCell!
             if self.userInfo.role == "1" {
-                secondCell.showImgView.image = commentImg
+                if self.commentImg != nil {
+                    secondCell.showImgView.image = self.commentImg
+                }
+                else {
+                    secondCell.showImgView.image = UIImage(named: "commentImg")
+                }
                 secondCell.delegate = self
                 cell = secondCell
             }
