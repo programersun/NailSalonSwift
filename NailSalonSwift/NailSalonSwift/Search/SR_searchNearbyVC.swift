@@ -276,7 +276,7 @@ class SR_searchNearbyVC: UIViewController {
             {
                 var currentUser : SR_searchNearbyData = dataForShow[i] as! SR_searchNearbyData
                 var coordinatee : CLLocationCoordinate2D?
-                coordinatee = self.xYStringToCoor(currentUser.longitude, latitude: currentUser.latitude)
+                coordinatee = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(currentUser.longitude!)" , latitude: "\(currentUser.latitude!)")
                 if(coordinatee == nil)
                 {
                     continue
@@ -302,37 +302,6 @@ class SR_searchNearbyVC: UIViewController {
         }
         searchMapView.removeAnnotations(searchMapView.annotations)
         searchMapView.addAnnotations(annos)
-        
-    }
-    
-    func distanceCompareCoor(artistPosition : CLLocationCoordinate2D? , userPosition : CLLocationCoordinate2D?) -> Double
-    {
-        if(artistPosition != nil && userPosition != nil)
-        {
-            var artistPot = BMKMapPointForCoordinate(artistPosition!)
-            var userPot   = BMKMapPointForCoordinate(userPosition!)
-            var distance  = BMKMetersBetweenMapPoints(artistPot, userPot)
-            return distance/1000
-        }
-        else
-        {
-            return 0
-        }
-        
-    }
-    
-    func  xYStringToCoor(longitude : String? , latitude: String?) -> CLLocationCoordinate2D?
-    {
-        if(longitude == nil || latitude == nil)
-        {
-            return nil
-        }
-        else
-        {
-            var logFloat = (longitude! as NSString).doubleValue
-            var latFloat = (latitude!  as NSString).doubleValue
-            return CLLocationCoordinate2DMake(latFloat, logFloat)
-        }
         
     }
 
@@ -428,6 +397,8 @@ extension SR_searchNearbyVC :  BMKMapViewDelegate , BMKLocationServiceDelegate ,
         targetImage.hidden = false
         var currentTimeStamp = NSDate().timeIntervalSince1970
         littleBoy.startAnimating()
+        self.longitude = self.searchMapView.centerCoordinate.longitude
+        self.latitude  = self.searchMapView.centerCoordinate.latitude
         self.loadAtristSearch()
         if(targetImage.hidden)
         {
@@ -435,7 +406,15 @@ extension SR_searchNearbyVC :  BMKMapViewDelegate , BMKLocationServiceDelegate ,
             littleBoy.image = UIImage(named: "search_personCenter")
         }
     }
-    
+    func mapView(mapView: BMKMapView!, onClickedMapBlank coordinate: CLLocationCoordinate2D) {
+        self.longitude = coordinate.longitude
+        self.latitude  = coordinate.latitude
+        self.searchMapView.setCenterCoordinate(coordinate, animated: true)
+        self.loadAtristSearch()
+        println("\(self.longitude)")
+        println("\(self.latitude)")
+
+    }
 }
 
 

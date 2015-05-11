@@ -15,6 +15,9 @@ class SR_OrderDetailVC: UIViewController {
     @IBOutlet weak var userCancel: UIButton!
     @IBOutlet weak var orderRefuse: UIButton!
     @IBOutlet weak var orderAccept: UIButton!
+
+    @IBOutlet weak var btnHeight: NSLayoutConstraint!
+    
     
     var orderID : String?
     var userId : String?
@@ -30,9 +33,6 @@ class SR_OrderDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userCancel.hidden = true
-        orderRefuse.hidden = true
-        orderAccept.hidden = true
         self.getUserInfo()
         srW.startProgress(self.view)
         self.loadOrderDetail()
@@ -41,6 +41,9 @@ class SR_OrderDetailVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         self.loadOrderDetail()
+        userCancel.hidden = true
+        orderRefuse.hidden = true
+        orderAccept.hidden = true
     }
     
     //获取当前用户的信息
@@ -105,11 +108,13 @@ class SR_OrderDetailVC: UIViewController {
                 //判断是否评论过
                 if dataForShow?.data.commId != "0" {
                     userCancel.hidden = true
+                    self.btnHeight.constant = 0
                 }
             default:
                 userCancel.hidden = true
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
+                self.btnHeight.constant = 0
             }
             
         case "2":
@@ -133,15 +138,18 @@ class SR_OrderDetailVC: UIViewController {
                 //判断是否评论过
                 if dataForShow?.data.commTouserId != "0" {
                     userCancel.hidden = true
+                    self.btnHeight.constant = 0
                 }
                 //用户是否评论
                 if dataForShow?.data.commId == "0" {
                     userCancel.hidden = true
+                    self.btnHeight.constant = 0
                 }
             default:
                 userCancel.hidden = true
                 orderRefuse.hidden = true
                 orderAccept.hidden = true
+                self.btnHeight.constant = 0
             }
         default:
             ""
@@ -237,10 +245,10 @@ class SR_OrderDetailVC: UIViewController {
         case "4":
             self.changeOrderStatus("5")
         case "7":
-            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
-            var vc    = story.instantiateViewControllerWithIdentifier("SR_OrderCommentVCID") as! SR_OrderCommentVC
+            var story  = UIStoryboard(name: "SR_OrderStory", bundle: nil)
+            var vc     = story.instantiateViewControllerWithIdentifier("SR_OrderCommentVCID") as! SR_OrderCommentVC
             vc.orderID = self.orderID
-            vc.title     = "填写评价"
+            vc.title   = "填写评价"
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             ""
@@ -323,7 +331,7 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
         case 1:
             switch indexPath.row {
             case 0:
-                if self.dataForShow?.data.user.comment.imageId == "0" {
+                if self.dataForShow?.data.user.comment.imagePath == nil {
                     return 85
                 }
                 else {
