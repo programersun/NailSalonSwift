@@ -333,7 +333,13 @@
     NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:userInfoData];
     ZXY_UserDetailInfoUserDetailBase *dataBase = [ZXY_UserDetailInfoUserDetailBase modelObjectWithDictionary:dic];
     ZXY_UserDetailInfoData *data = dataBase.data;
-    chatController.imgURLMy = data.headImage;
+    NSString *imgMyHeader = data.headImage;
+    imgMyHeader = [NSString stringWithFormat:@"http://www.meijiab.cn/admin/%@",imgMyHeader];
+    if ([data.headImage hasPrefix:@"http"])
+    {
+        imgMyHeader = data.headImage;
+    }
+    chatController.imgURLMy = imgMyHeader;
     
     [self.navigationController pushViewController:chatController animated:YES];
 }
