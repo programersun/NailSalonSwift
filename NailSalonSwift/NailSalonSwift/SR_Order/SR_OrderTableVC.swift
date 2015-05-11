@@ -181,8 +181,8 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         cell.headImg.layer.masksToBounds = true
         cell.headImg.layer.borderColor  = UIColor.NailRedColor().CGColor
         cell.headImg.layer.borderWidth  = 1
-        var imgUrl    = cellData.headImage as String?
-        if let url    = imgUrl
+        var imgUrl = cellData.headImage as String?
+        if let url = imgUrl
         {
             if (imgUrl!.hasPrefix("http"))
             {
@@ -193,6 +193,9 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
                 var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + imgUrl!
                 cell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
+        }
+        else {
+            cell.headImg.image = UIImage(named: "headImg")
         }
         
         //美甲师姓名

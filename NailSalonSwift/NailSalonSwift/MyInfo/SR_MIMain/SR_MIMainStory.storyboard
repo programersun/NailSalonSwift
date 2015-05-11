@@ -125,9 +125,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7lT-87-7yt" id="EAF-DJ-u5U">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BF9D3F19-DD56-40F3-B3E8-B9713B6892F0" translatesAutoresizingMaskIntoConstraints="NO" id="3dQ-90-Kmz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8108298A-DE22-418E-A1D0-FA10A458269C" translatesAutoresizingMaskIntoConstraints="NO" id="3dQ-90-Kmz">
                                             <rect key="frame" x="13" y="12" width="60" height="60"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="Kkd-u6-KZr"/>
                                                 <constraint firstAttribute="width" constant="60" id="bcR-ue-0Ns"/>
@@ -293,7 +292,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cK5-7E-Fig" id="3dl-ZJ-ivg">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9969FA43-6B05-4A90-9393-2B12BF616F5B" translatesAutoresizingMaskIntoConstraints="NO" id="Qwg-XQ-x3W">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8534A1BA-8A68-4758-85A9-8321207EE78F" translatesAutoresizingMaskIntoConstraints="NO" id="Qwg-XQ-x3W">
                                             <rect key="frame" x="13" y="12" width="60" height="60"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -820,7 +819,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9969FA43-6B05-4A90-9393-2B12BF616F5B" width="12" height="12">
+        <image name="8108298A-DE22-418E-A1D0-FA10A458269C" width="12" height="12">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -900,7 +899,7 @@ EJkQoBCoELUQuhC8EL4QwxDLEM4Q0xDbEN4Q8BDzEPgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
 AAAQ+g
 </mutableData>
         </image>
-        <image name="BF9D3F19-DD56-40F3-B3E8-B9713B6892F0" width="12" height="12">
+        <image name="8534A1BA-8A68-4758-85A9-8321207EE78F" width="12" height="12">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

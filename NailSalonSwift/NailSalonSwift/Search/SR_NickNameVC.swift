@@ -217,6 +217,9 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
                 cell.headImgView.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
+        else {
+            cell.headImgView.image = UIImage(named: "headImg")
+        }
         
         //美甲师姓名
         
