@@ -98,33 +98,37 @@ class SR_checkIdVC: UIViewController {
         if postIdImage
         {
             imgData = UIImageJPEGRepresentation(idImageView.image, 1)
-        }
-        ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-            
-            var result: Double = returnDic["result"] as! Double
-            if(result == Double(1000))
-            {
-                var userid : Double = returnDic["data"] as! Double
-                ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
-                self?.startDownLoadUserDetailInfo()
-            }
-            else
-            {
-                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
-                self?.showAlertEasy("提示", messageContent: errorString)
-            }
-            if let s = self
-            {
-                s.srW.hideProgress(s.view)
-            }
-            }) { [weak self](error) -> Void in
-                println(error)
+            ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+                
+                var result: Double = returnDic["result"] as! Double
+                if(result == Double(1000))
+                {
+                    var userid : Double = returnDic["data"] as! Double
+                    ZXY_UserInfoDetail.sharedInstance.saveUserID("\(userid)")
+                    self?.startDownLoadUserDetailInfo()
+                }
+                else
+                {
+                    var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                    self?.showAlertEasy("提示", messageContent: errorString)
+                }
                 if let s = self
                 {
                     s.srW.hideProgress(s.view)
                 }
-                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
-                
+                }) { [weak self](error) -> Void in
+                    println(error)
+                    if let s = self
+                    {
+                        s.srW.hideProgress(s.view)
+                    }
+                    self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                    
+            }
+        }
+        else {
+            self.showAlertEasy("提示", messageContent: "请上传身份证照片")
+            return
         }
     }
     
@@ -136,33 +140,36 @@ class SR_checkIdVC: UIViewController {
         if postIdImage
         {
             imgData = UIImageJPEGRepresentation(idImageView.image, 1)
-        }
-        ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
-            
-            var result: Double = returnDic["result"] as! Double
-            if(result == Double(1000))
-            {
-                self?.navigationController?.popViewControllerAnimated(true)
-            }
-            else
-            {
-                var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
-                self?.showAlertEasy("提示", messageContent: errorString)
-            }
-            if let s = self
-            {
-                s.srW.hideProgress(s.view)
-            }
-            }) { [weak self](error) -> Void in
-                println(error)
+            ZXY_NetHelperOperate().startPostImg(urlString, parameter: parameter, imgData:[imgData], fileKey: "Filedata", success: { [weak self](returnDic) -> Void in
+                
+                var result: Double = returnDic["result"] as! Double
+                if(result == Double(1000))
+                {
+                    self?.navigationController?.popViewControllerAnimated(true)
+                }
+                else
+                {
+                    var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(result)
+                    self?.showAlertEasy("提示", messageContent: errorString)
+                }
                 if let s = self
                 {
                     s.srW.hideProgress(s.view)
                 }
-                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
-                
+                }) { [weak self](error) -> Void in
+                    println(error)
+                    if let s = self
+                    {
+                        s.srW.hideProgress(s.view)
+                    }
+                    self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+                    
+            }
         }
-
+        else {
+            self.showAlertEasy("提示", messageContent: "请上传身份证照片")
+            return
+        }
     }
     
     func startDownLoadUserDetailInfo()
@@ -240,7 +247,7 @@ class SR_checkIdVC: UIViewController {
                 {
                     if ( keyBoardHeight + 280 > s.screenSize.height)
                     {
-                        self?.checkTableView.frame = CGRectMake(0, 64 - keyBoardHeight, s.screenSize.width, s.screenSize.height)
+                        self?.checkTableView.frame = CGRectMake(0, 0 - keyBoardHeight, s.screenSize.width, s.screenSize.height)
                     }
                 }
             })
@@ -253,7 +260,7 @@ class SR_checkIdVC: UIViewController {
         UIView.animateWithDuration(0.5, animations: { [weak self]() -> Void in
             if let s = self
             {
-                self?.checkTableView.frame = CGRectMake(0, 64, s.screenSize.width, s.screenSize.height)
+                self?.checkTableView.frame = CGRectMake(0, 0, s.screenSize.width, s.screenSize.height)
             }
         })
         
@@ -330,11 +337,19 @@ extension SR_checkIdVC: UITableViewDelegate,UITableViewDataSource {
             self.showAlertEasy("提示", messageContent: "请输入真实姓名")
             return
         }
-        if(identCode == "")
-        {
-            self.showAlertEasy("提示", messageContent: "请输入正确的身份证号")
+//        if(identCode == "")
+//        {
+//            self.showAlertEasy("提示", messageContent: "请输入正确的身份证号")
+//            return
+//        }
+        let regx = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}(\\d|x|X)$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regx])
+        if !predicate.evaluateWithObject(identCode!) {
+            self.showAlertEasy("提示", messageContent:"请输入正确的身份证号码")
             return
         }
+
+        
         self.srW.startProgress(self.view)
         if let userID = ZXY_UserInfoDetail.sharedInstance.getUserID() {
             artistIdCheck()

@@ -80,40 +80,45 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         }
         else
         {
-            var my = ZXY_UserDetailInfoUserDetailBase(dictionary: userInfo)
-            var myData = my.data
-            var artData = dataForShow?.data
-            if artData == nil
-            {
-                return
+            if self.artistID == ZXY_UserInfoDetail.sharedInstance.getUserID(){
+                self.showAlertEasy("提示", messageContent: "不能和自己聊天")
             }
-            else
-            {
-                if artistID == nil
+            else {
+                var my = ZXY_UserDetailInfoUserDetailBase(dictionary: userInfo)
+                var myData = my.data
+                var artData = dataForShow?.data
+                if artData == nil
                 {
                     return
                 }
-                var chatView = ChatViewController(chatter: artistID!, isGroup: false)
-                chatView.title = artData?.nickName
-                var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + artData!.headImage
-                if(artData!.headImage.hasPrefix("http"))
+                else
                 {
-                    stringURL = artData!.headImage
-                }
-                chatView.imgURLTo = stringURL
-                var myHeadImg : String? = myData.headImage
-                if let myI = myHeadImg
-                {
-                    var imgURL =  ZXY_ALLApi.ZXY_MainAPIImage + myData.headImage
-                    if myI.hasPrefix("http")
+                    if artistID == nil
                     {
-                        imgURL = myI
+                        return
                     }
-                    chatView.imgURLMy = imgURL
+                    var chatView = ChatViewController(chatter: artistID!, isGroup: false)
+                    chatView.title = artData?.nickName
+                    var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + artData!.headImage
+                    if(artData!.headImage.hasPrefix("http"))
+                    {
+                        stringURL = artData!.headImage
+                    }
+                    chatView.imgURLTo = stringURL
+                    var myHeadImg : String? = myData.headImage
+                    if let myI = myHeadImg
+                    {
+                        var imgURL =  ZXY_ALLApi.ZXY_MainAPIImage + myData.headImage
+                        if myI.hasPrefix("http")
+                        {
+                            imgURL = myI
+                        }
+                        chatView.imgURLMy = imgURL
+                    }
+                    self.navigationController?.pushViewController(chatView, animated: true)
                 }
-                self.navigationController?.pushViewController(chatView, animated: true)
-            }
             
+            }
         }
 
     }

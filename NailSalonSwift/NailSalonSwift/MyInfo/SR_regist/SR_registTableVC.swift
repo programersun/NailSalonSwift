@@ -53,15 +53,26 @@ class SR_registTableVC: UITableViewController {
     
     @IBAction func registBtnClick(sender: AnyObject) {
         self.view.endEditing(true)
-        if(self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 11)
-        {
+        
+        userName = userNameText.text
+        userPassword = userPasswordText.text
+        
+//        if(self.userNameText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 11)
+//        {
+//            self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
+//            return
+//        }
+        //验证电话号码
+        let regx = "^1[3458]\\d{9}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regx])
+        if !predicate.evaluateWithObject(userName!) {
             self.showAlertEasy("提示", messageContent: "请输入正确的手机号码")
             return
         }
-        
-        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0)
+
+        if(self.userPasswordText.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) < 6)
         {
-            self.showAlertEasy("提示", messageContent: "请输入密码")
+            self.showAlertEasy("提示", messageContent: "请输入至少6位的密码")
             return
         }
         
@@ -70,8 +81,6 @@ class SR_registTableVC: UITableViewController {
             self.showAlertEasy("提示", messageContent: "两次密码输入不一致")
             return
         }
-        userName = userNameText.text
-        userPassword = userPasswordText.text
         if isArtistRegist == true
         {
             //美甲师身份验证

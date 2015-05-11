@@ -27,7 +27,7 @@ class ICYProfileViewController: UITableViewController {
         super.viewDidLoad()
         self.cameraView.hidden = true
         self.cameraView.layer.opacity = 0
-        self.cameraView.frame = CGRectMake(0, 0, self.tableView.frame.width, self.tableView.frame.height)
+        self.cameraView.frame = CGRectMake(0, 0, self.tableView.frame.width, self.tableView.frame.height - 64)
         self.cameraV.hidden = true
         var tapCameraBackground = UITapGestureRecognizer(target: self, action: "cameraBackgroundTouch")
         self.cameraView.addGestureRecognizer(tapCameraBackground)
