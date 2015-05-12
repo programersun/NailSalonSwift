@@ -50,7 +50,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="headImg" translatesAutoresizingMaskIntoConstraints="NO" id="rus-V8-o6y">
                                                     <rect key="frame" x="13" y="9" width="60" height="60"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="M7f-cB-5aH"/>
                                                         <constraint firstAttribute="height" constant="60" id="rEH-0T-AGc"/>

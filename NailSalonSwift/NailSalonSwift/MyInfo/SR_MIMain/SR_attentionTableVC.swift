@@ -70,6 +70,9 @@ class SR_attentionTableVC: UITableViewController {
                 cell.headImgView.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
+        else {
+            cell.headImgView.image = UIImage(named: "headImg")
+        }
         
         //美甲师姓名
         cell.userName.text = cellData.nickName

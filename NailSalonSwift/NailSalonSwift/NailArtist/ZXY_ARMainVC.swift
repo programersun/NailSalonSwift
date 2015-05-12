@@ -282,6 +282,9 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
                 cell.artistView.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
         }
+        else {
+            cell.artistView.image = UIImage(named: "headImg")
+        }
         
         //美甲师姓名
         cell.artistName.text = cellData?.nickName

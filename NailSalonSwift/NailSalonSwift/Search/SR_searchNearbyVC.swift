@@ -349,6 +349,9 @@ extension SR_searchNearbyVC :  BMKMapViewDelegate , BMKLocationServiceDelegate ,
                 annoView?.titleImg.setImageWithURL(zxyAnno.imgURL!)
                 
             }
+            else {
+                annoView?.titleImg.image = UIImage(named: "headImg")
+            }
             annoView?.userID = zxyAnno.userID
             return annoView
         }
@@ -449,6 +452,9 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
                 var urlString = ZXY_NailNetAPI.ZXY_MainAPIImage + imgUrl!
                 cell.headImgView.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
             }
+        }
+        else {
+            cell.headImgView.image = UIImage(named: "headImg")
         }
         
         //美甲师姓名

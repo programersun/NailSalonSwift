@@ -278,7 +278,7 @@
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scrollCell" translatesAutoresizingMaskIntoConstraints="NO" id="HvE-7I-tij">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scrollCell" translatesAutoresizingMaskIntoConstraints="NO" id="HvE-7I-tij">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="83"/>
                                                                 <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             </imageView>

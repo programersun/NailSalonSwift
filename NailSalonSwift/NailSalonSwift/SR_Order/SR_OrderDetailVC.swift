@@ -378,6 +378,9 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                         firstCell.headImg.setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "imgHolder"))
                     }
                 }
+                else {
+                    firstCell.headImg.image = UIImage(named: "headImg")
+                }
                 
                 if self.dataForShow?.data.user.tel == ""{
                     firstCell.chatBtnWidth.constant = 15
