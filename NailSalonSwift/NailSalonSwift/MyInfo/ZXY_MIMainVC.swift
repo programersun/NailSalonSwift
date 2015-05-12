@@ -11,6 +11,8 @@ import UIKit
 class ZXY_MIMainVC: UIViewController {
 
     @IBOutlet weak var currentTable: UITableView!
+    @IBOutlet weak var settingBtn: UIButton!
+    
     private var dataForShow : ZXY_UserDetailInfoUserDetailBase?
     var zxyW : ZXY_WaitProgressVC = ZXY_WaitProgressVC()
 
@@ -23,7 +25,14 @@ class ZXY_MIMainVC: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     override func viewWillAppear(animated: Bool) {
-        
+        var isUserLogin = ZXY_UserInfoDetail.sharedInstance.isUserLogin()
+        if !isUserLogin
+        {
+            self.settingBtn.hidden = true
+        }
+        else {
+            self.settingBtn.hidden = false
+        }
         self.reloadUserData()
     }
 
@@ -93,7 +102,6 @@ class ZXY_MIMainVC: UIViewController {
             var propertyVC = segue.destinationViewController as! ICYProfileViewController
             propertyVC.userInfo = userInfo
             propertyVC.requestBlock = {[weak self]() -> Void in
-//                self?.currentTable.reloadData()
                 self?.startDownLoadUserDetailInfo()
                 ""
             }
@@ -103,6 +111,10 @@ class ZXY_MIMainVC: UIViewController {
             var settingVC = segue.destinationViewController as! SettingVC
             settingVC.userInfo = userInfo
         }
+    }
+    
+    @IBAction func settingBtnClick(sender: AnyObject) {
+        self.performSegueWithIdentifier("toSettingVC", sender: nil)
     }
 }
 
@@ -231,7 +243,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         switch indexPath.section
         {
         case 0:
-            return 226
+            return 152
         case 1:
             return 62
         default:
@@ -339,12 +351,6 @@ extension ZXY_MIMainVC : ZXY_MIMainVCellProtocol
 {
     func loginBtnClick() {
         self.performSegueWithIdentifier("toLoginVC", sender: nil)
-    }
-    
-    func settingBtnClick() {
-       
-        self.performSegueWithIdentifier("toSettingVC", sender: nil)
-        
     }
     
     func headImgTouch() {

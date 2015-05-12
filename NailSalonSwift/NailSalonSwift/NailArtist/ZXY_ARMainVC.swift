@@ -98,6 +98,7 @@ class ZXY_ARMainVC: UIViewController {
     
     //访问网络
     private func artistInfo() {
+        self.rightButton.enabled = false
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_UserListAPI
         
         var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName!  , "lng": longitude! , "lat": latitude!, "user_id": userId! , "control": control.rawValue , "p": pageCount]
@@ -109,6 +110,7 @@ class ZXY_ARMainVC: UIViewController {
             var resultID = baseData.result
             if(resultID == Double(1000))
             {
+                self?.rightButton.enabled = true
                 if(self?.pageCount == 1)
                 {
                     self?.dataForTable = []
@@ -129,6 +131,7 @@ class ZXY_ARMainVC: UIViewController {
             }
             else
             {
+                self?.rightButton.enabled = true
                 var errorString = ZXY_ErrorMessageHandle.messageForErrorCode(resultID)
                 self?.showAlertEasy("提示", messageContent: errorString)
                 self?.endFreshing()
@@ -143,6 +146,7 @@ class ZXY_ARMainVC: UIViewController {
             {
                 s.srW.hideProgress(s.view)
             }
+            self?.rightButton.enabled = true
             self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
             ""
         }
