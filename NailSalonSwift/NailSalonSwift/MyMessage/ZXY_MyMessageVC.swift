@@ -33,7 +33,7 @@ class ZXY_MyMessageVC: UIViewController {
         super.viewDidLoad()
         contentScroll.contentSize.width = 2 * UIScreen.mainScreen().bounds.width
         self.navigationItem.titleView = filterSeg
-        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         // Do any additional setup after loading the view.
     }
     
