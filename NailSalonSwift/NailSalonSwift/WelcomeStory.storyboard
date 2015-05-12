@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7703" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qoe-mF-oZI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="1IQ-dc-gKG">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Qoe-mF-oZI" customClass="SR_WelcomeViewController" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zjo-Ty-AC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="447" y="275"/>
+        </scene>
+        <!--Welcome View-->
+        <scene sceneID="GSW-Iz-eoz">
+            <objects>
+                <viewController storyboardIdentifier="SR_WelcomeViewID" id="foJ-hl-9fY" customClass="SR_WelcomeView" customModule="NailSalonSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GEg-Si-yd1"/>
+                        <viewControllerLayoutGuide type="bottom" id="v5P-2z-AMv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jmh-ZR-MaV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Azl-Nq-9dc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohR-cC-nbi">
+                                <rect key="frame" x="240" y="530" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.28235294117647058" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mJu-lq-qIp"/>
+                                    <constraint firstAttribute="width" constant="120" id="sdd-TF-Rse"/>
+                                </constraints>
+                                <state key="normal" title="立即体验">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="experienceBtnClick:" destination="foJ-hl-9fY" eventType="touchUpInside" id="78D-Vz-4Nb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ohR-cC-nbi" secondAttribute="centerX" id="2qs-Dc-I0N"/>
+                            <constraint firstAttribute="trailing" secondItem="Azl-Nq-9dc" secondAttribute="trailing" id="6SC-bX-s2v"/>
+                            <constraint firstItem="Azl-Nq-9dc" firstAttribute="top" secondItem="jmh-ZR-MaV" secondAttribute="top" id="RGE-AJ-ePi"/>
+                            <constraint firstItem="v5P-2z-AMv" firstAttribute="top" secondItem="ohR-cC-nbi" secondAttribute="bottom" constant="40" id="fQe-WV-nyu"/>
+                            <constraint firstItem="Azl-Nq-9dc" firstAttribute="leading" secondItem="jmh-ZR-MaV" secondAttribute="leading" id="fsI-Aw-LED"/>
+                            <constraint firstItem="v5P-2z-AMv" firstAttribute="top" secondItem="Azl-Nq-9dc" secondAttribute="bottom" id="g2k-24-Yrh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="experienceBtn" destination="ohR-cC-nbi" id="UQQ-M6-8hm"/>
+                        <outlet property="imgView" destination="Azl-Nq-9dc" id="KJY-iG-2iC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tjb-A4-lZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="275"/>
+        </scene>
+    </scenes>
+</document>

@@ -47,8 +47,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEl-v4-LQ9" id="lDx-Iu-aeT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imBackImg" translatesAutoresizingMaskIntoConstraints="NO" id="zIG-SM-CHM">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIG-SM-CHM">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
+                                                    <color key="backgroundColor" red="0.9882352941176471" green="0.28235294117647058" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="168" id="eHA-X0-qxh"/>
                                                     </constraints>
@@ -1325,9 +1326,9 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="VK5-vA-yx6"/>
                                                     <exclude reference="kZO-2V-YYy"/>
                                                     <exclude reference="tNt-l3-MWJ"/>
-                                                    <exclude reference="VK5-vA-yx6"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1586,7 +1587,6 @@
         <image name="headImg" width="78" height="91"/>
         <image name="icon" width="80" height="80"/>
         <image name="idCheck" width="200" height="120"/>
-        <image name="imBackImg" width="375" height="210"/>
         <image name="lineToSR" width="1" height="60"/>
         <image name="loginConfirmPassword" width="40" height="40"/>
         <image name="loginPassword" width="40" height="40"/>
