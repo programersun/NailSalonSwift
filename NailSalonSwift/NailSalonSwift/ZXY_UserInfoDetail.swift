@@ -53,7 +53,7 @@ class ZXY_UserInfoDetail {
         var appKey:String? = NSUserDefaults.standardUserDefaults().valueForKey(APPFIRSTLOADKEY) as? String
         if(appKey == nil)
         {
-            //NSUserDefaults.standardUserDefaults().setValue("already install", forKey: APPFIRSTLOADKEY)
+            NSUserDefaults.standardUserDefaults().setValue("already install", forKey: APPFIRSTLOADKEY)
             return true
         }
         else
