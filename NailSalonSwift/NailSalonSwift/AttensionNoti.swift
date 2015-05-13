@@ -16,5 +16,5 @@ class AttensionNoti: NSManagedObject {
     @NSManaged var atten_name: String
     @NSManaged var atten_avatar: String
     @NSManaged var atten_time: String
-
+    @NSManaged var atten_isRead: String
 }

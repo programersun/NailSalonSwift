@@ -122,6 +122,11 @@ class ZXY_UserInfoDetail {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(USERIDKEY)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(USERDETAILINFO)
         NSUserDefaults.standardUserDefaults().removeObjectForKey(USERPASSKEY)
-        
+        EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: {[weak self] (Object, error) -> Void in
+            ""
+            ""
+            
+            }, onQueue: nil)
+
     }
 }

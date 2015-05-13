@@ -169,6 +169,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
                 //                var dicForDB : Dictionary<String , AnyObject?> = ["nick_name" : userDic?.nickName , "role": userDic?.role , "user_id" : userDic?.userId]
                 
                 ZXY_UserInfoDetail.sharedInstance.saveUserID(userId!)
+                APService.setAlias(userId, callbackSelector: nil, object: nil)
                 //                if ZXY_DataProviderHelper.saveAllWithDic(DBName: String.getZXYUserInfoModelName(), saveEntity: dicForDB)
                 //                {
                 //

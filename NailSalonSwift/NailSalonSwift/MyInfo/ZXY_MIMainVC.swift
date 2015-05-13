@@ -21,10 +21,19 @@ class ZXY_MIMainVC: UIViewController {
         startDownLoadUserDetailInfo()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("notiForMessage"), name: "message", object: nil)
     }
+    
+    func notiForMessage()
+    {
+        currentTable.reloadData()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         
         self.reloadUserData()
+        currentTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -213,7 +222,11 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             {
                 if numNoRead > 0
                 {
-                    smallCell.tipInfoLbl.text = "\(numNoRead!)"
+                    
+                    var datas = ZXY_DataProviderHelper.readFromDBWithPredict(DBName: "AttensionNoti", predictString: "atten_isRead == %@", argumentArr: ["No"])
+                    
+                    var unreadNum = Int(numNoRead!) + datas.count
+                    smallCell.tipInfoLbl.text = "\(unreadNum)"
                     smallCell.tipInfoLbl.hidden = false
                 }
             }

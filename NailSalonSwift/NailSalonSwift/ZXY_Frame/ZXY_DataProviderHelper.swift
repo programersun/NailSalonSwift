@@ -160,4 +160,17 @@ class ZXY_DataProviderHelper: NSObject {
         var realPath        = pathString.stringByAppendingPathComponent("TagTypePList.plist")
         return realPath
     }
+    
+    class func updateItem(DBName name : String , keyString : String , valueString : String ,predictString : String , argumentArr : [AnyObject]? ) -> Bool
+    {
+        var delegate = ZXY_DataProviderHelper.getDelegate()
+        var context  = delegate.managedObjectContext
+        var itemOfPre = ZXY_DataProviderHelper.readFromDBWithPredict(DBName: name, predictString: predictString, argumentArr: argumentArr)
+        for one in itemOfPre
+        {
+            var realOne = one as! NSManagedObject
+            realOne.setValue(valueString, forKey:keyString)
+        }
+        return context?.save(nil) ?? false
+    }
 }

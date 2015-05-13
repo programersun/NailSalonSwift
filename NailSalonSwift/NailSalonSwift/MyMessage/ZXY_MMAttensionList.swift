@@ -18,6 +18,7 @@ class ZXY_MMAttensionList: UIViewController {
         super.viewDidLoad()
         dataForShow = ZXY_DataProviderHelper.readAllFromDB(DNName: "AttensionNoti")
         self.currentTable.reloadData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("notiForMessage"), name: "message", object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +27,11 @@ class ZXY_MMAttensionList: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func notiForMessage()
+    {
+        dataForShow = ZXY_DataProviderHelper.readAllFromDB(DNName: "AttensionNoti")
+        self.currentTable.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -49,11 +55,23 @@ extension ZXY_MMAttensionList: UITableViewDelegate , UITableViewDataSource
         imgV.layer.masksToBounds = true
         var titleLbl = cell.viewWithTag(2222) as! UILabel
         var timeLbl  = cell.viewWithTag(22222) as! UILabel
+        var badgeImg = cell.viewWithTag(1212) as! UIImageView
+        
         var statusString = "美甲师"
         if currentData.atten_role == "1"
         {
             statusString = "用户"
         }
+        var isRead = currentData.atten_isRead
+        if isRead == "No"
+        {
+            badgeImg.hidden = false
+        }
+        else
+        {
+            badgeImg.hidden = true
+        }
+        
         
         titleLbl.text = statusString + " " + currentData.atten_name + " 关注了你"
         timeLbl.text  = self.timeStampToDateString(currentData.atten_time)
@@ -67,7 +85,7 @@ extension ZXY_MMAttensionList: UITableViewDelegate , UITableViewDataSource
             }
             imgV.setImageWithURL(NSURL(string : imgURL))
         }
-        
+        cell.bringSubviewToFront(badgeImg)
         return cell
     }
     
@@ -90,21 +108,28 @@ extension ZXY_MMAttensionList: UITableViewDelegate , UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var currentRow = indexPath.row
         var currentData = dataForShow?[indexPath.row] as! AttensionNoti
+        ZXY_DataProviderHelper.updateItem(DBName: "AttensionNoti", keyString: "atten_isRead", valueString: "YES", predictString: "atten_id == %@", argumentArr: [currentData.atten_id])
+        currentData.atten_isRead = "YES"
         var story = UIStoryboard(name: "PublicStory", bundle: nil)
         var detailArtist = story.instantiateViewControllerWithIdentifier("ZXY_DFPArtistDetailVCID") as!ZXY_DFPArtistDetailVC
         detailArtist.artistID = currentData.atten_id
         self.navigationController?.pushViewController(detailArtist, animated: true)
+        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete
         {
             var currentRow = indexPath.row
-            
             var currentData = dataForShow?[indexPath.row] as! AttensionNoti
             ZXY_DataProviderHelper.deleteObject(DBName: "AttensionNoti", object: currentData)
             dataForShow?.removeAtIndex(currentRow)
             tableView.reloadData()
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool)
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "message", object: nil)
     }
 }

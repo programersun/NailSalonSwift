@@ -319,7 +319,7 @@
     
     
     chatController = [[ChatViewController alloc] initWithChatter:chatter isGroup:conversation.isGroup];
-    chatController.title = cell.name;
+    chatController.title = cell.dataUser.nickName;
     NSString *imgURL = cell.dataUser.headImage;
     imgURL = [NSString stringWithFormat:@"http://www.meijiab.cn/admin/%@",imgURL];
     if ([cell.dataUser.headImage hasPrefix:@"http"])

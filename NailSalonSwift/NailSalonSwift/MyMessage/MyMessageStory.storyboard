@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My MessageVC-->
@@ -73,22 +74,48 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A5T-fv-phD" id="eK2-rs-qw4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="222" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0z2-YK-hAJ">
-                                                    <rect key="frame" x="8" y="10" width="50" height="50"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="22222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1989-08-30 11:22:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbn-Sp-aqz">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="22222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1989-08-30 11:22:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbn-Sp-aqz">
                                                     <rect key="frame" x="66" y="40" width="269" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="2jD-oN-x5Z"/>
+                                                        <constraint firstAttribute="width" constant="269" id="DI7-uk-fyQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="王尼玛关住了你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-7n-fXB">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="222" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0z2-YK-hAJ">
+                                                    <rect key="frame" x="8" y="10" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2222" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王尼玛关住了你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsf-7n-fXB">
                                                     <rect key="frame" x="66" y="10" width="269" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" tag="1212" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badgeCircle" translatesAutoresizingMaskIntoConstraints="NO" id="L4n-wy-LaL">
+                                                    <rect key="frame" x="48" y="10" width="10" height="10"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="J3I-aQ-HX1"/>
+                                                        <constraint firstAttribute="height" constant="10" id="gsY-C6-v2Q"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0z2-YK-hAJ" firstAttribute="top" secondItem="eK2-rs-qw4" secondAttribute="top" constant="10" id="1IG-Sb-Blt"/>
+                                                <constraint firstItem="0z2-YK-hAJ" firstAttribute="leading" secondItem="eK2-rs-qw4" secondAttribute="leading" constant="8" id="7OT-D5-mXl"/>
+                                                <constraint firstItem="0z2-YK-hAJ" firstAttribute="trailing" secondItem="L4n-wy-LaL" secondAttribute="trailing" id="9Lj-sg-3Fw"/>
+                                                <constraint firstItem="Qbn-Sp-aqz" firstAttribute="top" secondItem="Nsf-7n-fXB" secondAttribute="bottom" constant="9" id="Ai0-gM-AnB"/>
+                                                <constraint firstItem="Qbn-Sp-aqz" firstAttribute="leading" secondItem="0z2-YK-hAJ" secondAttribute="trailing" constant="8" symbolic="YES" id="H8K-gG-bIQ"/>
+                                                <constraint firstItem="L4n-wy-LaL" firstAttribute="leading" secondItem="eK2-rs-qw4" secondAttribute="leading" constant="48" id="Ip8-UB-1kj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0z2-YK-hAJ" secondAttribute="bottom" constant="1" id="LMR-lN-n6Z"/>
+                                                <constraint firstItem="Qbn-Sp-aqz" firstAttribute="bottom" secondItem="eK2-rs-qw4" secondAttribute="bottomMargin" id="Ujh-tu-gfY"/>
+                                                <constraint firstItem="0z2-YK-hAJ" firstAttribute="top" secondItem="Nsf-7n-fXB" secondAttribute="top" id="Wxs-LR-bmG"/>
+                                                <constraint firstItem="Qbn-Sp-aqz" firstAttribute="trailing" secondItem="Nsf-7n-fXB" secondAttribute="trailing" id="acF-lv-7QB"/>
+                                                <constraint firstItem="Nsf-7n-fXB" firstAttribute="leading" secondItem="0z2-YK-hAJ" secondAttribute="trailing" constant="8" symbolic="YES" id="b0Y-Of-Dy4"/>
+                                                <constraint firstItem="L4n-wy-LaL" firstAttribute="top" secondItem="eK2-rs-qw4" secondAttribute="top" constant="10" id="nVq-EQ-dyY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -115,4 +142,7 @@
             <point key="canvasLocation" x="975" y="202"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="badgeCircle" width="10" height="10"/>
+    </resources>
 </document>

@@ -8,6 +8,7 @@
     <entity name="AttensionNoti" representedClassName="AttensionNoti" syncable="YES">
         <attribute name="atten_avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atten_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atten_isRead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atten_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atten_role" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atten_time" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,8 +19,8 @@
         <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="AttensionNoti" positionX="-63" positionY="9" width="128" height="120"/>
         <element name="ArtistList" positionX="-54" positionY="45" width="128" height="90"/>
+        <element name="AttensionNoti" positionX="-63" positionY="9" width="128" height="135"/>
+        <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

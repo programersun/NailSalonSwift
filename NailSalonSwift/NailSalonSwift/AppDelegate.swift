@@ -129,9 +129,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         return true
     }
     
+    func didLoginFromOtherDevice() {
+        var alert = UIAlertView(title: "提示", message: "您的账号已在其他设备上登录", delegate: nil, cancelButtonTitle: "取消")
+        alert.show()
+        ZXY_UserInfoDetail.sharedInstance.logoutUser()
+    }
+    
     func didReceiveMessage(message: EMMessage!) {
         println("哈哈")
         var la = NSTimeInterval()
+        NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
     }
     
     func JPushAlias(code : Int , tags : NSSet , alias : String)
@@ -156,13 +163,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
                 var headImg   = dataDic["head"] as! NSString
                 var time      = dataDic["send_time"] as! NSNumber
                 var role      = dataDic["role"] as! NSString
-                var toCDDic   = ["atten_avatar" : headImg , "atten_id" : dataID , "atten_name" : dataNick , "atten_role" : role ,"atten_time" : time.stringValue]
+                var toCDDic   = ["atten_avatar" : headImg , "atten_id" : dataID , "atten_name" : dataNick , "atten_role" : role ,"atten_time" : time.stringValue , "atten_isRead" : "No"]
                 ZXY_DataProviderHelper.saveOneDic(DBName: "AttensionNoti", saveEntity: toCDDic, predictString: "atten_id = %@", argumentArr: [dataID])
                
 
             }
             
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
