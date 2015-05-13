@@ -189,9 +189,9 @@ extension SR_LabelVC : UITableViewDataSource, UITableViewDelegate {
         cell.headImg.layer.cornerRadius = 6
         cell.headImg.layer.masksToBounds = true
         //图集描述
-        cell.ablumName.text = cellData.dataDescription
+        cell.ablumName.attributedText = cellData.dataDescription.rangeStringWithTarget(searchString ?? "")
         //用户昵称
-        cell.nickName.text = cellData.user.nickName
+        cell.nickName.attributedText = cellData.user.nickName.rangeStringWithTarget(searchString ?? "")
         //判断用户身份
         
         var type = cellData.user.role

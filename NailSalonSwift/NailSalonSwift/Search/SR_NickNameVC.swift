@@ -223,7 +223,7 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         
         //美甲师姓名
         
-        cell.nickName.text = cellData.nickName
+        cell.nickName.attributedText = cellData.nickName.rangeStringWithTarget(searchString ?? "" )
         
         //作品数量
         cell.userWorkCount.text = cellData.albumCount

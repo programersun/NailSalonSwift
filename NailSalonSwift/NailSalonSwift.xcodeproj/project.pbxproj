@@ -318,6 +318,7 @@
 		8B45878A1ADB9E450012B7C4 /* ZXY_AlbumCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4587881ADB9E450012B7C4 /* ZXY_AlbumCommentData.m */; };
 		8B45878D1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B45878B1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift */; };
 		8B45878E1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B45878C1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib */; };
+		8B45936F1B032F460059375E /* NailSalonStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B45936E1B032F460059375E /* NailSalonStringHelper.swift */; };
 		8B4B4DE01AC4F814001BD10B /* ZXY_MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */; };
 		8B4B4DE61AC4FB65001BD10B /* ZXY_ORMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */; };
 		8B4B4DE81AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */; };
@@ -944,6 +945,7 @@
 		8B4587881ADB9E450012B7C4 /* ZXY_AlbumCommentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXY_AlbumCommentData.m; sourceTree = "<group>"; };
 		8B45878B1ADBDCD40012B7C4 /* ZXY_TextInputViewC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_TextInputViewC.swift; sourceTree = "<group>"; };
 		8B45878C1ADBDCD40012B7C4 /* ZXY_TextInputViewC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXY_TextInputViewC.xib; sourceTree = "<group>"; };
+		8B45936E1B032F460059375E /* NailSalonStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NailSalonStringHelper.swift; sourceTree = "<group>"; };
 		8B4B4DDF1AC4F814001BD10B /* ZXY_MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MainTabBarVC.swift; sourceTree = "<group>"; };
 		8B4B4DE51AC4FB65001BD10B /* ZXY_ORMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_ORMainVC.swift; sourceTree = "<group>"; };
 		8B4B4DE71AC4FD83001BD10B /* ZXY_ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_ViewControllerExtension.swift; path = ../ZXY_ViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -2266,6 +2268,7 @@
 				8B5EE2CB1AC839C600EFF3C4 /* ZXY_ErrorMessageHandle.swift */,
 				8B4B4DF31AC50169001BD10B /* ZXY_ConstValue.swift */,
 				8B7B941F1AC5264A00BAA520 /* NailSalonColor.swift */,
+				8B45936E1B032F460059375E /* NailSalonStringHelper.swift */,
 				8B9977BD1AC4ED4B00CD1713 /* Main.storyboard */,
 				8B01418C1ACD12D1000C180B /* ZXYImages.xcassets */,
 				8B9977C01AC4ED4B00CD1713 /* Images.xcassets */,
@@ -3096,6 +3099,7 @@
 				A44D4CAC1ADF63DA001A39AE /* ZXY_DateChangeInfoVC.swift in Sources */,
 				8B2993B11AF9E62400BAECF4 /* EMChatLocationBubbleView.m in Sources */,
 				A4B94A6E1AE635B6003CC29A /* LCYVersionViewController.swift in Sources */,
+				8B45936F1B032F460059375E /* NailSalonStringHelper.swift in Sources */,
 				8B1F26111AC78AE200DDF8F4 /* ZXY_ORSqureVC.swift in Sources */,
 				A4E211471ADE000900A97CA1 /* ICYProfileAvatarCell.swift in Sources */,
 				8B3CB2DF1AF0B2F100183C5F /* ZXY_PickImgPictureVC.swift in Sources */,
