@@ -439,6 +439,7 @@
 		A40B887B1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */; };
 		A40FD5981AF718A0005C4B33 /* SR_OrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */; };
 		A40FD59A1AF718BA005C4B33 /* SR_OrderTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */; };
+		A41022DF1B0356CA008CB0F8 /* SR_SettingMessageTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41022DE1B0356CA008CB0F8 /* SR_SettingMessageTableVC.swift */; };
 		A41710A21AEB521D004AA42D /* SR_MIMainStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */; };
 		A41710A41AEB5716004AA42D /* SR_attentionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */; };
 		A41710A61AEB5741004AA42D /* SR_attentionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41710A51AEB5741004AA42D /* SR_attentionVC.swift */; };
@@ -1116,6 +1117,7 @@
 		A40B887A1AE8FD58001BB3D4 /* SR_ORgetCourseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ORgetCourseVC.swift; sourceTree = "<group>"; };
 		A40FD5971AF718A0005C4B33 /* SR_OrderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderTableCell.swift; sourceTree = "<group>"; };
 		A40FD5991AF718BA005C4B33 /* SR_OrderTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_OrderTableVC.swift; sourceTree = "<group>"; };
+		A41022DE1B0356CA008CB0F8 /* SR_SettingMessageTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_SettingMessageTableVC.swift; sourceTree = "<group>"; };
 		A41710A11AEB521D004AA42D /* SR_MIMainStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_MIMainStory.storyboard; sourceTree = "<group>"; };
 		A41710A31AEB5716004AA42D /* SR_attentionTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionTableVC.swift; sourceTree = "<group>"; };
 		A41710A51AEB5741004AA42D /* SR_attentionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_attentionVC.swift; sourceTree = "<group>"; };
@@ -2567,6 +2569,7 @@
 				A4B94A6D1AE635B6003CC29A /* LCYVersionViewController.swift */,
 				A4E211451ADE000900A97CA1 /* SettingCell.swift */,
 				A4B94A6B1AE5FB9B003CC29A /* SettingVC.swift */,
+				A41022DE1B0356CA008CB0F8 /* SR_SettingMessageTableVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3082,6 +3085,7 @@
 				8BBBDBCA1ACA764F0006A94A /* ZXYOfferOfferList.m in Sources */,
 				A4FC764A1AEDC93C002B1020 /* SR_myCollectionVC.swift in Sources */,
 				A4D1B64A1AECF9580065DEC4 /* SR_myAlbumCell.swift in Sources */,
+				A41022DF1B0356CA008CB0F8 /* SR_SettingMessageTableVC.swift in Sources */,
 				8B7B94201AC5264A00BAA520 /* NailSalonColor.swift in Sources */,
 				A4FC765F1AEDFF9D002B1020 /* SR_AttentionBaseClass.m in Sources */,
 				8B2994511AF9E62400BAECF4 /* EMTextView.m in Sources */,

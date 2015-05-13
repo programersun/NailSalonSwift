@@ -178,11 +178,11 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as! ZXY_MIMainVCell
-        bigCell.delegate = self
-        var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as! ZXY_MIMainItemCell
+        
         if(indexPath.section == 0)
         {
+            var bigCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainVCell.cellID()) as! ZXY_MIMainVCell
+            bigCell.delegate = self
             bigCell.backImg.backgroundColor = UIColor.NailRedColor()
             var isUserLogin = ZXY_UserInfoDetail.sharedInstance.isUserLogin()
             if !isUserLogin
@@ -228,6 +228,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
         }
         else
         {
+            var smallCell = tableView.dequeueReusableCellWithIdentifier(ZXY_MIMainItemCell.cellID()) as! ZXY_MIMainItemCell
             smallCell.tipInfoLbl.hidden = true
             var numNoRead = EaseMob.sharedInstance().chatManager.totalUnreadMessagesCount?() 
             if indexPath.section == 1 && indexPath.row == 0

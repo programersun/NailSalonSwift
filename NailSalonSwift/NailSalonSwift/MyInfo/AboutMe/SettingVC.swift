@@ -95,8 +95,8 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
         case 0:
             switch indexPath.row {
             case 0:
-//                cell.setCellText.text = "消息设置"
-//            case 1:
+                cell.setCellText.text = "消息设置"
+            case 1:
                 cell.setCellText.text = "修改密码"
             default:
                 break
@@ -123,7 +123,8 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
         case 0:
             switch indexPath.row {
             case 0:
-                break
+                performSegueWithIdentifier("toSetMessageVC", sender: nil)
+                ""
             case 1:
                 performSegueWithIdentifier("toRessetPassWordVC", sender: nil)
                 ""

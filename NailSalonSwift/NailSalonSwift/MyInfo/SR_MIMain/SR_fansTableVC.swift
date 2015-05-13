@@ -80,11 +80,12 @@ class SR_fansTableVC: UITableViewController {
         //作品数量
         cell.userWorkCount.text = cellData.albumCount
         
-        var scoreNSString : NSString = NSString(format: "%@", cellData.score)
+        var scoreNSString : NSString = NSString(format: "%@", cellData.score ?? 0.0)
         var doubleScore   = scoreNSString.doubleValue
         cell.starRateView?.scorePercent = CGFloat(doubleScore/5.0)
+        
         //判断用户身份
-        var type = cellData.role
+        var type = cellData.role ?? "0"
         if type == "1" {
             cell.toolView.hidden = true
             cell.isArtist.hidden = true
