@@ -11,7 +11,6 @@ import UIKit
 protocol ZXY_MIMainVCellProtocol : class
 {
     func loginBtnClick() -> Void
-    func settingBtnClick() -> Void
     func headImgTouch() -> Void
     func backImgTouch() -> Void
 }
@@ -26,7 +25,6 @@ class ZXY_MIMainVCell: UITableViewCell {
     @IBOutlet weak var isLogin: UILabel!
     
     @IBOutlet weak var userAvatar: UIImageView!
-    @IBOutlet weak var settingBtn: UIButton!
     
     weak var delegate : ZXY_MIMainVCellProtocol?
     var heahTap : UITapGestureRecognizer?
@@ -63,7 +61,6 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistImg.hidden = false
         self.isArtistLbl.hidden = false
         self.userAvatar.hidden  = false
-        self.settingBtn.hidden  = false
         isLogin.hidden = true
     }
     
@@ -73,7 +70,6 @@ class ZXY_MIMainVCell: UITableViewCell {
         self.isArtistImg.hidden = true
         self.isArtistLbl.hidden = true
         self.userAvatar.hidden  = true
-        self.settingBtn.hidden  = true
         isLogin.hidden = false
         
     }
@@ -99,14 +95,6 @@ class ZXY_MIMainVCell: UITableViewCell {
         {
             p.backImgTouch()
         }
-    }
-    
-    @IBAction func settingBtnAction(sender: AnyObject) {
-        if let p = delegate
-        {
-            p.settingBtnClick()
-        }
-
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
