@@ -46,6 +46,13 @@ class SR_myAlbumVC: UIViewController {
             ""
         }
         
+        if userID == artistID {
+            self.title = "我的图集"
+        }
+        else {
+            self.title = "图集"
+        }
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -181,9 +188,10 @@ extension SR_myAlbumVC : UICollectionViewDelegate , UICollectionViewDataSource ,
         //userID == artistID 跳转到我的图集详细页面
         //userID != artistID 跳转回订单页面
         if self.userID == self.artistID {
-            var story = UIStoryboard(name: "PublicStory", bundle: nil)
-            var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
+            var story    = UIStoryboard(name: "PublicStory", bundle: nil)
+            var vc       = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
             vc.artWorkID = current.albumId ?? ""
+            vc.title     = current.dataDescription ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else {

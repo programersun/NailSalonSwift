@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        
+        self.loadPushSettingPlist()
         
         bmkAuthor = BMKMapManager()
         
@@ -139,6 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         println("哈哈")
         var la = NSTimeInterval()
         NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
+        self.pushSetting()
     }
     
     func JPushAlias(code : Int , tags : NSSet , alias : String)
@@ -171,8 +172,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             
         }
         NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
+        self.pushSetting()
+        
     }
 
+    func loadPushSettingPlist() {
+        var documentPath : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var pathString      = documentPath[0] as! String
+        var realPath        = pathString.stringByAppendingPathComponent("pushSetting.plist")
+        var bundlePlistPath = NSBundle.mainBundle().pathForResource("pushSetting", ofType: "plist")
+        if !NSFileManager.defaultManager().fileExistsAtPath(realPath)
+        {
+            NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)
+        }
+    }
+    
+    func pushSetting()
+    {
+        var paths     = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var plistPath = paths[0] as! String
+        var filename = plistPath.stringByAppendingPathComponent("pushSetting.plist")
+        var data     = NSMutableDictionary(contentsOfFile: filename)
+        var message   = data!["message"] as! String
+        var sound = data!["sound"] as! String
+        var shake = data!["shake"] as! String
+        if message == "1" {
+            if sound == "1" {
+                AudioServicesDisposeSystemSoundID(4095)
+                AudioServicesPlaySystemSound(1007)
+            }
+    
+            if shake == "1" {
+                AudioServicesPlaySystemSound(4095)
+            }
+            else
+            {
+                
+            }
+        }
+    }
+    
     func applicationWillEnterForeground(application: UIApplication) {
         EaseMob.sharedInstance().applicationWillEnterForeground(application)
     }

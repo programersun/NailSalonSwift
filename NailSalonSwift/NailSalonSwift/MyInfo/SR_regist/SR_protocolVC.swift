@@ -14,7 +14,7 @@ class SR_protocolVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "注册协议"
         let fileURL = NSBundle.mainBundle().URLForResource("register_help", withExtension: "html")!
         let data = NSData(contentsOfURL: fileURL)
         protocolWebView.loadData(data, MIMEType: "text/html", textEncodingName: "utf-8", baseURL: nil)

@@ -20,6 +20,7 @@ class SettingVC: UIViewController {
         logOutBtn.backgroundColor = UIColor.NailRedColor()
         logOutBtn.layer.cornerRadius = 4
         
+        self.title = "设置"
         
         // Do any additional setup after loading the view.
     }

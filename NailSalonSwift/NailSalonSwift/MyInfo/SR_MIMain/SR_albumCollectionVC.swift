@@ -161,10 +161,11 @@ extension SR_albumCollectionVC : UICollectionViewDelegate , UICollectionViewData
         
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var story = UIStoryboard(name: "PublicStory", bundle: nil)
-        var vc    = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
-        var current = dataForShow[indexPath.row] as! SR_albumCollectionData
+        var story    = UIStoryboard(name: "PublicStory", bundle: nil)
+        var vc       = story.instantiateViewControllerWithIdentifier("artDetailID") as! ZXY_DFPArtDetailVC
+        var current  = dataForShow[indexPath.row] as! SR_albumCollectionData
         vc.artWorkID = current.albumId ?? ""
+        vc.title     = current.dataDescription ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

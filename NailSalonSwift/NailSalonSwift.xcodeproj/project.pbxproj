@@ -509,6 +509,7 @@
 		A4E2A7601AEF245400B66011 /* SR_LabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A75F1AEF245400B66011 /* SR_LabelVC.swift */; };
 		A4E2A7621AEF24C900B66011 /* SR_LabelCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A7611AEF24C900B66011 /* SR_LabelCellVC.swift */; };
 		A4E2A7641AEF300700B66011 /* SR_NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A7631AEF300700B66011 /* SR_NickNameVC.swift */; };
+		A4F4457C1B044002005993EB /* pushSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F4457B1B044002005993EB /* pushSetting.plist */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
 		A4FC764A1AEDC93C002B1020 /* SR_myCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC76491AEDC93C002B1020 /* SR_myCollectionVC.swift */; };
 		A4FC764C1AEDCBB8002B1020 /* SR_courseCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC764B1AEDCBB8002B1020 /* SR_courseCollectionVC.swift */; };
@@ -1208,6 +1209,7 @@
 		A4E2A75F1AEF245400B66011 /* SR_LabelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_LabelVC.swift; sourceTree = "<group>"; };
 		A4E2A7611AEF24C900B66011 /* SR_LabelCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SR_LabelCellVC.swift; path = ../SR_LabelCellVC.swift; sourceTree = "<group>"; };
 		A4E2A7631AEF300700B66011 /* SR_NickNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_NickNameVC.swift; sourceTree = "<group>"; };
+		A4F4457B1B044002005993EB /* pushSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pushSetting.plist; sourceTree = "<group>"; };
 		A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		A4FC76491AEDC93C002B1020 /* SR_myCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_myCollectionVC.swift; sourceTree = "<group>"; };
@@ -2277,6 +2279,7 @@
 				8B9977C21AC4ED4B00CD1713 /* LaunchScreen.xib */,
 				8B9977B81AC4ED4B00CD1713 /* NailSalonSwift.xcdatamodeld */,
 				8B5EE2BC1AC8356D00EFF3C4 /* ErrorMessage.plist */,
+				A4F4457B1B044002005993EB /* pushSetting.plist */,
 				8B9977B41AC4ED4B00CD1713 /* Supporting Files */,
 				8B4B4DED1AC4FDBF001BD10B /* NailSalonSwift-Bridging-Header.h */,
 				8B1D0A1F1AF9E8EC0006AC20 /* NailSalonSwift-Prefix.pch */,
@@ -2926,6 +2929,7 @@
 				8B2994331AF9E62400BAECF4 /* chatBar_more_photo@2x.png in Resources */,
 				8B2993EB1AF9E62400BAECF4 /* VoiceSearchFeedback020@2x.png in Resources */,
 				8B2993C81AF9E62400BAECF4 /* VoiceSearchFeedback003.png in Resources */,
+				A4F4457C1B044002005993EB /* pushSetting.plist in Resources */,
 				8B2993C91AF9E62400BAECF4 /* VoiceSearchFeedback003@2x.png in Resources */,
 				8BAAF0351AD79EAD00D61B0B /* PublicStory.storyboard in Resources */,
 				8B2994241AF9E62400BAECF4 /* chatBar_colorMore_location@2x.png in Resources */,
