@@ -10,11 +10,12 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate , IChatManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate , IChatManagerDelegate , UIAlertViewDelegate {
 
     var window: UIWindow?
     var bmkAuthor : BMKMapManager?
     var hasPresent : Bool = false
+    var alert = UIAlertView()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -130,7 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     }
     
     func didLoginFromOtherDevice() {
-        var alert = UIAlertView(title: "提示", message: "您的账号已在其他设备上登录", delegate: nil, cancelButtonTitle: "取消")
+        alert = UIAlertView(title: "提示", message: "您的账号已在其他设备上登录", delegate: self, cancelButtonTitle: nil , otherButtonTitles: "确定")
+        alert.tag = 1
         alert.show()
         ZXY_UserInfoDetail.sharedInstance.logoutUser()
     }
@@ -370,10 +372,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     func onGetPermissionState(iError: Int32) {
         println(iError)
     }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if alertView.tag == 1 {
+            if buttonIndex == 0 {
+                NSNotificationCenter.defaultCenter().postNotificationName("loginOtherDevices", object: nil)
+            }
+        }
+    }
 }
 
-extension AppDelegate
-{
-        
+extension AppDelegate {
+    
 }
 

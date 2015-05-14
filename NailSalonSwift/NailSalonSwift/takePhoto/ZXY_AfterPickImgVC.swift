@@ -33,7 +33,6 @@ class ZXY_AfterPickImgVC: UIViewController {
         self.navigationController?.navigationBar.hidden = false
         addTagVC = UIStoryboard(name: "ZXYTakePic", bundle: nil).instantiateViewControllerWithIdentifier("tagVCID") as! ZXY_AddTagVC
         addTagVC.view.frame = CGRectMake(0, 20, UIScreen.mainScreen().bounds.width , UIScreen.mainScreen().bounds.height - 104)
-        
         backImg = UIImageView(frame : CGRectMake(0, -64, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
         backImg.backgroundColor = UIColor.darkGrayColor()
         backImg.layer.opacity = 0

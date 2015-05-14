@@ -430,6 +430,7 @@
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="eoK-by-vc3" id="R5y-Ye-UmE"/>
+                        <outlet property="backgroudImg" destination="17t-Os-ZP7" id="Ljz-1F-fgY"/>
                         <outlet property="commentText" destination="0x3-eR-K1M" id="jIS-mA-Izn"/>
                         <outlet property="commentView" destination="5aR-11-bhR" id="icV-3Z-8FR"/>
                         <outlet property="currentTable" destination="gfC-2O-rVL" id="EIW-16-tNW"/>
