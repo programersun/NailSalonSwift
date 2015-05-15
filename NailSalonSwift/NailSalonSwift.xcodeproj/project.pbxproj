@@ -498,6 +498,7 @@
 		A4DFFAC91AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFAC81AF9BE3900BB0BE6 /* SR_ChangeOrderInfo.swift */; };
 		A4DFFACE1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFACA1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.m */; };
 		A4DFFACF1AF9D3C700BB0BE6 /* SR_OrderListData.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DFFACC1AF9D3C700BB0BE6 /* SR_OrderListData.m */; };
+		A4E05E0B1B0600A8003FFA05 /* CommenAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E05E0A1B0600A8003FFA05 /* CommenAddress.swift */; };
 		A4E1851B1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */; };
 		A4E1851D1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */; };
 		A4E185211AE897BC00ACCF67 /* SR_CourseDetailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */; };
@@ -1202,6 +1203,7 @@
 		A4DFFACB1AF9D3C700BB0BE6 /* SR_OrderListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderListData.h; sourceTree = "<group>"; };
 		A4DFFACC1AF9D3C700BB0BE6 /* SR_OrderListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SR_OrderListData.m; sourceTree = "<group>"; };
 		A4DFFACD1AF9D3C700BB0BE6 /* SR_OrderListBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SR_OrderListBaseClass.h; sourceTree = "<group>"; };
+		A4E05E0A1B0600A8003FFA05 /* CommenAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommenAddress.swift; sourceTree = "<group>"; };
 		A4E1851A1AE88EB000ACCF67 /* SR_ORCourseStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SR_ORCourseStory.storyboard; sourceTree = "<group>"; };
 		A4E1851C1AE8960C00ACCF67 /* SR_CourseDetailListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListVC.swift; sourceTree = "<group>"; };
 		A4E185201AE897BC00ACCF67 /* SR_CourseDetailListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_CourseDetailListCell.swift; sourceTree = "<group>"; };
@@ -2645,6 +2647,7 @@
 				A4F5DF8A1B058B610011599F /* SR_ChangeAddressVC.swift */,
 				A4F5DF8C1B058BA20011599F /* SR_ChangeAddressCell.swift */,
 				A4F5DF8E1B059C150011599F /* address.plist */,
+				A4E05E0A1B0600A8003FFA05 /* CommenAddress.swift */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -3140,6 +3143,7 @@
 				8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */,
 				A48CDBFB1AF0789600BF42DC /* SR_searchNearbyVC.swift in Sources */,
 				A4AF6E211AEA380200FC9755 /* SR_CourseUserStatusBaseClass.m in Sources */,
+				A4E05E0B1B0600A8003FFA05 /* CommenAddress.swift in Sources */,
 				8B2994681AF9E62400BAECF4 /* EMSDWebImageManager.m in Sources */,
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B2994611AF9E62400BAECF4 /* MWZoomingScrollView.m in Sources */,

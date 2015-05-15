@@ -22,9 +22,18 @@ class SR_ChangeAddressVC: UIViewController {
     
     weak var delegate : SR_ChangeAddressVCProtocol?
     
-    //plist 文件名和数据
-    var filename : String?
-    var data = NSMutableArray()
+    
+    var searchArray : NSMutableArray? = NSMutableArray()
+    
+    var dataForShow : [AnyObject]?
+    
+    //用户坐标
+    var userCityName : String?
+    var searcher = BMKPoiSearch()
+    var pageIndex : Int32 = 0       //搜索到得地址当前页
+    var pageCount : Int32 = 0       //页数
+    
+    var isFirstSearch : Bool = true //是否是第一个进入，第一次搜索本地数据库数据，否则从百度获取
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +41,45 @@ class SR_ChangeAddressVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         searchText.becomeFirstResponder()
+        self.getUserInfo()
+        
+        dataForShow = ZXY_DataProviderHelper.readAllFromDB(DNName: "CommenAddress")
+        self.searchTableView.reloadData()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        searcher.delegate = nil
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //停止上拉下拉刷新
+    private func endFreshing()
+    {
+        searchTableView.footerEndRefreshing()
+    }
+    /**
+    为tableView 增加上拉加载下拉刷新
+    */
+    private func addHeaderAndFooterforTable()
+    {
+        searchTableView.addFooterWithCallback { [weak self] () -> Void in
+            self?.pageIndex++
+            self?.loadSearchAddress()
+            ""
+        }
+    }
+    
+    //获取用户所在城市名称
+    func getUserInfo(){
+        userCityName =  ZXY_UserInfoDetail.sharedInstance.getUserCityName()
+    }
+
     
     /**
     判断文本框的内容是否有值
@@ -80,22 +120,35 @@ class SR_ChangeAddressVC: UIViewController {
     }
     
     @IBAction func searchAddress(sender: AnyObject) {
-        
+        if searchIsEmpty() == false {
+            self.isFirstSearch = false
+            self.searchArray?.removeAllObjects()
+            self.loadSearchAddress()
+        }
     }
     
-    func searchAddress() {
-        var searcher = BMKPoiSearch()
+    func loadSearchAddress() {
+        self.addHeaderAndFooterforTable()
         searcher.delegate = self
-        var option = BMKNearbySearchOption()
+        var option = BMKCitySearchOption()
+        option.pageIndex = self.pageIndex
+        option.pageCapacity = 15
+        option.city = self.userCityName
+        option.keyword  = self.searchText.text as String
+        var flag : Bool = searcher.poiSearchInCity(option)
+        if flag {
+            println("success")
+        }
+        else {
+            println("fail")
+        }
+        
     }
     
     
     func loadCommonAddress()
     {
-        var paths     = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        var plistPath = paths[0] as! String
-        self.filename = plistPath.stringByAppendingPathComponent("address")
-        self.data     = NSMutableArray(contentsOfFile: filename!)!
+        
     }
     
     /*
@@ -110,36 +163,84 @@ class SR_ChangeAddressVC: UIViewController {
 
 }
 
-extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKPoiSearchDelegate{
+extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKPoiSearchDelegate {
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 60
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if self.data.count == 0 {
-            return 10
-//        }
-//        else {
-//            return self.data.count
-//        }
+        if self.isFirstSearch {
+            return dataForShow?.count ?? 0
+        }
+        else {
+            return self.searchArray?.count ?? 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier(SR_ChangeAddressCell.cellID()) as! SR_ChangeAddressCell
-        
+        if self.isFirstSearch {
+            var currentData = dataForShow?[indexPath.row] as! CommenAddress
+            cell.addressLabel.text = currentData.name
+            cell.detailAddressLabel.text = currentData.address
+            cell.searchImg.image = UIImage(named: "searchItemD")
+        }
+        else {
+            cell.addressLabel.text = self.searchArray?[indexPath.row].name ?? ""
+            cell.detailAddressLabel.text = self.searchArray?[indexPath.row].address ?? ""
+            cell.searchImg.image = UIImage(named: "searchItemD")
+        }
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell              = tableView.cellForRowAtIndexPath(indexPath) as! SR_ChangeAddressCell
+        var name : String!    = cell.addressLabel.text
+        var address : String! =  cell.detailAddressLabel.text
+        var nameAndAddress    = "\(name)(\(address))"
+        println("\(nameAndAddress)")
+        self.delegate?.addressChange("userAddr", andValue: nameAndAddress)
         
+        if self.isFirstSearch {
+        }
+        else {
+            var currentData = dataForShow?[indexPath.row] as! CommenAddress
+//            var dic : Dictionary<String , AnyObject?> =
+//            [   "name" : self.searchArray?[indexPath.row].name ?? "" ,
+//                "address" : self.searchArray?[indexPath.row].address ?? "",
+//                "uid" : self.searchArray?[indexPath.row].uid ?? "",
+//                "city" : self.searchArray?[indexPath.row].city ?? "",
+//                "phone" : self.searchArray?[indexPath.row].phone ?? "",
+//                "postcode" : self.searchArray?[indexPath.row].postcode ?? "",
+//                "epoitype" : self.searchArray?[indexPath.row].epoitype ?? 0
+//            ]
+            
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
-    
-    func onGetPoiDetailResult(searcher: BMKPoiSearch!, result poiDetailResult: BMKPoiDetailResult!, errorCode: BMKSearchErrorCode) {
-        
+
+    func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
+        if errorCode.value == BMK_SEARCH_NO_ERROR.value {
+            self.searchArray?.addObjectsFromArray(poiResult.poiInfoList)
+//            self.searchArray?.addObject(poiResult.poiInfoList)
+            self.pageCount = self.pageCount + poiResult.currPoiNum
+            self.searchTableView.reloadData()
+            self.endFreshing()
+            println("\(poiResult.totalPoiNum)")
+        }
+        else {
+            if errorCode.value == BMK_SEARCH_AMBIGUOUS_KEYWORD.value {
+                println("起始点有歧义")
+            }
+            else {
+                println("抱歉，未找到结果")
+            }
+        }
     }
 }
 

@@ -12,7 +12,7 @@ class SR_ChangeAddressCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var detailAddressLabel: UILabel!
-    
+    @IBOutlet weak var searchImg: UIImageView!
     
     class func cellID() -> String
     {
@@ -21,6 +21,7 @@ class SR_ChangeAddressCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.detailAddressLabel.textColor = UIColor.NailGrayColor()
         // Initialization code
     }
 
