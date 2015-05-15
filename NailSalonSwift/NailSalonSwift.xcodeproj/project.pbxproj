@@ -510,6 +510,9 @@
 		A4E2A7621AEF24C900B66011 /* SR_LabelCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A7611AEF24C900B66011 /* SR_LabelCellVC.swift */; };
 		A4E2A7641AEF300700B66011 /* SR_NickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2A7631AEF300700B66011 /* SR_NickNameVC.swift */; };
 		A4F4457C1B044002005993EB /* pushSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F4457B1B044002005993EB /* pushSetting.plist */; };
+		A4F5DF8B1B058B610011599F /* SR_ChangeAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5DF8A1B058B610011599F /* SR_ChangeAddressVC.swift */; };
+		A4F5DF8D1B058BA20011599F /* SR_ChangeAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5DF8C1B058BA20011599F /* SR_ChangeAddressCell.swift */; };
+		A4F5DF8F1B059C150011599F /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F5DF8E1B059C150011599F /* address.plist */; };
 		A4F6B9171AD76D55007A1CA4 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */; };
 		A4FC764A1AEDC93C002B1020 /* SR_myCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC76491AEDC93C002B1020 /* SR_myCollectionVC.swift */; };
 		A4FC764C1AEDCBB8002B1020 /* SR_courseCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC764B1AEDCBB8002B1020 /* SR_courseCollectionVC.swift */; };
@@ -1210,6 +1213,9 @@
 		A4E2A7611AEF24C900B66011 /* SR_LabelCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SR_LabelCellVC.swift; path = ../SR_LabelCellVC.swift; sourceTree = "<group>"; };
 		A4E2A7631AEF300700B66011 /* SR_NickNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_NickNameVC.swift; sourceTree = "<group>"; };
 		A4F4457B1B044002005993EB /* pushSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pushSetting.plist; sourceTree = "<group>"; };
+		A4F5DF8A1B058B610011599F /* SR_ChangeAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ChangeAddressVC.swift; sourceTree = "<group>"; };
+		A4F5DF8C1B058BA20011599F /* SR_ChangeAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_ChangeAddressCell.swift; sourceTree = "<group>"; };
+		A4F5DF8E1B059C150011599F /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
 		A4F6B9151AD76D55007A1CA4 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		A4F6B9161AD76D55007A1CA4 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		A4FC76491AEDC93C002B1020 /* SR_myCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SR_myCollectionVC.swift; sourceTree = "<group>"; };
@@ -2630,6 +2636,9 @@
 				A4E211431ADE000900A97CA1 /* ICYProfileViewController.swift */,
 				A4E211441ADE000900A97CA1 /* ProfilePropertyPlist.plist */,
 				A4E2114F1ADE04DA00A97CA1 /* Extensions.swift */,
+				A4F5DF8A1B058B610011599F /* SR_ChangeAddressVC.swift */,
+				A4F5DF8C1B058BA20011599F /* SR_ChangeAddressCell.swift */,
+				A4F5DF8E1B059C150011599F /* address.plist */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -2815,6 +2824,7 @@
 				8B29940E1AF9E62400BAECF4 /* chatBar_faceSelected.png in Resources */,
 				8B2994801AF9E62400BAECF4 /* MWPhotoBrowser.bundle in Resources */,
 				8B2994461AF9E62400BAECF4 /* chat_sender_audio_playing_001@2x.png in Resources */,
+				A4F5DF8F1B059C150011599F /* address.plist in Resources */,
 				8B2993D91AF9E62400BAECF4 /* VoiceSearchFeedback011@2x.png in Resources */,
 				8B01418D1ACD12D1000C180B /* ZXYImages.xcassets in Resources */,
 				8B2993A21AF9E62400BAECF4 /* callRing.mp3 in Resources */,
@@ -3070,6 +3080,7 @@
 				8B2994751AF9E62400BAECF4 /* PSTCollectionViewCell.m in Sources */,
 				A4FC764E1AEDCBE9002B1020 /* SR_albumCollectionVC.swift in Sources */,
 				8B29946B1AF9E62400BAECF4 /* NSData+EMImageContentType.m in Sources */,
+				A4F5DF8B1B058B610011599F /* SR_ChangeAddressVC.swift in Sources */,
 				8BCF6A251ADA180B0085575D /* ZXY_AlbumDetailImages.m in Sources */,
 				8B29939A1AF9E62400BAECF4 /* NSDate+Category.m in Sources */,
 				A4E211481ADE000900A97CA1 /* ICYProfileCell.swift in Sources */,
@@ -3212,6 +3223,7 @@
 				8B29939D1AF9E62400BAECF4 /* UIResponder+Router.m in Sources */,
 				A435B86A1AD7AC20001909A4 /* SR_registTableVC.swift in Sources */,
 				8B871AEC1AE6888F0008915A /* ZXY_ArtistDetailData.m in Sources */,
+				A4F5DF8D1B058BA20011599F /* SR_ChangeAddressCell.swift in Sources */,
 				8B7B941E1AC5243D00BAA520 /* ZXY_TPMainVC.swift in Sources */,
 				8BC88F241AF79B1600DFAE8F /* ZXY_AddTagVC.swift in Sources */,
 				8B29945E1AF9E62400BAECF4 /* MWPhotoBrowser.m in Sources */,
