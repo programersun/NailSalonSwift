@@ -112,13 +112,11 @@ class SR_SettingMessageTableVC: UITableViewController {
     @IBAction func newMessage(sender: UISwitch) {
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
         if sender.on == true {
-            println("开")
             self.pushSetting(0, value: "1")
             self.pushSetting(1, value: "1")
             self.pushSetting(2, value: "1")
         }
         else {
-            println("关")
             self.pushSetting(0, value: "0")
             self.pushSetting(1, value: "0")
             self.pushSetting(2, value: "0")
@@ -127,11 +125,9 @@ class SR_SettingMessageTableVC: UITableViewController {
     
     @IBAction func soundMessage(sender: UISwitch) {
         if sender.on == true {
-            println("开")
             self.pushSetting(1, value: "1")
         }
         else {
-            println("关")
             if self.shakeMessage.on == false {
                 self.newMessage.on = false
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
@@ -144,11 +140,9 @@ class SR_SettingMessageTableVC: UITableViewController {
     
     @IBAction func shakeMessage(sender: UISwitch) {
         if sender.on == true {
-            println("开")
             self.pushSetting(2, value: "1")
         }
         else {
-            println("关")
             self.pushSetting(2, value: "0")
             if self.soundMessage.on == false {
                 self.newMessage.on = false
@@ -160,7 +154,7 @@ class SR_SettingMessageTableVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-            
+                self.performSegueWithIdentifier("toBlockID", sender: nil)
             }
         }
     }

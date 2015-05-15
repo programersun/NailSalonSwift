@@ -425,6 +425,8 @@
 		8BCF6A251ADA180B0085575D /* ZXY_AlbumDetailImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A201ADA180B0085575D /* ZXY_AlbumDetailImages.m */; };
 		8BCF6A291ADA43890085575D /* ZXY_TagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF6A281ADA43890085575D /* ZXY_TagLabelView.swift */; };
 		8BCF96201AF0A3A80099306D /* OriginPageStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF961F1AF0A3A80099306D /* OriginPageStory.storyboard */; };
+		8BD49B551B05BB70007D2E33 /* ZXY_MyBlockListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD49B541B05BB70007D2E33 /* ZXY_MyBlockListVC.swift */; };
+		8BD49B571B05BC61007D2E33 /* ZXY_MyBlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD49B561B05BC61007D2E33 /* ZXY_MyBlockCell.swift */; };
 		8BE9FA0D1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */; };
 		8BE9FA0F1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */; };
 		8BEBEF501AD41C2900A31A5F /* ZXY_WaitProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */; };
@@ -1101,6 +1103,8 @@
 		8BCF6A211ADA180B0085575D /* ZXY_AlbumDetailUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXY_AlbumDetailUser.h; sourceTree = "<group>"; };
 		8BCF6A281ADA43890085575D /* ZXY_TagLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_TagLabelView.swift; sourceTree = "<group>"; };
 		8BCF961F1AF0A3A80099306D /* OriginPageStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OriginPageStory.storyboard; sourceTree = "<group>"; };
+		8BD49B541B05BB70007D2E33 /* ZXY_MyBlockListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MyBlockListVC.swift; sourceTree = "<group>"; };
+		8BD49B561B05BC61007D2E33 /* ZXY_MyBlockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_MyBlockCell.swift; sourceTree = "<group>"; };
 		8BE9FA0C1AD6BEB4000D1B56 /* ZXY_DataProviderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DataProviderHelper.swift; sourceTree = "<group>"; };
 		8BE9FA0E1AD6CBD4000D1B56 /* ZXY_UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_UserInfoModel.swift; path = ../../ZXY_UserInfoModel.swift; sourceTree = "<group>"; };
 		8BEBEF4F1AD41C2900A31A5F /* ZXY_WaitProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_WaitProgressVC.swift; sourceTree = "<group>"; };
@@ -1288,6 +1292,7 @@
 			children = (
 				8B0141901ACD1FC1000C180B /* ZXY_MIMainVCell.swift */,
 				8B0141921ACD1FEE000C180B /* ZXY_MIMainItemCell.swift */,
+				8BD49B561B05BC61007D2E33 /* ZXY_MyBlockCell.swift */,
 			);
 			path = miCell;
 			sourceTree = "<group>";
@@ -2114,6 +2119,7 @@
 				8B4B4E021AC5032D001BD10B /* ZXY_MIMainVC.swift */,
 				8B0141941ACD46BE000C180B /* ZXY_LoginRegistVC.swift */,
 				8BF0C98E1AD67C0A00C48E9F /* ZXY_MIRegistVC.swift */,
+				8BD49B541B05BB70007D2E33 /* ZXY_MyBlockListVC.swift */,
 				8B4B4DFE1AC50307001BD10B /* MyInfoStory.storyboard */,
 			);
 			path = MyInfo;
@@ -3028,6 +3034,7 @@
 				8B2994521AF9E62400BAECF4 /* EMRemarkImageView.m in Sources */,
 				A46EDF751AEF756000B3503B /* SR_searchLabelData.m in Sources */,
 				8B29947C1AF9E62400BAECF4 /* PSTGridLayoutInfo.m in Sources */,
+				8BD49B551B05BB70007D2E33 /* ZXY_MyBlockListVC.swift in Sources */,
 				8B3CB2DE1AF0B2F100183C5F /* ZXY_AfterPickImgVC.swift in Sources */,
 				A4FC764C1AEDCBB8002B1020 /* SR_courseCollectionVC.swift in Sources */,
 				A4B94A6C1AE5FB9B003CC29A /* SettingVC.swift in Sources */,
@@ -3150,6 +3157,7 @@
 				A46EDF721AEF756000B3503B /* SR_searchLabelImage.m in Sources */,
 				8B29945D1AF9E62400BAECF4 /* MWPhoto.m in Sources */,
 				8B2994531AF9E62400BAECF4 /* BaseViewController.m in Sources */,
+				8BD49B571B05BC61007D2E33 /* ZXY_MyBlockCell.swift in Sources */,
 				8B29947F1AF9E62400BAECF4 /* PSTGridLayoutSection.m in Sources */,
 				8B3CB2EA1AF0B33500183C5F /* ZXY_FilterPicOperationCell.swift in Sources */,
 				8B871AF81AE6A72B0008915A /* ZXY_UserCommentBase.m in Sources */,

@@ -59,6 +59,22 @@ extension UIViewController
         self.navigationItem.rightBarButtonItems = [rightSpace,rightItem]
     }
     
+    func setNaviBarRightBtnTitle(btnTitle : String) -> Void
+    {
+        var customerBtn : UIButton = UIButton(frame: CGRectMake(0, 0, 50, 25))
+        customerBtn.layer.cornerRadius = 5
+        customerBtn.layer.masksToBounds = true
+        customerBtn.layer.borderWidth   = 1
+        customerBtn.layer.borderColor   = UIColor.whiteColor().CGColor
+        customerBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        customerBtn.setTitle(btnTitle, forState: UIControlState.Normal)
+        customerBtn.addTarget(self, action: "rightNaviButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+        var rightSpace       :UIBarButtonItem  = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        rightSpace.width                       = -15
+        var rightItem        :UIBarButtonItem  = UIBarButtonItem(customView: customerBtn)
+        self.navigationItem.rightBarButtonItems = [rightSpace,rightItem]
+    }
+    
     /**
     左侧按钮的事件
     */

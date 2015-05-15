@@ -162,26 +162,21 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
             }
             if let s = self
             {
-                //s.zxyW.hideProgress(s.view)
                 var userId = s.userInfo?.data.userId
-                
-                //                var userDic = s.userInfo?.data
-                //                var dicForDB : Dictionary<String , AnyObject?> = ["nick_name" : userDic?.nickName , "role": userDic?.role , "user_id" : userDic?.userId]
-                
                 ZXY_UserInfoDetail.sharedInstance.saveUserID(userId!)
                 APService.setAlias(userId, callbackSelector: nil, object: nil)
-                //                if ZXY_DataProviderHelper.saveAllWithDic(DBName: String.getZXYUserInfoModelName(), saveEntity: dicForDB)
-                //                {
-                //
-                //                    var test : ZXY_UserInfoModel = ZXY_DataProviderHelper.readAllFromDB(DNName: String.getZXYUserInfoModelName())[0] as ZXY_UserInfoModel
-                //                    println("存储成功 \(test.user_id)")
-                //                }
                 
             }
+            
             self?.startDownLoadUserDetailInfo()
             
             }, onQueue: nil)
     }
+    
+//    func autoLogin()
+//    {
+//        EaseMob.sharedInstance().chatManager.isAutoLoginEnabled = true
+//    }
 
     
     @IBAction func registAction(sender: AnyObject)

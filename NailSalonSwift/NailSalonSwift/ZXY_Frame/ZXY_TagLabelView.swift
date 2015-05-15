@@ -19,7 +19,7 @@ class ZXY_TagLabelView: UIView {
     private var currentXPosition: CGFloat = 5.0
     private var labelHeight     : CGFloat = 20.0
     private var fontSize : CGFloat = 15
-    var delegate : ZXY_TagLabelViewDelegate?
+    weak var delegate : ZXY_TagLabelViewDelegate?
     
     var canClick = false
     var defaultHeight : CGFloat = 43

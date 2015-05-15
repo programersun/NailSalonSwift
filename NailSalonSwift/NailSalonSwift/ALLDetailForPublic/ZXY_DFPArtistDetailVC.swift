@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZXY_DFPArtistDetailVC: UIViewController {
+class ZXY_DFPArtistDetailVC: UIViewController , UIAlertViewDelegate {
     private var screenSize  = UIScreen.mainScreen().bounds
     @IBOutlet weak var contentScroll: UIScrollView!
 
@@ -189,8 +189,18 @@ class ZXY_DFPArtistDetailVC: UIViewController {
         self.attensionBtn.layer.borderColor    = UIColor.whiteColor().CGColor
         self.attensionBtn.layer.borderWidth    = 1
         self.lingdangBtn.hidden = true
+        self.setNaviBarRightImage("blockImg")
         // Do any additional setup after loading the view.
     }
+    
+    override func rightNaviButtonAction() {
+        var alert = UIAlertView(title: "提示", message: "是否将此用户加入黑名单？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+        alert.tag = 110
+        alert.show()
+    }
+    
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -551,13 +561,29 @@ extension ZXY_DFPArtistDetailVC : UIAlertViewDelegate , ZXY_LoginRegistVCProtoco
         self.startLoadData()
     }
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if(buttonIndex == 1)
+        if alertView.tag == 110
         {
-            var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
-            var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
-            loginVC.delegate = self
-            loginVC.navigationController?.navigationBar.hidden = true
-            self.navigationController?.pushViewController(loginVC, animated: true)
+            if buttonIndex == 0
+            {
+                println("hello world 0")
+            }
+            else
+            {
+                EaseMob.sharedInstance().chatManager.blockBuddy(self.artistID, relationship: eRelationshipFrom)
+                self.showAlertEasy("提示", messageContent: "添加黑名单成功，您可以在设置中查看")
+                println("hello world 1")
+            }
+        }
+        else
+        {
+            if(buttonIndex == 1)
+            {
+                var story = UIStoryboard(name: "MyInfoStory", bundle: nil) as UIStoryboard
+                var loginVC = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
+                loginVC.delegate = self
+                loginVC.navigationController?.navigationBar.hidden = true
+                self.navigationController?.pushViewController(loginVC, animated: true)
+            }
         }
     }
 }

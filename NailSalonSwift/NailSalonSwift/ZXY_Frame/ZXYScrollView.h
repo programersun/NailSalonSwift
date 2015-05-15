@@ -27,13 +27,13 @@
 
 @interface ZXYScrollView : UIView<UIScrollViewDelegate>
 {
-    id <ZXYScrollDataSource> dataSource2;
-    id <ZXYScrollDelegate>   delegate2;
+    __weak id <ZXYScrollDataSource> dataSource2;
+    __weak id <ZXYScrollDelegate>   delegate2;
     UIScrollView  *_scrollV;
     UIPageControl *_pageV;
     NSMutableArray *_viewS;
 }
-@property (nonatomic,assign,setter = setDataSource:)IBOutlet id <ZXYScrollDataSource> dataSource;
+@property (nonatomic,assign,setter = setDataSource: )IBOutlet id <ZXYScrollDataSource> dataSource;
 @property (nonatomic,assign,setter = setDelegate:)IBOutlet id <ZXYScrollDelegate>   delegate;
 @property (nonatomic,readonly) UIScrollView *scrollV;
 @property (nonatomic,readonly) UIPageControl *pageV;

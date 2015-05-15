@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)
         }
         
+        
+        
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor.NailRedColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -285,9 +287,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         }
         else
         {
-            EaseMob.sharedInstance().chatManager.asyncLoginWithUsername(myUserID, password: "12345678", completion: { (loginInfo, error) -> Void in
-                
-                }, onQueue: nil)
+            
         }
 
         EaseMob.sharedInstance().applicationDidBecomeActive(application)
