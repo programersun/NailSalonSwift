@@ -11,13 +11,17 @@ import UIKit
 
 class SR_OrderDetailVC: UIViewController {
     
+    typealias RequestBlock = (status : String) -> Void
+    var requestBlock : RequestBlock!
+    
     @IBOutlet weak var orderDetailTableView: UITableView!
     @IBOutlet weak var userCancel: UIButton!
     @IBOutlet weak var orderRefuse: UIButton!
     @IBOutlet weak var orderAccept: UIButton!
 
-    @IBOutlet weak var btnHeight: NSLayoutConstraint!
+    var myFun : ((hello : String ) -> String)?
     
+    @IBOutlet weak var btnHeight: NSLayoutConstraint!
     
     var orderID : String?
     var userId : String?
@@ -208,6 +212,9 @@ class SR_OrderDetailVC: UIViewController {
             var result : Double = returnDic["result"] as! Double
             if result == 1000 {
                 self?.loadOrderDetail()
+                if self?.requestBlock != nil {
+                    self?.requestBlock(status: nextStatus)
+                }
             }
             else
             {
@@ -572,6 +579,7 @@ extension SR_OrderDetailVC : UITableViewDataSource , UITableViewDelegate {
                 vc.artWorkID = dataForShow?.data.albumId
                 vc.title     = "美甲室"
                 self.navigationController?.pushViewController(vc, animated: true)
+
             }
             else
             {

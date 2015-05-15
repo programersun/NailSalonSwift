@@ -332,7 +332,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
     func addressChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
         self.tableView.reloadData()
-//        self.startLoadInfoData()
+        self.startLoadInfoData()
     }
     func afterChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])

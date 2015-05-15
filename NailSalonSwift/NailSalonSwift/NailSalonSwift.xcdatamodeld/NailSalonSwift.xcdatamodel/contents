@@ -13,6 +13,15 @@
         <attribute name="atten_role" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atten_time" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="CommenAddress" representedClassName="CommenAddress" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="epoitype" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ZXY_UserInfoModel" representedClassName="ZXY_UserInfoModel" syncable="YES">
         <attribute name="nick_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,5 +31,6 @@
         <element name="ArtistList" positionX="-54" positionY="45" width="128" height="90"/>
         <element name="AttensionNoti" positionX="-63" positionY="9" width="128" height="135"/>
         <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="CommenAddress" positionX="-54" positionY="45" width="128" height="30"/>
     </elements>
 </model>
