@@ -313,6 +313,11 @@ extension SR_OrderTableVC : UITableViewDataSource , UITableViewDelegate {
         var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
         var vc = story.instantiateViewControllerWithIdentifier("SR_OrderDetailVCID") as! SR_OrderDetailVC
         vc.orderID = cellData.orderId
+        vc.requestBlock = {[weak self](status : String) -> Void in
+            (self?.dataForShow[indexPath.section] as! SR_OrderListData).orderStatus = status
+            self?.orderListTableView.reloadData()
+            ""
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
