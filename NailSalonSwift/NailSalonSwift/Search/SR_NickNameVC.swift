@@ -169,7 +169,7 @@ class SR_NickNameVC: UIViewController {
                 {
                     s.srW.hideProgress(s.searchTableView)
                 }
-                self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+
                 ""
         }
 

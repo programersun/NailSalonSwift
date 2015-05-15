@@ -212,14 +212,16 @@ class ICYProfileViewController: UITableViewController {
             {
             case 0:
                 vc.setInitValueAndTitle("userTel", initValue: userInfoValue["userTel"] ?? "")
+                self.navigationController?.pushViewController(vc, animated: true)
             case 1 :
                 vc.setInitValueAndTitle("userRealName", initValue: userInfoValue["userRealName"] ?? "")
+                self.navigationController?.pushViewController(vc, animated: true)
             case 2 :
-                vc.setInitValueAndTitle("userAddr", initValue: userInfoValue["userAddr"] ?? "")
+                self.performSegueWithIdentifier("toChangeAddressVC", sender: nil)
+                ""
             default :
                 return
             }
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -309,22 +311,29 @@ class ICYProfileViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        var segueID = segue.identifier
+        if(segueID == "toChangeAddressVC")
+        {
+            var changeAddressVC = segue.destinationViewController as! SR_ChangeAddressVC
+            changeAddressVC.delegate = self
+        }
     }
-    */
-    
-    
-
 }
 
-extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePickerControllerDelegate, ZXY_DateChangeInfoVCDelegate
+extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePickerControllerDelegate, ZXY_DateChangeInfoVCDelegate , SR_ChangeAddressVCProtocol
 {
+    func addressChange(sendKey: String, andValue sendValue: String) {
+        userInfoValue.extend([sendKey : sendValue])
+        self.tableView.reloadData()
+//        self.startLoadInfoData()
+    }
     func afterChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
         self.startLoadInfoData()

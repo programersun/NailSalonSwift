@@ -29,9 +29,6 @@ class SR_LabelVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = false
-    }
 
     //停止上拉下拉刷新
     private func endFreshing()
@@ -138,7 +135,7 @@ class SR_LabelVC: UIViewController {
             {
                 s.srW.hideProgress(s.searchTableView)
             }
-            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+
             ""
         }
     }
