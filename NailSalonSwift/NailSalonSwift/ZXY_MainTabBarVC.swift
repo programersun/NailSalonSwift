@@ -80,7 +80,19 @@ class ZXY_MainTabBarVC: UITabBarController {
             item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.NailRedColor()], forState: UIControlState.Selected)
         }
         self.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loginOtherDevices"), name: "loginOtherDevices", object: nil)
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func loginOtherDevices()
+    {
+        var currentVC: UINavigationController = self.viewControllers![self.selectedIndex] as! UINavigationController
+        var story = UIStoryboard(name: "MyInfoStory", bundle: nil)
+        var login = story.instantiateViewControllerWithIdentifier("loginVCID") as! ZXY_LoginRegistVC
+        login.delegate = self
+        currentVC.pushViewController(login, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,7 +113,7 @@ class ZXY_MainTabBarVC: UITabBarController {
 
 }
 
-extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegate , ZXY_ImagePickerDelegate , UINavigationControllerDelegate,UIImagePickerControllerDelegate , ZXY_ImgFilterVCDelegate
+extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegate , ZXY_ImagePickerDelegate , UINavigationControllerDelegate,UIImagePickerControllerDelegate , ZXY_ImgFilterVCDelegate ,ZXY_LoginRegistVCProtocol
 {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if(viewController == (tabBarController.viewControllers![2] as! UIViewController))
@@ -183,5 +195,9 @@ extension ZXY_MainTabBarVC : UITabBarControllerDelegate , ZXY_PictureTakeDelegat
         var vc    = story.instantiateViewControllerWithIdentifier("ZXY_AfterPickImgVCID") as! ZXY_AfterPickImgVC
         vc.setPhoto([filterImg])
         currentVC.pushViewController(vc, animated: true)
+    }
+    
+    func userLoginSuccess() {
+        
     }
 }

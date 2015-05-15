@@ -66,7 +66,7 @@ class ZXY_DateChangeInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "修改信息"
         currentTable.tableFooterView = UIView(frame: CGRectZero)
         // MARK: right
         self.setNaviBarRightImage("rightSimple")

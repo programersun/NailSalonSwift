@@ -57,3 +57,5 @@
 #import "SR_OrderDetailComment.h"
 #import "SR_OrderDetailBaseClass.h"
 #import "SR_OrderDetailUser.h"
+// 震动和声音
+#import <AudioToolbox/AudioToolbox.h>

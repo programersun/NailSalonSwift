@@ -10,11 +10,12 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate , IChatManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMChatManagerDelegate , IChatManagerDelegate , UIAlertViewDelegate {
 
     var window: UIWindow?
     var bmkAuthor : BMKMapManager?
     var hasPresent : Bool = false
+    var alert = UIAlertView()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -33,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        
+        self.loadPushSettingPlist()
         
         bmkAuthor = BMKMapManager()
         
@@ -130,7 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     }
     
     func didLoginFromOtherDevice() {
-        var alert = UIAlertView(title: "提示", message: "您的账号已在其他设备上登录", delegate: nil, cancelButtonTitle: "取消")
+        alert = UIAlertView(title: "提示", message: "您的账号已在其他设备上登录", delegate: self, cancelButtonTitle: nil , otherButtonTitles: "确定")
+        alert.tag = 1
         alert.show()
         ZXY_UserInfoDetail.sharedInstance.logoutUser()
     }
@@ -139,6 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         println("哈哈")
         var la = NSTimeInterval()
         NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
+        self.pushSetting()
     }
     
     func JPushAlias(code : Int , tags : NSSet , alias : String)
@@ -171,8 +174,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             
         }
         NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
+        self.pushSetting()
+        
     }
 
+    func loadPushSettingPlist() {
+        var documentPath : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var pathString      = documentPath[0] as! String
+        var realPath        = pathString.stringByAppendingPathComponent("pushSetting.plist")
+        var bundlePlistPath = NSBundle.mainBundle().pathForResource("pushSetting", ofType: "plist")
+        if !NSFileManager.defaultManager().fileExistsAtPath(realPath)
+        {
+            NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)
+        }
+    }
+    
+    func pushSetting()
+    {
+        var paths     = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        var plistPath = paths[0] as! String
+        var filename = plistPath.stringByAppendingPathComponent("pushSetting.plist")
+        var data     = NSMutableDictionary(contentsOfFile: filename)
+        var message   = data!["message"] as! String
+        var sound = data!["sound"] as! String
+        var shake = data!["shake"] as! String
+        if message == "1" {
+            if sound == "1" {
+                AudioServicesDisposeSystemSoundID(4095)
+                AudioServicesPlaySystemSound(1007)
+            }
+    
+            if shake == "1" {
+                AudioServicesPlaySystemSound(4095)
+            }
+            else
+            {
+                
+            }
+        }
+    }
+    
     func applicationWillEnterForeground(application: UIApplication) {
         EaseMob.sharedInstance().applicationWillEnterForeground(application)
     }
@@ -331,10 +372,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     func onGetPermissionState(iError: Int32) {
         println(iError)
     }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if alertView.tag == 1 {
+            if buttonIndex == 0 {
+                NSNotificationCenter.defaultCenter().postNotificationName("loginOtherDevices", object: nil)
+            }
+        }
+    }
 }
 
-extension AppDelegate
-{
-        
+extension AppDelegate {
+    
 }
 

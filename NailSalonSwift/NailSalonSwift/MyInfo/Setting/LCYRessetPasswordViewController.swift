@@ -22,7 +22,7 @@ class LCYRessetPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "修改密码"
         // Do any additional setup after loading the view.
     }
 

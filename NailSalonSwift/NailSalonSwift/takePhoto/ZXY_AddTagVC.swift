@@ -30,7 +30,8 @@ class ZXY_AddTagVC: UIViewController {
     @IBOutlet var commentView: UIView!
     @IBOutlet weak var commentText: UITextView!
     @IBOutlet weak var sendBtn: UIButton!
-
+    @IBOutlet weak var backgroudImg: UIImageView!
+    
     @IBAction func cancelAction(sender: AnyObject) {
 //        dataSelect = []
         currentTable.reloadData()
@@ -156,6 +157,10 @@ class ZXY_AddTagVC: UIViewController {
         self.sendBtn.layer.borderColor = UIColor.NailRedColor().CGColor
         self.sendBtn.layer.borderWidth = 1
         self.sendBtn.layer.masksToBounds = true
+        
+        self.backgroudImg.layer.cornerRadius = 4
+        self.backgroudImg.layer.masksToBounds = true
+        
         // Do any additional setup after loading the view.
     }
 

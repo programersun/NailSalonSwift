@@ -25,6 +25,7 @@ class ICYProfileViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "个人设置"
         self.cameraView.hidden = true
         self.cameraView.layer.opacity = 0
         self.cameraView.frame = CGRectMake(0, 0, self.tableView.frame.width, self.tableView.frame.height - 64)

@@ -18,7 +18,7 @@ class LCYVersionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "关于我们"
         iconView.layer.cornerRadius = 10
         iconView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
