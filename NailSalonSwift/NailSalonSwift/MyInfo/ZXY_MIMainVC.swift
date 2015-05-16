@@ -243,6 +243,16 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
                     smallCell.tipInfoLbl.hidden = false
                 }
             }
+            else if indexPath.section == 2 && indexPath.row == 0
+            {
+                var orderData = ZXY_DataProviderHelper.readAllFromDB(DNName: "MyOrder")
+                if orderData.count > 0
+                {
+                    smallCell.tipInfoLbl.text = "\(orderData.count)"
+                    smallCell.tipInfoLbl.hidden = false
+                }
+            }
+            
             var imgName = self.itemDataForTable(indexPath).imageName
             var titleName = self.itemDataForTable(indexPath).itemTitle
             smallCell.itemImg.image = UIImage(named: imgName)
@@ -334,8 +344,7 @@ extension ZXY_MIMainVC : UITableViewDelegate , UITableViewDataSource , UIGesture
             case 0:
                 var storyOrder = UIStoryboard(name: "SR_OrderStory", bundle: nil)
                 var vc = storyOrder.instantiateViewControllerWithIdentifier("SR_OrderTableVCID") as! SR_OrderTableVC
-//                vc.userID = userID!
-//                vc.role = self.userInfo.role!
+                ZXY_DataProviderHelper.deleteAll(DBName: "MyOrder")
                 vc.orderType = 2
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:

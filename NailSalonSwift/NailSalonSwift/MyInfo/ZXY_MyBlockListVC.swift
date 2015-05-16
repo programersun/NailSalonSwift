@@ -50,6 +50,10 @@ class ZXY_MyBlockListVC: UIViewController {
                 self.fetchBlockList()
             }
         }
+        else
+        {
+            zxyW.hideProgress(self.view)
+        }
         
     }
 

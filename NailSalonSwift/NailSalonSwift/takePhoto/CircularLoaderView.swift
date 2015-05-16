@@ -12,6 +12,7 @@ class CircularLoaderView: UIView {
 
     let circlePathLayer = CAShapeLayer()
     let circleRadius: CGFloat = 20.0
+    var isLayOut = false
     var progress : CGFloat{
         get{
             return circlePathLayer.strokeEnd
@@ -71,10 +72,16 @@ class CircularLoaderView: UIView {
         super.layoutSubviews()
         circlePathLayer.frame = bounds
         circlePathLayer.path  = circlePath().CGPath
+        isLayOut = true
+        reveal()
     }
     
     func reveal()
     {
+        if !isLayOut
+        {
+            return
+        }
         backgroundColor = UIColor.clearColor()
         progress = 1
         circlePathLayer.removeAnimationForKey("strokeEnd")
@@ -86,9 +93,10 @@ class CircularLoaderView: UIView {
         let finalRadius = sqrt((center.x * center.x) + (center.y * center.y))
         let radiusInset = finalRadius - circleRadius
         let outerRect   = CGRectInset(circleFrame(), -radiusInset, -radiusInset)
+        
         let toPath      = UIBezierPath(ovalInRect: outerRect).CGPath
         
-        let fromPath      = circlePathLayer.path
+        let fromPath      = UIBezierPath(ovalInRect: circleFrame()).CGPath //circlePathLayer.path  //UIBezierPath(ovalInRect: outerRect).CGPath
         let fromLineWidth = circlePathLayer.lineWidth
         
         CATransaction.begin()
@@ -109,6 +117,7 @@ class CircularLoaderView: UIView {
         groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         groupAnimation.animations = [pathAnimation , lineWidthAnimation]
         groupAnimation.delegate = self
+        
         circlePathLayer.addAnimation(groupAnimation, forKey: "strokeWidth")
         
     }

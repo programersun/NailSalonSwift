@@ -160,8 +160,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         {
             var mainNoti: NSString? = noty["content"] as? NSString
             var jsonData: AnyObject? = NSJSONSerialization.JSONObjectWithData(mainNoti!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableLeaves, error: nil)
-            var typeData     = jsonData!["type"] as! NSString
-            if typeData == "4000"
+            var typeData     = jsonData!["type"]
+            var typeString : String = ""
+            if typeData is String
+            {
+                typeString = typeData as! String
+            }
+            else
+            {
+                var typeInt = typeData as! Int
+                typeString = "\(typeInt)"
+            }
+            if typeString == "4000"
             {
                 var dataDic = jsonData!["data"] as! NSDictionary
                 var dataNick  = dataDic["nick"] as! NSString
@@ -173,6 +183,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
                 ZXY_DataProviderHelper.saveOneDic(DBName: "AttensionNoti", saveEntity: toCDDic, predictString: "atten_id = %@", argumentArr: [dataID])
                
 
+            }
+            else if typeString == "4004"
+            {
+                var dataDic = jsonData!["data"] as! NSDictionary
+                var dataNick  = dataDic["nick"] as! NSString
+                var dataID    = dataDic["id"] as! NSString
+                var time      = dataDic["send_time"] as! NSNumber
+                var toCDDic   = ["order_nick" : dataNick , "order_id" : dataID , "orderTime" : time.stringValue]
+                ZXY_DataProviderHelper.saveOneDic(DBName: "MyOrder", saveEntity: toCDDic, predictString: "order_id = %@", argumentArr: [dataID])
             }
             
         }

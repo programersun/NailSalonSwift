@@ -163,7 +163,8 @@ extension ZXY_DFPADImgContainerCell : UICollectionViewDelegate , UICollectionVie
         {
             var imgURL : String? = ZXY_NailNetAPI.ZXY_MainAPIImage + imgData.imagePath
 
-            img.setImageWithURL(NSURL(string: imgURL!))
+            //img.setImageWithURL(NSURL(string: imgURL!))
+            img.imgURL(imgURL!)
         }
         return cell
     }

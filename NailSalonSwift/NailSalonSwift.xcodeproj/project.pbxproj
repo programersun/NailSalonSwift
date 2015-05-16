@@ -403,6 +403,7 @@
 		8BAAF03B1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03A1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift */; };
 		8BAAF03D1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03C1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift */; };
 		8BAAF03F1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAF03E1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift */; };
+		8BAD3F3D1B070AD600503490 /* MyOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD3F3C1B070AD600503490 /* MyOrder.swift */; };
 		8BBBDBB61ACA4CC80006A94A /* ZXY_IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */; };
 		8BBBDBB71ACA4CC80006A94A /* ZXY_IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */; };
 		8BBBDBB91ACA58620006A94A /* ZXY_AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */; };
@@ -1072,6 +1073,7 @@
 		8BAAF03A1AD7BC4300D61B0B /* ZXY_DFPADImgContainerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADImgContainerCell.swift; sourceTree = "<group>"; };
 		8BAAF03C1AD7BC8900D61B0B /* ZXY_DFPADTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADTagCell.swift; sourceTree = "<group>"; };
 		8BAAF03E1AD7BCAB00D61B0B /* ZXY_DFPADCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXY_DFPADCommentCell.swift; sourceTree = "<group>"; };
+		8BAD3F3C1B070AD600503490 /* MyOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrder.swift; sourceTree = "<group>"; };
 		8BBBDBB41ACA4CC80006A94A /* ZXY_IndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_IndicatorCell.swift; path = ../ZXY_IndicatorCell.swift; sourceTree = "<group>"; };
 		8BBBDBB51ACA4CC80006A94A /* ZXY_IndicatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZXY_IndicatorCell.xib; path = ../ZXY_IndicatorCell.xib; sourceTree = "<group>"; };
 		8BBBDBB81ACA58620006A94A /* ZXY_AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZXY_AnimationHelper.swift; path = ../ZXY_AnimationHelper.swift; sourceTree = "<group>"; };
@@ -2265,6 +2267,7 @@
 		8B9977B31AC4ED4B00CD1713 /* NailSalonSwift */ = {
 			isa = PBXGroup;
 			children = (
+				8BAD3F3C1B070AD600503490 /* MyOrder.swift */,
 				8B8B617E1AFDDFC7002DA123 /* AttensionNoti.swift */,
 				8B8B615D1AFDAA75002DA123 /* MyMessage */,
 				8BAAF0331AD79E6300D61B0B /* ALLDetailForPublic */,
@@ -3147,6 +3150,7 @@
 				8B2994681AF9E62400BAECF4 /* EMSDWebImageManager.m in Sources */,
 				8B871AEB1AE6888F0008915A /* ZXY_ArtistDetailModelBase.m in Sources */,
 				8B2994611AF9E62400BAECF4 /* MWZoomingScrollView.m in Sources */,
+				8BAD3F3D1B070AD600503490 /* MyOrder.swift in Sources */,
 				8B345A3A1ADD044400D914C6 /* ZXY_ImageItem.swift in Sources */,
 				8B1910081ADD5E530087AECF /* ZXY_DFPArtistTableVC.swift in Sources */,
 				A430E7771AF8628000534180 /* SR_OrderDetailSecondCell.swift in Sources */,

@@ -22,6 +22,11 @@
         <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MyOrder" representedClassName="MyOrder" syncable="YES">
+        <attribute name="order_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order_nick" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderTime" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ZXY_UserInfoModel" representedClassName="ZXY_UserInfoModel" syncable="YES">
         <attribute name="nick_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,7 +35,8 @@
     <elements>
         <element name="ArtistList" positionX="-54" positionY="45" width="128" height="90"/>
         <element name="AttensionNoti" positionX="-63" positionY="9" width="128" height="135"/>
-        <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="CommenAddress" positionX="-54" positionY="45" width="128" height="30"/>
+        <element name="ZXY_UserInfoModel" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="MyOrder" positionX="-54" positionY="45" width="128" height="90"/>
     </elements>
 </model>
