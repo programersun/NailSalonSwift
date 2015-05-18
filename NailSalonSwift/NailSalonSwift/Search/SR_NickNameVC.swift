@@ -70,8 +70,8 @@ class SR_NickNameVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"]!
-            longitude = userLocation["longitude"]!
+            latitude  = userLocation["latitude"] ?? 0
+            longitude = userLocation["longitude"] ?? 0
         }
         else
         {}
@@ -142,10 +142,9 @@ class SR_NickNameVC: UIViewController {
     //搜索美甲师
     func loadAtristSearch(){
         var urlString = ZXY_NailNetAPI.SR_SearchAPI(SR_SearchAPIType.SR_SearchUser)
-        userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
-        searchString = searchText.text as String!
+        searchString = searchText.text as String ?? ""
         println("\(searchString)+++")
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName! , "lng": longitude! , "lat": latitude!, "user_id" : userID! , "nick_name" : searchString!, "p" : pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "" , "lng": longitude! , "lat": latitude!, "user_id" : userID! , "nick_name" : searchString!, "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
             var arr = SR_searchUserBaseClass(dictionary: returnDic).data
             if(self?.pageCount == 1)

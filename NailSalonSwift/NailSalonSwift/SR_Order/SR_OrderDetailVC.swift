@@ -614,20 +614,22 @@ extension SR_OrderDetailVC : SR_OrderDetailFirstCellProtocol {
         var nameString : String?
         if self.userInfo.role == "1" {
             artistID = dataForShow?.data.userId
-            headImgString = dataForShow?.data.user.headImage
+            headImgString = dataForShow?.data.user.headImage ?? ""
             nameString = dataForShow?.data.user.nickName
         }
         else {
             artistID = dataForShow?.data.customId
-            headImgString = dataForShow?.data.custom.headImage
+            headImgString = dataForShow?.data.custom.headImage ?? ""
             nameString = dataForShow?.data.custom.nickName
         }
         var chatView = ChatViewController(chatter: artistID!, isGroup: false)
         chatView.title = nameString
         var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + headImgString!
-        if(headImgString!.hasPrefix("http"))
-        {
-            stringURL = headImgString!
+        if let img = headImgString {
+            if(img.hasPrefix("http"))
+            {
+                stringURL = headImgString!
+            }
         }
         chatView.imgURLTo = stringURL
         var myHeadImg : String? = myData!.headImage
