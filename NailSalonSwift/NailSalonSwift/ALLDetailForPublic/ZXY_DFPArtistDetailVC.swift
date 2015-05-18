@@ -294,7 +294,15 @@ class ZXY_DFPArtistDetailVC: UIViewController , UIAlertViewDelegate {
             var artistLocationLo = needShow?.longitude
             var latitude = location["latitude"]!
             var logitude = location["longitude"]!
-            var userCoordinate   = CLLocationCoordinate2DMake( latitude!,logitude! )
+            if latitude == nil
+            {
+                self.distanceLbl.hidden = true
+            }
+            else
+            {
+                self.distanceLbl.hidden = false
+            }
+            var userCoordinate   = CLLocationCoordinate2DMake( latitude ?? 0,logitude ?? 0 )
             if artistLocationLa != nil && artistLocationLo != nil
             {
                 var coordinateArtist = ZXY_LocationRelative.sharedInstance.xYStringToCoor(artistLocationLo, latitude: artistLocationLa)

@@ -78,11 +78,13 @@ class ZXY_ARMainVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"] ?? 0
-            longitude = userLocation["longitude"] ?? 0
+            latitude  = userLocation["latitude"]!
+            longitude = userLocation["longitude"]!
         }
         else
-        {}
+        {
+            
+        }
         
         userCityName =  ZXY_UserInfoDetail.sharedInstance.getUserCityName()
         
@@ -99,9 +101,10 @@ class ZXY_ARMainVC: UIViewController {
     //访问网络
     private func artistInfo() {
         self.rightButton.enabled = false
+        self.getUserInfo()
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_UserListAPI
         
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? ""  , "lng": longitude! , "lat": latitude!, "user_id": userId! , "control": control.rawValue , "p": pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "大连市"  , "lng": longitude ?? 0 , "lat": latitude ?? 0, "user_id": userId! , "control": control.rawValue , "p": pageCount]
         println("\(parameter)")
         
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter ,successBlock: { [weak self](returnDit) -> Void in
@@ -316,6 +319,15 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
         var artistPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor(lng, latitude: lat)
         var distance = ZXY_LocationRelative.distanceCompareCoor(artistPosition, userPosition: userPosition)
         cell.artistDistance.text = "\(Double(round(100 * distance)/100)) km"
+        if latitude == nil
+        {
+            cell.artistDistance.hidden = true
+        }
+        else
+        {
+            cell.artistDistance.hidden = false
+        }
+        
         
         //评价等级
         var scoreNSString : NSString = NSString(format: "%@", cellData!.score)
