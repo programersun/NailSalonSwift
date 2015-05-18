@@ -133,14 +133,20 @@ class SR_ChangeAddressVC: UIViewController {
         var option = BMKCitySearchOption()
         option.pageIndex = self.pageIndex
         option.pageCapacity = 15
-        option.city = self.userCityName ?? ""
-        option.keyword  = self.searchText.text as String
-        var flag : Bool = searcher.poiSearchInCity(option)
-        if flag {
-            println("success")
+        if self.userCityName != nil {
+            option.city = self.userCityName
+            
+            option.keyword  = self.searchText.text as String
+            var flag : Bool = searcher.poiSearchInCity(option)
+            if flag {
+                println("success")
+            }
+            else {
+                println("fail")
+            }
         }
         else {
-            println("fail")
+            self.showAlertEasy("提示", messageContent: "您未开启定位功能，不能获取你所在当前位置")
         }
         
     }
@@ -226,6 +232,7 @@ extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKP
 
     func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
         if errorCode.value == BMK_SEARCH_NO_ERROR.value {
+            
             self.searchArray?.addObjectsFromArray(poiResult.poiInfoList)
 //            self.searchArray?.addObject(poiResult.poiInfoList)
             self.pageCount = self.pageCount + poiResult.currPoiNum
