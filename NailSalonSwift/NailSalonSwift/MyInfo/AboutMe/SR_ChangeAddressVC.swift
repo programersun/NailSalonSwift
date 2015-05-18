@@ -133,7 +133,7 @@ class SR_ChangeAddressVC: UIViewController {
         var option = BMKCitySearchOption()
         option.pageIndex = self.pageIndex
         option.pageCapacity = 15
-        option.city = self.userCityName
+        option.city = self.userCityName ?? ""
         option.keyword  = self.searchText.text as String
         var flag : Bool = searcher.poiSearchInCity(option)
         if flag {

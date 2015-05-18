@@ -232,7 +232,7 @@ class SR_searchNearbyVC: UIViewController {
             userID = ""
         }
         
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName! , "lng": longitude! , "lat": latitude!, "user_id" : userID! , "control" : control , "p" : pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "" , "lng": longitude ?? 0, "lat": latitude ?? 0, "user_id" : userID! , "control" : control , "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
             var arr = SR_searchNearbyBaseClass(dictionary: returnDic).data
             if(self?.pageCount == 1)
@@ -469,9 +469,15 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
         var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
         var lng = cellData.longitude
         var lat = cellData.latitude
-        var artistPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor(lng, latitude: lat)
-        var distance = ZXY_LocationRelative.distanceCompareCoor(artistPosition, userPosition: userPosition)
-        cell.userDistance.text = "\(Double(round(100 * distance)/100)) km"
+        if lng == nil || lat == nil {
+            cell.userDistance.hidden = true
+        }
+        else {
+            cell.userDistance.hidden = false
+            var artistPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor(lng, latitude: lat)
+            var distance = ZXY_LocationRelative.distanceCompareCoor(artistPosition, userPosition: userPosition)
+            cell.userDistance.text = "\(Double(round(100 * distance)/100)) km"
+        }
         
         //评价等级
         var scoreNSString : NSString = NSString(format: "%@", cellData.score)
