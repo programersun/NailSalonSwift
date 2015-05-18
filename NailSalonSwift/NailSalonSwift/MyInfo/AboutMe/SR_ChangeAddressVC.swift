@@ -209,7 +209,7 @@ extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKP
         if self.isFirstSearch {
         }
         else {
-            var currentData = dataForShow?[indexPath.row] as! CommenAddress
+//            var currentData = dataForShow?[indexPath.row] as! CommenAddress
 //            var dic : Dictionary<String , AnyObject?> =
 //            [   "name" : self.searchArray?[indexPath.row].name ?? "" ,
 //                "address" : self.searchArray?[indexPath.row].address ?? "",
