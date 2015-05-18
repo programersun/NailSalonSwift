@@ -291,6 +291,10 @@ extension ZXY_ORSqureVC : UICollectionViewDataSource , UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if dataForTable?.count == 0
+        {
+            return
+        }
         var currentData = dataForTable?[indexPath.row]
         var albumID = currentData?.albumId ?? ""
         var story = UIStoryboard(name: "PublicStory", bundle: nil)

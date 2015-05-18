@@ -78,8 +78,8 @@ class ZXY_ARMainVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"]!
-            longitude = userLocation["longitude"]!
+            latitude  = userLocation["latitude"] ?? 0
+            longitude = userLocation["longitude"] ?? 0
         }
         else
         {}
@@ -101,7 +101,7 @@ class ZXY_ARMainVC: UIViewController {
         self.rightButton.enabled = false
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_UserListAPI
         
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName!  , "lng": longitude! , "lat": latitude!, "user_id": userId! , "control": control.rawValue , "p": pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? ""  , "lng": longitude! , "lat": latitude!, "user_id": userId! , "control": control.rawValue , "p": pageCount]
         println("\(parameter)")
         
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter ,successBlock: { [weak self](returnDit) -> Void in

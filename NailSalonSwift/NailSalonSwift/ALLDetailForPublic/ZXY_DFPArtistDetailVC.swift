@@ -99,10 +99,14 @@ class ZXY_DFPArtistDetailVC: UIViewController , UIAlertViewDelegate {
                     }
                     var chatView = ChatViewController(chatter: artistID!, isGroup: false)
                     chatView.title = artData?.nickName
-                    var stringURL =  ZXY_ALLApi.ZXY_MainAPIImage + artData!.headImage
-                    if(artData!.headImage.hasPrefix("http"))
+                    var imgHeader : String? = artData!.headImage
+                    var stringURL : String? =  ZXY_ALLApi.ZXY_MainAPIImage + (imgHeader ?? "")
+                    if let img = imgHeader
                     {
-                        stringURL = artData!.headImage
+                        if(img.hasPrefix("http"))
+                        {
+                            stringURL = artData!.headImage
+                        }
                     }
                     chatView.imgURLTo = stringURL
                     var myHeadImg : String? = myData.headImage
