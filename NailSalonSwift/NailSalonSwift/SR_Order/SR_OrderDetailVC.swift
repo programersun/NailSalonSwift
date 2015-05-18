@@ -48,6 +48,7 @@ class SR_OrderDetailVC: UIViewController {
         userCancel.hidden = true
         orderRefuse.hidden = true
         orderAccept.hidden = true
+        self.btnHeight.constant = 0
     }
     
     //获取当前用户的信息
@@ -68,6 +69,7 @@ class SR_OrderDetailVC: UIViewController {
     //判断用户身份：普通用户取消订单，美甲师拒绝和接受订单
     //修改按钮边框
     func userRole(){
+        self.btnHeight.constant = 50
         userCancel.layer.masksToBounds = true
         userCancel.layer.borderColor  = UIColor.NailGrayColor().CGColor
         userCancel.layer.borderWidth  = 0.5

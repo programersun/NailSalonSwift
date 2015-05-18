@@ -198,9 +198,14 @@ class ZXY_DFPArtistDetailVC: UIViewController , UIAlertViewDelegate {
     }
     
     override func rightNaviButtonAction() {
-        var alert = UIAlertView(title: "提示", message: "是否将此用户加入黑名单？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
-        alert.tag = 110
-        alert.show()
+        if self.artistID == ZXY_UserInfoDetail.sharedInstance.getUserID(){
+            self.showAlertEasy("提示", messageContent: "不能将自己加入黑名单")
+        }
+        else {
+            var alert = UIAlertView(title: "提示", message: "是否将此用户加入黑名单？", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+            alert.tag = 110
+            alert.show()
+        }
     }
     
     

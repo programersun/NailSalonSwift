@@ -1830,7 +1830,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4R2-Ld-ZyW" firstAttribute="leading" secondItem="drs-yr-Std" secondAttribute="leading" constant="10" id="Bf7-o9-asI"/>
-                                                <constraint firstItem="Slp-BV-f9Z" firstAttribute="leading" secondItem="4R2-Ld-ZyW" secondAttribute="trailing" constant="10" id="GOa-wv-3cD"/>
                                                 <constraint firstAttribute="trailing" secondItem="m9r-kr-Khk" secondAttribute="trailing" id="JcK-oT-Wvx"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Slp-BV-f9Z" secondAttribute="trailing" constant="10" id="Leq-P0-f5W"/>
                                                 <constraint firstAttribute="bottom" secondItem="m9r-kr-Khk" secondAttribute="bottom" id="RdJ-Sk-qbZ"/>
@@ -1842,16 +1841,13 @@
                                                 <constraint firstItem="m9r-kr-Khk" firstAttribute="leading" secondItem="drs-yr-Std" secondAttribute="leading" id="jU6-98-iit"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DAS-eu-kNj" secondAttribute="trailing" constant="10" id="mDB-VJ-Hb1"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="GOa-wv-3cD"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="DAS-eu-kNj" id="Mqe-lO-Pps"/>
                                             <outlet property="detailAddressLabel" destination="Slp-BV-f9Z" id="83P-fc-z1W"/>
                                             <outlet property="searchImg" destination="4R2-Ld-ZyW" id="ETK-yQ-X4B"/>
+                                            <outlet property="searchImgHeight" destination="ngs-MP-5jV" id="4Zt-z7-Knj"/>
+                                            <outlet property="searchImgWidth" destination="d6S-76-GBn" id="q6s-E1-wop"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

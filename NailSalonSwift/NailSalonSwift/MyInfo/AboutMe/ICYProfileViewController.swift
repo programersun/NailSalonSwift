@@ -331,7 +331,7 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
 {
     func addressChange(sendKey: String, andValue sendValue: String) {
         userInfoValue.extend([sendKey : sendValue])
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
         self.startLoadInfoData()
     }
     func afterChange(sendKey: String, andValue sendValue: String) {
@@ -356,10 +356,6 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
         var parameter : Dictionary<String , AnyObject> = ["nick_name" : nick_Name == nil ? "" : nick_Name! , "real_name" : real_name == nil ? "" : real_name!, "sex" : sex == nil ? "3" : sex! , "address" : address == nil ? "" : address! , "tel" : tel == nil ? "" : tel!,"user_id" : myUserID!]
 
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter, successBlock: {[weak self] (returnDic) -> Void in
-            if let s = self
-            {
-                s.zxyW.hideProgress(s.view)
-            }
             var result = returnDic["result"] as! Double
             if(result == 1000)
             {
@@ -377,13 +373,17 @@ extension ICYProfileViewController :  UINavigationControllerDelegate , UIImagePi
             else
             {
                 self?.showAlertEasy("提示", messageContent: "修改个人信息失败，请稍后尝试")
+                if let s = self
+                {
+                    s.zxyW.hideProgress(s.view)
+                }
             }
             }) {[weak self] (error) -> Void in
-            if let s = self
-            {
+                if let s = self
+                {
                 s.zxyW.hideProgress(s.view)
-            }
-            self?.showAlertEasy("提示", messageContent: "网络状况不佳，请稍后尝试")
+                }
+                self?.showAlertEasy("提示", messageContent: "网络状况不佳，请稍后尝试")
             return
         }
     }
