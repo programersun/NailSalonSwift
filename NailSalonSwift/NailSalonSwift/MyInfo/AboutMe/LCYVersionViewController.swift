@@ -23,7 +23,7 @@ class LCYVersionViewController: UIViewController {
         iconView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
         if let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionLabel.text = "版本号：1.2.0"
+            versionLabel.text = "版本号：2.0"
         } else {
             versionLabel.text = nil
         }
