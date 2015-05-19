@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 protocol SR_ChangeAddressVCProtocol : class
 {
@@ -103,8 +104,12 @@ class SR_ChangeAddressVC: UIViewController {
     @IBAction func rightBtnClick(sender: AnyObject) {
         searchText.resignFirstResponder()
         if searchIsEmpty() == false {
+            var name  : String = self.searchText.text as String
+            var dic : Dictionary<String , AnyObject?> = ["name" : name , "address" : "" ]
+            self.saveCommonAddress(dic)
             self.delegate?.addressChange("userAddr", andValue: self.searchText.text)
         }
+        self.searchText.resignFirstResponder()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -151,10 +156,28 @@ class SR_ChangeAddressVC: UIViewController {
         
     }
     
-    
-    func loadCommonAddress()
+    /*
+        存储地址信息
+        1.地址存在不再重新存储
+        2.当地址多于15个时，删除旧地址，然后存储
+    */
+    func saveCommonAddress(dic : Dictionary<String , AnyObject?>)
     {
-        
+        var hasAddress = false
+        var name       = dic["name"] as! String
+        var address    = dic["address"] as! String
+        for var i = 0 ; i < self.dataForShow?.count ; i++ {
+            if name == self.dataForShow?[i].name && address == self.dataForShow?[i].address {
+                hasAddress = true
+            }
+        }
+        if hasAddress == false {
+            if self.dataForShow?.count >= 15 {
+                var deleteData = self.dataForShow?[0] as! CommenAddress
+                ZXY_DataProviderHelper.deleteObject(DBName: "CommenAddress", object: deleteData)
+            }
+            ZXY_DataProviderHelper.saveAllWithDic(DBName: "CommenAddress", saveEntity: dic)
+        }
     }
     
     /*
@@ -192,10 +215,15 @@ extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKP
         
         var cell = tableView.dequeueReusableCellWithIdentifier(SR_ChangeAddressCell.cellID()) as! SR_ChangeAddressCell
         if self.isFirstSearch {
-            var currentData = dataForShow?[indexPath.row] as! CommenAddress
+            var count = self.dataForShow?.count
+            var showNum = count! - indexPath.row - 1
+            var currentData = self.dataForShow?[showNum] as! CommenAddress
             cell.addressLabel.text = currentData.name
             cell.detailAddressLabel.text = currentData.address
-            cell.searchImg.image = UIImage(named: "searchItemD")
+            cell.searchImg.image = UIImage(named: "commenAddress")
+            cell.searchImgWidth.constant  = 10
+            cell.searchImgHeight.constant = 10
+            
         }
         else {
             cell.addressLabel.text = self.searchArray?[indexPath.row].name ?? ""
@@ -208,25 +236,31 @@ extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKP
         var cell              = tableView.cellForRowAtIndexPath(indexPath) as! SR_ChangeAddressCell
         var name : String!    = cell.addressLabel.text
         var address : String! =  cell.detailAddressLabel.text
-        var nameAndAddress    = "\(name)(\(address))"
+        var nameAndAddress : String?
+        if address != "" {
+            nameAndAddress = "\(name)(\(address))"
+        }
+        else {
+            var nameAndAddress = "\(name)"
+        }
         println("\(nameAndAddress)")
-        self.delegate?.addressChange("userAddr", andValue: nameAndAddress)
+        self.delegate?.addressChange("userAddr", andValue: nameAndAddress!)
         
         if self.isFirstSearch {
         }
         else {
-//            var currentData = dataForShow?[indexPath.row] as! CommenAddress
-//            var dic : Dictionary<String , AnyObject?> =
-//            [   "name" : self.searchArray?[indexPath.row].name ?? "" ,
-//                "address" : self.searchArray?[indexPath.row].address ?? "",
-//                "uid" : self.searchArray?[indexPath.row].uid ?? "",
-//                "city" : self.searchArray?[indexPath.row].city ?? "",
-//                "phone" : self.searchArray?[indexPath.row].phone ?? "",
-//                "postcode" : self.searchArray?[indexPath.row].postcode ?? "",
-//                "epoitype" : self.searchArray?[indexPath.row].epoitype ?? 0
-//            ]
-            
+            var name  : String    = self.searchArray?[indexPath.row].name ?? ""
+            var address : String  = self.searchArray?[indexPath.row].address ?? ""
+            var uid : String      = self.searchArray?[indexPath.row].uid ?? ""
+            var city : String     = self.searchArray?[indexPath.row].city ?? ""
+//            var phone : String    = self.searchArray?[indexPath.row].phone ?? ""
+//            var postcode : String = self.searchArray?[indexPath.row].postcode ?? ""
+            var epoitype : Int32  = self.searchArray?[indexPath.row].epoitype  ?? 0
+//            var dic : Dictionary<String , AnyObject?> = ["name" : name , "address" : address, "uid" : uid, "city" : city, "phone" : phone,"postcode" : postcode , "epoitype" : "\(epoitype)"]
+            var dic : Dictionary<String , AnyObject?> = ["name" : name , "address" : address, "uid" : uid, "city" : city, "epoitype" : "\(epoitype)"]
+            self.saveCommonAddress(dic)
         }
+        self.searchText.resignFirstResponder()
         self.navigationController?.popViewControllerAnimated(true)
     }
 

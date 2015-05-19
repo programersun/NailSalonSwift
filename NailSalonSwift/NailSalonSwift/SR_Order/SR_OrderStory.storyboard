@@ -795,7 +795,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnHeight" destination="S3I-8z-V7F" id="Ln2-SQ-rBM"/>
+                        <outlet property="btnHeight" destination="sIO-W1-ZEN" id="roU-lQ-qfp"/>
                         <outlet property="orderAccept" destination="uUm-zh-g7D" id="MPl-aR-oil"/>
                         <outlet property="orderDetailTableView" destination="fIP-yF-GPx" id="hvp-0g-dWw"/>
                         <outlet property="orderRefuse" destination="Tjl-XB-DPY" id="Ytz-et-w1h"/>

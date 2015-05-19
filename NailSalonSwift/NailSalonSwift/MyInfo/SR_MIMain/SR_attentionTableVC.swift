@@ -204,7 +204,7 @@ class SR_attentionTableVC: UITableViewController {
             {
                 s.srW.hideProgress(s.view)
             }
-            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+//            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
             ""
         }
     }
