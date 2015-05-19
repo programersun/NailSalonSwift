@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         self.loadPushSettingPlist()
-        self.loadAddressPlist()
         
         bmkAuthor = BMKMapManager()
         
@@ -205,17 +204,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         var pathString      = documentPath[0] as! String
         var realPath        = pathString.stringByAppendingPathComponent("pushSetting.plist")
         var bundlePlistPath = NSBundle.mainBundle().pathForResource("pushSetting", ofType: "plist")
-        if !NSFileManager.defaultManager().fileExistsAtPath(realPath)
-        {
-            NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)
-        }
-    }
-    
-    func loadAddressPlist() {
-        var documentPath : NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        var pathString      = documentPath[0] as! String
-        var realPath        = pathString.stringByAppendingPathComponent("address.plist")
-        var bundlePlistPath = NSBundle.mainBundle().pathForResource("address", ofType: "plist")
         if !NSFileManager.defaultManager().fileExistsAtPath(realPath)
         {
             NSFileManager.defaultManager().copyItemAtPath(bundlePlistPath!, toPath: realPath, error: nil)

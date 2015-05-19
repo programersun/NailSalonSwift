@@ -150,7 +150,7 @@ class ZXY_ARMainVC: UIViewController {
                 s.srW.hideProgress(s.view)
             }
             self?.rightButton.enabled = true
-            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
+//            self?.showAlertEasy("提示", messageContent: "网络状况不好，请稍后重试")
             ""
         }
     }

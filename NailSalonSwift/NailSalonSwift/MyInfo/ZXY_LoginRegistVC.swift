@@ -294,7 +294,7 @@ extension ZXY_LoginRegistVC : UITextFieldDelegate
     
     @IBAction func backAction(sender: AnyObject)
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

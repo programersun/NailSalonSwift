@@ -264,12 +264,12 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
         case 2:
             self.pickViewAppear()
         case 3:
-            var story = UIStoryboard(name: "SR_OrderStory", bundle: nil)
-            var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeOrderInfoID") as! SR_ChangeOrderInfo
-            vc.changeInfo = self.userAddress
-            vc.changeType = 2
+
+            var story = UIStoryboard(name: "MyInfoStory", bundle: nil)
+            var vc = story.instantiateViewControllerWithIdentifier("SR_ChangeAddressVCID") as! SR_ChangeAddressVC
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
+            
         case 4:
             var story = UIStoryboard(name: "SR_MIMainStory", bundle: nil)
             var vc = story.instantiateViewControllerWithIdentifier("SR_myAlbumVCID") as! SR_myAlbumVC
@@ -284,7 +284,7 @@ extension SR_OrderMainVC : UITableViewDataSource , UITableViewDelegate {
     }
 }
 
-extension SR_OrderMainVC : SR_myAlbumVCProtocol ,SR_ChangeOrderInfoProtocol  {
+extension SR_OrderMainVC : SR_myAlbumVCProtocol ,SR_ChangeOrderInfoProtocol , SR_ChangeAddressVCProtocol {
     //选择主题样式返回值
     func backToOrder(ablumDesc: String, ablumId: String?) {
         self.ablumName = ablumDesc
@@ -301,5 +301,10 @@ extension SR_OrderMainVC : SR_myAlbumVCProtocol ,SR_ChangeOrderInfoProtocol  {
     }
     func changeAddress(address: String) {
         self.userAddress = address
+    }
+    
+    func addressChange(sendKey: String, andValue sendValue: String) {
+        self.userAddress = sendValue
+        self.orderTableView.reloadData()
     }
 }

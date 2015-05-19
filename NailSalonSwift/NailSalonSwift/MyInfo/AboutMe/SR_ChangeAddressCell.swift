@@ -14,6 +14,9 @@ class SR_ChangeAddressCell: UITableViewCell {
     @IBOutlet weak var detailAddressLabel: UILabel!
     @IBOutlet weak var searchImg: UIImageView!
     
+    @IBOutlet weak var searchImgWidth: NSLayoutConstraint!
+    @IBOutlet weak var searchImgHeight: NSLayoutConstraint!
+    
     class func cellID() -> String
     {
         return "SR_ChangeAddressCellID"
