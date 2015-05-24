@@ -67,7 +67,7 @@ class ZXY_NetHelperOperate: NSObject {
         afnet.POST(urlString, parameters: sendParameter, success: { (operation:AFHTTPRequestOperation!, anyObject: AnyObject!) -> Void in
             if(success != nil)
             {
-                println(operation.responseString)
+               // println(operation.responseString)
                 var returnData = operation.responseData
                 var json: AnyObject?       = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableLeaves, error: nil)
                 var jsonDic : Dictionary<String , AnyObject> = json as! Dictionary<String, AnyObject>
@@ -130,7 +130,7 @@ class ZXY_NetHelperOperate: NSObject {
             return
             
         }, success: { (operation, anyObject) -> Void in
-            println(operation.responseString)
+            //println(operation.responseString)
             if(success != nil)
             {
                 var returnData = operation.responseData

@@ -100,34 +100,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         if UIDevice.currentDevice().systemVersion.doubleValue >= 8.0
         {
             APService.registerForRemoteNotificationTypes(
-                //UIUserNotificationType.Badge.rawValue |
+                UIUserNotificationType.Badge.rawValue |
                 UIUserNotificationType.Sound.rawValue |
-                    UIUserNotificationType.Alert.rawValue
+                UIUserNotificationType.Alert.rawValue
                 , categories: nil)
 
         }
         else 
         {
             APService.registerForRemoteNotificationTypes(
-                //UIUserNotificationType.Badge.rawValue |
+                UIRemoteNotificationType.Badge.rawValue |
                 UIRemoteNotificationType.Sound.rawValue |
                 UIRemoteNotificationType.Alert.rawValue
                 , categories: nil)
         }
         APService.setupWithOption(launchOptions)
         var noti: Void = NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("JPushReceiveData:"), name: kJPFNetworkDidReceiveMessageNotification, object: nil)
+        
         var userID = ZXY_UserInfoDetail.sharedInstance.getUserID()
         if userID != nil
         {
-            APService.setAlias(userID, callbackSelector: Selector("JPushAlias:"), object: nil)
+            APService.setAlias(userID, callbackSelector: Selector("JPushAlias:tags:alias:"), object: self)
         }
-        
+             
         if(ZXY_UserInfoDetail.sharedInstance.isAppFirstLoad())
         {
             var storyBoard = UIStoryboard(name: "WelcomeStory", bundle: nil)
             var vc         = storyBoard.instantiateInitialViewController() as! SR_WelcomeViewController
             self.window?.rootViewController = vc
         }
+        
+        
         
         return true
     }
@@ -154,6 +157,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     /// 此处获取极光推送的内容
     func JPushReceiveData(noti : NSNotification)
     {
+        if UIApplication.sharedApplication().applicationState == UIApplicationState.Background
+        {
+            APService.setLocalNotification(NSDate(timeIntervalSinceNow: 100), alertBody: "您收到一条新消息", badge: 1, alertAction: "", identifierKey: "", userInfo: nil, soundName: nil)
+        }
+        else
+        {
+            self.pushSetting()
+        }
         var notiInfo = noti.userInfo
         if let noty = notiInfo
         {
@@ -195,7 +206,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
             
         }
         NSNotificationCenter.defaultCenter().postNotificationName("message", object: nil)
-        self.pushSetting()
+        
+        
         
     }
 
@@ -259,14 +271,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         println("didReceiveRemoteNotification fetchCompletionHandler \(userInfo)")
        // APService.handleRemoteNotification(userInfo)
-        completionHandler(UIBackgroundFetchResult.NewData)
+        
         APService.handleRemoteNotification(userInfo)
         EaseMob.sharedInstance().application(application, didReceiveRemoteNotification: userInfo)
+        completionHandler(UIBackgroundFetchResult.NewData)
     }
 
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        APService.handleRemoteNotification(userInfo)
+    }
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("本地通知")
         EaseMob.sharedInstance().application(application, didReceiveLocalNotification: notification)
+        APService.showLocalNotificationAtFront(notification, identifierKey: nil)
     }
     
     
@@ -282,10 +300,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         EaseMob.sharedInstance().applicationDidEnterBackground(application)
+        
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         var myUserID = ZXY_UserInfoDetail.sharedInstance.getUserID()
+        application.applicationIconBadgeNumber = 0
         if(myUserID == nil)
         {
             
@@ -319,7 +339,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         println(error)
     }
     
-    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+    }
     
 
     // MARK: - Core Data stack

@@ -244,7 +244,7 @@ extension SR_ChangeAddressVC : UITableViewDataSource, UITableViewDelegate , BMKP
             var nameAndAddress = "\(name)"
         }
         println("\(nameAndAddress)")
-        self.delegate?.addressChange("userAddr", andValue: nameAndAddress!)
+        self.delegate?.addressChange("userAddr", andValue: nameAndAddress ?? "")
         
         if self.isFirstSearch {
         }
