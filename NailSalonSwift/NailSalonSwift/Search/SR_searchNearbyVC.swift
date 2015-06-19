@@ -174,8 +174,8 @@ class SR_searchNearbyVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"]!
-            longitude = userLocation["longitude"]!
+            latitude  = userLocation["latitude"] ?? 40
+            longitude = userLocation["longitude"] ?? 116
         }
         else
         {}
@@ -232,7 +232,7 @@ class SR_searchNearbyVC: UIViewController {
             userID = ""
         }
         
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "" , "lng": longitude ?? 0, "lat": latitude ?? 0, "user_id" : userID! , "control" : control , "p" : pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "北京市" , "lng": longitude ?? 116, "lat": latitude ?? 40, "user_id" : userID! , "control" : control , "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
             var arr = SR_searchNearbyBaseClass(dictionary: returnDic).data
             if(self?.pageCount == 1)
@@ -466,7 +466,7 @@ extension SR_searchNearbyVC : UITableViewDataSource, UITableViewDelegate {
         
         
         //用户与美甲师距离
-        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
+        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude ?? 116)" , latitude: "\(latitude ?? 40)")
         var lng = cellData.longitude
         var lat = cellData.latitude
         if lng == nil || lat == nil {

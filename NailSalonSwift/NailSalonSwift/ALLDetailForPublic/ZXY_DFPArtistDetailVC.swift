@@ -297,17 +297,17 @@ class ZXY_DFPArtistDetailVC: UIViewController , UIAlertViewDelegate {
         {
             var artistLocationLa = needShow?.latitude
             var artistLocationLo = needShow?.longitude
-            var latitude = location["latitude"]!
-            var logitude = location["longitude"]!
-            if latitude == nil
-            {
-                self.distanceLbl.hidden = true
-            }
-            else
-            {
-                self.distanceLbl.hidden = false
-            }
-            var userCoordinate   = CLLocationCoordinate2DMake( latitude ?? 0,logitude ?? 0 )
+            var latitude = location["latitude"] ?? 40
+            var logitude = location["longitude"] ?? 116
+//            if latitude == nil
+//            {
+//                self.distanceLbl.hidden = true
+//            }
+//            else
+//            {
+//                self.distanceLbl.hidden = false
+//            }
+            var userCoordinate   = CLLocationCoordinate2DMake( latitude ?? 40,logitude ?? 116 )
             if artistLocationLa != nil && artistLocationLo != nil
             {
                 var coordinateArtist = ZXY_LocationRelative.sharedInstance.xYStringToCoor(artistLocationLo, latitude: artistLocationLa)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7703" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1C0-g8-74X">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -274,13 +274,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="b7L-Yr-FSq" firstAttribute="top" secondItem="3Gy-XN-jvz" secondAttribute="bottom" constant="6" id="FhS-JQ-TI6"/>
-                            <constraint firstItem="cj7-px-MwG" firstAttribute="top" secondItem="R8z-4S-daJ" secondAttribute="bottom" id="M5t-63-Ane"/>
+                            <constraint firstItem="R8z-4S-daJ" firstAttribute="leading" secondItem="Cpq-8P-fHW" secondAttribute="leading" id="L4N-YJ-AEF"/>
                             <constraint firstAttribute="bottom" secondItem="R8z-4S-daJ" secondAttribute="bottom" id="PeB-Yw-rEf"/>
                             <constraint firstItem="cj7-px-MwG" firstAttribute="top" secondItem="5gT-wT-fJ0" secondAttribute="bottom" id="Qhd-Vh-xDV"/>
+                            <constraint firstAttribute="trailing" secondItem="R8z-4S-daJ" secondAttribute="trailing" id="STz-mm-Ceh"/>
                             <constraint firstAttribute="trailing" secondItem="b7L-Yr-FSq" secondAttribute="trailing" constant="20" id="Urm-uH-oKf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="R8z-4S-daJ" secondAttribute="trailing" constant="-16" id="f2h-Wl-Xoo"/>
                             <constraint firstAttribute="trailing" secondItem="5gT-wT-fJ0" secondAttribute="trailing" id="pOc-CR-H5O"/>
-                            <constraint firstItem="R8z-4S-daJ" firstAttribute="leading" secondItem="Cpq-8P-fHW" secondAttribute="leadingMargin" constant="-16" id="rU5-Ne-Cg7"/>
                             <constraint firstItem="5gT-wT-fJ0" firstAttribute="top" secondItem="Cpq-8P-fHW" secondAttribute="top" id="t60-LK-V4B"/>
                             <constraint firstItem="R8z-4S-daJ" firstAttribute="top" secondItem="Cpq-8P-fHW" secondAttribute="topMargin" id="tAW-cF-MY4"/>
                             <constraint firstItem="5gT-wT-fJ0" firstAttribute="leading" secondItem="Cpq-8P-fHW" secondAttribute="leading" id="umM-rW-Snp"/>
