@@ -64,7 +64,7 @@ class ZXY_NetHelperOperate: NSObject {
             
         
         }
-        afnet.POST(urlString, parameters: sendParameter, success: { [weak self](operation:AFHTTPRequestOperation!, anyObject: AnyObject!) -> Void in
+        afnet.POST(urlString, parameters: sendParameter, success: { (operation:AFHTTPRequestOperation!, anyObject: AnyObject!) -> Void in
             if(success != nil)
             {
 //                println(operation.responseString)
