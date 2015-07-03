@@ -70,8 +70,8 @@ class SR_NickNameVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"] ?? 0
-            longitude = userLocation["longitude"] ?? 0
+            latitude  = userLocation["latitude"] ?? 40
+            longitude = userLocation["longitude"] ?? 116
         }
         else
         {}
@@ -144,7 +144,7 @@ class SR_NickNameVC: UIViewController {
         var urlString = ZXY_NailNetAPI.SR_SearchAPI(SR_SearchAPIType.SR_SearchUser)
         searchString = searchText.text as String ?? ""
         println("\(searchString)+++")
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "" , "lng": longitude ?? 0 , "lat": latitude ?? 0, "user_id" : userID! , "nick_name" : searchString!, "p" : pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "北京市" , "lng": longitude ?? 116 , "lat": latitude ?? 40, "user_id" : userID! , "nick_name" : searchString!, "p" : pageCount]
         ZXY_NetHelperOperate.sharedInstance.startGetDataPost(urlString, parameter: parameter, successBlock: { [weak self](returnDic) -> Void in
             var arr = SR_searchUserBaseClass(dictionary: returnDic).data
             if(self?.pageCount == 1)
@@ -228,7 +228,7 @@ extension SR_NickNameVC : UITableViewDataSource, UITableViewDelegate {
         cell.userWorkCount.text = cellData.albumCount
         
         //用户与美甲师距离
-        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
+        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude ?? 116)" , latitude: "\(latitude ?? 40)")
         var lng = cellData.longitude
         var lat = cellData.latitude
         if lng == nil || lat == nil {

@@ -78,8 +78,8 @@ class ZXY_ARMainVC: UIViewController {
         userCoordinate = ZXY_UserInfoDetail.sharedInstance.getUserCoordinate()
         if let userLocation = userCoordinate
         {
-            latitude  = userLocation["latitude"]!
-            longitude = userLocation["longitude"]!
+            latitude  = userLocation["latitude"] ?? 40
+            longitude = userLocation["longitude"] ?? 116
         }
         else
         {
@@ -104,7 +104,7 @@ class ZXY_ARMainVC: UIViewController {
         self.getUserInfo()
         var urlString = ZXY_NailNetAPI.ZXY_MainAPI + ZXY_ALLApi.ZXY_UserListAPI
         
-        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "大连市"  , "lng": longitude ?? 0 , "lat": latitude ?? 0, "user_id": userId! , "control": control.rawValue , "p": pageCount]
+        var parameter : Dictionary<String ,  AnyObject> = ["city": userCityName ?? "北京市"  , "lng": longitude ?? 116 , "lat": latitude ?? 40, "user_id": userId! , "control": control.rawValue , "p": pageCount]
         println("\(parameter)")
         
         ZXY_NetHelperOperate().startGetDataPost(urlString, parameter: parameter ,successBlock: { [weak self](returnDit) -> Void in
@@ -313,20 +313,20 @@ extension ZXY_ARMainVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         //用户与美甲师距离
-        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude!)" , latitude: "\(latitude!)")
+        var userPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor("\(longitude ?? 116)" , latitude: "\(latitude ?? 40)")
         var lng = cellData?.longitude
         var lat = cellData?.latitude
         var artistPosition = ZXY_LocationRelative.sharedInstance.xYStringToCoor(lng, latitude: lat)
         var distance = ZXY_LocationRelative.distanceCompareCoor(artistPosition, userPosition: userPosition)
         cell.artistDistance.text = "\(Double(round(100 * distance)/100)) km"
-        if latitude == nil
-        {
-            cell.artistDistance.hidden = true
-        }
-        else
-        {
-            cell.artistDistance.hidden = false
-        }
+//        if latitude == nil
+//        {
+//            cell.artistDistance.hidden = true
+//        }
+//        else
+//        {
+//            cell.artistDistance.hidden = false
+//        }
         
         
         //评价等级
