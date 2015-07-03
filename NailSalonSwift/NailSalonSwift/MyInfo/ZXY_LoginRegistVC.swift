@@ -26,6 +26,7 @@ class ZXY_LoginRegistVC: UIViewController {
     @IBOutlet weak var miQQLbl: UILabel!
     @IBOutlet weak var miWBLbl: UILabel!
     
+    @IBOutlet weak var miqqWidth: NSLayoutConstraint!
     weak var delegate : ZXY_LoginRegistVCProtocol?
     private var parameter : Dictionary<String , String> = Dictionary<String , String>()
     let zxyW : ZXY_WaitProgressVC! = ZXY_WaitProgressVC()
@@ -35,9 +36,28 @@ class ZXY_LoginRegistVC: UIViewController {
         super.viewDidLoad()
         self.startInitColor()
         self.startInitCorner()
-        
-        
-        
+        UMSocialQQHandler.setQQWithAppId(ZXY_ConstValue.QQAPPID.rawValue, appKey: ZXY_ConstValue.QQAPPKEY.rawValue, url: "http://www.umeng.com/social")
+        var platForm = UMSocialSnsPlatformManager.getSocialPlatformWithName(UMShareToQQ)
+        if QQApiInterface.isQQInstalled()
+        {
+            if QQApiInterface.isQQSupportApi()
+            {
+                miQQBtn.hidden = false
+                miQQLbl.hidden  = false
+            }
+            else
+            {
+                miQQBtn.hidden = true
+                miQQLbl.hidden  = true
+                miqqWidth.constant = 0
+            }
+        }
+        else
+        {
+            miQQBtn.hidden = true
+            miQQLbl.hidden  = true
+            miqqWidth.constant = 0
+        }
         // Do any additional setup after loading the view.
     }
 

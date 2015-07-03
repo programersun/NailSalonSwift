@@ -1,30 +1,30 @@
 PODS:
-  - AFNetworking (2.5.2):
-    - AFNetworking/NSURLConnection (= 2.5.2)
-    - AFNetworking/NSURLSession (= 2.5.2)
-    - AFNetworking/Reachability (= 2.5.2)
-    - AFNetworking/Security (= 2.5.2)
-    - AFNetworking/Serialization (= 2.5.2)
-    - AFNetworking/UIKit (= 2.5.2)
-  - AFNetworking/NSURLConnection (2.5.2):
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.2):
+  - AFNetworking/NSURLSession (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.2)
-  - AFNetworking/Security (2.5.2)
-  - AFNetworking/Serialization (2.5.2)
-  - AFNetworking/UIKit (2.5.2):
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Baidu-Maps-iOS-SDK (2.6.0)
-  - CHTCollectionViewWaterfallLayout (0.8)
+  - CHTCollectionViewWaterfallLayout (0.9.1)
   - EaseMobSDK (2.1.3.3)
   - GPUImage (0.1.6)
-  - UMengSocial (4.2.1)
+  - UMengSocial (4.2.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -32,14 +32,14 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout (~> 0.8)
   - EaseMobSDK (~> 2.1.3.3)
   - GPUImage (~> 0.1)
-  - UMengSocial (~> 4.2)
+  - UMengSocial (~> 4.2.3)
 
 SPEC CHECKSUMS:
-  AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Baidu-Maps-iOS-SDK: 260447c2270b44470d7c0d49a7f1a154b4703973
-  CHTCollectionViewWaterfallLayout: 058823cc65c9d84e059b0a85eede517550da0334
+  CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   EaseMobSDK: 90359de1dd00c72818b824005a734c7ad0ff0886
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
-  UMengSocial: aedae57452047daa708306f23ff21883a07cd779
+  UMengSocial: 85882abe5b20aa38ad558ece71360e16b5d50909
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.3

@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , BMKGeneralDelegate , EMC
         
         UMSocialData.setAppKey(ZXY_ConstValue.UMAPPKEY.rawValue)
         UMSocialData.openLog(true)
-        
+        UMSocialConfig.hiddenNotInstallPlatforms([UMShareToTencent,UMShareToQzone,UMShareToQQ,UMShareToWechatSession,UMShareToWechatTimeline])
         // MARK: 极光推送
         if UIDevice.currentDevice().systemVersion.doubleValue >= 8.0
         {
